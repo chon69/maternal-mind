@@ -7,71 +7,51 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 <style>
+  @font-face { font-display: block; font-family: Roboto; src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2") }
   :root {
-    --turq-primary: #7AACB0;
-    --turq-dark: #5B9298;
-    --turq-light: #C2D9DB;
-    --turq-vlight: #EDF4F5;
-    --turq-deep: #4A8A8E;
-    --gold: #C4A882;
-    --gold-light: #F5EFE6;
-    --white: #FDFBF7;
-    --ink: #3A3A3A;
-    --ink-soft: #5E5E5E;
-    --cream: #FDFAF5;
-    --amber: #F5EFE6;
-    --rose: #EDF4F5;
+    --turq-primary: #7AACB0; --turq-dark: #5B9298; --turq-light: #C2D9DB;
+    --turq-vlight: #EDF4F5; --turq-deep: #4A8A8E; --gold: #C4A882;
+    --gold-light: #F5EFE6; --ink: #3A3A3A; --ink-soft: #5E5E5E;
+    --cream: #FDFAF5; --amber: #F5EFE6; --rose: #EDF4F5;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
 
-  .hero {
-    min-height: 100vh;
-    background: linear-gradient(160deg, var(--turq-vlight) 0%, var(--cream) 55%, var(--rose) 100%);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding: 0 8vw;
-    position: relative;
-    overflow: hidden;
-  }
+  .hero { min-height: 100vh; background: linear-gradient(160deg, var(--turq-vlight) 0%, var(--cream) 55%, var(--rose) 100%); display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 0 8vw; position: relative; overflow: hidden; }
   .hero::before { content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(165,229,224,0.35) 0%, transparent 70%); top: -100px; right: -100px; pointer-events: none; }
-  .hero::after { content: ''; position: absolute; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(245,234,232,0.5) 0%, transparent 70%); bottom: -80px; left: 5%; pointer-events: none; }
   .hero-text { z-index: 2; animation: fadeUp 1s ease both; }
   .hero-eyebrow { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--turq-deep); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
   .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 300; line-height: 1.1; color: var(--ink); margin-bottom: 1.5rem; }
   .hero h1 em { font-style: italic; color: var(--turq-deep); }
   .hero-subtitle { font-size: 1.1rem; font-weight: 300; line-height: 1.75; color: var(--ink-soft); margin-bottom: 2.5rem; max-width: 480px; }
 
-  .btn-primary {
-    display: inline-block;
-    padding: 1.1rem 2.5rem;
-    background: var(--turq-deep);
-    color: white;
-    border: none;
-    border-radius: 50px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1rem;
-    font-weight: 500;
-    letter-spacing: 0.03em;
-    cursor: pointer;
-    text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.3s, background 0.3s;
-    box-shadow: 0 8px 24px rgba(79,186,179,0.3);
-  }
-  .btn-primary:hover { background: #3EADA6; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(79,186,179,0.4); }
-
-  .hero-cta-block { display: flex; flex-direction: column; gap: 0.75rem; max-width: 420px; }
+  /* Brevo form customization */
+  .brevo-wrapper { max-width: 440px; }
+  .brevo-wrapper .sib-form { background: transparent !important; padding: 0 !important; text-align: left !important; }
+  .brevo-wrapper #sib-container { background: transparent !important; border: none !important; border-radius: 0 !important; padding: 0 !important; max-width: 100% !important; }
+  .brevo-wrapper .sib-form-block p { display: none; }
+  .brevo-wrapper .entry__label { font-family: 'DM Sans', sans-serif !important; font-size: 0.8rem !important; color: var(--ink-soft) !important; font-weight: 400 !important; margin-bottom: 0.25rem; }
+  .brevo-wrapper .input { padding: 0.9rem 1.25rem !important; border: 1.5px solid rgba(125,207,202,0.4) !important; border-radius: 50px !important; background: rgba(255,255,255,0.8) !important; font-family: 'DM Sans', sans-serif !important; font-size: 0.95rem !important; color: var(--ink) !important; width: 100% !important; }
+  .brevo-wrapper .input:focus { border-color: var(--turq-dark) !important; outline: none !important; box-shadow: 0 0 0 4px rgba(165,229,224,0.2) !important; }
+  .brevo-wrapper select.input { border-radius: 50px 0 0 50px !important; width: auto !important; }
+  .brevo-wrapper .sib-sms-input-wrapper { display: flex !important; }
+  .brevo-wrapper .sib-sms-input-wrapper .entry__field:last-child .input { border-radius: 0 50px 50px 0 !important; }
+  .brevo-wrapper .sib-form-block__button { padding: 1rem 2rem !important; background: var(--turq-deep) !important; color: white !important; border: none !important; border-radius: 50px !important; font-family: 'DM Sans', sans-serif !important; font-size: 0.95rem !important; font-weight: 500 !important; cursor: pointer !important; transition: transform 0.2s, box-shadow 0.3s !important; box-shadow: 0 8px 24px rgba(79,186,179,0.3) !important; width: 100% !important; }
+  .brevo-wrapper .sib-form-block__button:hover { background: #3EADA6 !important; transform: translateY(-2px) !important; }
+  .brevo-wrapper .entry__field { margin-bottom: 0.5rem; }
+  .brevo-wrapper .form__entry { margin-bottom: 0.5rem; }
+  .brevo-wrapper .g-recaptcha { margin: 0.5rem 0; }
   .hero-privacy { font-size: 0.75rem; color: #9BB5B4; margin-top: 0.5rem; }
 
   .hero-visual { z-index: 2; display: flex; justify-content: center; align-items: center; animation: fadeUp 1s 0.3s ease both; padding: 4rem 0 4rem 2rem; }
   .kit-mockup { position: relative; width: 340px; }
-  .kit-card { background: white; border-radius: 24px; padding: 2.5rem 2rem; box-shadow: 0 24px 60px rgba(44,62,61,0.1), 0 4px 16px rgba(44,62,61,0.05); border: 1px solid rgba(165,229,224,0.3); }
+  .kit-card { background: white; border-radius: 24px; padding: 2.5rem 2rem; box-shadow: 0 24px 60px rgba(44,62,61,0.1); border: 1px solid rgba(165,229,224,0.3); }
   .kit-card-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.75rem; }
   .kit-icon { width: 48px; height: 48px; background: var(--turq-vlight); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
-  .kit-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 500; color: var(--ink); line-height: 1.2; }
+  .kit-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 500; color: var(--ink); }
   .kit-card-subtitle { font-size: 0.75rem; color: var(--turq-deep); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
   .practice-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
   .practice-item { display: flex; align-items: center; gap: 0.875rem; padding: 0.75rem 1rem; border-radius: 12px; background: var(--turq-vlight); font-size: 0.875rem; color: var(--ink-soft); }
@@ -102,10 +82,10 @@
   .whatis-section { padding: 6rem 8vw; background: white; }
   .whatis-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
   .quote-block { border-left: 3px solid var(--turq-primary); padding: 1.5rem 2rem; background: var(--turq-vlight); border-radius: 0 16px 16px 0; margin: 2rem 0; }
-  .quote-block blockquote { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-style: italic; font-weight: 400; line-height: 1.6; color: var(--ink); }
+  .quote-block blockquote { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-style: italic; line-height: 1.6; color: var(--ink); }
   .whatis-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-  .feature-card { background: var(--cream); border-radius: 20px; padding: 1.5rem; border: 1px solid rgba(165,229,224,0.3); transition: transform 0.2s, box-shadow 0.2s; }
-  .feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(44,62,61,0.08); }
+  .feature-card { background: var(--cream); border-radius: 20px; padding: 1.5rem; border: 1px solid rgba(165,229,224,0.3); transition: transform 0.2s; }
+  .feature-card:hover { transform: translateY(-4px); }
   .feature-icon { font-size: 1.75rem; margin-bottom: 0.75rem; display: block; }
   .feature-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.4rem; }
   .feature-desc { font-size: 0.82rem; color: var(--ink-soft); line-height: 1.55; }
@@ -114,8 +94,8 @@
   .practices-inner { max-width: 900px; margin: 0 auto; }
   .practices-header { text-align: center; margin-bottom: 3rem; }
   .practices-grid { display: flex; flex-direction: column; gap: 1.25rem; }
-  .practice-expanded { background: white; border-radius: 20px; padding: 1.75rem 2rem; display: grid; grid-template-columns: 48px 1fr auto; gap: 1.25rem; align-items: center; box-shadow: 0 4px 16px rgba(44,62,61,0.05); border: 1px solid rgba(165,229,224,0.2); transition: transform 0.2s, box-shadow 0.2s; }
-  .practice-expanded:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(44,62,61,0.1); }
+  .practice-expanded { background: white; border-radius: 20px; padding: 1.75rem 2rem; display: grid; grid-template-columns: 48px 1fr auto; gap: 1.25rem; align-items: center; box-shadow: 0 4px 16px rgba(44,62,61,0.05); border: 1px solid rgba(165,229,224,0.2); transition: transform 0.2s; }
+  .practice-expanded:hover { transform: translateY(-3px); }
   .practice-num { width: 48px; height: 48px; background: var(--turq-vlight); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 500; color: var(--turq-deep); flex-shrink: 0; }
   .practice-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 500; color: var(--ink); margin-bottom: 0.3rem; }
   .practice-desc { font-size: 0.85rem; color: var(--ink-soft); line-height: 1.5; }
@@ -137,14 +117,26 @@
   .cred-tag { font-size: 0.75rem; padding: 0.35rem 0.75rem; background: white; border-radius: 50px; color: var(--ink-soft); border: 1px solid rgba(125,207,202,0.4); }
 
   .cta-section { background: linear-gradient(135deg, var(--ink) 0%, #1E3030 100%); padding: 7rem 8vw; text-align: center; position: relative; overflow: hidden; }
-  .cta-section::before { content: ''; position: absolute; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(165,229,224,0.12) 0%, transparent 70%); top: -150px; right: -100px; pointer-events: none; }
   .cta-inner { position: relative; z-index: 2; max-width: 600px; margin: 0 auto; }
   .cta-section .section-label { justify-content: center; color: var(--turq-primary); }
   .cta-section .section-label::before { background: var(--turq-primary); }
   .cta-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 300; color: white; line-height: 1.2; margin-bottom: 1rem; }
   .cta-section h2 em { font-style: italic; color: var(--turq-primary); }
-  .cta-section p { font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.65); line-height: 1.75; margin-bottom: 2.5rem; }
-  .cta-privacy { font-size: 0.72rem; color: rgba(255,255,255,0.4); margin-top: 1rem; }
+  .cta-section > .cta-inner > p { font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.65); line-height: 1.75; margin-bottom: 2.5rem; }
+
+  /* CTA Brevo form dark theme */
+  .cta-brevo-wrapper { max-width: 440px; margin: 0 auto; }
+  .cta-brevo-wrapper .sib-form { background: transparent !important; padding: 0 !important; text-align: left !important; }
+  .cta-brevo-wrapper #sib-container { background: transparent !important; border: none !important; padding: 0 !important; max-width: 100% !important; }
+  .cta-brevo-wrapper .sib-form-block p { display: none; }
+  .cta-brevo-wrapper .entry__label { font-family: 'DM Sans', sans-serif !important; font-size: 0.8rem !important; color: rgba(255,255,255,0.6) !important; font-weight: 400 !important; }
+  .cta-brevo-wrapper .input { padding: 0.9rem 1.25rem !important; border: 1.5px solid rgba(165,229,224,0.2) !important; border-radius: 50px !important; background: rgba(255,255,255,0.07) !important; font-family: 'DM Sans', sans-serif !important; font-size: 0.95rem !important; color: white !important; width: 100% !important; }
+  .cta-brevo-wrapper .input::placeholder { color: rgba(255,255,255,0.4) !important; }
+  .cta-brevo-wrapper select.input { border-radius: 50px 0 0 50px !important; width: auto !important; color: var(--ink) !important; background: white !important; }
+  .cta-brevo-wrapper .sib-sms-input-wrapper { display: flex !important; }
+  .cta-brevo-wrapper .sib-sms-input-wrapper .entry__field:last-child .input { border-radius: 0 50px 50px 0 !important; }
+  .cta-brevo-wrapper .sib-form-block__button { padding: 1rem 2rem !important; background: var(--turq-deep) !important; color: white !important; border: none !important; border-radius: 50px !important; font-family: 'DM Sans', sans-serif !important; font-size: 1rem !important; font-weight: 500 !important; cursor: pointer !important; box-shadow: 0 8px 24px rgba(79,186,179,0.3) !important; width: 100% !important; }
+  .cta-privacy { font-size: 0.72rem; color: rgba(255,255,255,0.3); margin-top: 0.75rem; }
 
   footer { background: #1A2828; padding: 2rem 8vw; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
   .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: rgba(255,255,255,0.6); }
@@ -159,7 +151,7 @@
   @media (max-width: 768px) {
     .hero { grid-template-columns: 1fr; padding: 5rem 6vw 4rem; text-align: center; }
     .hero-eyebrow { justify-content: center; }
-    .hero-cta-block { max-width: 100%; align-items: center; }
+    .brevo-wrapper { max-width: 100%; }
     .hero-visual { padding: 2rem 0 0; }
     .kit-mockup { width: 280px; }
     .trust-bar { gap: 1.5rem; flex-direction: column; align-items: center; }
@@ -182,11 +174,72 @@
       Maternal Mind · Regalo gratuito
     </div>
     <h1>Un momento<br>solo para <em>ti</em>,<br>mamá.</h1>
-    <p class="hero-subtitle">5 prácticas cortas de mindfulness para encontrar calma y presencia en los primeros y más intensos momentos de la maternidad.</p>
-    <div class="hero-cta-block">
-      <a href="https://24250898.sibforms.com/serve/MUIFAMBKVwOqJgLb2j7gkEXw2lrSg04FLbuZmEkgZjeLi90dLMQp_uYsZ64S1yBAPsCUFvJV9kDWQzKoS85TCnmtOPabHYr0r6OnK_mbhgGcI8c_yt9ll0rjRVz4fpun79mLE_k4dZifDlaX6uU-MUeyJQXQRBlB_VT5M6lGVdG17e3bAwnWKm5QIGisZ7x3YJx0zvTSFU1bZaGlpg==" class="btn-primary">Quiero mi Kit de Pausa →</a>
+    <p class="hero-subtitle">5 prácticas cortas de mindfulness para encontrar calma y presencia en los momentos más intensos de la maternidad.</p>
+
+    <div class="brevo-wrapper">
+      <div class="sib-form">
+        <div id="sib-form-container" class="sib-form-container">
+          <div id="sib-container" class="sib-container--large sib-container--vertical">
+            <form id="sib-form" method="POST" action="https://24250898.sibforms.com/serve/MUIFAMBKVwOqJgLb2j7gkEXw2lrSg04FLbuZmEkgZjeLi90dLMQp_uYsZ64S1yBAPsCUFvJV9kDWQzKoS85TCnmtOPabHYr0r6OnK_mbhgGcI8c_yt9ll0rjRVz4fpun79mLE_k4dZifDlaX6uU-MUeyJQXQRBlB_VT5M6lGVdG17e3bAwnWKm5QIGisZ7x3YJx0zvTSFU1bZaGlpg==" data-type="subscription">
+              <div style="padding: 4px 0;">
+                <div class="sib-input sib-form-block">
+                  <div class="form__entry entry_block">
+                    <div class="form__label-row">
+                      <label class="entry__label" for="NOMBRE1">Tu nombre</label>
+                      <div class="entry__field"><input class="input" maxlength="200" type="text" id="NOMBRE1" name="NOMBRE" autocomplete="off" placeholder="Tu nombre" data-required="true" required /></div>
+                    </div>
+                    <label class="entry__error entry__error--primary"></label>
+                  </div>
+                </div>
+              </div>
+              <div style="padding: 4px 0;">
+                <div class="sib-input sib-form-block">
+                  <div class="form__entry entry_block">
+                    <div class="form__label-row">
+                      <label class="entry__label" for="EMAIL1">Tu correo electrónico</label>
+                      <div class="entry__field"><input class="input" type="email" id="EMAIL1" name="EMAIL" autocomplete="off" placeholder="Tu email" data-required="true" required /></div>
+                    </div>
+                    <label class="entry__error entry__error--primary"></label>
+                  </div>
+                </div>
+              </div>
+              <div style="padding: 4px 0;">
+                <div class="sib-input sib-form-block">
+                  <div class="form__entry entry_block">
+                    <div class="form__label-row">
+                      <label class="entry__label" for="SMS1">Teléfono (opcional)</label>
+                      <div class="entry__field"><input class="input" type="tel" id="SMS1" name="SMS" autocomplete="off" placeholder="Teléfono (opcional)" /></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="padding: 8px 0;">
+                <div class="sib-captcha sib-form-block">
+                  <div class="form__entry entry_block">
+                    <div class="form__label-row">
+                      <script>function handleCaptchaResponse() { var event = new Event('captchaChange'); document.getElementById('sib-captcha').dispatchEvent(event); }</script>
+                      <div class="g-recaptcha sib-visible-recaptcha" id="sib-captcha" data-sitekey="6Les784sAAAAADu6JwJxSQkvNyTXSKnWqJboJkGr" data-callback="handleCaptchaResponse" style="direction:ltr"></div>
+                    </div>
+                    <label class="entry__error entry__error--primary"></label>
+                  </div>
+                </div>
+              </div>
+              <div style="padding: 4px 0;">
+                <div class="sib-form-block" style="text-align: left">
+                  <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
+                    <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512"><path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" /></svg>
+                    Quiero mi Kit de Pausa →
+                  </button>
+                </div>
+              </div>
+              <input type="text" name="email_address_check" value="" class="input--hidden">
+              <input type="hidden" name="locale" value="es">
+              <input type="hidden" name="redirectionUrl" value="https://chon69.github.io/maternal-mind/gracias.html">
+            </form>
+          </div>
+        </div>
+      </div>
       <p class="hero-privacy">🔒 Tu privacidad está protegida. Sin spam, nunca.</p>
-      <p style="font-size:0.78rem; color:var(--turq-deep); margin-top:0.25rem;">✨ Las 5 prácticas forman parte de la <strong>Biblioteca MaMi</strong> de Maternal Mind.</p>
     </div>
   </div>
 
@@ -196,10 +249,7 @@
       <div class="kit-card">
         <div class="kit-card-header">
           <div class="kit-icon">🌿</div>
-          <div>
-            <div class="kit-card-title">Kit de Pausa</div>
-            <div class="kit-card-subtitle">Maternal Mind</div>
-          </div>
+          <div><div class="kit-card-title">Kit de Pausa</div><div class="kit-card-subtitle">Maternal Mind</div></div>
         </div>
         <ul class="practice-list">
           <li class="practice-item"><div class="practice-dot">🎧</div>Volver en 3 minutos</li>
@@ -291,24 +341,18 @@
       <ul class="check-list">
         <li><div class="check-icon">✓</div>Estás embarazada y quieres cultivar calma antes de que llegue el bebé.</li>
         <li><div class="check-icon">✓</div>Estás en el posparto y necesitas volver a ti, aunque sea 10 minutos al día.</li>
-        <li><div class="check-icon">✓</div>Llevas meses de maternidad y sientes que te has perdido a ti misma por el camino.</li>
+        <li><div class="check-icon">✓</div>Llevas meses de maternidad y sientes que te has perdido a ti misma.</li>
         <li><div class="check-icon">✓</div>Quieres herramientas reales, no frases bonitas.</li>
-        <li><div class="check-icon">✓</div>Sientes que mereces un espacio propio, aunque aún no te hayas dado permiso.</li>
+        <li><div class="check-icon">✓</div>Sientes que mereces un espacio propio.</li>
       </ul>
     </div>
     <div class="author-card reveal">
       <div class="author-name">Hola, soy Chon.</div>
       <div class="author-title">Madre de 3 · Instructora de Mindfulness · Guía de círculos de maternidad</div>
       <p class="author-bio">Ser madre me cambió por dentro de una manera que ningún libro me había anunciado. Y eso es lo que me trajo hasta aquí.</p>
-      <p class="author-bio">Soy instructora de mindfulness especializada en maternidad, guía de círculos maternales y educadora prenatal con hipnoparto. Llevo años acompañando a mujeres en el momento más transformador de su vida.</p>
-      <p class="author-bio">También soy pediatra e IBCLC — porque todo ese camino me ha enseñado a mirar a las madres de una manera que va mucho más allá de lo clínico.</p>
+      <p class="author-bio">Soy instructora de mindfulness especializada en maternidad, guía de círculos maternales y educadora prenatal con hipnoparto. También soy pediatra e IBCLC.</p>
       <div class="credentials">
-        <span class="cred-tag">Madre de 3</span>
-        <span class="cred-tag">Mindfulness</span>
-        <span class="cred-tag">Círculos maternales</span>
-        <span class="cred-tag">Hipnoparto</span>
-        <span class="cred-tag">Pediatra</span>
-        <span class="cred-tag">IBCLC</span>
+        <span class="cred-tag">Madre de 3</span><span class="cred-tag">Mindfulness</span><span class="cred-tag">Círculos maternales</span><span class="cred-tag">Hipnoparto</span><span class="cred-tag">Pediatra</span><span class="cred-tag">IBCLC</span>
       </div>
     </div>
   </div>
@@ -326,8 +370,25 @@
   <div class="cta-inner">
     <div class="section-label">Es el momento</div>
     <h2>Tú también mereces<br><em>una pausa</em>.</h2>
-    <p>Accede ahora a las 5 prácticas de forma gratuita.<br>Sin compromisos. Solo tú, unos minutos y un poco de amor propio.</p>
-    <a href="https://24250898.sibforms.com/serve/MUIFAMBKVwOqJgLb2j7gkEXw2lrSg04FLbuZmEkgZjeLi90dLMQp_uYsZ64S1yBAPsCUFvJV9kDWQzKoS85TCnmtOPabHYr0r6OnK_mbhgGcI8c_yt9ll0rjRVz4fpun79mLE_k4dZifDlaX6uU-MUeyJQXQRBlB_VT5M6lGVdG17e3bAwnWKm5QIGisZ7x3YJx0zvTSFU1bZaGlpg==" class="btn-primary">Quiero mi Kit de Pausa →</a>
+    <p>Accede ahora a las 5 prácticas de forma gratuita.</p>
+    <div class="cta-brevo-wrapper">
+      <div class="sib-form">
+        <div id="sib-form-container2" class="sib-form-container">
+          <div id="sib-container2" class="sib-container--large sib-container--vertical">
+            <form id="sib-form2" method="POST" action="https://24250898.sibforms.com/serve/MUIFAMBKVwOqJgLb2j7gkEXw2lrSg04FLbuZmEkgZjeLi90dLMQp_uYsZ64S1yBAPsCUFvJV9kDWQzKoS85TCnmtOPabHYr0r6OnK_mbhgGcI8c_yt9ll0rjRVz4fpun79mLE_k4dZifDlaX6uU-MUeyJQXQRBlB_VT5M6lGVdG17e3bAwnWKm5QIGisZ7x3YJx0zvTSFU1bZaGlpg==" data-type="subscription">
+              <div style="padding: 4px 0;"><div class="sib-input sib-form-block"><div class="form__entry entry_block"><div class="form__label-row"><label class="entry__label" for="NOMBRE2">Tu nombre</label><div class="entry__field"><input class="input" type="text" id="NOMBRE2" name="NOMBRE" autocomplete="off" placeholder="Tu nombre" required /></div></div></div></div></div>
+              <div style="padding: 4px 0;"><div class="sib-input sib-form-block"><div class="form__entry entry_block"><div class="form__label-row"><label class="entry__label" for="EMAIL2">Tu correo electrónico</label><div class="entry__field"><input class="input" type="email" id="EMAIL2" name="EMAIL" autocomplete="off" placeholder="Tu email" required /></div></div></div></div></div>
+              <div style="padding: 4px 0;"><div class="sib-input sib-form-block"><div class="form__entry entry_block"><div class="form__label-row"><label class="entry__label" for="SMS2">Teléfono (opcional)</label><div class="entry__field"><input class="input" type="tel" id="SMS2" name="SMS" autocomplete="off" placeholder="Teléfono (opcional)" /></div></div></div></div></div>
+              <div style="padding: 8px 0;"><div class="sib-captcha sib-form-block"><div class="form__entry entry_block"><div class="form__label-row"><div class="g-recaptcha sib-visible-recaptcha" data-sitekey="6Les784sAAAAADu6JwJxSQkvNyTXSKnWqJboJkGr" data-callback="handleCaptchaResponse" style="direction:ltr"></div></div></div></div></div>
+              <div style="padding: 4px 0;"><div class="sib-form-block" style="text-align:left"><button class="sib-form-block__button" form="sib-form2" type="submit">Quiero mi Kit de Pausa →</button></div></div>
+              <input type="text" name="email_address_check" value="" class="input--hidden">
+              <input type="hidden" name="locale" value="es">
+              <input type="hidden" name="redirectionUrl" value="https://chon69.github.io/maternal-mind/gracias.html">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
     <p class="cta-privacy">🔒 Sin spam. Puedes darte de baja cuando quieras.</p>
   </div>
 </section>
@@ -343,6 +404,16 @@
   <small>© 2026 Chon Jorquera · Política de privacidad · Aviso legal</small>
 </footer>
 
+<script>
+  window.REQUIRED_CODE_ERROR_MESSAGE = 'Elige un código de país';
+  window.LOCALE = 'es';
+  window.EMAIL_INVALID_MESSAGE = "La información no es válida.";
+  window.REQUIRED_ERROR_MESSAGE = "Este campo no puede estar vacío.";
+  window.GENERIC_INVALID_MESSAGE = "La información no es válida.";
+  var AUTOHIDE = Boolean(0);
+</script>
+<script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+<script src="https://www.google.com/recaptcha/api.js?hl=es"></script>
 <script>
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
