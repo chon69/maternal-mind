@@ -28,22 +28,17 @@
   .hero h1 em { font-style: italic; color: var(--turq-deep); }
   .hero-subtitle { font-size: 1.1rem; font-weight: 300; line-height: 1.75; color: var(--ink-soft); margin-bottom: 2.5rem; max-width: 480px; }
 
-  /* Brevo form customization */
-  .brevo-wrapper { max-width: 440px; }
+  /* Brevo form override */
   .brevo-wrapper .sib-form { background: transparent !important; padding: 0 !important; text-align: left !important; }
-  .brevo-wrapper #sib-container { background: transparent !important; border: none !important; border-radius: 0 !important; padding: 0 !important; max-width: 100% !important; }
-  .brevo-wrapper .sib-form-block p { display: none; }
-  .brevo-wrapper .entry__label { font-family: 'DM Sans', sans-serif !important; font-size: 0.8rem !important; color: var(--ink-soft) !important; font-weight: 400 !important; margin-bottom: 0.25rem; }
+  .brevo-wrapper #sib-container { background: transparent !important; border: none !important; padding: 0 !important; max-width: 100% !important; text-align: left !important; }
+  .brevo-wrapper p { display: none !important; }
+  .brevo-wrapper .sib-text-form-block { display: none !important; }
+  .brevo-wrapper .entry__label { font-family: 'DM Sans', sans-serif !important; font-size: 0.8rem !important; color: var(--ink-soft) !important; font-weight: 400 !important; }
   .brevo-wrapper .input { padding: 0.9rem 1.25rem !important; border: 1.5px solid rgba(125,207,202,0.4) !important; border-radius: 50px !important; background: rgba(255,255,255,0.8) !important; font-family: 'DM Sans', sans-serif !important; font-size: 0.95rem !important; color: var(--ink) !important; width: 100% !important; }
   .brevo-wrapper .input:focus { border-color: var(--turq-dark) !important; outline: none !important; box-shadow: 0 0 0 4px rgba(165,229,224,0.2) !important; }
-  .brevo-wrapper select.input { border-radius: 50px 0 0 50px !important; width: auto !important; }
-  .brevo-wrapper .sib-sms-input-wrapper { display: flex !important; }
-  .brevo-wrapper .sib-sms-input-wrapper .entry__field:last-child .input { border-radius: 0 50px 50px 0 !important; }
-  .brevo-wrapper .sib-form-block__button { padding: 1rem 2rem !important; background: var(--turq-deep) !important; color: white !important; border: none !important; border-radius: 50px !important; font-family: 'DM Sans', sans-serif !important; font-size: 0.95rem !important; font-weight: 500 !important; cursor: pointer !important; transition: transform 0.2s, box-shadow 0.3s !important; box-shadow: 0 8px 24px rgba(79,186,179,0.3) !important; width: 100% !important; }
+  .brevo-wrapper .sib-form-block__button { padding: 1rem 2rem !important; background: var(--turq-deep) !important; color: white !important; border: none !important; border-radius: 50px !important; font-family: 'DM Sans', sans-serif !important; font-size: 0.95rem !important; font-weight: 500 !important; cursor: pointer !important; box-shadow: 0 8px 24px rgba(79,186,179,0.3) !important; width: 100% !important; text-align: center !important; }
   .brevo-wrapper .sib-form-block__button:hover { background: #3EADA6 !important; transform: translateY(-2px) !important; }
-  .brevo-wrapper .entry__field { margin-bottom: 0.5rem; }
   .brevo-wrapper .form__entry { margin-bottom: 0.5rem; }
-  .brevo-wrapper .g-recaptcha { margin: 0.5rem 0; }
   .hero-privacy { font-size: 0.75rem; color: #9BB5B4; margin-top: 0.5rem; }
 
   .hero-visual { z-index: 2; display: flex; justify-content: center; align-items: center; animation: fadeUp 1s 0.3s ease both; padding: 4rem 0 4rem 2rem; }
@@ -57,9 +52,9 @@
   .practice-item { display: flex; align-items: center; gap: 0.875rem; padding: 0.75rem 1rem; border-radius: 12px; background: var(--turq-vlight); font-size: 0.875rem; color: var(--ink-soft); }
   .practice-item:nth-child(2) { background: var(--amber); }
   .practice-item:nth-child(4) { background: var(--rose); }
-  .practice-dot { width: 28px; height: 28px; border-radius: 8px; background: white; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.06); }
-  .floating-badge { position: absolute; top: -16px; right: -16px; background: var(--gold); color: white; border-radius: 16px; padding: 0.625rem 1rem; font-size: 0.75rem; font-weight: 500; box-shadow: 0 8px 20px rgba(232,168,48,0.4); animation: float 3s ease-in-out infinite; }
-  .floating-badge-bottom { position: absolute; bottom: -14px; left: 20px; background: white; color: var(--ink); border-radius: 12px; padding: 0.5rem 0.875rem; font-size: 0.75rem; box-shadow: 0 8px 20px rgba(44,62,61,0.1); border: 1px solid rgba(165,229,224,0.4); animation: float 3s 1.5s ease-in-out infinite; display: flex; align-items: center; gap: 0.4rem; }
+  .practice-dot { width: 28px; height: 28px; border-radius: 8px; background: white; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
+  .floating-badge { position: absolute; top: -16px; right: -16px; background: var(--gold); color: white; border-radius: 16px; padding: 0.625rem 1rem; font-size: 0.75rem; font-weight: 500; animation: float 3s ease-in-out infinite; }
+  .floating-badge-bottom { position: absolute; bottom: -14px; left: 20px; background: white; color: var(--ink); border-radius: 12px; padding: 0.5rem 0.875rem; font-size: 0.75rem; border: 1px solid rgba(165,229,224,0.4); animation: float 3s 1.5s ease-in-out infinite; display: flex; align-items: center; gap: 0.4rem; }
 
   .trust-bar { background: var(--ink); padding: 1.5rem 8vw; display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
   .trust-item { display: flex; align-items: center; gap: 0.625rem; color: var(--turq-light); font-size: 0.85rem; }
@@ -122,21 +117,18 @@
   .cta-section .section-label::before { background: var(--turq-primary); }
   .cta-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 300; color: white; line-height: 1.2; margin-bottom: 1rem; }
   .cta-section h2 em { font-style: italic; color: var(--turq-primary); }
-  .cta-section > .cta-inner > p { font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.65); line-height: 1.75; margin-bottom: 2.5rem; }
-
-  /* CTA Brevo form dark theme */
-  .cta-brevo-wrapper { max-width: 440px; margin: 0 auto; }
-  .cta-brevo-wrapper .sib-form { background: transparent !important; padding: 0 !important; text-align: left !important; }
-  .cta-brevo-wrapper #sib-container { background: transparent !important; border: none !important; padding: 0 !important; max-width: 100% !important; }
-  .cta-brevo-wrapper .sib-form-block p { display: none; }
-  .cta-brevo-wrapper .entry__label { font-family: 'DM Sans', sans-serif !important; font-size: 0.8rem !important; color: rgba(255,255,255,0.6) !important; font-weight: 400 !important; }
-  .cta-brevo-wrapper .input { padding: 0.9rem 1.25rem !important; border: 1.5px solid rgba(165,229,224,0.2) !important; border-radius: 50px !important; background: rgba(255,255,255,0.07) !important; font-family: 'DM Sans', sans-serif !important; font-size: 0.95rem !important; color: white !important; width: 100% !important; }
-  .cta-brevo-wrapper .input::placeholder { color: rgba(255,255,255,0.4) !important; }
-  .cta-brevo-wrapper select.input { border-radius: 50px 0 0 50px !important; width: auto !important; color: var(--ink) !important; background: white !important; }
-  .cta-brevo-wrapper .sib-sms-input-wrapper { display: flex !important; }
-  .cta-brevo-wrapper .sib-sms-input-wrapper .entry__field:last-child .input { border-radius: 0 50px 50px 0 !important; }
-  .cta-brevo-wrapper .sib-form-block__button { padding: 1rem 2rem !important; background: var(--turq-deep) !important; color: white !important; border: none !important; border-radius: 50px !important; font-family: 'DM Sans', sans-serif !important; font-size: 1rem !important; font-weight: 500 !important; cursor: pointer !important; box-shadow: 0 8px 24px rgba(79,186,179,0.3) !important; width: 100% !important; }
+  .cta-desc { font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.65); line-height: 1.75; margin-bottom: 2.5rem; }
   .cta-privacy { font-size: 0.72rem; color: rgba(255,255,255,0.3); margin-top: 0.75rem; }
+
+  /* CTA dark brevo override */
+  .cta-brevo .sib-form { background: transparent !important; padding: 0 !important; }
+  .cta-brevo #sib-container { background: transparent !important; border: none !important; padding: 0 !important; max-width: 440px !important; margin: 0 auto !important; }
+  .cta-brevo p { display: none !important; }
+  .cta-brevo .sib-text-form-block { display: none !important; }
+  .cta-brevo .entry__label { font-family: 'DM Sans', sans-serif !important; font-size: 0.8rem !important; color: rgba(255,255,255,0.6) !important; font-weight: 400 !important; }
+  .cta-brevo .input { padding: 0.9rem 1.25rem !important; border: 1.5px solid rgba(165,229,224,0.2) !important; border-radius: 50px !important; background: rgba(255,255,255,0.07) !important; font-family: 'DM Sans', sans-serif !important; font-size: 0.95rem !important; color: white !important; width: 100% !important; }
+  .cta-brevo .input::placeholder { color: rgba(255,255,255,0.4) !important; }
+  .cta-brevo .sib-form-block__button { padding: 1rem 2rem !important; background: var(--turq-deep) !important; color: white !important; border: none !important; border-radius: 50px !important; font-family: 'DM Sans', sans-serif !important; font-size: 1rem !important; font-weight: 500 !important; cursor: pointer !important; width: 100% !important; }
 
   footer { background: #1A2828; padding: 2rem 8vw; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
   .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: rgba(255,255,255,0.6); }
@@ -151,7 +143,6 @@
   @media (max-width: 768px) {
     .hero { grid-template-columns: 1fr; padding: 5rem 6vw 4rem; text-align: center; }
     .hero-eyebrow { justify-content: center; }
-    .brevo-wrapper { max-width: 100%; }
     .hero-visual { padding: 2rem 0 0; }
     .kit-mockup { width: 280px; }
     .trust-bar { gap: 1.5rem; flex-direction: column; align-items: center; }
@@ -176,17 +167,17 @@
     <h1>Un momento<br>solo para <em>ti</em>,<br>mamá.</h1>
     <p class="hero-subtitle">5 prácticas cortas de mindfulness para encontrar calma y presencia en los momentos más intensos de la maternidad.</p>
 
-    <div class="brevo-wrapper">
+    <div class="brevo-wrapper" style="max-width:420px;">
       <div class="sib-form">
         <div id="sib-form-container" class="sib-form-container">
           <div id="sib-container" class="sib-container--large sib-container--vertical">
-            <form id="sib-form" method="POST" action="https://24250898.sibforms.com/serve/MUIFAMBKVwOqJgLb2j7gkEXw2lrSg04FLbuZmEkgZjeLi90dLMQp_uYsZ64S1yBAPsCUFvJV9kDWQzKoS85TCnmtOPabHYr0r6OnK_mbhgGcI8c_yt9ll0rjRVz4fpun79mLE_k4dZifDlaX6uU-MUeyJQXQRBlB_VT5M6lGVdG17e3bAwnWKm5QIGisZ7x3YJx0zvTSFU1bZaGlpg==" data-type="subscription">
+            <form id="sib-form" method="POST" action="https://24250898.sibforms.com/serve/MUIFANj0Oa1Gi9OAL4p_3PaOluA-bcjPgMIX9eHDTudkanVKPjDFIHso5IOmZwPrHc0w-L8aU4nBKoJF7k23mPClQVIbG7AkXQ4jMfzmFC8ZdWVWpP52HH3h9J7bIUb0uFWFCn_Mgz7BIn7svKLy7eCfzo6sCXVhMXaVYdcbDrYKij_NPxwz9lLpKKK7BmYStgAOHLRzGeiDLnQTAA==" data-type="subscription">
               <div style="padding: 4px 0;">
                 <div class="sib-input sib-form-block">
                   <div class="form__entry entry_block">
                     <div class="form__label-row">
-                      <label class="entry__label" for="NOMBRE1">Tu nombre</label>
-                      <div class="entry__field"><input class="input" maxlength="200" type="text" id="NOMBRE1" name="NOMBRE" autocomplete="off" placeholder="Tu nombre" data-required="true" required /></div>
+                      <label class="entry__label" for="NOMBRE">Tu nombre</label>
+                      <div class="entry__field"><input class="input" maxlength="200" type="text" id="NOMBRE" name="NOMBRE" autocomplete="off" placeholder="Tu nombre" required /></div>
                     </div>
                     <label class="entry__error entry__error--primary"></label>
                   </div>
@@ -196,36 +187,15 @@
                 <div class="sib-input sib-form-block">
                   <div class="form__entry entry_block">
                     <div class="form__label-row">
-                      <label class="entry__label" for="EMAIL1">Tu correo electrónico</label>
-                      <div class="entry__field"><input class="input" type="email" id="EMAIL1" name="EMAIL" autocomplete="off" placeholder="Tu email" data-required="true" required /></div>
+                      <label class="entry__label" for="EMAIL">Tu correo electrónico</label>
+                      <div class="entry__field"><input class="input" type="email" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="Tu email" required /></div>
                     </div>
                     <label class="entry__error entry__error--primary"></label>
-                  </div>
-                </div>
-              </div>
-              <div style="padding: 4px 0;">
-                <div class="sib-input sib-form-block">
-                  <div class="form__entry entry_block">
-                    <div class="form__label-row">
-                      <label class="entry__label" for="SMS1">Teléfono (opcional)</label>
-                      <div class="entry__field"><input class="input" type="tel" id="SMS1" name="SMS" autocomplete="off" placeholder="Teléfono (opcional)" /></div>
-                    </div>
                   </div>
                 </div>
               </div>
               <div style="padding: 8px 0;">
-                <div class="sib-captcha sib-form-block">
-                  <div class="form__entry entry_block">
-                    <div class="form__label-row">
-                      <script>function handleCaptchaResponse() { var event = new Event('captchaChange'); document.getElementById('sib-captcha').dispatchEvent(event); }</script>
-                      <div class="g-recaptcha sib-visible-recaptcha" id="sib-captcha" data-sitekey="6Les784sAAAAADu6JwJxSQkvNyTXSKnWqJboJkGr" data-callback="handleCaptchaResponse" style="direction:ltr"></div>
-                    </div>
-                    <label class="entry__error entry__error--primary"></label>
-                  </div>
-                </div>
-              </div>
-              <div style="padding: 4px 0;">
-                <div class="sib-form-block" style="text-align: left">
+                <div class="sib-form-block" style="text-align:left">
                   <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
                     <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512"><path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" /></svg>
                     Quiero mi Kit de Pausa →
@@ -295,7 +265,7 @@
     <h2 class="section-title">La maternidad también es<br><em>extraordinariamente</em> hermosa.</h2>
     <p style="font-size:1.05rem; line-height:1.9; color:var(--ink-soft); margin-bottom: 2rem;">El olor de su cabeza. La forma en que te mira como si fueras el mundo entero. Ese momento en que te das cuenta de que amas de una manera que antes no sabías que existía.</p>
     <div style="background: white; border-radius: 20px; padding: 2rem 2.5rem; border-left: 4px solid var(--gold); text-align: left; box-shadow: 0 4px 20px rgba(44,62,61,0.06);">
-      <p style="font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-style:italic; line-height:1.7; color:var(--ink);">"El Kit de Pausa no es para escapar de tu maternidad.<br>Es para estar más <em>dentro</em> de ella."</p>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-style:italic; line-height:1.7; color:var(--ink); display:block !important;">"El Kit de Pausa no es para escapar de tu maternidad.<br>Es para estar más <em>dentro</em> de ella."</p>
     </div>
   </div>
 </section>
@@ -309,10 +279,10 @@
       <p style="font-size:0.95rem; line-height:1.75; color:var(--ink-soft);">5 prácticas mindfulness para los momentos reales de la maternidad. Sin perfeccionismo. Sin exigencias. Solo presencia, ternura y verdad.</p>
     </div>
     <div class="whatis-features reveal">
-      <div class="feature-card"><span class="feature-icon">🎧</span><div class="feature-title">Prácticas guiadas</div><p class="feature-desc">Meditaciones en audio para los momentos en que leer es imposible.</p></div>
-      <div class="feature-card"><span class="feature-icon">✍️</span><div class="feature-title">Journaling consciente</div><p class="feature-desc">Preguntas suaves para conectar con lo que sientes de verdad.</p></div>
-      <div class="feature-card"><span class="feature-icon">📖</span><div class="feature-title">Microlecturas</div><p class="feature-desc">Reflexiones breves que abren algo por dentro con solo 2 minutos.</p></div>
-      <div class="feature-card"><span class="feature-icon">🌿</span><div class="feature-title">Siempre contigo</div><p class="feature-desc">Acceso desde el móvil, en cualquier momento y lugar.</p></div>
+      <div class="feature-card"><span class="feature-icon">🎧</span><div class="feature-title">Prácticas guiadas</div><p class="feature-desc" style="display:block!important">Meditaciones en audio para los momentos en que leer es imposible.</p></div>
+      <div class="feature-card"><span class="feature-icon">✍️</span><div class="feature-title">Journaling consciente</div><p class="feature-desc" style="display:block!important">Preguntas suaves para conectar con lo que sientes de verdad.</p></div>
+      <div class="feature-card"><span class="feature-icon">📖</span><div class="feature-title">Microlecturas</div><p class="feature-desc" style="display:block!important">Reflexiones breves que abren algo por dentro con solo 2 minutos.</p></div>
+      <div class="feature-card"><span class="feature-icon">🌿</span><div class="feature-title">Siempre contigo</div><p class="feature-desc" style="display:block!important">Acceso desde el móvil, en cualquier momento y lugar.</p></div>
     </div>
   </div>
 </section>
@@ -324,11 +294,11 @@
       <h2 class="section-title">Las 5 pausas<br>que <em>cambian</em> todo.</h2>
     </div>
     <div class="practices-grid">
-      <div class="practice-expanded"><div class="practice-num">1</div><div class="practice-info"><div class="practice-name">Volver en 3 minutos</div><p class="practice-desc"><em style="color:var(--turq-deep)">"No tengo que hacer nada bien. Solo respirar."</em><br>Audio guiado para salir del modo automático en tres minutos.</p></div><span class="practice-type-badge badge-turq">Audio guiado</span></div>
-      <div class="practice-expanded"><div class="practice-num">2</div><div class="practice-info"><div class="practice-name">Tacto Tranquilizador</div><p class="practice-desc"><em style="color:var(--turq-deep)">"No necesito condiciones perfectas. Solo mi mano... y mi intención."</em><br>Lectura y audio para activar el sistema de calma con un gesto.</p></div><span class="practice-type-badge badge-amber">Lectura + Audio</span></div>
-      <div class="practice-expanded"><div class="practice-num">3</div><div class="practice-info"><div class="practice-name">¿Qué necesito ahora?</div><p class="practice-desc"><em style="color:var(--turq-deep)">"Todo lo que necesito saber ya está dentro de mí."</em><br>Journaling consciente para escucharte de verdad.</p></div><span class="practice-type-badge badge-rose">Journaling</span></div>
-      <div class="practice-expanded"><div class="practice-num">4</div><div class="practice-info"><div class="practice-name">Presencia en el contacto</div><p class="practice-desc"><em style="color:var(--turq-deep)">"No necesito ir a ningún sitio. Todo está aquí."</em><br>Audio para hacer con tu bebé en cualquier momento cotidiano.</p></div><span class="practice-type-badge badge-turq">Audio con bebé</span></div>
-      <div class="practice-expanded"><div class="practice-num">5</div><div class="practice-info"><div class="practice-name">Micromomentos bonitos</div><p class="practice-desc"><em style="color:var(--turq-deep)">"La belleza no está lejos. Solo necesita que la mire."</em><br>Micro-práctica para entrenar la mirada a lo hermoso de tu día.</p></div><span class="practice-type-badge badge-amber">Micro-práctica</span></div>
+      <div class="practice-expanded"><div class="practice-num">1</div><div class="practice-info"><div class="practice-name">Volver en 3 minutos</div><p class="practice-desc" style="display:block!important"><em style="color:var(--turq-deep)">"No tengo que hacer nada bien. Solo respirar."</em><br>Audio guiado para salir del modo automático en tres minutos.</p></div><span class="practice-type-badge badge-turq">Audio guiado</span></div>
+      <div class="practice-expanded"><div class="practice-num">2</div><div class="practice-info"><div class="practice-name">Tacto Tranquilizador</div><p class="practice-desc" style="display:block!important"><em style="color:var(--turq-deep)">"No necesito condiciones perfectas. Solo mi mano... y mi intención."</em><br>Lectura y audio para activar el sistema de calma.</p></div><span class="practice-type-badge badge-amber">Lectura + Audio</span></div>
+      <div class="practice-expanded"><div class="practice-num">3</div><div class="practice-info"><div class="practice-name">¿Qué necesito ahora?</div><p class="practice-desc" style="display:block!important"><em style="color:var(--turq-deep)">"Todo lo que necesito saber ya está dentro de mí."</em><br>Journaling consciente para escucharte de verdad.</p></div><span class="practice-type-badge badge-rose">Journaling</span></div>
+      <div class="practice-expanded"><div class="practice-num">4</div><div class="practice-info"><div class="practice-name">Presencia en el contacto</div><p class="practice-desc" style="display:block!important"><em style="color:var(--turq-deep)">"No necesito ir a ningún sitio. Todo está aquí."</em><br>Audio para hacer con tu bebé en cualquier momento.</p></div><span class="practice-type-badge badge-turq">Audio con bebé</span></div>
+      <div class="practice-expanded"><div class="practice-num">5</div><div class="practice-info"><div class="practice-name">Micromomentos bonitos</div><p class="practice-desc" style="display:block!important"><em style="color:var(--turq-deep)">"La belleza no está lejos. Solo necesita que la mire."</em><br>Micro-práctica para entrenar la mirada a lo hermoso.</p></div><span class="practice-type-badge badge-amber">Micro-práctica</span></div>
     </div>
   </div>
 </section>
@@ -349,8 +319,8 @@
     <div class="author-card reveal">
       <div class="author-name">Hola, soy Chon.</div>
       <div class="author-title">Madre de 3 · Instructora de Mindfulness · Guía de círculos de maternidad</div>
-      <p class="author-bio">Ser madre me cambió por dentro de una manera que ningún libro me había anunciado. Y eso es lo que me trajo hasta aquí.</p>
-      <p class="author-bio">Soy instructora de mindfulness especializada en maternidad, guía de círculos maternales y educadora prenatal con hipnoparto. También soy pediatra e IBCLC.</p>
+      <p class="author-bio" style="display:block!important">Ser madre me cambió por dentro de una manera que ningún libro me había anunciado. Y eso es lo que me trajo hasta aquí.</p>
+      <p class="author-bio" style="display:block!important">Soy instructora de mindfulness especializada en maternidad, guía de círculos maternales y educadora prenatal con hipnoparto. También soy pediatra e IBCLC.</p>
       <div class="credentials">
         <span class="cred-tag">Madre de 3</span><span class="cred-tag">Mindfulness</span><span class="cred-tag">Círculos maternales</span><span class="cred-tag">Hipnoparto</span><span class="cred-tag">Pediatra</span><span class="cred-tag">IBCLC</span>
       </div>
@@ -362,7 +332,7 @@
   <div style="max-width: 700px; margin: 0 auto; text-align: center;" class="reveal">
     <div class="section-label" style="justify-content:center;">Solo el principio</div>
     <h2 class="section-title">Las 5 prácticas son tu<br>primera puerta a la <em>Biblioteca MaMi</em>.</h2>
-    <p style="font-size:0.95rem; line-height:1.85; color:var(--ink-soft);">Detrás del Kit de Pausa hay un ecosistema completo: la <strong>Biblioteca MaMi</strong> de Maternal Mind, con prácticas, meditaciones y acompañamiento para cada momento de tu maternidad.</p>
+    <p style="font-size:0.95rem; line-height:1.85; color:var(--ink-soft); display:block!important">Detrás del Kit de Pausa hay un ecosistema completo: la <strong>Biblioteca MaMi</strong> de Maternal Mind, con prácticas, meditaciones y acompañamiento para cada momento de tu maternidad.</p>
   </div>
 </section>
 
@@ -370,17 +340,15 @@
   <div class="cta-inner">
     <div class="section-label">Es el momento</div>
     <h2>Tú también mereces<br><em>una pausa</em>.</h2>
-    <p>Accede ahora a las 5 prácticas de forma gratuita.</p>
-    <div class="cta-brevo-wrapper">
+    <p class="cta-desc">Accede ahora a las 5 prácticas de forma gratuita.</p>
+    <div class="cta-brevo">
       <div class="sib-form">
         <div id="sib-form-container2" class="sib-form-container">
           <div id="sib-container2" class="sib-container--large sib-container--vertical">
-            <form id="sib-form2" method="POST" action="https://24250898.sibforms.com/serve/MUIFAMBKVwOqJgLb2j7gkEXw2lrSg04FLbuZmEkgZjeLi90dLMQp_uYsZ64S1yBAPsCUFvJV9kDWQzKoS85TCnmtOPabHYr0r6OnK_mbhgGcI8c_yt9ll0rjRVz4fpun79mLE_k4dZifDlaX6uU-MUeyJQXQRBlB_VT5M6lGVdG17e3bAwnWKm5QIGisZ7x3YJx0zvTSFU1bZaGlpg==" data-type="subscription">
+            <form id="sib-form2" method="POST" action="https://24250898.sibforms.com/serve/MUIFANj0Oa1Gi9OAL4p_3PaOluA-bcjPgMIX9eHDTudkanVKPjDFIHso5IOmZwPrHc0w-L8aU4nBKoJF7k23mPClQVIbG7AkXQ4jMfzmFC8ZdWVWpP52HH3h9J7bIUb0uFWFCn_Mgz7BIn7svKLy7eCfzo6sCXVhMXaVYdcbDrYKij_NPxwz9lLpKKK7BmYStgAOHLRzGeiDLnQTAA==" data-type="subscription">
               <div style="padding: 4px 0;"><div class="sib-input sib-form-block"><div class="form__entry entry_block"><div class="form__label-row"><label class="entry__label" for="NOMBRE2">Tu nombre</label><div class="entry__field"><input class="input" type="text" id="NOMBRE2" name="NOMBRE" autocomplete="off" placeholder="Tu nombre" required /></div></div></div></div></div>
               <div style="padding: 4px 0;"><div class="sib-input sib-form-block"><div class="form__entry entry_block"><div class="form__label-row"><label class="entry__label" for="EMAIL2">Tu correo electrónico</label><div class="entry__field"><input class="input" type="email" id="EMAIL2" name="EMAIL" autocomplete="off" placeholder="Tu email" required /></div></div></div></div></div>
-              <div style="padding: 4px 0;"><div class="sib-input sib-form-block"><div class="form__entry entry_block"><div class="form__label-row"><label class="entry__label" for="SMS2">Teléfono (opcional)</label><div class="entry__field"><input class="input" type="tel" id="SMS2" name="SMS" autocomplete="off" placeholder="Teléfono (opcional)" /></div></div></div></div></div>
-              <div style="padding: 8px 0;"><div class="sib-captcha sib-form-block"><div class="form__entry entry_block"><div class="form__label-row"><div class="g-recaptcha sib-visible-recaptcha" data-sitekey="6Les784sAAAAADu6JwJxSQkvNyTXSKnWqJboJkGr" data-callback="handleCaptchaResponse" style="direction:ltr"></div></div></div></div></div>
-              <div style="padding: 4px 0;"><div class="sib-form-block" style="text-align:left"><button class="sib-form-block__button" form="sib-form2" type="submit">Quiero mi Kit de Pausa →</button></div></div>
+              <div style="padding: 8px 0;"><div class="sib-form-block" style="text-align:left"><button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form2" type="submit">Quiero mi Kit de Pausa →</button></div></div>
               <input type="text" name="email_address_check" value="" class="input--hidden">
               <input type="hidden" name="locale" value="es">
               <input type="hidden" name="redirectionUrl" value="https://chon69.github.io/maternal-mind/gracias.html">
@@ -413,7 +381,6 @@
   var AUTOHIDE = Boolean(0);
 </script>
 <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
-<script src="https://www.google.com/recaptcha/api.js?hl=es"></script>
 <script>
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
