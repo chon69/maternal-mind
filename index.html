@@ -10,17 +10,17 @@
 <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 <style>
   :root {
-    --turq-primary: #7AACB0; --turq-dark: #5B9298; --turq-light: #C2D9DB;
-    --turq-vlight: #EDF4F5; --turq-deep: #4A8A8E; --gold: #C4A882;
-    --ink: #3A3A3A; --ink-soft: #5E5E5E; --cream: #FDFAF5;
-    --amber: #F5EFE6; --rose: #EDF4F5;
+    --turq-primary: #7DCFCA; --turq-dark: #5BBFB9; --turq-light: #A8DDD9;
+    --turq-vlight: #EEF9F8; --turq-deep: #4AADA7; --gold: #F2C14E;
+    --ink: #3A3A3A; --ink-soft: #6B6B6B; --cream: #FDFAF5;
+    --amber: #FDF3DC; --rose: #EEF9F8;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
 
   .hero { min-height: 100vh; background: linear-gradient(160deg, var(--turq-vlight) 0%, var(--cream) 55%, var(--rose) 100%); display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 0 8vw; position: relative; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(165,229,224,0.35) 0%, transparent 70%); top: -100px; right: -100px; pointer-events: none; }
+  .hero::before { content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(125,207,202,0.25) 0%, transparent 70%); top: -100px; right: -100px; pointer-events: none; }
   .hero-text { z-index: 2; animation: fadeUp 1s ease both; }
   .hero-eyebrow { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--turq-deep); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
   .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 300; line-height: 1.1; color: var(--ink); margin-bottom: 1.5rem; }
@@ -34,14 +34,14 @@
   .brevo-hero .sib-text-form-block { display: none !important; }
   .brevo-hero .entry__label { font-family: 'DM Sans', sans-serif !important; font-size: 0.82rem !important; color: var(--ink-soft) !important; font-weight: 400 !important; margin-bottom: 0.2rem; }
   .brevo-hero .input { padding: 0.9rem 1.25rem !important; border: 1.5px solid rgba(125,207,202,0.4) !important; border-radius: 50px !important; background: rgba(255,255,255,0.85) !important; font-family: 'DM Sans', sans-serif !important; font-size: 0.95rem !important; color: var(--ink) !important; width: 100% !important; margin-bottom: 0.5rem; }
-  .brevo-hero .input:focus { border-color: var(--turq-dark) !important; outline: none !important; box-shadow: 0 0 0 4px rgba(165,229,224,0.2) !important; }
+  .brevo-hero .input:focus { border-color: var(--turq-dark) !important; outline: none !important; box-shadow: 0 0 0 4px rgba(125,207,202,0.2) !important; }
   .brevo-hero .sib-form-block__button { padding: 1rem 2rem !important; background: var(--turq-deep) !important; color: white !important; border: none !important; border-radius: 50px !important; font-family: 'DM Sans', sans-serif !important; font-size: 0.95rem !important; font-weight: 500 !important; cursor: pointer !important; box-shadow: 0 8px 24px rgba(79,186,179,0.3) !important; width: 100% !important; transition: background 0.2s, transform 0.2s !important; }
-  .brevo-hero .sib-form-block__button:hover { background: #3EADA6 !important; transform: translateY(-2px) !important; }
-  .hero-privacy { font-size: 0.75rem; color: #9BB5B4; margin-top: 0.5rem; }
+  .brevo-hero .sib-form-block__button:hover { background: #3DA8A2 !important; transform: translateY(-2px) !important; }
+  .hero-privacy { font-size: 0.75rem; color: #7DCFCA; margin-top: 0.5rem; }
 
   .hero-visual { z-index: 2; display: flex; justify-content: center; align-items: center; animation: fadeUp 1s 0.3s ease both; padding: 4rem 0 4rem 2rem; }
   .kit-mockup { position: relative; width: 340px; }
-  .kit-card { background: white; border-radius: 24px; padding: 2.5rem 2rem; box-shadow: 0 24px 60px rgba(44,62,61,0.1); border: 1px solid rgba(165,229,224,0.3); }
+  .kit-card { background: white; border-radius: 24px; padding: 2.5rem 2rem; box-shadow: 0 24px 60px rgba(44,62,61,0.1); border: 1px solid rgba(125,207,202,0.25); }
   .kit-card-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.75rem; }
   .kit-icon { width: 48px; height: 48px; background: var(--turq-vlight); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
   .kit-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 500; color: var(--ink); }
@@ -52,7 +52,7 @@
   .practice-item:nth-child(4) { background: var(--rose); }
   .practice-dot { width: 28px; height: 28px; border-radius: 8px; background: white; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
   .floating-badge { position: absolute; top: -16px; right: -16px; background: var(--gold); color: white; border-radius: 16px; padding: 0.625rem 1rem; font-size: 0.75rem; font-weight: 500; animation: float 3s ease-in-out infinite; }
-  .floating-badge-bottom { position: absolute; bottom: -14px; left: 20px; background: white; color: var(--ink); border-radius: 12px; padding: 0.5rem 0.875rem; font-size: 0.75rem; border: 1px solid rgba(165,229,224,0.4); animation: float 3s 1.5s ease-in-out infinite; display: flex; align-items: center; gap: 0.4rem; }
+  .floating-badge-bottom { position: absolute; bottom: -14px; left: 20px; background: white; color: var(--ink); border-radius: 12px; padding: 0.5rem 0.875rem; font-size: 0.75rem; border: 1px solid rgba(125,207,202,0.35); animation: float 3s 1.5s ease-in-out infinite; display: flex; align-items: center; gap: 0.4rem; }
 
   .trust-bar { background: var(--ink); padding: 1.5rem 8vw; display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
   .trust-item { display: flex; align-items: center; gap: 0.625rem; color: var(--turq-light); font-size: 0.85rem; }
@@ -77,7 +77,7 @@
   .quote-block { border-left: 3px solid var(--turq-primary); padding: 1.5rem 2rem; background: var(--turq-vlight); border-radius: 0 16px 16px 0; margin: 2rem 0; }
   .quote-block blockquote { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-style: italic; line-height: 1.6; color: var(--ink); }
   .whatis-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-  .feature-card { background: var(--cream); border-radius: 20px; padding: 1.5rem; border: 1px solid rgba(165,229,224,0.3); transition: transform 0.2s; }
+  .feature-card { background: var(--cream); border-radius: 20px; padding: 1.5rem; border: 1px solid rgba(125,207,202,0.25); transition: transform 0.2s; }
   .feature-card:hover { transform: translateY(-4px); }
   .feature-icon { font-size: 1.75rem; margin-bottom: 0.75rem; display: block; }
   .feature-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.4rem; }
@@ -87,7 +87,7 @@
   .practices-inner { max-width: 900px; margin: 0 auto; }
   .practices-header { text-align: center; margin-bottom: 3rem; }
   .practices-grid { display: flex; flex-direction: column; gap: 1.25rem; }
-  .practice-expanded { background: white; border-radius: 20px; padding: 1.75rem 2rem; display: grid; grid-template-columns: 48px 1fr auto; gap: 1.25rem; align-items: center; box-shadow: 0 4px 16px rgba(44,62,61,0.05); border: 1px solid rgba(165,229,224,0.2); transition: transform 0.2s; }
+  .practice-expanded { background: white; border-radius: 20px; padding: 1.75rem 2rem; display: grid; grid-template-columns: 48px 1fr auto; gap: 1.25rem; align-items: center; box-shadow: 0 4px 16px rgba(44,62,61,0.05); border: 1px solid rgba(125,207,202,0.2); transition: transform 0.2s; }
   .practice-expanded:hover { transform: translateY(-3px); }
   .practice-num { width: 48px; height: 48px; background: var(--turq-vlight); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 500; color: var(--turq-deep); flex-shrink: 0; }
   .practice-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 500; color: var(--ink); margin-bottom: 0.3rem; }
@@ -123,7 +123,7 @@
   .brevo-cta .sib-form-block p,
   .brevo-cta .sib-text-form-block { display: none !important; }
   .brevo-cta .entry__label { font-family: 'DM Sans', sans-serif !important; font-size: 0.82rem !important; color: rgba(255,255,255,0.6) !important; font-weight: 400 !important; }
-  .brevo-cta .input { padding: 0.9rem 1.25rem !important; border: 1.5px solid rgba(165,229,224,0.2) !important; border-radius: 50px !important; background: rgba(255,255,255,0.07) !important; font-family: 'DM Sans', sans-serif !important; font-size: 0.95rem !important; color: white !important; width: 100% !important; margin-bottom: 0.5rem; }
+  .brevo-cta .input { padding: 0.9rem 1.25rem !important; border: 1.5px solid rgba(125,207,202,0.2) !important; border-radius: 50px !important; background: rgba(255,255,255,0.07) !important; font-family: 'DM Sans', sans-serif !important; font-size: 0.95rem !important; color: white !important; width: 100% !important; margin-bottom: 0.5rem; }
   .brevo-cta .input::placeholder { color: rgba(255,255,255,0.4) !important; }
   .brevo-cta .sib-form-block__button { padding: 1rem 2rem !important; background: var(--turq-deep) !important; color: white !important; border: none !important; border-radius: 50px !important; font-family: 'DM Sans', sans-serif !important; font-size: 1rem !important; font-weight: 500 !important; cursor: pointer !important; width: 100% !important; }
 
@@ -156,10 +156,10 @@
   <div class="hero-text">
     <div class="hero-eyebrow">
       <svg width="40" height="22" viewBox="0 0 52 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <ellipse cx="17" cy="14" rx="13" ry="13" stroke="#7AACB0" stroke-width="3.5" fill="none"/>
-        <ellipse cx="35" cy="14" rx="13" ry="13" stroke="#C4A882" stroke-width="3.5" fill="none"/>
+        <ellipse cx="17" cy="14" rx="13" ry="13" stroke="#7DCFCA" stroke-width="3.5" fill="none"/>
+        <ellipse cx="35" cy="14" rx="13" ry="13" stroke="#F2C14E" stroke-width="3.5" fill="none"/>
       </svg>
-      Maternal Mind · Regalo gratuito
+      Maternal Mind · Kit de Pausa
     </div>
     <h1>Un momento<br>solo para <em>ti</em>,<br>mamá.</h1>
     <p class="hero-subtitle">5 prácticas cortas de mindfulness para encontrar calma y presencia en los momentos más intensos de la maternidad.</p>
@@ -212,7 +212,7 @@
 
   <div class="hero-visual">
     <div class="kit-mockup">
-      <div class="floating-badge">✨ 100% gratuito</div>
+      <div class="floating-badge">✨ Acceso inmediato</div>
       <div class="kit-card">
         <div class="kit-card-header">
           <div class="kit-icon">🌿</div>
@@ -337,7 +337,7 @@
   <div class="cta-inner">
     <div class="section-label">Es el momento</div>
     <h2>Tú también mereces<br><em>una pausa</em>.</h2>
-    <p class="cta-desc">Accede ahora a las 5 prácticas de forma gratuita.</p>
+    <p class="cta-desc">Accede ahora a las 5 prácticas.</p>
     <div class="brevo-cta">
       <div class="sib-form">
         <div id="sib-form-container2" class="sib-form-container">
@@ -361,8 +361,8 @@
 <footer>
   <div class="footer-brand">
     <svg width="32" height="18" viewBox="0 0 52 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-right:6px">
-      <ellipse cx="17" cy="14" rx="13" ry="13" stroke="#7AACB0" stroke-width="3.5" fill="none"/>
-      <ellipse cx="35" cy="14" rx="13" ry="13" stroke="#C4A882" stroke-width="3.5" fill="none"/>
+      <ellipse cx="17" cy="14" rx="13" ry="13" stroke="#7DCFCA" stroke-width="3.5" fill="none"/>
+      <ellipse cx="35" cy="14" rx="13" ry="13" stroke="#F2C14E" stroke-width="3.5" fill="none"/>
     </svg>
     <span>Maternal Mind</span> · maternalmind.es
   </div>
