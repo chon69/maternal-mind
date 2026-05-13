@@ -4,387 +4,965 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kit de Pausa · Maternal Mind</title>
+<meta name="description" content="5 prácticas cortas de mindfulness para mamás. Encuentra calma y presencia en los momentos más intensos de la maternidad.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 <style>
   :root {
-    --turq-primary: #7DCFCA; --turq-dark: #5BBFB9; --turq-light: #A8DDD9;
-    --turq-vlight: #EEF9F8; --turq-deep: #4AADA7; --gold: #F2C14E;
-    --ink: #3A3A3A; --ink-soft: #6B6B6B; --cream: #FDFAF5;
-    --amber: #FDF3DC; --rose: #EEF9F8;
+    --turq:       #7DCFCA;
+    --turq-dark:  #5BBFB9;
+    --turq-deep:  #4AADA7;
+    --turq-light: #A8DDD9;
+    --turq-vlight:#EEF9F8;
+    --gold:       #F2C14E;
+    --gold-dark:  #C49A20;
+    --gold-light: #FEF7E0;
+    --gold-vlight:#FDF3DC;
+    --amber:      #FDF3DC;
+    --rose:       #EEF9F8;
+    --ink:        #3A3A3A;
+    --ink-soft:   #6B6B6B;
+    --cream:      #FDFAF5;
+    --white:      #FFFFFF;
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
 
-  .hero { min-height: 100vh; background: linear-gradient(160deg, var(--turq-vlight) 0%, var(--cream) 55%, var(--rose) 100%); display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 0 8vw; position: relative; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(125,207,202,0.25) 0%, transparent 70%); top: -100px; right: -100px; pointer-events: none; }
-  .hero-text { z-index: 2; animation: fadeUp 1s ease both; }
-  .hero-eyebrow { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--turq-deep); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
-  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 300; line-height: 1.1; color: var(--ink); margin-bottom: 1.5rem; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  img { display: block; max-width: 100%; }
+
+  /* ── HEADER ── */
+  header {
+    padding: 1.25rem 8vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(125,207,202,0.18);
+    background: rgba(253,250,245,0.96);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+  .logo svg { flex-shrink: 0; }
+  .logo-text { font-family: 'DM Sans', sans-serif; font-size: 1rem; color: var(--turq-deep); letter-spacing: 0.01em; }
+  .logo-text span { color: var(--gold-dark); font-weight: 500; }
+  .header-tagline { font-size: 0.72rem; color: var(--gold-dark); letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 5rem 8vw 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(125,207,202,0.16) 0%, transparent 70%);
+    top: -200px; right: -150px;
+    pointer-events: none;
+  }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* Hero – text side */
+  .hero-text { max-width: 560px; }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--gold-vlight);
+    color: var(--gold-dark);
+    border: 1px solid rgba(242,193,78,0.3);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    border-radius: 50px;
+    margin-bottom: 1.75rem;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+  }
   .hero h1 em { font-style: italic; color: var(--turq-deep); }
-  .hero-subtitle { font-size: 1.1rem; font-weight: 300; line-height: 1.75; color: var(--ink-soft); margin-bottom: 2rem; max-width: 480px; }
+  .hero-desc {
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    margin-bottom: 1.75rem;
+  }
+  .hero-trust {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+  .hero-trust span {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    font-weight: 300;
+  }
 
-  /* Override Brevo styles */
-  .brevo-hero .sib-form { background: transparent !important; padding: 0 !important; text-align: left !important; }
-  .brevo-hero #sib-container { background: transparent !important; border: none !important; padding: 0 !important; max-width: 420px !important; text-align: left !important; }
-  .brevo-hero .sib-form-block p,
-  .brevo-hero .sib-text-form-block { display: none !important; }
-  .brevo-hero .entry__label { font-family: 'DM Sans', sans-serif !important; font-size: 0.82rem !important; color: var(--ink-soft) !important; font-weight: 400 !important; margin-bottom: 0.2rem; }
-  .brevo-hero .input { padding: 0.9rem 1.25rem !important; border: 1.5px solid rgba(125,207,202,0.4) !important; border-radius: 50px !important; background: rgba(255,255,255,0.85) !important; font-family: 'DM Sans', sans-serif !important; font-size: 0.95rem !important; color: var(--ink) !important; width: 100% !important; margin-bottom: 0.5rem; }
-  .brevo-hero .input:focus { border-color: var(--turq-dark) !important; outline: none !important; box-shadow: 0 0 0 4px rgba(125,207,202,0.2) !important; }
-  .brevo-hero .sib-form-block__button { padding: 1rem 2rem !important; background: var(--turq-deep) !important; color: white !important; border: none !important; border-radius: 50px !important; font-family: 'DM Sans', sans-serif !important; font-size: 0.95rem !important; font-weight: 500 !important; cursor: pointer !important; box-shadow: 0 8px 24px rgba(79,186,179,0.3) !important; width: 100% !important; transition: background 0.2s, transform 0.2s !important; }
-  .brevo-hero .sib-form-block__button:hover { background: #3DA8A2 !important; transform: translateY(-2px) !important; }
-  .hero-privacy { font-size: 0.75rem; color: #7DCFCA; margin-top: 0.5rem; }
+  /* Hero – form card */
+  .hero-form-wrap {}
+  .form-card {
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 8px 40px rgba(125,207,202,0.18), 0 2px 12px rgba(0,0,0,0.06);
+    overflow: hidden;
+  }
+  .form-card-accent {
+    height: 5px;
+    background: linear-gradient(90deg, var(--turq) 0%, var(--gold) 100%);
+  }
+  .form-card-body { padding: 36px 32px; }
+  .form-card-label {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--turq-deep);
+    margin-bottom: 0.6rem;
+  }
+  .form-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 1.75rem;
+    line-height: 1.2;
+  }
 
-  .hero-visual { z-index: 2; display: flex; justify-content: center; align-items: center; animation: fadeUp 1s 0.3s ease both; padding: 4rem 0 4rem 2rem; }
-  .kit-mockup { position: relative; width: 340px; }
-  .kit-card { background: white; border-radius: 24px; padding: 2.5rem 2rem; box-shadow: 0 24px 60px rgba(44,62,61,0.1); border: 1px solid rgba(125,207,202,0.25); }
-  .kit-card-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.75rem; }
-  .kit-icon { width: 48px; height: 48px; background: var(--turq-vlight); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
-  .kit-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 500; color: var(--ink); }
-  .kit-card-subtitle { font-size: 0.75rem; color: var(--turq-deep); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
-  .practice-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
-  .practice-item { display: flex; align-items: center; gap: 0.875rem; padding: 0.75rem 1rem; border-radius: 12px; background: var(--turq-vlight); font-size: 0.875rem; color: var(--ink-soft); }
-  .practice-item:nth-child(2) { background: var(--amber); }
-  .practice-item:nth-child(4) { background: var(--rose); }
-  .practice-dot { width: 28px; height: 28px; border-radius: 8px; background: white; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
-  .floating-badge { position: absolute; top: -16px; right: -16px; background: var(--gold); color: white; border-radius: 16px; padding: 0.625rem 1rem; font-size: 0.75rem; font-weight: 500; animation: float 3s ease-in-out infinite; }
-  .floating-badge-bottom { position: absolute; bottom: -14px; left: 20px; background: white; color: var(--ink); border-radius: 12px; padding: 0.5rem 0.875rem; font-size: 0.75rem; border: 1px solid rgba(125,207,202,0.35); animation: float 3s 1.5s ease-in-out infinite; display: flex; align-items: center; gap: 0.4rem; }
+  /* Shared form styles */
+  .signup-form .input-group { margin-bottom: 0.9rem; }
+  .signup-form input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1.5px solid var(--turq-light);
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--ink);
+    background: var(--cream);
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    outline: none;
+  }
+  .signup-form input:focus {
+    border-color: var(--turq);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(125,207,202,0.15);
+  }
+  .signup-form input::placeholder { color: #92CFCA; }
+  .btn-primary {
+    width: 100%;
+    padding: 15px 24px;
+    background: linear-gradient(135deg, var(--turq-deep) 0%, var(--turq) 60%, var(--gold) 100%);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+    margin-top: 0.5rem;
+    letter-spacing: 0.01em;
+  }
+  .btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(125,207,202,0.45);
+  }
+  .btn-primary:active:not(:disabled) { transform: translateY(0); }
+  .btn-primary:disabled { opacity: 0.65; cursor: not-allowed; }
+  .form-note {
+    text-align: center;
+    font-size: 0.73rem;
+    color: var(--turq-deep);
+    margin-top: 1rem;
+    letter-spacing: 0.02em;
+    font-weight: 300;
+  }
 
-  .trust-bar { background: var(--ink); padding: 1.5rem 8vw; display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
-  .trust-item { display: flex; align-items: center; gap: 0.625rem; color: var(--turq-light); font-size: 0.85rem; }
+  /* Success state */
+  .form-success {
+    text-align: center;
+    padding: 1.5rem 1rem 0.5rem;
+  }
+  .success-icon { font-size: 2.75rem; margin-bottom: 0.75rem; }
+  .success-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-style: italic;
+    color: var(--turq-deep);
+    margin-bottom: 0.5rem;
+  }
+  .success-msg { color: var(--ink-soft); font-size: 0.95rem; line-height: 1.6; }
 
-  .section-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--turq-deep); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
-  .section-label::before { content: ''; width: 24px; height: 1px; background: var(--turq-deep); }
-  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; line-height: 1.2; color: var(--ink); margin-bottom: 1.5rem; }
+  /* ── KIT PREVIEW STRIP ── */
+  .kit-preview {
+    background: var(--turq-vlight);
+    padding: 3rem 8vw;
+    border-top: 1px solid rgba(125,207,202,0.15);
+    border-bottom: 1px solid rgba(125,207,202,0.15);
+  }
+  .kit-preview-inner { max-width: 1100px; margin: 0 auto; }
+  .kit-badge {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--turq-deep);
+    margin-bottom: 2rem;
+  }
+  .kit-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  .kit-feature {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-size: 0.83rem;
+    color: var(--ink-soft);
+    font-weight: 300;
+  }
+  .kit-feature svg {
+    flex-shrink: 0;
+    color: var(--turq);
+  }
+
+  /* ── SECTION BASE ── */
+  .section-inner {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 5rem 8vw;
+  }
+  .section-label-wrap { margin-bottom: 1rem; }
+  .section-label {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--turq-deep);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::before, .section-label::after {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--turq-light);
+    vertical-align: middle;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--ink);
+  }
   .section-title em { font-style: italic; color: var(--turq-deep); }
+  .section-lead {
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--ink-soft);
+    margin-bottom: 1.25rem;
+  }
+  .section-body {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--ink-soft);
+    margin-bottom: 1rem;
+  }
 
-  .problem-section { background: var(--turq-vlight); padding: 6rem 8vw; }
-  .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1100px; margin: 0 auto; }
-  .problem-text p { font-size: 1.05rem; font-weight: 300; line-height: 1.85; color: var(--ink-soft); margin-bottom: 1.25rem; }
-  .problem-text p strong { font-weight: 500; color: var(--ink); }
-  .pain-points { display: flex; flex-direction: column; gap: 1rem; }
-  .pain-card { background: white; border-radius: 16px; padding: 1.25rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; box-shadow: 0 4px 16px rgba(44,62,61,0.05); border-left: 3px solid transparent; transition: border-color 0.3s, transform 0.2s; }
-  .pain-card:hover { border-left-color: var(--turq-primary); transform: translateX(4px); }
-  .pain-emoji { font-size: 1.3rem; margin-top: 1px; }
-  .pain-text { font-size: 0.925rem; line-height: 1.6; color: var(--ink-soft); }
+  /* ── PAIN SECTION ── */
+  .section-pain { background: var(--cream); }
+  .pain-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+  .pain-card {
+    background: var(--white);
+    border: 1px solid rgba(125,207,202,0.18);
+    border-radius: 14px;
+    padding: 1.5rem;
+    display: flex;
+    gap: 0.9rem;
+  }
+  .pain-icon { font-size: 1.4rem; flex-shrink: 0; line-height: 1.4; }
+  .pain-card p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.7; font-weight: 300; }
 
-  .whatis-section { padding: 6rem 8vw; background: white; }
-  .whatis-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-  .quote-block { border-left: 3px solid var(--turq-primary); padding: 1.5rem 2rem; background: var(--turq-vlight); border-radius: 0 16px 16px 0; margin: 2rem 0; }
-  .quote-block blockquote { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-style: italic; line-height: 1.6; color: var(--ink); }
-  .whatis-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-  .feature-card { background: var(--cream); border-radius: 20px; padding: 1.5rem; border: 1px solid rgba(125,207,202,0.25); transition: transform 0.2s; }
-  .feature-card:hover { transform: translateY(-4px); }
-  .feature-icon { font-size: 1.75rem; margin-bottom: 0.75rem; display: block; }
-  .feature-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.4rem; }
-  .feature-desc { font-size: 0.82rem; color: var(--ink-soft); line-height: 1.55; }
+  /* ── BEAUTY SECTION ── */
+  .section-beauty { background: var(--gold-vlight); }
+  .pull-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--turq-deep);
+    border-left: 3px solid var(--gold);
+    padding: 1rem 0 1rem 1.5rem;
+    margin-top: 2rem;
+    line-height: 1.6;
+  }
 
-  .practices-section { padding: 6rem 8vw; background: var(--turq-vlight); }
-  .practices-inner { max-width: 900px; margin: 0 auto; }
-  .practices-header { text-align: center; margin-bottom: 3rem; }
-  .practices-grid { display: flex; flex-direction: column; gap: 1.25rem; }
-  .practice-expanded { background: white; border-radius: 20px; padding: 1.75rem 2rem; display: grid; grid-template-columns: 48px 1fr auto; gap: 1.25rem; align-items: center; box-shadow: 0 4px 16px rgba(44,62,61,0.05); border: 1px solid rgba(125,207,202,0.2); transition: transform 0.2s; }
-  .practice-expanded:hover { transform: translateY(-3px); }
-  .practice-num { width: 48px; height: 48px; background: var(--turq-vlight); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 500; color: var(--turq-deep); flex-shrink: 0; }
-  .practice-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 500; color: var(--ink); margin-bottom: 0.3rem; }
-  .practice-desc { font-size: 0.85rem; color: var(--ink-soft); line-height: 1.5; }
-  .practice-type-badge { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; padding: 0.35rem 0.875rem; border-radius: 50px; white-space: nowrap; flex-shrink: 0; }
-  .badge-turq { background: var(--turq-vlight); color: var(--turq-deep); }
-  .badge-amber { background: var(--amber); color: #8A6D3B; }
-  .badge-rose { background: var(--rose); color: #9B6B63; }
+  /* ── WHAT SECTION ── */
+  .section-what { background: var(--white); }
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+  }
+  .feature-card {
+    background: var(--turq-vlight);
+    border-radius: 14px;
+    padding: 1.5rem;
+  }
+  .feature-icon { font-size: 1.5rem; margin-bottom: 0.75rem; display: block; }
+  .feature-card h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .feature-card p { font-size: 0.85rem; color: var(--ink-soft); line-height: 1.65; font-weight: 300; }
 
-  .forwho-section { padding: 6rem 8vw; background: white; }
-  .forwho-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-  .check-list { list-style: none; display: flex; flex-direction: column; gap: 0.875rem; margin-top: 1.5rem; }
-  .check-list li { display: flex; gap: 0.875rem; align-items: flex-start; font-size: 0.95rem; line-height: 1.6; color: var(--ink-soft); }
-  .check-icon { width: 22px; height: 22px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; font-size: 0.65rem; color: white; }
-  .author-card { background: var(--turq-vlight); border-radius: 24px; padding: 2.5rem; }
-  .author-name { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; color: var(--ink); margin-bottom: 0.25rem; }
-  .author-title { font-size: 0.8rem; color: var(--turq-deep); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.25rem; }
-  .author-bio { font-size: 0.9rem; line-height: 1.75; color: var(--ink-soft); margin-bottom: 1.5rem; }
-  .credentials { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .cred-tag { font-size: 0.75rem; padding: 0.35rem 0.75rem; background: white; border-radius: 50px; color: var(--ink-soft); border: 1px solid rgba(125,207,202,0.4); }
+  /* ── PRACTICES SECTION ── */
+  .section-practices { background: var(--cream); }
+  .practices-list { display: flex; flex-direction: column; gap: 0; margin-top: 2.5rem; }
+  .practice-item {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid rgba(125,207,202,0.15);
+    align-items: flex-start;
+  }
+  .practice-item:last-child { border-bottom: none; }
+  .practice-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--turq-vlight);
+    border: 1.5px solid var(--turq-light);
+    color: var(--turq-deep);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .practice-content h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+  .practice-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--turq-deep);
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+  .practice-content p { font-size: 0.875rem; color: var(--ink-soft); line-height: 1.7; font-weight: 300; margin-bottom: 0.75rem; }
+  .practice-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--turq-deep);
+    background: var(--turq-vlight);
+    border: 1px solid var(--turq-light);
+    padding: 0.25rem 0.65rem;
+    border-radius: 50px;
+  }
 
-  .cta-section { background: linear-gradient(135deg, var(--ink) 0%, #1E3030 100%); padding: 7rem 8vw; text-align: center; position: relative; overflow: hidden; }
-  .cta-inner { position: relative; z-index: 2; max-width: 600px; margin: 0 auto; }
-  .cta-section .section-label { justify-content: center; color: var(--turq-primary); }
-  .cta-section .section-label::before { background: var(--turq-primary); }
-  .cta-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 300; color: white; line-height: 1.2; margin-bottom: 1rem; }
-  .cta-section h2 em { font-style: italic; color: var(--turq-primary); }
-  .cta-desc { font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.65); line-height: 1.75; margin-bottom: 2.5rem; }
-  .cta-privacy { font-size: 0.72rem; color: rgba(255,255,255,0.3); margin-top: 0.75rem; }
+  /* ── FOR YOU SECTION ── */
+  .section-forti { background: var(--turq-vlight); }
+  .check-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+  .check-list li {
+    display: flex;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    font-weight: 300;
+    padding: 1rem 1.25rem;
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid rgba(125,207,202,0.22);
+  }
+  .check-list li::before {
+    content: none;
+  }
 
-  .brevo-cta .sib-form { background: transparent !important; padding: 0 !important; }
-  .brevo-cta #sib-container { background: transparent !important; border: none !important; padding: 0 !important; max-width: 420px !important; margin: 0 auto !important; text-align: left !important; }
-  .brevo-cta .sib-form-block p,
-  .brevo-cta .sib-text-form-block { display: none !important; }
-  .brevo-cta .entry__label { font-family: 'DM Sans', sans-serif !important; font-size: 0.82rem !important; color: rgba(255,255,255,0.6) !important; font-weight: 400 !important; }
-  .brevo-cta .input { padding: 0.9rem 1.25rem !important; border: 1.5px solid rgba(125,207,202,0.2) !important; border-radius: 50px !important; background: rgba(255,255,255,0.07) !important; font-family: 'DM Sans', sans-serif !important; font-size: 0.95rem !important; color: white !important; width: 100% !important; margin-bottom: 0.5rem; }
-  .brevo-cta .input::placeholder { color: rgba(255,255,255,0.4) !important; }
-  .brevo-cta .sib-form-block__button { padding: 1rem 2rem !important; background: var(--turq-deep) !important; color: white !important; border: none !important; border-radius: 50px !important; font-family: 'DM Sans', sans-serif !important; font-size: 1rem !important; font-weight: 500 !important; cursor: pointer !important; width: 100% !important; }
+  /* ── BIO SECTION ── */
+  .section-bio { background: var(--white); }
+  .bio-content { display: flex; gap: 3rem; align-items: flex-start; }
+  .bio-avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: var(--turq-vlight);
+    border: 2.5px solid var(--turq-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .bio-avatar-inner {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-style: italic;
+    color: var(--turq);
+    line-height: 1;
+  }
+  .bio-text { flex: 1; }
+  .bio-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.9rem;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+  .bio-subtitle {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--turq-deep);
+    margin-bottom: 1.5rem;
+  }
+  .bio-text p {
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+  .bio-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+  .bio-tags span {
+    font-size: 0.75rem;
+    color: var(--turq-deep);
+    background: var(--turq-vlight);
+    border: 1px solid var(--turq-light);
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    font-weight: 400;
+  }
 
-  footer { background: #1A2828; padding: 2rem 8vw; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-  .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: rgba(255,255,255,0.6); }
-  .footer-brand span { color: var(--turq-primary); }
-  footer small { font-size: 0.75rem; color: rgba(255,255,255,0.3); }
+  /* ── LIBRARY SECTION ── */
+  .section-library { background: var(--gold-vlight); }
+  .section-library .section-inner { text-align: center; }
 
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .reveal.visible { opacity: 1; transform: none; }
+  /* ── CTA DARK SECTION ── */
+  .section-cta {
+    background: var(--ink);
+    padding: 6rem 8vw;
+    text-align: center;
+  }
+  .section-label-light {
+    color: rgba(242,193,78,0.9);
+    letter-spacing: 0.18em;
+  }
+  .section-label-light::before, .section-label-light::after {
+    background: rgba(242,193,78,0.35);
+  }
+  .section-title-light {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 1.25rem;
+  }
+  .section-title-light em { font-style: italic; color: var(--turq-light); }
+  .section-lead-light {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.65);
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
+  }
 
-  @media (max-width: 768px) {
-    .hero { grid-template-columns: 1fr; padding: 5rem 6vw 4rem; text-align: center; }
-    .hero-eyebrow { justify-content: center; }
-    .hero-visual { padding: 2rem 0 0; }
-    .kit-mockup { width: 280px; }
-    .trust-bar { gap: 1.5rem; flex-direction: column; align-items: center; }
-    .problem-grid, .whatis-inner, .forwho-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    .whatis-features { grid-template-columns: 1fr; }
-    .practice-expanded { grid-template-columns: 40px 1fr; }
-    .practice-type-badge { display: none; }
+  /* Footer form */
+  .footer-form-wrap { max-width: 440px; margin: 0 auto; }
+
+  .signup-form-light input {
+    background: rgba(255,255,255,0.08);
+    border: 1.5px solid rgba(255,255,255,0.28);
+    color: var(--white);
+  }
+  .signup-form-light input::placeholder { color: rgba(255,255,255,0.45); }
+  .signup-form-light input:focus {
+    border-color: var(--turq);
+    background: rgba(255,255,255,0.12);
+    box-shadow: 0 0 0 3px rgba(125,207,202,0.2);
+    color: var(--white);
+  }
+  .form-note-light { color: rgba(255,255,255,0.4); }
+  .form-success-light .success-title { color: var(--turq-light); }
+  .form-success-light .success-msg { color: rgba(255,255,255,0.65); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #2E2E2E;
+    padding: 2.5rem 8vw;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-brand {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  footer small { font-size: 0.72rem; color: rgba(255,255,255,0.3); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 860px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .hero-form-wrap { width: 100%; }
+    .form-card { max-width: 480px; margin: 0 auto; }
+    .pain-cards { grid-template-columns: 1fr; }
+    .features-grid { grid-template-columns: 1fr; }
+    .bio-content { flex-direction: column; }
+    .bio-avatar { margin: 0 auto; }
+    .bio-text { text-align: center; }
+    .bio-tags { justify-content: center; }
+  }
+
+  @media (max-width: 560px) {
+    .hero { padding: 3rem 6vw 3rem; }
+    .section-inner { padding: 3.5rem 6vw; }
+    .kit-preview { padding: 2.25rem 6vw; }
+    .section-cta { padding: 4rem 6vw; }
+    footer { padding: 2rem 6vw; }
+    .form-card-body { padding: 28px 22px; }
+    .header-tagline { display: none; }
   }
 </style>
 </head>
 <body>
 
+<!-- ══ HEADER ══ -->
+<header>
+  <a href="#" class="logo">
+    <svg width="36" height="20" viewBox="0 0 52 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="17" cy="14" rx="13" ry="13" stroke="#7DCFCA" stroke-width="3" fill="none"/>
+      <ellipse cx="35" cy="14" rx="13" ry="13" stroke="#F2C14E" stroke-width="3" fill="none"/>
+    </svg>
+    <div class="logo-text">maternal <span>mind</span></div>
+  </a>
+  <div class="header-tagline">Kit de Pausa</div>
+</header>
+
+
+<!-- ══ HERO ══ -->
 <section class="hero">
-  <div class="hero-text">
-    <div class="hero-eyebrow">
-      <svg width="40" height="22" viewBox="0 0 52 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <ellipse cx="17" cy="14" rx="13" ry="13" stroke="#7DCFCA" stroke-width="3.5" fill="none"/>
-        <ellipse cx="35" cy="14" rx="13" ry="13" stroke="#F2C14E" stroke-width="3.5" fill="none"/>
-      </svg>
-      Maternal Mind · Kit de Pausa
-    </div>
-    <h1>Un momento<br>solo para <em>ti</em>,<br>mamá.</h1>
-    <p class="hero-subtitle">5 prácticas cortas de mindfulness para encontrar calma y presencia en los momentos más intensos de la maternidad.</p>
+  <div class="hero-inner">
 
-    <div class="brevo-hero">
-      <div class="sib-form">
-        <div id="sib-form-container" class="sib-form-container">
-          <div id="sib-container" class="sib-container--large sib-container--vertical">
-            <form id="sib-form" method="POST" action="https://24250898.sibforms.com/serve/MUIFANj0Oa1Gi9OAL4p_3PaOluA-bcjPgMIX9eHDTudkanVKPjDFIHso5IOmZwPrHc0w-L8aU4nBKoJF7k23mPClQVIbG7AkXQ4jMfzmFC8ZdWVWpP52HH3h9J7bIUb0uFWFCn_Mgz7BIn7svKLy7eCfzo6sCXVhMXaVYdcbDrYKij_NPxwz9lLpKKK7BmYStgAOHLRzGeiDLnQTAA==" data-type="subscription">
-              <div style="padding:4px 0">
-                <div class="sib-input sib-form-block">
-                  <div class="form__entry entry_block">
-                    <div class="form__label-row">
-                      <label class="entry__label" for="NOMBRE">Tu nombre</label>
-                      <div class="entry__field"><input class="input" maxlength="200" type="text" id="NOMBRE" name="NOMBRE" autocomplete="off" placeholder="Tu nombre" required /></div>
-                    </div>
-                    <label class="entry__error entry__error--primary"></label>
-                  </div>
-                </div>
-              </div>
-              <div style="padding:4px 0">
-                <div class="sib-input sib-form-block">
-                  <div class="form__entry entry_block">
-                    <div class="form__label-row">
-                      <label class="entry__label" for="EMAIL">Tu correo electrónico</label>
-                      <div class="entry__field"><input class="input" type="email" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="Tu email" required /></div>
-                    </div>
-                    <label class="entry__error entry__error--primary"></label>
-                  </div>
-                </div>
-              </div>
-              <div style="padding:8px 0">
-                <div class="sib-form-block" style="text-align:left">
-                  <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
-                    <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512"><path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" /></svg>
-                    Quiero mi Kit de Pausa →
-                  </button>
-                </div>
-              </div>
-              <input type="text" name="email_address_check" value="" class="input--hidden">
-              <input type="hidden" name="locale" value="es">
-              <input type="hidden" name="redirectionUrl" value="https://chon69.github.io/maternal-mind/gracias.html">
-            </form>
-          </div>
-        </div>
-      </div>
-      <p class="hero-privacy">🔒 Tu privacidad está protegida. Sin spam, nunca.</p>
-    </div>
-  </div>
-
-  <div class="hero-visual">
-    <div class="kit-mockup">
-      <div class="floating-badge">✨ Acceso inmediato</div>
-      <div class="kit-card">
-        <div class="kit-card-header">
-          <div class="kit-icon">🌿</div>
-          <div><div class="kit-card-title">Kit de Pausa</div><div class="kit-card-subtitle">Maternal Mind</div></div>
-        </div>
-        <ul class="practice-list">
-          <li class="practice-item"><div class="practice-dot">🎧</div>Volver en 3 minutos</li>
-          <li class="practice-item"><div class="practice-dot">🤍</div>Tacto Tranquilizador</li>
-          <li class="practice-item"><div class="practice-dot">✍️</div>¿Qué necesito ahora?</li>
-          <li class="practice-item"><div class="practice-dot">👶</div>Presencia en el contacto</li>
-          <li class="practice-item"><div class="practice-dot">✨</div>Micromomentos bonitos</li>
-        </ul>
-      </div>
-      <div class="floating-badge-bottom">⏱️ 5–10 min por práctica</div>
-    </div>
-  </div>
-</section>
-
-<div class="trust-bar">
-  <div class="trust-item"><span>🧘‍♀️</span> Instructora de Mindfulness</div>
-  <div class="trust-item"><span>🌿</span> Guía de círculos maternales</div>
-  <div class="trust-item"><span>💛</span> Desde tu embarazo y en toda tu maternidad</div>
-  <div class="trust-item"><span>⚡</span> Acceso inmediato</div>
-</div>
-
-<section class="problem-section">
-  <div class="problem-grid">
-    <div class="problem-text reveal">
-      <div class="section-label">Lo que nadie te contó</div>
-      <h2 class="section-title">La maternidad es<br><em>transformación</em>.<br>Intensa. Real. Tuya.</h2>
-      <p>Cuando nace tu bebé, naces tú también. Es hermoso. Y es <strong>tremendamente intenso</strong>.</p>
-      <p>La sociedad te felicita, te pone al bebé en brazos y espera que seas una madre perfecta. Nadie te habla de lo que sientes por dentro.</p>
-      <p>Y en medio de todo eso, <strong>tú desapareces</strong>. Te olvidas de respirar. De parar. De volver a ti.</p>
-    </div>
-    <div class="pain-points reveal">
-      <div class="pain-card"><span class="pain-emoji">😮‍💨</span><span class="pain-text">Sientes que vas en modo automático, sin un momento de calma real para ti.</span></div>
-      <div class="pain-card"><span class="pain-emoji">🌀</span><span class="pain-text">Tu mente no para: la lista de tareas, las dudas, el cansancio acumulado.</span></div>
-      <div class="pain-card"><span class="pain-emoji">💧</span><span class="pain-text">Te sientes sola en este camino, como si nadie entendiera de verdad lo que vives.</span></div>
-      <div class="pain-card"><span class="pain-emoji">🪞</span><span class="pain-text">A veces no te reconoces. Echas de menos conectar contigo, con quien eras.</span></div>
-    </div>
-  </div>
-</section>
-
-<section style="padding:5rem 8vw;background:var(--cream)">
-  <div style="max-width:720px;margin:0 auto;text-align:center" class="reveal">
-    <div class="section-label" style="justify-content:center">Y también esto</div>
-    <h2 class="section-title">La maternidad también es<br><em>extraordinariamente</em> hermosa.</h2>
-    <p style="font-size:1.05rem;line-height:1.9;color:var(--ink-soft);margin-bottom:2rem">El olor de su cabeza. La forma en que te mira como si fueras el mundo entero. Ese momento en que te das cuenta de que amas de una manera que antes no sabías que existía.</p>
-    <div style="background:white;border-radius:20px;padding:2rem 2.5rem;border-left:4px solid var(--gold);text-align:left;box-shadow:0 4px 20px rgba(44,62,61,0.06)">
-      <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;line-height:1.7;color:var(--ink)">"El Kit de Pausa no es para escapar de tu maternidad.<br>Es para estar más <em>dentro</em> de ella."</p>
-    </div>
-  </div>
-</section>
-
-<section class="whatis-section">
-  <div class="whatis-inner">
-    <div class="reveal">
-      <div class="section-label">Qué es el Kit de Pausa</div>
-      <h2 class="section-title">Un refugio<br><em>interior</em><br>de 10 minutos.</h2>
-      <div class="quote-block"><blockquote>"No necesitas tiempo. Necesitas permiso para usarlo."</blockquote></div>
-      <p style="font-size:0.95rem;line-height:1.75;color:var(--ink-soft)">5 prácticas mindfulness para los momentos reales de la maternidad. Sin perfeccionismo. Sin exigencias. Solo presencia, ternura y verdad.</p>
-    </div>
-    <div class="whatis-features reveal">
-      <div class="feature-card"><span class="feature-icon">🎧</span><div class="feature-title">Prácticas guiadas</div><p class="feature-desc">Meditaciones en audio para los momentos en que leer es imposible.</p></div>
-      <div class="feature-card"><span class="feature-icon">✍️</span><div class="feature-title">Journaling consciente</div><p class="feature-desc">Preguntas suaves para conectar con lo que sientes de verdad.</p></div>
-      <div class="feature-card"><span class="feature-icon">📖</span><div class="feature-title">Microlecturas</div><p class="feature-desc">Reflexiones breves que abren algo por dentro con solo 2 minutos.</p></div>
-      <div class="feature-card"><span class="feature-icon">🌿</span><div class="feature-title">Siempre contigo</div><p class="feature-desc">Acceso desde el móvil, en cualquier momento y lugar.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="practices-section">
-  <div class="practices-inner">
-    <div class="practices-header reveal">
-      <div class="section-label" style="justify-content:center">Lo que recibirás</div>
-      <h2 class="section-title">Las 5 pausas<br>que <em>cambian</em> todo.</h2>
-    </div>
-    <div class="practices-grid">
-      <div class="practice-expanded"><div class="practice-num">1</div><div class="practice-info"><div class="practice-name">Volver en 3 minutos</div><p class="practice-desc"><em style="color:var(--turq-deep)">"No tengo que hacer nada bien. Solo respirar."</em><br>Audio guiado para salir del modo automático.</p></div><span class="practice-type-badge badge-turq">Audio guiado</span></div>
-      <div class="practice-expanded"><div class="practice-num">2</div><div class="practice-info"><div class="practice-name">Tacto Tranquilizador</div><p class="practice-desc"><em style="color:var(--turq-deep)">"Solo mi mano... y mi intención."</em><br>Lectura y audio para activar el sistema de calma.</p></div><span class="practice-type-badge badge-amber">Lectura + Audio</span></div>
-      <div class="practice-expanded"><div class="practice-num">3</div><div class="practice-info"><div class="practice-name">¿Qué necesito ahora?</div><p class="practice-desc"><em style="color:var(--turq-deep)">"Todo lo que necesito ya está dentro de mí."</em><br>Journaling consciente para escucharte de verdad.</p></div><span class="practice-type-badge badge-rose">Journaling</span></div>
-      <div class="practice-expanded"><div class="practice-num">4</div><div class="practice-info"><div class="practice-name">Presencia en el contacto</div><p class="practice-desc"><em style="color:var(--turq-deep)">"Todo está aquí, en este contacto."</em><br>Audio para hacer con tu bebé en cualquier momento.</p></div><span class="practice-type-badge badge-turq">Audio con bebé</span></div>
-      <div class="practice-expanded"><div class="practice-num">5</div><div class="practice-info"><div class="practice-name">Micromomentos bonitos</div><p class="practice-desc"><em style="color:var(--turq-deep)">"La belleza solo necesita que la mire."</em><br>Micro-práctica para entrenar la mirada a lo hermoso.</p></div><span class="practice-type-badge badge-amber">Micro-práctica</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="forwho-section">
-  <div class="forwho-inner">
-    <div class="reveal">
-      <div class="section-label">¿Es para ti?</div>
-      <h2 class="section-title">Este kit es para ti<br>si <em>reconoces</em> esto.</h2>
-      <ul class="check-list">
-        <li><div class="check-icon">✓</div>Estás embarazada y quieres cultivar calma antes de que llegue el bebé.</li>
-        <li><div class="check-icon">✓</div>Estás en el posparto y necesitas volver a ti, aunque sea 10 minutos al día.</li>
-        <li><div class="check-icon">✓</div>Llevas meses de maternidad y sientes que te has perdido a ti misma.</li>
-        <li><div class="check-icon">✓</div>Quieres herramientas reales, no frases bonitas.</li>
-        <li><div class="check-icon">✓</div>Sientes que mereces un espacio propio.</li>
-      </ul>
-    </div>
-    <div class="author-card reveal">
-      <div class="author-name">Hola, soy Chon.</div>
-      <div class="author-title">Madre de 3 · Instructora de Mindfulness · Guía de círculos de maternidad</div>
-      <p class="author-bio">Ser madre me cambió por dentro de una manera que ningún libro me había anunciado. Y eso es lo que me trajo hasta aquí.</p>
-      <p class="author-bio">Soy instructora de mindfulness especializada en maternidad, guía de círculos maternales y educadora prenatal con hipnoparto. También soy pediatra e IBCLC.</p>
-      <div class="credentials">
-        <span class="cred-tag">Madre de 3</span><span class="cred-tag">Mindfulness</span><span class="cred-tag">Círculos maternales</span><span class="cred-tag">Hipnoparto</span><span class="cred-tag">Pediatra</span><span class="cred-tag">IBCLC</span>
+    <!-- Texto izquierda -->
+    <div class="hero-text">
+      <span class="badge">Maternal Mind · Kit de Pausa</span>
+      <h1>Un momento solo para ti, <em>mamá.</em></h1>
+      <p class="hero-desc">5 prácticas cortas de mindfulness para encontrar calma y presencia — y saborear lo que ya tienes — en los primeros y más intensos momentos de la maternidad.</p>
+      <div class="hero-trust">
+        <span>✨ Las 5 prácticas forman parte de la Biblioteca MaMi de Maternal Mind — hay mucho más esperándote.</span>
       </div>
     </div>
-  </div>
-</section>
 
-<section style="padding:4rem 8vw;background:var(--turq-vlight)">
-  <div style="max-width:700px;margin:0 auto;text-align:center" class="reveal">
-    <div class="section-label" style="justify-content:center">Solo el principio</div>
-    <h2 class="section-title">Las 5 prácticas son tu<br>primera puerta a la <em>Biblioteca MaMi</em>.</h2>
-    <p style="font-size:0.95rem;line-height:1.85;color:var(--ink-soft)">Detrás del Kit de Pausa hay un ecosistema completo: la <strong>Biblioteca MaMi</strong> de Maternal Mind, con prácticas, meditaciones y acompañamiento para cada momento de tu maternidad.</p>
-  </div>
-</section>
-
-<section class="cta-section">
-  <div class="cta-inner">
-    <div class="section-label">Es el momento</div>
-    <h2>Tú también mereces<br><em>una pausa</em>.</h2>
-    <p class="cta-desc">Accede ahora a las 5 prácticas.</p>
-    <div class="brevo-cta">
-      <div class="sib-form">
-        <div id="sib-form-container2" class="sib-form-container">
-          <div id="sib-container2" class="sib-container--large sib-container--vertical">
-            <form id="sib-form2" method="POST" action="https://24250898.sibforms.com/serve/MUIFANj0Oa1Gi9OAL4p_3PaOluA-bcjPgMIX9eHDTudkanVKPjDFIHso5IOmZwPrHc0w-L8aU4nBKoJF7k23mPClQVIbG7AkXQ4jMfzmFC8ZdWVWpP52HH3h9J7bIUb0uFWFCn_Mgz7BIn7svKLy7eCfzo6sCXVhMXaVYdcbDrYKij_NPxwz9lLpKKK7BmYStgAOHLRzGeiDLnQTAA==" data-type="subscription">
-              <div style="padding:4px 0"><div class="sib-input sib-form-block"><div class="form__entry entry_block"><div class="form__label-row"><label class="entry__label" for="NOMBRE2">Tu nombre</label><div class="entry__field"><input class="input" type="text" id="NOMBRE2" name="NOMBRE" autocomplete="off" placeholder="Tu nombre" required /></div></div></div></div></div>
-              <div style="padding:4px 0"><div class="sib-input sib-form-block"><div class="form__entry entry_block"><div class="form__label-row"><label class="entry__label" for="EMAIL2">Tu correo electrónico</label><div class="entry__field"><input class="input" type="email" id="EMAIL2" name="EMAIL" autocomplete="off" placeholder="Tu email" required /></div></div></div></div></div>
-              <div style="padding:8px 0"><div class="sib-form-block" style="text-align:left"><button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form2" type="submit">Quiero mi Kit de Pausa →</button></div></div>
-              <input type="text" name="email_address_check" value="" class="input--hidden">
-              <input type="hidden" name="locale" value="es">
-              <input type="hidden" name="redirectionUrl" value="https://chon69.github.io/maternal-mind/gracias.html">
-            </form>
+    <!-- Tarjeta formulario derecha -->
+    <div class="hero-form-wrap">
+      <div class="form-card">
+        <div class="form-card-accent"></div>
+        <div class="form-card-body">
+          <p class="form-card-label">⚡ Acceso inmediato</p>
+          <h3 class="form-card-title">Tu kit te espera.</h3>
+          <form id="hero-form" class="signup-form" novalidate>
+            <div class="input-group">
+              <input type="text" name="nombre" placeholder="Tu nombre" required autocomplete="given-name">
+            </div>
+            <div class="input-group">
+              <input type="email" name="email" placeholder="tu@email.com" required autocomplete="email">
+            </div>
+            <button type="submit" class="btn-primary">
+              <span class="btn-text">Quiero mi Kit de Pausa →</span>
+              <span class="btn-loading" hidden>Enviando…</span>
+            </button>
+            <p class="form-note">✨ Sin spam · Solo para ti</p>
+          </form>
+          <div class="form-success" hidden>
+            <div class="success-icon">🌿</div>
+            <p class="success-title">¡Listo!</p>
+            <p class="success-msg">Revisa tu bandeja de entrada — tu Kit de Pausa está en camino.</p>
           </div>
         </div>
       </div>
     </div>
-    <p class="cta-privacy">🔒 Sin spam. Puedes darte de baja cuando quieras.</p>
+
   </div>
 </section>
 
+
+<!-- ══ KIT PREVIEW STRIP ══ -->
+<section class="kit-preview">
+  <div class="kit-preview-inner">
+    <div class="kit-badge">Kit de Pausa · Maternal Mind</div>
+    <div class="kit-features">
+
+      <div class="kit-feature">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/>
+          <polyline points="12 7 12 12 15 15"/>
+        </svg>
+        <span>5–10 min por práctica</span>
+      </div>
+
+      <div class="kit-feature">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+        <span>Desde tu embarazo y en toda tu maternidad</span>
+      </div>
+
+      <div class="kit-feature">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+        </svg>
+        <span>Acceso inmediato</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ LO QUE NADIE TE CONTÓ ══ -->
+<section class="section-pain">
+  <div class="section-inner">
+    <div class="section-label-wrap"><span class="section-label">Lo que nadie te contó</span></div>
+    <h2 class="section-title">La maternidad es transformación.<br><em>Intensa. Real. Tuya.</em></h2>
+    <p class="section-lead">Cuando nace tu bebé, naces tú también. Es hermoso. Y es tremendamente intenso.</p>
+    <p class="section-body">La sociedad te felicita, te pone al bebé en brazos y espera que seas una madre perfecta. Nadie te habla de lo que sientes por dentro. De la marea de emociones. Del cuerpo que no reconoces. Del no saber si lo estás haciendo bien.</p>
+    <p class="section-body">Y en medio de todo eso, tú desapareces. Te olvidas de respirar. De parar. De volver a ti.</p>
+    <div class="pain-cards">
+      <div class="pain-card"><span class="pain-icon">😮‍💨</span><p>Sientes que vas en modo automático, sin un momento de calma real para ti.</p></div>
+      <div class="pain-card"><span class="pain-icon">🌀</span><p>Tu mente no para: la lista de tareas, las dudas sobre si lo haces bien, el cansancio acumulado.</p></div>
+      <div class="pain-card"><span class="pain-icon">💧</span><p>Te sientes sola en este camino, como si nadie entendiera de verdad lo que vives.</p></div>
+      <div class="pain-card"><span class="pain-icon">🪞</span><p>A veces no te reconoces a ti misma. Echas de menos conectar contigo, con quien eras.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ Y TAMBIÉN ESTO ══ -->
+<section class="section-beauty">
+  <div class="section-inner">
+    <div class="section-label-wrap"><span class="section-label">Y también esto</span></div>
+    <h2 class="section-title">La maternidad también es<br><em>extraordinariamente hermosa.</em></h2>
+    <p class="section-lead">El olor de su cabeza. La forma en que te mira como si fueras el mundo entero —porque lo eres. Ese momento en que te das cuenta de que amas de una manera que antes no sabías que existía.</p>
+    <p class="section-body">La maternidad no es solo lo que cansa. Es también lo que abre. Lo que ensancha el corazón. Lo que te muestra de qué estás hecha.</p>
+    <blockquote class="pull-quote">"El Kit de Pausa no es para escapar de tu maternidad.<br>Es para estar más dentro de ella."</blockquote>
+  </div>
+</section>
+
+
+<!-- ══ QUÉ ES EL KIT DE PAUSA ══ -->
+<section class="section-what">
+  <div class="section-inner">
+    <div class="section-label-wrap"><span class="section-label">Qué es el Kit de Pausa</span></div>
+    <h2 class="section-title">Un refugio interior de<br><em>10 minutos.</em></h2>
+    <p class="section-lead">"No necesitas tiempo. Necesitas permiso para usarlo."</p>
+    <p class="section-body">El Kit de Pausa es una colección de 5 prácticas mindfulness diseñadas para los momentos reales de la maternidad: cuando el bebé duerme, cuando estás en el baño un instante, cuando necesitas volver a ti antes de que todo siga.</p>
+    <p class="section-body">Sin perfeccionismo. Sin exigencias. Solo presencia, ternura y verdad.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">🎧</span>
+        <h4>Prácticas guiadas</h4>
+        <p>Meditaciones en audio para los momentos en que leer es imposible.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">✍️</span>
+        <h4>Journaling consciente</h4>
+        <p>Preguntas suaves para conectar con lo que sientes de verdad.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📖</span>
+        <h4>Microlecturas</h4>
+        <p>Reflexiones breves que abren algo por dentro con solo 2 minutos.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🌿</span>
+        <h4>Siempre contigo</h4>
+        <p>Acceso desde el móvil, en cualquier momento y lugar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ LO QUE RECIBIRÁS ══ -->
+<section class="section-practices">
+  <div class="section-inner">
+    <div class="section-label-wrap"><span class="section-label">Lo que recibirás</span></div>
+    <h2 class="section-title">Las 5 pausas que<br><em>cambian todo.</em></h2>
+    <p class="section-lead">Cada práctica es una puerta pequeña hacia ti misma. No necesitas experiencia previa ni condiciones perfectas.</p>
+    <div class="practices-list">
+
+      <div class="practice-item">
+        <span class="practice-num">1</span>
+        <div class="practice-content">
+          <h4>Volver en 3 minutos</h4>
+          <p class="practice-quote">"No tengo que hacer nada bien. Solo respirar."</p>
+          <p>Audio guiado para aterrizar en el cuerpo y salir del modo automático en solo tres minutos.</p>
+          <span class="practice-tag">Audio guiado</span>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <span class="practice-num">2</span>
+        <div class="practice-content">
+          <h4>Tacto Tranquilizador</h4>
+          <p class="practice-quote">"No necesito condiciones perfectas. Solo mi mano... y mi intención."</p>
+          <p>Lectura y audio para activar el sistema de calma con un simple gesto de autocompasión.</p>
+          <span class="practice-tag">Lectura + Audio</span>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <span class="practice-num">3</span>
+        <div class="practice-content">
+          <h4>¿Qué necesito ahora?</h4>
+          <p class="practice-quote">"Todo lo que necesito saber ya está dentro de mí. Solo necesito parar a leerlo."</p>
+          <p>Journaling consciente para escucharte de verdad y reconocer lo que tu cuerpo y mente te piden.</p>
+          <span class="practice-tag">Journaling</span>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <span class="practice-num">4</span>
+        <div class="practice-content">
+          <h4>Presencia en el contacto</h4>
+          <p class="practice-quote">"No necesito ir a ningún sitio. Todo está aquí, en este contacto."</p>
+          <p>Un audio para hacer con tu bebé: convertir un momento cotidiano en una práctica de presencia plena.</p>
+          <span class="practice-tag">Audio con bebé</span>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <span class="practice-num">5</span>
+        <div class="practice-content">
+          <h4>Micromomentos bonitos</h4>
+          <p class="practice-quote">"La belleza no está lejos. Solo necesita que la mire."</p>
+          <p>Una micro-práctica visual para entrenar la mirada a notar lo pequeño y hermoso que ya existe en tu día.</p>
+          <span class="practice-tag">Micro-práctica</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ ¿ES PARA TI? ══ -->
+<section class="section-forti">
+  <div class="section-inner">
+    <div class="section-label-wrap"><span class="section-label">¿Es para ti?</span></div>
+    <h2 class="section-title"><em>Este kit es para ti</em><br>si reconoces esto.</h2>
+    <ul class="check-list">
+      <li>✓&nbsp; Estás embarazada y quieres empezar a cultivar calma antes de que llegue el bebé.</li>
+      <li>✓&nbsp; Estás en el posparto y necesitas volver a ti, aunque sea 10 minutos al día.</li>
+      <li>✓&nbsp; Llevas meses (o años) de maternidad y sientes que te has perdido a ti misma por el camino.</li>
+      <li>✓&nbsp; Quieres herramientas reales, no frases bonitas. Algo que puedas hacer ahora mismo.</li>
+      <li>✓&nbsp; Sientes que mereces un espacio propio, aunque aún no te hayas dado permiso para tomarlo.</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ══ BIO ══ -->
+<section class="section-bio">
+  <div class="section-inner">
+    <div class="bio-content">
+      <div class="bio-avatar"><div class="bio-avatar-inner">C</div></div>
+      <div class="bio-text">
+        <p class="bio-intro">Hola, soy Chon.</p>
+        <p class="bio-subtitle">Madre de 3 · Instructora de Mindfulness · Guía de Círculos de Maternidad</p>
+        <p>Ser madre me cambió por dentro de una manera que ningún libro me había anunciado. Y eso — más que ninguna otra cosa — es lo que me trajo hasta aquí.</p>
+        <p>Soy instructora de mindfulness especializada en maternidad, guía de círculos maternales y educadora prenatal con hipnoparto. Llevo años acompañando a mujeres en el momento más transformador de su vida: desde adentro, sin fórmulas y con mucho amor.</p>
+        <p>También soy pediatra e IBCLC — no para que esto parezca una consulta, sino porque todo ese camino me ha enseñado a mirar a las madres y a los bebés de una manera que va mucho más allá de lo clínico.</p>
+        <div class="bio-tags">
+          <span>Madre de 3</span>
+          <span>Instructora de Mindfulness</span>
+          <span>Círculos maternales</span>
+          <span>Hipnoparto</span>
+          <span>Pediatra</span>
+          <span>IBCLC</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ SOLO EL PRINCIPIO ══ -->
+<section class="section-library">
+  <div class="section-inner">
+    <div class="section-label-wrap"><span class="section-label">Solo el principio</span></div>
+    <h2 class="section-title">Las 5 prácticas son tu primera puerta<br><em>a la Biblioteca MaMi.</em></h2>
+    <p class="section-lead">Detrás del Kit de Pausa hay un ecosistema completo de acompañamiento: la Biblioteca MaMi de Maternal Mind, un espacio en crecimiento con prácticas, meditaciones, recursos y acompañamiento para cada momento de tu maternidad.</p>
+    <p class="section-body">Empieza aquí. Y descubre lo que hay al otro lado.</p>
+  </div>
+</section>
+
+
+<!-- ══ ES EL MOMENTO — CTA CON FORMULARIO FOOTER ══ -->
+<section class="section-cta">
+  <div class="section-label-wrap"><span class="section-label section-label-light">Es el momento</span></div>
+  <h2 class="section-title-light">Tú también mereces<br><em>una pausa.</em></h2>
+  <p class="section-lead-light">Accede ahora a las 5 prácticas. Sin compromisos. Solo tú, unos minutos y un poco de amor propio.</p>
+
+  <div class="footer-form-wrap">
+    <form id="footer-form" class="signup-form signup-form-light" novalidate>
+      <div class="input-group">
+        <input type="text" name="nombre" placeholder="Tu nombre" required autocomplete="given-name">
+      </div>
+      <div class="input-group">
+        <input type="email" name="email" placeholder="tu@email.com" required autocomplete="email">
+      </div>
+      <button type="submit" class="btn-primary">
+        <span class="btn-text">Quiero mi Kit de Pausa →</span>
+        <span class="btn-loading" hidden>Enviando…</span>
+      </button>
+      <p class="form-note form-note-light">🔒 Sin spam. Puedes darte de baja cuando quieras.</p>
+    </form>
+    <div class="form-success form-success-light" hidden>
+      <div class="success-icon">🌿</div>
+      <p class="success-title">¡Listo!</p>
+      <p class="success-msg">Revisa tu bandeja de entrada — tu Kit de Pausa está en camino.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ FOOTER ══ -->
 <footer>
   <div class="footer-brand">
-    <svg width="32" height="18" viewBox="0 0 52 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-right:6px">
-      <ellipse cx="17" cy="14" rx="13" ry="13" stroke="#7DCFCA" stroke-width="3.5" fill="none"/>
-      <ellipse cx="35" cy="14" rx="13" ry="13" stroke="#F2C14E" stroke-width="3.5" fill="none"/>
+    <svg width="28" height="16" viewBox="0 0 52 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="17" cy="14" rx="13" ry="13" stroke="#7DCFCA" stroke-width="3" fill="none"/>
+      <ellipse cx="35" cy="14" rx="13" ry="13" stroke="#F2C14E" stroke-width="3" fill="none"/>
     </svg>
     <span>Maternal Mind</span> · maternalmind.es
   </div>
   <small>© 2026 Chon Jorquera · Política de privacidad · Aviso legal</small>
 </footer>
 
+
 <script>
-  window.REQUIRED_CODE_ERROR_MESSAGE = 'Elige un código de país';
-  window.LOCALE = 'es';
-  window.EMAIL_INVALID_MESSAGE = "La información no es válida.";
-  window.REQUIRED_ERROR_MESSAGE = "Este campo no puede estar vacío.";
-  window.GENERIC_INVALID_MESSAGE = "La información no es válida.";
-  var AUTOHIDE = Boolean(0);
-</script>
-<script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) setTimeout(() => entry.target.classList.add('visible'), i * 80);
+  function setupForm(formId) {
+    const form = document.getElementById(formId);
+    if (!form) return;
+
+    const successEl = form.parentElement.querySelector('.form-success');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const nombre = (form.querySelector('[name="nombre"]').value || '').trim();
+      const email  = (form.querySelector('[name="email"]').value  || '').trim();
+      if (!nombre || !email) return;
+
+      const btn       = form.querySelector('button[type="submit"]');
+      const btnText   = btn.querySelector('.btn-text');
+      const btnLoading= btn.querySelector('.btn-loading');
+
+      btnText.hidden    = true;
+      btnLoading.hidden = false;
+      btn.disabled      = true;
+
+      try {
+        const res = await fetch('/.netlify/functions/submit-form', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify({ nombre, email }),
+        });
+
+        if (!res.ok) throw new Error('Server error ' + res.status);
+
+        form.hidden = true;
+        if (successEl) successEl.hidden = false;
+      } catch (err) {
+        console.error(err);
+        btnText.hidden    = false;
+        btnLoading.hidden = true;
+        btn.disabled      = false;
+        alert('Ha ocurrido un error. Por favor, inténtalo de nuevo.');
+      }
     });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  }
+
+  setupForm('hero-form');
+  setupForm('footer-form');
 </script>
 </body>
 </html>
