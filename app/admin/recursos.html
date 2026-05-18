@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kit de Pausa · Admin · Maternal Mind</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--turq:#7AACB0;--turq-dark:#5B9298;--turq-deep:#4A8A8E;--turq-light:#C2D9DB;--turq-vlight:#EDF4F5;--gold:#C4A882;--gold-light:#F5EFE6;--ink:#3A3A3A;--ink-soft:#5E5E5E;--cream:#FDFAF5;--sidebar:220px;--red:#D95555;--green:#3A9A3A}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'DM Sans',sans-serif;background:#F4F6F8;color:var(--ink);min-height:100vh;display:flex}
+  .sidebar{width:var(--sidebar);background:#fff;border-right:1px solid rgba(122,172,176,.18);display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh;z-index:50;overflow-y:auto}
+  .sidebar-logo{padding:1.25rem 1.5rem;border-bottom:1px solid rgba(122,172,176,.15);display:flex;align-items:center;gap:.5rem;text-decoration:none}
+  .logo-text{font-size:.9rem;color:var(--turq-dark)}.logo-text span{color:var(--gold);font-weight:500}
+  .sidebar-nav{padding:.75rem 0;flex:1}
+  .nav-section{padding:.5rem 1.5rem .25rem;font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--turq-deep)}
+  .nav-item{display:flex;align-items:center;gap:.65rem;padding:.65rem 1.5rem;font-size:.85rem;color:var(--ink-soft);text-decoration:none;transition:background .15s;border-left:3px solid transparent}
+  .nav-item:hover{background:var(--turq-vlight);color:var(--turq-dark)}
+  .nav-item.active{background:var(--turq-vlight);color:var(--turq-dark);border-left-color:var(--turq);font-weight:500}
+  .nav-item svg{flex-shrink:0}
+  .sidebar-footer{padding:1rem 1.5rem;border-top:1px solid rgba(122,172,176,.15)}
+  .btn-logout{width:100%;padding:.6rem;background:none;border:1px solid var(--turq-light);border-radius:8px;color:var(--turq-dark);font-size:.8rem;font-family:'DM Sans',sans-serif;cursor:pointer}
+  .btn-logout:hover{background:var(--turq-vlight)}
+  .main{margin-left:var(--sidebar);flex:1;padding:2rem;min-height:100vh}
+  .page-header{margin-bottom:2rem;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+  .page-header h1{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;font-style:italic}
+  .btn-primary{padding:.65rem 1.25rem;background:var(--turq);color:#fff;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:500;cursor:pointer;transition:opacity .2s}
+  .btn-primary:hover{opacity:.88}
+  /* MODAL */
+  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:100;display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity .25s}
+  .modal-overlay.open{opacity:1;pointer-events:all}
+  .modal{background:#fff;border-radius:16px;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.18)}
+  .modal-header{padding:1.25rem 1.5rem;border-bottom:1px solid var(--turq-vlight);display:flex;justify-content:space-between;align-items:center}
+  .modal-header h2{font-size:1rem;font-weight:500}
+  .modal-close{background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--ink-soft)}
+  .modal-body{padding:1.25rem 1.5rem}
+  label{display:block;font-size:.72rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.3rem;margin-top:.85rem}
+  input[type=text],input[type=number],input[type=url],select,textarea{width:100%;padding:.6rem .85rem;border:1.5px solid var(--turq-light);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--ink);background:var(--cream);outline:none;transition:border-color .2s}
+  input:focus,select:focus,textarea:focus{border-color:var(--turq);background:#fff}
+  textarea{resize:vertical;min-height:90px}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+  .modal-footer{padding:1rem 1.5rem;border-top:1px solid var(--turq-vlight);display:flex;justify-content:flex-end;gap:.75rem}
+  .btn-cancel{padding:.6rem 1rem;background:none;border:1px solid var(--turq-light);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.85rem;cursor:pointer;color:var(--ink-soft)}
+  .btn-save{padding:.6rem 1.25rem;background:var(--turq);color:#fff;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:500;cursor:pointer}
+  .btn-save:disabled{opacity:.65;cursor:not-allowed}
+  /* RESOURCE CARDS */
+  .module-section{margin-bottom:2.5rem}
+  .module-header{background:#fff;border:1px solid rgba(122,172,176,.18);border-radius:10px;padding:.85rem 1.25rem;display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem}
+  .module-num{width:30px;height:30px;border-radius:50%;background:var(--turq);color:#fff;font-family:'Cormorant Garamond',serif;font-size:.95rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .module-name{font-weight:500;font-size:.9rem}
+  .resources-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.85rem}
+  .resource-card{background:#fff;border:1px solid rgba(122,172,176,.15);border-radius:12px;padding:1rem;display:flex;flex-direction:column;gap:.5rem}
+  .resource-card h3{font-size:.9rem;font-weight:500}
+  .resource-card p{font-size:.78rem;color:var(--ink-soft);line-height:1.6;flex:1}
+  .resource-tag{font-size:.6rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--turq-deep);background:var(--turq-vlight);border:1px solid var(--turq-light);padding:.15rem .5rem;border-radius:50px;width:fit-content}
+  .resource-actions{display:flex;gap:.4rem;margin-top:.25rem}
+  .btn-sm{padding:.25rem .65rem;border-radius:6px;font-size:.72rem;font-family:'DM Sans',sans-serif;cursor:pointer;border:1px solid;transition:opacity .2s}
+  .btn-sm.primary{background:var(--turq-vlight);border-color:var(--turq-light);color:var(--turq-dark)}
+  .btn-sm.danger{background:#FEF2F2;border-color:#FCA5A5;color:var(--red)}
+  .btn-sm.warn{background:#FFFBEB;border-color:#FDE68A;color:#92400E}
+  .loading{padding:2.5rem;text-align:center;color:var(--ink-soft)}.spinner{width:28px;height:28px;border:2.5px solid var(--turq-light);border-top-color:var(--turq);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto .75rem}@keyframes spin{to{transform:rotate(360deg)}}
+  .toast{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--ink);color:#fff;padding:.75rem 1.25rem;border-radius:10px;font-size:.85rem;z-index:999;opacity:0;transition:opacity .3s;pointer-events:none}
+  .toast.show{opacity:1}
+</style>
+</head>
+<body>
+<aside id="sidebar" class="sidebar"></aside>
+
+<main class="main">
+  <div class="page-header">
+    <div><h1>Kit de Pausa</h1><p style="font-size:.85rem;color:var(--ink-soft)">Gestiona los módulos y recursos</p></div>
+    <button class="btn-primary" onclick="openModal()">+ Añadir recurso</button>
+  </div>
+  <div id="container"><div class="loading"><div class="spinner"></div>Cargando…</div></div>
+</main>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="modal-title">Nuevo recurso</h2>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="f-id">
+      <label>Título *</label>
+      <input type="text" id="f-titulo" placeholder="Ej: Volver en 3 minutos">
+      <div class="form-row">
+        <div>
+          <label>Módulo (número)</label>
+          <input type="number" id="f-modulo" value="1" min="1">
+        </div>
+        <div>
+          <label>Nombre del módulo</label>
+          <input type="text" id="f-modulo-nombre" placeholder="Ej: Prácticas de calma">
+        </div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label>Tipo</label>
+          <select id="f-tipo">
+            <option value="audio">Audio guiado</option>
+            <option value="journaling">Journaling</option>
+            <option value="lectura">Lectura</option>
+            <option value="practica">Práctica</option>
+            <option value="texto">Texto/Recurso</option>
+          </select>
+        </div>
+        <div>
+          <label>Orden dentro del módulo</label>
+          <input type="number" id="f-orden" value="1" min="1">
+        </div>
+      </div>
+      <label>Descripción</label>
+      <textarea id="f-descripcion" placeholder="Breve descripción para la clienta"></textarea>
+      <label>Contenido (texto / notas)</label>
+      <textarea id="f-contenido" placeholder="Contenido completo o notas internas…" style="min-height:110px"></textarea>
+      <label>URL archivo (audio, PDF, etc.)</label>
+      <div style="display:flex;gap:.5rem;align-items:center">
+        <input type="url" id="f-url" placeholder="https://… o sube un archivo abajo" style="flex:1">
+      </div>
+      <label style="margin-top:.5rem">Subir archivo</label>
+      <div style="display:flex;align-items:center;gap:.75rem;flex-wrap:wrap">
+        <label style="all:unset;display:inline-flex;align-items:center;gap:.4rem;padding:.5rem .9rem;border:1.5px dashed var(--turq-light);border-radius:8px;font-size:.8rem;color:var(--turq-dark);cursor:pointer;background:var(--turq-vlight);transition:border-color .2s;margin:0;text-transform:none;letter-spacing:0;font-weight:400">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Elegir archivo
+          <input type="file" id="f-file" accept="audio/*,video/*,.pdf,.mp3,.mp4,.m4a,.wav" style="display:none" onchange="handleFileSelect(this)">
+        </label>
+        <span id="f-file-name" style="font-size:.78rem;color:var(--ink-soft)">Sin archivo seleccionado</span>
+        <button type="button" id="f-upload-btn" onclick="uploadFile()" style="display:none;padding:.45rem .9rem;background:var(--turq);color:#fff;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.8rem;cursor:pointer">Subir</button>
+      </div>
+      <div id="f-upload-progress" style="display:none;margin-top:.4rem;font-size:.78rem;color:var(--turq-dark)">Subiendo…</div>
+      <label>Duración estimada</label>
+      <input type="text" id="f-duracion" placeholder="Ej: 5–10 min">
+      <div style="margin-top:.9rem;display:flex;align-items:center;gap:.5rem">
+        <input type="checkbox" id="f-activo" checked style="width:auto">
+        <label style="margin:0;text-transform:none;letter-spacing:0;font-size:.85rem;color:var(--ink)">Visible para las clientas</label>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
+      <button class="btn-save" id="save-btn" onclick="saveResource()">Guardar</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="/app/js/auth.js"></script>
+<script src="/app/js/sidebar.js"></script>
+<script>
+  MM.requireAuth('admin');
+  let allResources = [];
+
+  function toast(msg, ok=true) {
+    const el = document.getElementById('toast');
+    el.textContent = msg;
+    el.style.background = ok ? '#166534' : '#991B1B';
+    el.classList.add('show');
+    setTimeout(() => el.classList.remove('show'), 2800);
+  }
+
+  function render(resources) {
+    if (!resources.length) {
+      document.getElementById('container').innerHTML = '<p style="color:var(--ink-soft);font-size:.9rem;padding:1rem">No hay recursos todavía. Añade el primero 🌿</p>';
+      return;
+    }
+    const modules = {};
+    resources.forEach(r => {
+      if (!modules[r.modulo]) modules[r.modulo] = { nombre: r.modulo_nombre || `Módulo ${r.modulo}`, items: [] };
+      modules[r.modulo].items.push(r);
+    });
+    document.getElementById('container').innerHTML = Object.entries(modules).map(([num, mod]) => `
+      <div class="module-section">
+        <div class="module-header">
+          <div class="module-num">${num}</div>
+          <div class="module-name">${mod.nombre}</div>
+        </div>
+        <div class="resources-grid">
+          ${mod.items.map(r => `
+            <div class="resource-card">
+              <span class="resource-tag">${r.tipo}</span>
+              <h3>${r.titulo}</h3>
+              <p>${r.descripcion || '—'}</p>
+              ${r.duracion ? `<span style="font-size:.72rem;color:var(--ink-soft)">⏱️ ${r.duracion}</span>` : ''}
+              <div class="resource-actions">
+                <button class="btn-sm primary" onclick='editResource(${JSON.stringify(r).replace(/'/g,"&#39;")})'>Editar</button>
+                <button class="btn-sm warn" onclick="toggleActive('${r.id}','${r.activo === 'TRUE' ? 'FALSE' : 'TRUE'}')">${r.activo==='TRUE'?'Ocultar':'Mostrar'}</button>
+                <button class="btn-sm danger" onclick="deleteResource('${r.id}')">Eliminar</button>
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>`).join('');
+  }
+
+  function openModal(r=null) {
+    document.getElementById('modal-title').textContent = r ? 'Editar recurso' : 'Nuevo recurso';
+    document.getElementById('f-id').value          = r?.id || '';
+    document.getElementById('f-titulo').value      = r?.titulo || '';
+    document.getElementById('f-modulo').value      = r?.modulo || '1';
+    document.getElementById('f-modulo-nombre').value = r?.modulo_nombre || '';
+    document.getElementById('f-tipo').value        = r?.tipo || 'audio';
+    document.getElementById('f-orden').value       = r?.orden || '1';
+    document.getElementById('f-descripcion').value = r?.descripcion || '';
+    document.getElementById('f-contenido').value   = r?.contenido || '';
+    document.getElementById('f-url').value         = r?.url_archivo || '';
+    document.getElementById('f-duracion').value    = r?.duracion || '';
+    document.getElementById('f-activo').checked    = !r || r.activo === 'TRUE';
+    document.getElementById('modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function editResource(r) { openModal(r); }
+  function closeModal() {
+    document.getElementById('modal').classList.remove('open');
+    document.body.style.overflow='';
+    document.getElementById('f-file').value = '';
+    document.getElementById('f-file-name').textContent = 'Sin archivo seleccionado';
+    document.getElementById('f-upload-btn').style.display = 'none';
+    document.getElementById('f-upload-progress').style.display = 'none';
+  }
+
+  function handleFileSelect(input) {
+    const file = input.files[0];
+    if (!file) return;
+    document.getElementById('f-file-name').textContent = file.name + ' (' + (file.size / 1024 / 1024).toFixed(1) + ' MB)';
+    document.getElementById('f-upload-btn').style.display = 'inline-block';
+  }
+
+  async function uploadFile() {
+    const input = document.getElementById('f-file');
+    const file  = input.files[0];
+    if (!file) return;
+    const btn = document.getElementById('f-upload-btn');
+    const prog = document.getElementById('f-upload-progress');
+    btn.style.display = 'none';
+    prog.style.display = 'block';
+    prog.textContent = 'Subiendo…';
+    try {
+      const data = await new Promise((res, rej) => {
+        const reader = new FileReader();
+        reader.onload = e => res(e.target.result.split(',')[1]);
+        reader.onerror = rej;
+        reader.readAsDataURL(file);
+      });
+      const resp = await MM.api('/api/admin-upload', {
+        method: 'POST',
+        body: JSON.stringify({ filename: file.name, mimeType: file.type || 'application/octet-stream', data }),
+      });
+      const json = await resp.json();
+      if (!resp.ok) throw new Error(json.error || 'Error al subir');
+      document.getElementById('f-url').value = json.url;
+      prog.textContent = 'Subido correctamente';
+      prog.style.color = 'var(--green)';
+    } catch (e) {
+      prog.textContent = 'Error: ' + e.message;
+      prog.style.color = 'var(--red)';
+      btn.style.display = 'inline-block';
+    }
+  }
+
+  async function saveResource() {
+    const id = document.getElementById('f-id').value;
+    const data = {
+      titulo:       document.getElementById('f-titulo').value.trim(),
+      modulo:       document.getElementById('f-modulo').value,
+      modulo_nombre:document.getElementById('f-modulo-nombre').value.trim(),
+      tipo:         document.getElementById('f-tipo').value,
+      orden:        document.getElementById('f-orden').value,
+      descripcion:  document.getElementById('f-descripcion').value.trim(),
+      contenido:    document.getElementById('f-contenido').value.trim(),
+      url_archivo:  document.getElementById('f-url').value.trim(),
+      duracion:     document.getElementById('f-duracion').value.trim(),
+      activo:       document.getElementById('f-activo').checked ? 'TRUE' : 'FALSE',
+    };
+    if (!data.titulo) { alert('El título es obligatorio'); return; }
+    const btn = document.getElementById('save-btn');
+    btn.disabled = true; btn.textContent = 'Guardando…';
+    try {
+      const method = id ? 'PUT' : 'POST';
+      const body   = id ? { id, ...data } : data;
+      const res    = await MM.api('/api/admin-resources', { method, body: JSON.stringify(body) });
+      if (!res.ok) throw new Error((await res.json()).error);
+      closeModal(); await load(); toast(id ? 'Recurso actualizado' : 'Recurso añadido');
+    } catch(e) { toast(e.message, false); }
+    finally { btn.disabled=false; btn.textContent='Guardar'; }
+  }
+
+  async function toggleActive(id, activo) {
+    await MM.api('/api/admin-resources', { method:'PUT', body: JSON.stringify({ id, activo }) });
+    await load(); toast('Visibilidad actualizada');
+  }
+
+  async function deleteResource(id) {
+    if (!confirm('¿Eliminar este recurso?')) return;
+    await MM.api('/api/admin-resources', { method:'DELETE', body: JSON.stringify({ id }) });
+    await load(); toast('Recurso eliminado');
+  }
+
+  async function load() {
+    const res = await MM.api('/api/admin-resources');
+    allResources = await res.json();
+    render(allResources);
+  }
+  load();
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>

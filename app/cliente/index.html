@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi espacio · Maternal Mind</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--turq:#7AACB0;--turq-dark:#5B9298;--turq-deep:#4A8A8E;--turq-light:#C2D9DB;--turq-vlight:#EDF4F5;--gold:#C4A882;--gold-dark:#A8885A;--gold-light:#F5EFE6;--ink:#3A3A3A;--ink-soft:#5E5E5E;--cream:#FDFAF5}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh}
+  /* NAV */
+  nav{background:#fff;border-bottom:1px solid rgba(122,172,176,.18);padding:.9rem 5vw;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
+  .nav-logo{display:flex;align-items:center;gap:.5rem;text-decoration:none}
+  .logo-text{font-size:.95rem;color:var(--turq-dark)}.logo-text span{color:var(--gold);font-weight:500}
+  .nav-links{display:flex;align-items:center;gap:1.25rem}
+  .nav-links a{font-size:.83rem;color:var(--ink-soft);text-decoration:none;font-weight:400;transition:color .2s;white-space:nowrap}
+  .nav-links a:hover,.nav-links a.active{color:var(--turq-dark)}
+  .nav-links .premium-link{color:var(--gold-dark);font-weight:500}
+  .nav-links .premium-link:hover{color:var(--gold)}
+  .nav-user{display:flex;align-items:center;gap:.75rem}
+  .nav-greeting{font-size:.82rem;color:var(--ink-soft)}
+  .btn-logout{font-size:.8rem;color:var(--turq-deep);background:none;border:1px solid var(--turq-light);border-radius:20px;padding:.35rem .85rem;cursor:pointer;transition:background .2s}
+  .btn-logout:hover{background:var(--turq-vlight)}
+  /* HERO */
+  .hero{background:linear-gradient(135deg,var(--turq-vlight) 0%,var(--gold-light) 100%);padding:3.5rem 5vw;border-bottom:1px solid rgba(122,172,176,.15)}
+  .hero-inner{max-width:1100px;margin:0 auto;display:flex;align-items:flex-start;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+  .hero-text h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:300;font-style:italic;color:var(--ink);margin-bottom:.5rem}
+  .hero-text p{font-size:.95rem;color:var(--ink-soft);font-weight:300;max-width:480px;line-height:1.7}
+  /* PLAN BADGE */
+  .plan-badge{display:inline-flex;align-items:center;gap:.4rem;padding:.45rem 1rem;border-radius:50px;font-size:.75rem;font-weight:500;letter-spacing:.04em;margin-top:1rem}
+  .plan-badge.free{background:#fff;border:1.5px solid var(--turq-light);color:var(--turq-dark)}
+  .plan-badge.premium{background:linear-gradient(135deg,var(--gold) 0%,#D4A96A 100%);color:#fff;border:none}
+  /* UPGRADE BOX */
+  .upgrade-box{background:#fff;border-radius:16px;padding:1.5rem 1.75rem;box-shadow:0 4px 20px rgba(196,168,130,.15);border:1.5px solid rgba(196,168,130,.3);max-width:300px}
+  .upgrade-box h3{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-style:italic;color:var(--ink);margin-bottom:.5rem}
+  .upgrade-box p{font-size:.83rem;color:var(--ink-soft);line-height:1.6;margin-bottom:1rem}
+  .btn-upgrade{display:block;text-align:center;background:linear-gradient(135deg,var(--gold) 0%,#D4A96A 100%);color:#fff;text-decoration:none;padding:.75rem 1.5rem;border-radius:10px;font-size:.88rem;font-weight:500;border:none;cursor:pointer;width:100%;transition:opacity .2s;font-family:'DM Sans',sans-serif}
+  .btn-upgrade:hover{opacity:.88}
+  /* CONTENT */
+  .content{max-width:1100px;margin:0 auto;padding:2.5rem 5vw}
+  .section-label{font-size:.65rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--turq-deep);margin-bottom:1.5rem;display:flex;align-items:center;gap:.5rem}
+  .section-label::after{content:'';flex:1;height:1px;background:var(--turq-light)}
+  /* CARDS GRID */
+  .sections-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem}
+  .section-card{background:#fff;border-radius:16px;border:1px solid rgba(122,172,176,.18);padding:1.75rem;text-decoration:none;color:inherit;transition:box-shadow .22s,transform .22s;display:flex;flex-direction:column;position:relative;overflow:hidden}
+  .section-card:hover{box-shadow:0 8px 30px rgba(122,172,176,.18);transform:translateY(-3px)}
+  .section-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+  .section-card.turq::before{background:var(--turq)}
+  .section-card.gold::before{background:var(--gold)}
+  .section-card.soft::before{background:var(--turq-light)}
+  .card-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1rem}
+  .card-icon.turq{background:var(--turq-vlight)}
+  .card-icon.gold{background:var(--gold-light)}
+  .card-icon.soft{background:#F0F4F4}
+  .section-card h3{font-size:1rem;font-weight:500;color:var(--ink);margin-bottom:.4rem}
+  .section-card p{font-size:.83rem;color:var(--ink-soft);line-height:1.65;font-weight:300;flex:1}
+  .card-arrow{margin-top:1.25rem;font-size:.82rem;color:var(--turq-dark);font-weight:500}
+  .card-lock{margin-top:1.25rem;display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;color:var(--gold-dark);background:var(--gold-light);padding:.3rem .7rem;border-radius:50px}
+  .card-badge{position:absolute;top:1rem;right:1rem;font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .6rem;border-radius:50px;background:var(--gold-light);color:var(--gold-dark)}
+  /* RECENT */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem}
+  .mini-card{background:#fff;border-radius:14px;border:1px solid rgba(122,172,176,.15);padding:1.25rem}
+  .mini-card h4{font-size:.82rem;font-weight:500;color:var(--turq-dark);letter-spacing:.04em;text-transform:uppercase;margin-bottom:.85rem}
+  .mini-list{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+  .mini-list li{font-size:.85rem;color:var(--ink-soft);font-weight:300;line-height:1.5}
+  .mini-list li a{color:var(--ink);text-decoration:none;font-weight:400}
+  .mini-list li a:hover{color:var(--turq-dark)}
+  .mini-list .empty-msg{color:var(--turq-light);font-style:italic}
+  /* LOADING */
+  .spinner{width:28px;height:28px;border:2.5px solid var(--turq-light);border-top-color:var(--turq);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto}@keyframes spin{to{transform:rotate(360deg)}}
+  @media(max-width:700px){.nav-links{display:none}.hero-inner{flex-direction:column}.upgrade-box{max-width:100%}.two-col{grid-template-columns:1fr}.sections-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/app/cliente/" class="nav-logo">
+    <svg width="28" height="16" viewBox="0 0 52 28" fill="none"><ellipse cx="17" cy="14" rx="13" ry="13" stroke="#7AACB0" stroke-width="3" fill="none"/><ellipse cx="35" cy="14" rx="13" ry="13" stroke="#C4A882" stroke-width="3" fill="none"/></svg>
+    <div class="logo-text">maternal <span>mind</span></div>
+  </a>
+  <div class="nav-links">
+    <a href="/app/cliente/" class="active">Inicio</a>
+    <a href="/app/cliente/biblioteca.html" class="premium-link" id="nav-biblio">✨ Biblioteca</a>
+    <a href="/app/cliente/eventos.html">Eventos</a>
+    <a href="/app/cliente/blog.html">Blog</a>
+    <a href="/app/cliente/podcast.html">Podcast</a>
+    <a href="/app/cliente/perfil.html">Mi perfil</a>
+  </div>
+  <div class="nav-user">
+    <span class="nav-greeting" id="greeting"></span>
+    <button class="btn-logout" onclick="MM.logout()">Salir</button>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <h1 id="welcome-title">Tu espacio</h1>
+      <p>Aquí encuentras todo el contenido de Maternal Mind — prácticas, talleres, artículos y episodios — en un solo lugar.</p>
+      <span class="plan-badge free" id="plan-badge">Plan gratuito</span>
+    </div>
+    <div class="upgrade-box" id="upgrade-box">
+      <h3>Biblioteca Mami</h3>
+      <p>Acceso completo a la biblioteca en crecimiento: recursos exclusivos, prácticas de mindfulness y contenido que se va ampliando cada mes.</p>
+      <button class="btn-upgrade" onclick="startCheckout()">Suscribirme a la Biblioteca →</button>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <div class="section-label">Tu espacio Maternal Mind</div>
+  <div class="sections-grid">
+
+    <a href="/app/cliente/biblioteca.html" class="section-card turq" id="card-kit">
+      <div class="card-icon turq">🌿</div>
+      <h3>Kit de Pausa</h3>
+      <p>Tus 5 prácticas de bienvenida: audios guiados, journaling y micro-momentos para volver a ti en cualquier momento del día.</p>
+      <span class="card-arrow">Ir a mis prácticas →</span>
+    </a>
+
+    <a href="/app/cliente/biblioteca.html" class="section-card gold" id="card-biblio">
+      <div class="card-badge" id="biblio-badge">Premium</div>
+      <div class="card-icon gold">📚</div>
+      <h3>Biblioteca Mami</h3>
+      <p>La biblioteca completa que crece cada mes: recursos de mindfulness, maternidad consciente y bienestar en profundidad.</p>
+      <span class="card-lock" id="biblio-lock">🔒 Requiere suscripción</span>
+    </a>
+
+    <a href="/app/cliente/eventos.html" class="section-card soft">
+      <div class="card-icon soft">🗓️</div>
+      <h3>Eventos y círculos</h3>
+      <p>Talleres, cursos, retiros y círculos de maternidad. Encuéntrate con otras mamás en espacios de presencia y cuidado.</p>
+      <span class="card-arrow">Ver próximos eventos →</span>
+    </a>
+
+    <a href="/app/cliente/blog.html" class="section-card soft">
+      <div class="card-icon soft">✍️</div>
+      <h3>Blog</h3>
+      <p>Artículos sobre maternidad consciente, mindfulness, regulación emocional y todo lo que Chon va compartiendo.</p>
+      <span class="card-arrow">Leer artículos →</span>
+    </a>
+
+    <a href="/app/cliente/podcast.html" class="section-card soft">
+      <div class="card-icon soft">🎙️</div>
+      <h3>Podcast</h3>
+      <p>Escucha los episodios en tu plataforma favorita: Spotify, Apple Podcasts o iVoox. Conversaciones reales sobre maternidad.</p>
+      <span class="card-arrow">Escuchar el podcast →</span>
+    </a>
+
+    <a href="/app/cliente/perfil.html" class="section-card soft">
+      <div class="card-icon soft">👤</div>
+      <h3>Mi perfil</h3>
+      <p>Gestiona tu cuenta, cambia tu contraseña y consulta los detalles de tu suscripción.</p>
+      <span class="card-arrow">Ir a mi perfil →</span>
+    </a>
+
+  </div>
+
+  <div class="two-col" id="two-col">
+    <div class="mini-card">
+      <h4>Próximos eventos</h4>
+      <ul class="mini-list" id="recent-events"><li><div class="spinner"></div></li></ul>
+    </div>
+    <div class="mini-card">
+      <h4>Últimos artículos</h4>
+      <ul class="mini-list" id="recent-blog"><li><div class="spinner"></div></li></ul>
+    </div>
+  </div>
+</div>
+
+<script src="/app/js/auth.js"></script>
+<script>
+  const user = MM.requireAuth('client');
+  if (!user) throw new Error('no auth');
+
+  const isPremium = (user.plan || 'free') === 'biblioteca_mami';
+
+  document.getElementById('greeting').textContent = user.nombre.split(' ')[0];
+  document.getElementById('welcome-title').textContent = `Tu espacio, ${user.nombre.split(' ')[0]}`;
+
+  if (isPremium) {
+    document.getElementById('plan-badge').textContent = '✨ Biblioteca Mami';
+    document.getElementById('plan-badge').className = 'plan-badge premium';
+    document.getElementById('upgrade-box').style.display = 'none';
+    document.getElementById('biblio-lock').style.display = 'none';
+    document.getElementById('biblio-badge').style.display = 'none';
+    const card = document.getElementById('card-biblio');
+    card.querySelector('.card-lock')?.remove();
+    card.querySelector('.card-badge')?.remove();
+    card.insertAdjacentHTML('beforeend','<span class="card-arrow">Ir a la Biblioteca →</span>');
+  }
+
+  async function startCheckout() {
+    const btn = document.querySelector('.btn-upgrade');
+    btn.textContent = 'Redirigiendo…';
+    btn.disabled = true;
+    try {
+      const res  = await MM.api('/api/stripe-checkout', { method: 'POST' });
+      const data = await res.json();
+      if (data.url) { window.location.href = data.url; return; }
+      alert(data.error || 'No se pudo conectar con el sistema de pago.');
+    } catch { alert('Error al procesar. Inténtalo de nuevo.'); }
+    btn.textContent = 'Suscribirme a la Biblioteca →';
+    btn.disabled = false;
+  }
+
+  // Load recent events
+  MM.api('/api/client-events').then(r => r.json()).then(events => {
+    const el = document.getElementById('recent-events');
+    const next = events.filter(e => new Date(e.fecha_inicio) >= new Date()).slice(0,3);
+    el.innerHTML = next.length
+      ? next.map(e => `<li><a href="/app/cliente/eventos.html">${e.titulo}</a><br><small style="color:var(--turq-dark)">${new Date(e.fecha_inicio).toLocaleDateString('es-ES',{day:'numeric',month:'long'})}</small></li>`).join('')
+      : '<li class="empty-msg">No hay eventos próximos</li>';
+  }).catch(() => { document.getElementById('recent-events').innerHTML = '<li class="empty-msg">—</li>'; });
+
+  // Load recent blog
+  MM.api('/api/client-blog').then(r => r.json()).then(posts => {
+    const el = document.getElementById('recent-blog');
+    el.innerHTML = posts.slice(0,3).length
+      ? posts.slice(0,3).map(p => `<li><a href="/app/cliente/blog.html">${p.titulo}</a>${p.categoria ? `<br><small style="color:var(--turq-dark)">${p.categoria}</small>` : ''}</li>`).join('')
+      : '<li class="empty-msg">Pronto habrá artículos aquí</li>';
+  }).catch(() => { document.getElementById('recent-blog').innerHTML = '<li class="empty-msg">—</li>'; });
+
+  // Refresh plan from server in case Stripe just activated it
+  MM.api('/api/auth-me').then(r => r?.json()).then(data => {
+    if (data?.plan && data.plan !== (user.plan || 'free')) {
+      MM.setUser({ ...user, plan: data.plan });
+      location.reload();
+    }
+  }).catch(() => {});
+</script>
+</body>
+</html>

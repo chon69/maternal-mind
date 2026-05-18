@@ -935,7 +935,7 @@
       btn.disabled      = true;
 
       try {
-        await fetch('https://script.google.com/macros/s/AKfycbzIi3DzwFIpbh8iamL3tfxLbdq8HUo0xpeFekxTEygkbs234N14Emjg8ebfBVwRf8eu/exec', {
+        const res = await fetch('/api/submit-form', {
           method:  'POST',
           mode:    'no-cors',
           headers: { 'Content-Type': 'text/plain' },

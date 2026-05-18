@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eventos · Admin · Maternal Mind</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--turq:#7AACB0;--turq-dark:#5B9298;--turq-deep:#4A8A8E;--turq-light:#C2D9DB;--turq-vlight:#EDF4F5;--gold:#C4A882;--gold-light:#F5EFE6;--ink:#3A3A3A;--ink-soft:#5E5E5E;--sidebar:220px;--red:#D95555;--green:#3A9A3A}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'DM Sans',sans-serif;background:#F4F6F8;color:var(--ink);min-height:100vh;display:flex}
+  .sidebar{width:var(--sidebar);background:#fff;border-right:1px solid rgba(122,172,176,.18);display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh;z-index:50;overflow-y:auto}
+  .sidebar-logo{padding:1.25rem 1.5rem;border-bottom:1px solid rgba(122,172,176,.15);display:flex;align-items:center;gap:.5rem;text-decoration:none}
+  .logo-text{font-size:.9rem;color:var(--turq-dark)}.logo-text span{color:var(--gold);font-weight:500}
+  .sidebar-nav{padding:.75rem 0;flex:1}
+  .nav-section{padding:.5rem 1.5rem .25rem;font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--turq-deep)}
+  .nav-item{display:flex;align-items:center;gap:.65rem;padding:.65rem 1.5rem;font-size:.85rem;color:var(--ink-soft);text-decoration:none;transition:background .15s;border-left:3px solid transparent}
+  .nav-item:hover{background:var(--turq-vlight);color:var(--turq-dark)}
+  .nav-item.active{background:var(--turq-vlight);color:var(--turq-dark);border-left-color:var(--turq);font-weight:500}
+  .nav-item svg{flex-shrink:0}
+  .sidebar-footer{padding:1rem 1.5rem;border-top:1px solid rgba(122,172,176,.15)}
+  .btn-logout{width:100%;padding:.6rem;background:none;border:1px solid var(--turq-light);border-radius:8px;color:var(--turq-dark);font-size:.8rem;font-family:'DM Sans',sans-serif;cursor:pointer}
+  .main{margin-left:var(--sidebar);flex:1;padding:2rem;min-height:100vh}
+  .page-header{margin-bottom:2rem;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+  .page-header h1{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;font-style:italic}
+  .btn-primary{padding:.65rem 1.25rem;background:var(--turq);color:#fff;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:500;cursor:pointer;transition:opacity .2s}
+  .btn-primary:hover{opacity:.88}
+  /* EVENTS TABLE */
+  .card{background:#fff;border-radius:14px;border:1px solid rgba(122,172,176,.15);overflow:hidden}
+  table{width:100%;border-collapse:collapse}
+  th{font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);padding:.65rem 1.25rem;text-align:left;background:#FAFBFC;border-bottom:1px solid rgba(122,172,176,.12)}
+  td{font-size:.84rem;padding:.7rem 1.25rem;border-bottom:1px solid rgba(122,172,176,.08);vertical-align:middle}
+  tr:last-child td{border-bottom:none}
+  tr:hover td{background:#FAFBFC}
+  .badge{display:inline-block;font-size:.63rem;font-weight:500;padding:.2rem .55rem;border-radius:50px;text-transform:capitalize}
+  .badge.taller{background:var(--turq-vlight);color:var(--turq-deep)}
+  .badge.curso{background:#EDE9FE;color:#4C1D95}
+  .badge.programa{background:#DCFCE7;color:#166534}
+  .badge.retiro{background:var(--gold-light);color:#7A5C2A}
+  .actions{display:flex;gap:.4rem}
+  .btn-sm{padding:.25rem .65rem;border-radius:6px;font-size:.72rem;font-family:'DM Sans',sans-serif;cursor:pointer;border:1px solid;transition:opacity .2s}
+  .btn-sm.primary{background:var(--turq-vlight);border-color:var(--turq-light);color:var(--turq-dark)}
+  .btn-sm.danger{background:#FEF2F2;border-color:#FCA5A5;color:var(--red)}
+  .btn-sm.warn{background:#FFFBEB;border-color:#FDE68A;color:#92400E}
+  /* MODAL */
+  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:100;display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity .25s}
+  .modal-overlay.open{opacity:1;pointer-events:all}
+  .modal{background:#fff;border-radius:16px;width:100%;max-width:580px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.18)}
+  .modal-header{padding:1.25rem 1.5rem;border-bottom:1px solid var(--turq-vlight);display:flex;justify-content:space-between;align-items:center}
+  .modal-header h2{font-size:1rem;font-weight:500}
+  .modal-close{background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--ink-soft)}
+  .modal-body{padding:1.25rem 1.5rem}
+  label{display:block;font-size:.72rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.3rem;margin-top:.85rem}
+  input[type=text],input[type=date],input[type=number],input[type=url],select,textarea{width:100%;padding:.6rem .85rem;border:1.5px solid var(--turq-light);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--ink);background:#FDFAF5;outline:none;transition:border-color .2s}
+  input:focus,select:focus,textarea:focus{border-color:var(--turq);background:#fff}
+  textarea{resize:vertical;min-height:80px}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+  .modal-footer{padding:1rem 1.5rem;border-top:1px solid var(--turq-vlight);display:flex;justify-content:flex-end;gap:.75rem}
+  .btn-cancel{padding:.6rem 1rem;background:none;border:1px solid var(--turq-light);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.85rem;cursor:pointer;color:var(--ink-soft)}
+  .btn-save{padding:.6rem 1.25rem;background:var(--turq);color:#fff;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:500;cursor:pointer}
+  .btn-save:disabled{opacity:.65;cursor:not-allowed}
+  .loading{padding:2.5rem;text-align:center;color:var(--ink-soft)}.spinner{width:28px;height:28px;border:2.5px solid var(--turq-light);border-top-color:var(--turq);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto .75rem}@keyframes spin{to{transform:rotate(360deg)}}
+  .toast{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--ink);color:#fff;padding:.75rem 1.25rem;border-radius:10px;font-size:.85rem;z-index:999;opacity:0;transition:opacity .3s;pointer-events:none}.toast.show{opacity:1}
+</style>
+</head>
+<body>
+<aside id="sidebar" class="sidebar"></aside>
+
+<main class="main">
+  <div class="page-header">
+    <div><h1>Eventos</h1><p style="font-size:.85rem;color:var(--ink-soft)">Talleres, cursos, programas y retiros</p></div>
+    <button class="btn-primary" onclick="openModal()">+ Nuevo evento</button>
+  </div>
+  <div class="card" id="container"><div class="loading"><div class="spinner"></div>Cargando…</div></div>
+</main>
+
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-header"><h2 id="modal-title">Nuevo evento</h2><button class="modal-close" onclick="closeModal()">✕</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="f-id">
+      <label>Título *</label>
+      <input type="text" id="f-titulo" placeholder="Ej: Taller de mindfulness perinatal">
+      <label>Tipo</label>
+      <select id="f-tipo">
+        <option value="taller">Taller</option>
+        <option value="curso">Curso</option>
+        <option value="programa">Programa</option>
+        <option value="retiro">Retiro</option>
+      </select>
+      <label>Descripción</label>
+      <textarea id="f-desc" placeholder="Describe el evento para las clientas…"></textarea>
+      <div class="form-row">
+        <div><label>Fecha inicio</label><input type="date" id="f-fecha-ini"></div>
+        <div><label>Fecha fin</label><input type="date" id="f-fecha-fin"></div>
+      </div>
+      <div class="form-row">
+        <div><label>Precio</label><input type="number" id="f-precio" value="0" min="0"></div>
+        <div><label>Moneda</label><select id="f-moneda"><option>EUR</option><option>USD</option></select></div>
+      </div>
+      <label>URL de inscripción</label>
+      <input type="url" id="f-url-ins" placeholder="https://…">
+      <label>URL imagen</label>
+      <input type="url" id="f-imagen" placeholder="https://…">
+      <div style="margin-top:.9rem;display:flex;flex-direction:column;gap:.5rem">
+        <label style="margin:0;display:flex;align-items:center;gap:.5rem;text-transform:none;letter-spacing:0;font-size:.85rem;color:var(--ink)">
+          <input type="checkbox" id="f-activo" checked style="width:auto"> Visible para clientas
+        </label>
+        <label style="margin:0;display:flex;align-items:center;gap:.5rem;text-transform:none;letter-spacing:0;font-size:.85rem;color:var(--ink)">
+          <input type="checkbox" id="f-destacado" style="width:auto"> Evento destacado
+        </label>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
+      <button class="btn-save" id="save-btn" onclick="saveEvent()">Guardar</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="/app/js/auth.js"></script>
+<script src="/app/js/sidebar.js"></script>
+<script>
+  MM.requireAuth('admin');
+
+  function toast(msg, ok=true) {
+    const el = document.getElementById('toast');
+    el.textContent = msg;
+    el.style.background = ok ? '#166534' : '#991B1B';
+    el.classList.add('show');
+    setTimeout(() => el.classList.remove('show'), 2800);
+  }
+
+  function fmtDate(s) { return s ? new Date(s).toLocaleDateString('es-ES',{day:'numeric',month:'short',year:'numeric'}) : '—'; }
+
+  function render(events) {
+    if (!events.length) {
+      document.getElementById('container').innerHTML = '<p style="padding:2rem 1.5rem;color:var(--ink-soft);font-size:.88rem">No hay eventos. Crea el primero 📅</p>';
+      return;
+    }
+    document.getElementById('container').innerHTML = `
+      <table>
+        <thead><tr><th>Título</th><th>Tipo</th><th>Fecha</th><th>Precio</th><th>Estado</th><th>Acciones</th></tr></thead>
+        <tbody>${events.map(e => `<tr>
+          <td><strong>${e.titulo}</strong>${e.destacado==='TRUE'?'<span style="margin-left:.4rem;font-size:.6rem;color:var(--gold)">✨ Dest.</span>':''}</td>
+          <td><span class="badge ${e.tipo}">${e.tipo}</span></td>
+          <td style="font-size:.78rem;color:var(--ink-soft)">${fmtDate(e.fecha_inicio)}${e.fecha_fin ? ` – ${fmtDate(e.fecha_fin)}` : ''}</td>
+          <td>${e.precio && e.precio!=='0' ? `${e.precio} ${e.moneda}` : '<span style="color:var(--gold)">Gratis</span>'}</td>
+          <td>${e.activo==='TRUE' ? '<span style="color:var(--green);font-size:.8rem">● Visible</span>' : '<span style="color:var(--ink-soft);font-size:.8rem">○ Oculto</span>'}</td>
+          <td><div class="actions">
+            <button class="btn-sm primary" onclick='editEvent(${JSON.stringify(e).replace(/'/g,"&#39;")})'>Editar</button>
+            <button class="btn-sm warn" onclick="toggleActive('${e.id}','${e.activo==='TRUE'?'FALSE':'TRUE'}')">${e.activo==='TRUE'?'Ocultar':'Mostrar'}</button>
+            <button class="btn-sm danger" onclick="deleteEvent('${e.id}')">Eliminar</button>
+          </div></td>
+        </tr>`).join('')}</tbody>
+      </table>`;
+  }
+
+  function openModal(e=null) {
+    document.getElementById('modal-title').textContent = e ? 'Editar evento' : 'Nuevo evento';
+    document.getElementById('f-id').value        = e?.id||'';
+    document.getElementById('f-titulo').value    = e?.titulo||'';
+    document.getElementById('f-tipo').value      = e?.tipo||'taller';
+    document.getElementById('f-desc').value      = e?.descripcion||'';
+    document.getElementById('f-fecha-ini').value = e?.fecha_inicio?.split('T')[0]||'';
+    document.getElementById('f-fecha-fin').value = e?.fecha_fin?.split('T')[0]||'';
+    document.getElementById('f-precio').value    = e?.precio||'0';
+    document.getElementById('f-moneda').value    = e?.moneda||'EUR';
+    document.getElementById('f-url-ins').value   = e?.url_inscripcion||'';
+    document.getElementById('f-imagen').value    = e?.imagen_url||'';
+    document.getElementById('f-activo').checked  = !e||e.activo==='TRUE';
+    document.getElementById('f-destacado').checked = e?.destacado==='TRUE';
+    document.getElementById('modal').classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function editEvent(e) { openModal(e); }
+  function closeModal() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow=''; }
+
+  async function saveEvent() {
+    const id = document.getElementById('f-id').value;
+    const data = {
+      titulo:          document.getElementById('f-titulo').value.trim(),
+      tipo:            document.getElementById('f-tipo').value,
+      descripcion:     document.getElementById('f-desc').value.trim(),
+      fecha_inicio:    document.getElementById('f-fecha-ini').value,
+      fecha_fin:       document.getElementById('f-fecha-fin').value,
+      precio:          document.getElementById('f-precio').value,
+      moneda:          document.getElementById('f-moneda').value,
+      url_inscripcion: document.getElementById('f-url-ins').value.trim(),
+      imagen_url:      document.getElementById('f-imagen').value.trim(),
+      activo:          document.getElementById('f-activo').checked ? 'TRUE':'FALSE',
+      destacado:       document.getElementById('f-destacado').checked ? 'TRUE':'FALSE',
+    };
+    if (!data.titulo) { alert('El título es obligatorio'); return; }
+    const btn = document.getElementById('save-btn');
+    btn.disabled=true; btn.textContent='Guardando…';
+    try {
+      const method = id ? 'PUT' : 'POST';
+      const res = await MM.api('/api/admin-events', { method, body: JSON.stringify(id ? {id,...data} : data) });
+      if (!res.ok) throw new Error((await res.json()).error);
+      closeModal(); await load(); toast(id ? 'Evento actualizado' : 'Evento creado');
+    } catch(e) { toast(e.message, false); }
+    finally { btn.disabled=false; btn.textContent='Guardar'; }
+  }
+
+  async function toggleActive(id, activo) {
+    await MM.api('/api/admin-events', { method:'PUT', body: JSON.stringify({id,activo}) });
+    await load(); toast('Visibilidad actualizada');
+  }
+  async function deleteEvent(id) {
+    if (!confirm('¿Eliminar este evento?')) return;
+    await MM.api('/api/admin-events', { method:'DELETE', body: JSON.stringify({id}) });
+    await load(); toast('Evento eliminado');
+  }
+
+  async function load() {
+    const res = await MM.api('/api/admin-events');
+    render(await res.json());
+  }
+  load();
+  document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+</script>
+</body>
+</html>

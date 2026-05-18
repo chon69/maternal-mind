@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca · Maternal Mind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --turq:       #7AACB0;
+      --turq-dark:  #5B9298;
+      --turq-deep:  #4A8A8E;
+      --turq-light: #C2D9DB;
+      --turq-vl:    #EDF4F5;
+      --gold:       #C4A882;
+      --gold-light: #F5EFE6;
+      --ink:        #3A3A3A;
+      --ink-soft:   #5E5E5E;
+      --cream:      #FDFAF5;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; }
+
+    /* ── Nav ─────────────────────────────────────────────────── */
+    nav {
+      background: #fff;
+      border-bottom: 1px solid rgba(122,172,176,.18);
+      padding: .9rem 5vw;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 50;
+    }
+    .nav-logo { display: flex; align-items: center; gap: .5rem; text-decoration: none; }
+    .logo-text { font-size: .95rem; color: var(--turq-dark); }
+    .logo-text span { color: var(--gold); font-weight: 500; }
+    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-links a { font-size: .85rem; color: var(--ink-soft); text-decoration: none; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--turq-dark); }
+    .nav-user { display: flex; align-items: center; gap: .75rem; }
+    .nav-greeting { font-size: .82rem; color: var(--ink-soft); }
+    .btn-logout {
+      font-size: .8rem; color: var(--turq-deep);
+      background: none; border: 1px solid var(--turq-light);
+      border-radius: 20px; padding: .35rem .85rem; cursor: pointer; transition: background .2s;
+    }
+    .btn-logout:hover { background: var(--turq-vl); }
+
+    /* ── Hero ────────────────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, var(--turq-vl), var(--gold-light));
+      padding: 3rem 5vw;
+      border-bottom: 1px solid rgba(122,172,176,.15);
+    }
+    .hero-inner { max-width: 1100px; margin: 0 auto; }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 300; font-style: italic; margin-bottom: .4rem;
+    }
+    .hero p { font-size: .95rem; color: var(--ink-soft); font-weight: 300; }
+    .plan-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--turq); color: #fff;
+      font-size: .72rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase;
+      padding: .3rem .8rem; border-radius: 50px; margin-bottom: .75rem;
+    }
+    .plan-chip.free { background: var(--gold); }
+
+    /* ── Content wrapper ─────────────────────────────────────── */
+    .content { max-width: 1100px; margin: 0 auto; padding: 2.5rem 5vw; }
+
+    /* ── Section title ───────────────────────────────────────── */
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem; font-weight: 400; font-style: italic;
+      color: var(--turq-deep); margin-bottom: 1.25rem;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-title::after { content: ''; flex: 1; height: 1px; background: var(--turq-light); }
+
+    /* ── Kit de Pausa ────────────────────────────────────────── */
+    .kit-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; margin-bottom: 3rem; }
+    .kit-card {
+      background: #fff; border-radius: 14px;
+      border: 1px solid rgba(122,172,176,.18);
+      padding: 1.1rem 1.25rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .kit-card:hover { box-shadow: 0 4px 18px rgba(122,172,176,.18); transform: translateY(-1px); }
+    .kit-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: var(--turq-vl); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; font-size: 18px;
+    }
+    .kit-info { flex: 1; min-width: 0; }
+    .kit-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem; font-style: italic; color: var(--ink); margin-bottom: .2rem;
+    }
+    .kit-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: .5rem; }
+    .chip {
+      font-size: .68rem; font-weight: 500; letter-spacing: .05em;
+      padding: .2rem .6rem; border-radius: 50px;
+    }
+    .chip-tipo { background: var(--turq-vl); color: var(--turq-deep); border: 1px solid var(--turq-light); }
+    .chip-dur  { background: var(--gold-light); color: #8a6a3a; border: 1px solid rgba(196,168,130,.3); }
+    .kit-desc  { font-size: .8rem; color: var(--ink-soft); line-height: 1.5; font-weight: 300; }
+
+    /* ── Biblioteca Mami filter ──────────────────────────────── */
+    .filters { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 1.75rem; }
+    .filter-btn {
+      padding: .4rem 1.1rem; border-radius: 50px;
+      border: 1.5px solid var(--turq-light);
+      background: #fff; color: var(--ink-soft);
+      font-size: .8rem; font-family: 'DM Sans', sans-serif;
+      cursor: pointer; transition: all .2s;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--turq); border-color: var(--turq); color: #fff;
+    }
+
+    /* ── Practice cards grid ─────────────────────────────────── */
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.25rem; }
+
+    .practice-card {
+      background: #fff; border-radius: 16px;
+      border: 1px solid rgba(122,172,176,.18);
+      overflow: hidden; display: flex; flex-direction: column;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .practice-card:hover { box-shadow: 0 6px 28px rgba(122,172,176,.22); transform: translateY(-2px); }
+
+    /* Thin colour bar keyed to category */
+    .cat-bar { height: 4px; background: var(--turq); }
+
+    .card-img { width: 100%; height: 150px; object-fit: cover; }
+    .card-img-placeholder {
+      width: 100%; height: 150px;
+      background: linear-gradient(135deg, var(--turq-vl), var(--gold-light));
+      display: flex; align-items: center; justify-content: center; font-size: 2.5rem;
+    }
+
+    .card-body { padding: 1.1rem 1.25rem; flex: 1; display: flex; flex-direction: column; gap: 0; }
+
+    /* Category label — small, muted, upper */
+    .card-cat {
+      font-size: .65rem; font-weight: 500; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--turq-dark);
+      margin-bottom: .35rem;
+    }
+
+    /* Practice name — main heading */
+    .card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; font-weight: 400; font-style: italic;
+      color: var(--ink); margin-bottom: .65rem; line-height: 1.3;
+    }
+
+    /* Tipo + Duración row */
+    .card-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: .75rem; }
+
+    /* Description */
+    .card-notas {
+      font-size: .82rem; color: var(--ink-soft); line-height: 1.6;
+      font-weight: 300; margin-bottom: .75rem;
+    }
+
+    /* Frase semilla */
+    .card-frase {
+      font-size: .88rem; font-style: italic; color: var(--turq-deep);
+      border-left: 3px solid var(--gold);
+      padding: .35rem 0 .35rem .8rem;
+      margin-bottom: .9rem; line-height: 1.5;
+    }
+
+    /* Audio / action */
+    .card-action { margin-top: auto; }
+    audio {
+      width: 100%; height: 38px; margin-top: .25rem;
+      border-radius: 8px; accent-color: var(--turq);
+    }
+    .btn-resource {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--turq-vl); color: var(--turq-deep);
+      border: 1px solid var(--turq-light); border-radius: 8px;
+      padding: .55rem 1rem; font-size: .82rem; font-family: 'DM Sans', sans-serif;
+      font-weight: 500; text-decoration: none; cursor: pointer;
+      transition: background .15s;
+    }
+    .btn-resource:hover { background: var(--turq-light); }
+
+    /* ── Gate for free users ─────────────────────────────────── */
+    .gate {
+      background: linear-gradient(135deg, var(--turq-vl), var(--gold-light));
+      border: 2px dashed var(--turq-light); border-radius: 18px;
+      padding: 3.5rem 2rem; text-align: center; margin-top: 1.5rem;
+    }
+    .gate-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .gate h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; font-weight: 300; font-style: italic;
+      color: var(--turq-deep); margin-bottom: .6rem;
+    }
+    .gate p { font-size: .92rem; color: var(--ink-soft); max-width: 400px; margin: 0 auto .75rem; line-height: 1.65; font-weight: 300; }
+    .gate ul { list-style: none; margin: 0 auto 1.75rem; max-width: 340px; text-align: left; }
+    .gate ul li { font-size: .88rem; color: var(--ink-soft); padding: .3rem 0; font-weight: 300; }
+    .gate ul li::before { content: '✓  '; color: var(--turq); font-weight: 500; }
+    .btn-upgrade {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--turq); color: #fff;
+      padding: .85rem 2rem; border-radius: 10px;
+      font-size: .92rem; font-family: 'DM Sans', sans-serif; font-weight: 500;
+      border: none; cursor: pointer; transition: opacity .15s;
+    }
+    .btn-upgrade:hover { opacity: .88; }
+
+    /* ── Loading / empty ─────────────────────────────────────── */
+    .loading { text-align: center; padding: 4rem; color: var(--ink-soft); }
+    .spinner {
+      width: 36px; height: 36px;
+      border: 3px solid var(--turq-light); border-top-color: var(--turq);
+      border-radius: 50%; animation: spin .8s linear infinite; margin: 0 auto 1rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .empty { text-align: center; padding: 3rem; color: var(--ink-soft); font-weight: 300; }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .cards-grid, .kit-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a href="/app/cliente/" class="nav-logo">
+    <svg width="28" height="16" viewBox="0 0 52 28" fill="none">
+      <ellipse cx="17" cy="14" rx="13" ry="13" stroke="#7AACB0" stroke-width="3" fill="none"/>
+      <ellipse cx="35" cy="14" rx="13" ry="13" stroke="#C4A882" stroke-width="3" fill="none"/>
+    </svg>
+    <div class="logo-text">maternal <span>mind</span></div>
+  </a>
+  <div class="nav-links">
+    <a href="/app/cliente/">Inicio</a>
+    <a href="/app/cliente/biblioteca.html" class="active">Biblioteca</a>
+    <a href="/app/cliente/eventos.html">Eventos</a>
+    <a href="/app/cliente/blog.html">Blog</a>
+    <a href="/app/cliente/podcast.html">Podcast</a>
+    <a href="/app/cliente/perfil.html">Mi perfil</a>
+  </div>
+  <div class="nav-user">
+    <span class="nav-greeting" id="greeting"></span>
+    <button class="btn-logout" onclick="MM.logout()">Cerrar sesión</button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="plan-chip" id="plan-chip">Cargando…</div>
+    <h1>Biblioteca Maternal Mind</h1>
+    <p>Tu espacio de prácticas, audios y recursos para el bienestar en la maternidad</p>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- Kit de Pausa -->
+  <h2 class="section-title">Kit de Pausa — Bienvenida</h2>
+  <div class="kit-grid" id="kit-list">
+    <div class="loading"><div class="spinner"></div>Cargando…</div>
+  </div>
+
+  <!-- Biblioteca Mami -->
+  <div id="biblioteca-section"></div>
+
+</div>
+
+<script src="/app/js/auth.js"></script>
+<script>
+/* ── Helpers ──────────────────────────────────────────────── */
+const TYPE_ICON = { audio:'🎧', video:'🎬', pdf:'📄', texto:'📝', imagen:'🖼️' };
+const FORMAT_ICON = {
+  'Micro-práctica': '⚡', 'Audio guiado': '🎧',
+  'Reflexión y journaling': '✍️', 'Lectura': '📖',
+};
+/* Each category gets a colour drawn from the brand palette */
+const CAT_COLOR = {
+  'Nutrirme de algo bonito':   '#7AACB0',
+  'Reconectar conmigo':        '#5B9298',
+  'Compartirlo con mi pareja': '#C4A882',
+  'Conectar con mi bebé':      '#9BC4A8',
+  'Hay algo difícil':          '#A8B4C4',
+  'Estoy desbordada':          '#C4A898',
+  'Parar':                     '#B4C4A8',
+};
+
+function fileType(url) {
+  if (!url) return null;
+  /* For Notion S3 URLs, the filename is in the path before the query string */
+  const path = url.split('?')[0];
+  if (path.match(/\.(mp3|m4a|ogg|wav)$/i)) return 'audio';
+  if (path.match(/\.pdf$/i))               return 'pdf';
+  return 'link';
+}
+
+(async () => {
+  const user = MM.requireAuth();
+  if (!user) return;
+
+  document.getElementById('greeting').textContent = user.nombre || user.email;
+
+  /* ── Kit de Pausa ────────────────────────────────────────── */
+  try {
+    const r    = await MM.api('/api/client-resources');
+    const data = await r.json();
+    const raw  = data.items || data || [];
+    const items = Array.isArray(raw) ? raw.filter(i => i.activo !== 'FALSE') : [];
+    const kitList = document.getElementById('kit-list');
+
+    if (!items.length) {
+      kitList.innerHTML = '<p class="empty">El Kit de Pausa estará disponible pronto.</p>';
+    } else {
+      kitList.innerHTML = items.map(item => {
+        const icon = TYPE_ICON[(item.tipo || '').toLowerCase()] || '🌸';
+        const url  = item.url_archivo || item.contenido || '';
+        const ft   = fileType(url);
+        let action = '';
+        if (ft === 'audio') action = `<audio controls src="${url}"></audio>`;
+        else if (ft === 'pdf') action = `<a href="${url}" target="_blank" class="btn-resource">📄 Abrir PDF</a>`;
+        else if (url)          action = `<a href="${url}" target="_blank" class="btn-resource">↗ Ver recurso</a>`;
+        return `
+          <div class="kit-card">
+            <div class="kit-icon">${icon}</div>
+            <div class="kit-info">
+              <p class="kit-name">${item.titulo || '(sin título)'}</p>
+              <div class="kit-chips">
+                ${item.tipo      ? `<span class="chip chip-tipo">${item.tipo}</span>` : ''}
+                ${item.duracion  ? `<span class="chip chip-dur">⏱ ${item.duracion}</span>` : ''}
+              </div>
+              ${item.descripcion ? `<p class="kit-desc">${item.descripcion}</p>` : ''}
+              ${action}
+            </div>
+          </div>`;
+      }).join('');
+    }
+  } catch (e) {
+    document.getElementById('kit-list').innerHTML = '<p class="empty">Error al cargar el Kit de Pausa.</p>';
+  }
+
+  /* ── Biblioteca Mami (Notion) ────────────────────────────── */
+  const section = document.getElementById('biblioteca-section');
+  try {
+    const r    = await MM.api('/api/client-notion');
+    const data = await r.json();
+    const isPremium = data.isPremium || false;
+    const items     = data.items || [];
+
+    /* Update plan chip */
+    const chip = document.getElementById('plan-chip');
+    if (isPremium) {
+      chip.textContent = '✦ Biblioteca Mami';
+    } else {
+      chip.textContent = 'Acceso gratuito';
+      chip.classList.add('free');
+    }
+
+    if (!isPremium) {
+      section.innerHTML = `
+        <h2 class="section-title">Biblioteca Mami — Colección completa</h2>
+        <div class="gate">
+          <div class="gate-icon">🌿</div>
+          <h2>Accede a la Biblioteca completa</h2>
+          <p>Más de 20 prácticas, audios y recursos que crecen cada mes para acompañarte en tu maternidad.</p>
+          <ul>
+            <li>Audios de mindfulness y meditación guiada</li>
+            <li>Prácticas de pareja y conexión con tu bebé</li>
+            <li>Reflexiones y journaling</li>
+            <li>Recursos para los momentos difíciles</li>
+            <li>Nuevo contenido cada mes</li>
+          </ul>
+          <button class="btn-upgrade" onclick="subscribeNow()">✦ Suscribirme a Biblioteca Mami</button>
+        </div>`;
+      return;
+    }
+
+    /* Categories */
+    const cats = [...new Set(items.map(i => i.categoria).filter(Boolean))];
+
+    section.innerHTML = `
+      <h2 class="section-title">Biblioteca Mami <small style="font-size:.75rem;font-style:normal;color:var(--turq);margin-left:6px">${items.length} prácticas</small></h2>
+      <div class="filters" id="filter-bar">
+        <button class="filter-btn active" data-cat="">Todas las prácticas</button>
+        ${cats.map(c => `<button class="filter-btn" data-cat="${c}">${c}</button>`).join('')}
+      </div>
+      <div class="cards-grid" id="notion-list"></div>`;
+
+    let activeCat = '';
+    document.getElementById('filter-bar').addEventListener('click', e => {
+      const btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeCat = btn.dataset.cat;
+      renderCards(items, activeCat);
+    });
+
+    renderCards(items, '');
+
+  } catch (e) {
+    section.innerHTML = '<p class="empty">Error al cargar la Biblioteca.</p>';
+    console.error(e);
+  }
+
+  /* ── Render practice cards ───────────────────────────────── */
+  function renderCards(items, category) {
+    const list = document.getElementById('notion-list');
+    if (!list) return;
+    const filtered = category ? items.filter(i => i.categoria === category) : items;
+    if (!filtered.length) {
+      list.innerHTML = '<p class="empty">No hay prácticas en esta categoría aún.</p>';
+      return;
+    }
+
+    list.innerHTML = filtered.map(item => {
+      const barColor = CAT_COLOR[item.categoria] || 'var(--turq)';
+      const fmtIcon  = FORMAT_ICON[item.formato] || '🌸';
+      const archivo  = item.archivo || '';
+      const ft       = fileType(archivo);
+
+      const coverHtml = item.cover
+        ? `<img class="card-img" src="${item.cover}" alt="" loading="lazy">`
+        : `<div class="card-img-placeholder">${fmtIcon}</div>`;
+
+      let actionHtml = '';
+      if (ft === 'audio') {
+        actionHtml = `<audio controls src="${archivo}" preload="none"></audio>`;
+      } else if (ft === 'pdf') {
+        actionHtml = `<a href="${archivo}" target="_blank" class="btn-resource">📄 Abrir PDF</a>`;
+      } else if (ft === 'link') {
+        actionHtml = `<a href="${archivo}" target="_blank" class="btn-resource">↗ Ver recurso</a>`;
+      }
+
+      return `
+        <div class="practice-card">
+          <div class="cat-bar" style="background:${barColor}"></div>
+          ${coverHtml}
+          <div class="card-body">
+            <p class="card-cat" style="color:${barColor}">${item.categoria || ''}</p>
+            <h3 class="card-name">${item.titulo}</h3>
+            <div class="card-meta">
+              ${item.formato  ? `<span class="chip chip-tipo">${fmtIcon} ${item.formato}</span>` : ''}
+              ${item.duracion ? `<span class="chip chip-dur">⏱ ${item.duracion}</span>` : ''}
+            </div>
+            ${item.notas ? `<p class="card-notas">${item.notas}</p>` : ''}
+            ${item.frase ? `<div class="card-frase">${item.frase}</div>` : ''}
+            ${actionHtml ? `<div class="card-action">${actionHtml}</div>` : ''}
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  /* ── Stripe upgrade ──────────────────────────────────────── */
+  window.subscribeNow = async function () {
+    try {
+      const r    = await MM.api('/api/stripe-checkout', { method: 'POST', body: JSON.stringify({}) });
+      const data = await r.json();
+      if (data.url) location.href = data.url;
+      else alert(data.error || 'Error al iniciar el pago. Contacta con nosotras.');
+    } catch {
+      alert('Error de conexión. Inténtalo de nuevo.');
+    }
+  };
+
+})();
+</script>
+
+</body>
+</html>
