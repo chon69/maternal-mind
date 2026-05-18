@@ -10,20 +10,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --turq:       #7DCFCA;
-    --turq-dark:  #5BBFB9;
-    --turq-deep:  #4AADA7;
-    --turq-light: #A8DDD9;
-    --turq-vlight:#EEF9F8;
-    --gold:       #F2C14E;
-    --gold-dark:  #C49A20;
-    --gold-light: #FEF7E0;
-    --gold-vlight:#FDF3DC;
-    --amber:      #FDF3DC;
-    --rose:       #EEF9F8;
+    --turq:       #7AACB0;
+    --turq-dark:  #5B9298;
+    --turq-deep:  #4A8A8E;
+    --turq-light: #C2D9DB;
+    --turq-vlight:#EDF4F5;
+    --gold:       #C4A882;
+    --gold-dark:  #A08060;
+    --gold-light: #EDF4F5;
+    --gold-vlight:#EDF4F5;
+    --amber:      #EDF4F5;
+    --rose:       #EDF4F5;
     --ink:        #3A3A3A;
-    --ink-soft:   #6B6B6B;
-    --cream:      #FDFAF5;
+    --ink-soft:   #5E5E5E;
+    --cream:      #FFFFFF;
     --white:      #FFFFFF;
   }
 
@@ -55,8 +55,8 @@
   .logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
   .logo svg { flex-shrink: 0; }
   .logo-text { font-family: 'DM Sans', sans-serif; font-size: 1rem; color: var(--turq-deep); letter-spacing: 0.01em; }
-  .logo-text span { color: var(--gold-dark); font-weight: 500; }
-  .header-tagline { font-size: 0.72rem; color: var(--gold-dark); letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; }
+  .logo-text span { color: var(--turq-deep); font-weight: 500; }
+  .header-tagline { font-size: 0.72rem; color: var(--turq-deep); letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; }
 
   /* ── HERO ── */
   .hero {
@@ -89,9 +89,9 @@
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    background: var(--gold-vlight);
-    color: var(--gold-dark);
-    border: 1px solid rgba(242,193,78,0.3);
+    background: var(--turq-vlight);
+    color: var(--turq-deep);
+    border: 1px solid rgba(74,138,142,0.25);
     font-size: 0.7rem;
     font-weight: 500;
     letter-spacing: 0.14em;
@@ -136,7 +136,7 @@
   }
   .form-card-accent {
     height: 5px;
-    background: linear-gradient(90deg, var(--turq) 0%, var(--gold) 100%);
+    background: linear-gradient(90deg, var(--turq-deep) 0%, var(--turq) 60%, var(--turq-light) 100%);
   }
   .form-card-body { padding: 36px 32px; }
   .form-card-label {
@@ -180,7 +180,7 @@
   .btn-primary {
     width: 100%;
     padding: 15px 24px;
-    background: linear-gradient(135deg, var(--turq-deep) 0%, var(--turq) 60%, var(--gold) 100%);
+    background: linear-gradient(135deg, var(--turq-deep) 0%, var(--turq) 100%);
     color: var(--white);
     border: none;
     border-radius: 10px;
@@ -325,14 +325,14 @@
   .pain-card p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.7; font-weight: 300; }
 
   /* ── BEAUTY SECTION ── */
-  .section-beauty { background: var(--gold-vlight); }
+  .section-beauty { background: var(--turq-vlight); }
   .pull-quote {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.35rem;
     font-style: italic;
     font-weight: 300;
     color: var(--turq-deep);
-    border-left: 3px solid var(--gold);
+    border-left: 3px solid var(--turq);
     padding: 1rem 0 1rem 1.5rem;
     margin-top: 2rem;
     line-height: 1.6;
@@ -440,27 +440,24 @@
   .section-bio { background: var(--white); }
   .bio-content { display: flex; gap: 3rem; align-items: flex-start; }
   .bio-avatar {
-    width: 96px;
-    height: 96px;
-    border-radius: 50%;
-    background: var(--turq-vlight);
-    border: 2.5px solid var(--turq-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 200px;
+    height: 260px;
+    border-radius: 16px;
+    overflow: hidden;
     flex-shrink: 0;
+    border: 2.5px solid var(--turq-light);
+    box-shadow: 0 8px 28px rgba(74,138,142,0.12);
   }
-  .bio-avatar-inner {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.5rem;
-    font-style: italic;
-    color: var(--turq);
-    line-height: 1;
+  .bio-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 8%;
   }
   .bio-text { flex: 1; }
   .bio-intro {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.9rem;
+    font-size: 2.4rem;
     font-style: italic;
     font-weight: 300;
     color: var(--ink);
@@ -498,7 +495,7 @@
   }
 
   /* ── LIBRARY SECTION ── */
-  .section-library { background: var(--gold-vlight); }
+  .section-library { background: var(--turq-vlight); }
   .section-library .section-inner { text-align: center; }
 
   /* ── CTA DARK SECTION ── */
@@ -508,11 +505,11 @@
     text-align: center;
   }
   .section-label-light {
-    color: rgba(242,193,78,0.9);
+    color: rgba(194,217,219,0.9);
     letter-spacing: 0.18em;
   }
   .section-label-light::before, .section-label-light::after {
-    background: rgba(242,193,78,0.35);
+    background: rgba(194,217,219,0.4);
   }
   .section-title-light {
     font-family: 'Cormorant Garamond', serif;
@@ -609,7 +606,7 @@
   <a href="#" class="logo">
     <svg width="36" height="20" viewBox="0 0 52 28" fill="none" xmlns="http://www.w3.org/2000/svg">
       <ellipse cx="17" cy="14" rx="13" ry="13" stroke="#7DCFCA" stroke-width="3" fill="none"/>
-      <ellipse cx="35" cy="14" rx="13" ry="13" stroke="#F2C14E" stroke-width="3" fill="none"/>
+      <ellipse cx="35" cy="14" rx="13" ry="13" stroke="#5B9298" stroke-width="3" fill="none"/>
     </svg>
     <div class="logo-text">maternal <span>mind</span></div>
   </a>
@@ -649,7 +646,6 @@
               <span class="btn-text">Quiero mi Kit de Pausa →</span>
               <span class="btn-loading" hidden>Enviando…</span>
             </button>
-            <p class="form-note">✨ Sin spam · Solo para ti</p>
           </form>
           <div class="form-success" hidden>
             <div class="success-icon">🌿</div>
@@ -667,7 +663,6 @@
 <!-- ══ KIT PREVIEW STRIP ══ -->
 <section class="kit-preview">
   <div class="kit-preview-inner">
-    <div class="kit-badge">Kit de Pausa · Maternal Mind</div>
     <div class="kit-features">
 
       <div class="kit-feature">
@@ -844,7 +839,7 @@
 <section class="section-bio">
   <div class="section-inner">
     <div class="bio-content">
-      <div class="bio-avatar"><div class="bio-avatar-inner">C</div></div>
+      <div class="bio-avatar"><img src="chon.png" alt="Chon Jorquera"></div>
       <div class="bio-text">
         <p class="bio-intro">Hola, soy Chon.</p>
         <p class="bio-subtitle">Madre de 3 · Instructora de Mindfulness · Guía de Círculos de Maternidad</p>
@@ -894,7 +889,6 @@
         <span class="btn-text">Quiero mi Kit de Pausa →</span>
         <span class="btn-loading" hidden>Enviando…</span>
       </button>
-      <p class="form-note form-note-light">🔒 Sin spam. Puedes darte de baja cuando quieras.</p>
     </form>
     <div class="form-success form-success-light" hidden>
       <div class="success-icon">🌿</div>
@@ -910,7 +904,7 @@
   <div class="footer-brand">
     <svg width="28" height="16" viewBox="0 0 52 28" fill="none" xmlns="http://www.w3.org/2000/svg">
       <ellipse cx="17" cy="14" rx="13" ry="13" stroke="#7DCFCA" stroke-width="3" fill="none"/>
-      <ellipse cx="35" cy="14" rx="13" ry="13" stroke="#F2C14E" stroke-width="3" fill="none"/>
+      <ellipse cx="35" cy="14" rx="13" ry="13" stroke="#5B9298" stroke-width="3" fill="none"/>
     </svg>
     <span>Maternal Mind</span> · maternalmind.es
   </div>
@@ -941,13 +935,12 @@
       btn.disabled      = true;
 
       try {
-        const res = await fetch('/.netlify/functions/submit-form', {
+        await fetch('https://script.google.com/macros/s/AKfycbzIi3DzwFIpbh8iamL3tfxLbdq8HUo0xpeFekxTEygkbs234N14Emjg8ebfBVwRf8eu/exec', {
           method:  'POST',
-          headers: { 'Content-Type': 'application/json' },
+          mode:    'no-cors',
+          headers: { 'Content-Type': 'text/plain' },
           body:    JSON.stringify({ nombre, email }),
         });
-
-        if (!res.ok) throw new Error('Server error ' + res.status);
 
         form.hidden = true;
         if (successEl) successEl.hidden = false;
