@@ -46,6 +46,7 @@ function prop(p) {
     case 'checkbox':     return p.checkbox ? 'true' : 'false';
     case 'number':       return p.number != null ? String(p.number) : '';
     case 'files':        return (p.files || []).map(f => f.external?.url || f.file?.url || '').filter(Boolean).join(', ');
+    case 'files_meta':   return (p.files || []).map(f => f.name || '').filter(Boolean).join(', ');
     default:             return '';
   }
 }
@@ -81,7 +82,8 @@ exports.handler = async (event) => {
         duracion:   prop(p['Duración'])  || prop(p['Duracion'])  || '',
         notas:      prop(p['Notas'])     || '',
         frase:      prop(p['Frase semilla']) || '',
-        archivo:    prop(p['Archivos multimedia']) || '',
+        archivo:        prop(p['Archivos multimedia']) || '',
+        archivoNombre:  (p['Archivos multimedia']?.files?.[0]?.name || ''),
         cover:      page.cover?.external?.url || page.cover?.file?.url || null,
         icon:       page.icon?.emoji || null,
         created:    page.created_time,

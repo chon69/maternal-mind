@@ -298,13 +298,18 @@ const CAT_COLOR = {
   'Parar':                     '#B4C4A8',
 };
 
-function fileType(url) {
-  if (!url) return null;
-  /* For Notion S3 URLs, the filename is in the path before the query string */
-  const path = url.split('?')[0];
-  if (path.match(/\.(mp3|m4a|ogg|wav)$/i)) return 'audio';
-  if (path.match(/\.pdf$/i))               return 'pdf';
-  return 'link';
+function resolveUrl(url) {
+  if (!url) return '';
+  if (url.startsWith('http') || url.startsWith('/')) return url;
+  return '/' + url;
+}
+
+function fileType(url, nombre) {
+  const check = nombre || url || '';
+  if (check.match(/\.(mp3|m4a|ogg|wav)/i)) return 'audio';
+  if (check.match(/\.pdf/i))               return 'pdf';
+  if (url) return 'link';
+  return null;
 }
 
 (async () => {
@@ -326,10 +331,10 @@ function fileType(url) {
     } else {
       kitList.innerHTML = items.map(item => {
         const icon = TYPE_ICON[(item.tipo || '').toLowerCase()] || '🌸';
-        const url  = item.url_archivo || item.contenido || '';
-        const ft   = fileType(url);
+        const url  = resolveUrl(item.url_archivo || '');
+        const ft   = fileType(url, item.url_archivo);
         let action = '';
-        if (ft === 'audio') action = `<audio controls src="${url}"></audio>`;
+        if (ft === 'audio') action = `<audio controls src="${url}" preload="none"></audio>`;
         else if (ft === 'pdf') action = `<a href="${url}" target="_blank" class="btn-resource">📄 Abrir PDF</a>`;
         else if (url)          action = `<a href="${url}" target="_blank" class="btn-resource">↗ Ver recurso</a>`;
         return `
@@ -429,7 +434,7 @@ function fileType(url) {
       const barColor = CAT_COLOR[item.categoria] || 'var(--turq)';
       const fmtIcon  = FORMAT_ICON[item.formato] || '🌸';
       const archivo  = item.archivo || '';
-      const ft       = fileType(archivo);
+      const ft       = fileType(archivo, item.archivoNombre);
 
       const coverHtml = item.cover
         ? `<img class="card-img" src="${item.cover}" alt="" loading="lazy">`
