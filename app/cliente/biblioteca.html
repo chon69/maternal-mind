@@ -366,17 +366,16 @@ function fileType(url, nombre) {
     if (!items.length) {
       kitList.innerHTML = '<p class="empty">El Kit de Pausa estará disponible pronto.</p>';
     } else {
-      kitList.innerHTML = items.map(item => {
+      window._kitItems = items;
+      kitList.innerHTML = items.map((item, idx) => {
         const icon = TYPE_ICON[(item.tipo || '').toLowerCase()] || '🌸';
         const url  = resolveUrl(item.url_archivo || '');
         const ft   = fileType(url, item.url_archivo);
-        const contenido = (item.contenido || '').replace(/'/g, "\\'").replace(/\n/g, '\\n');
-        const tituloEsc = (item.titulo || '').replace(/'/g, "\\'");
         let action = '';
         if (ft === 'audio') action = `<audio controls src="${url}" preload="none"></audio>`;
         else if (ft === 'pdf') action = `<a href="${url}" target="_blank" class="btn-resource">📄 Abrir PDF</a>`;
         else if (url)          action = `<a href="${url}" target="_blank" class="btn-resource">↗ Ver recurso</a>`;
-        else if (item.contenido) action = `<button class="btn-resource" onclick="openModal('${tituloEsc}','${contenido}')">📖 Leer práctica</button>`;
+        else if (item.contenido) action = `<button class="btn-resource" onclick="openModal(${idx})">📖 Leer práctica</button>`;
         return `
           <div class="kit-card">
             <div class="kit-icon">${icon}</div>
@@ -509,9 +508,11 @@ function fileType(url, nombre) {
   }
 
   /* ── Modal práctica ─────────────────────────────────────── */
-  window.openModal = function(titulo, contenido) {
-    document.getElementById('modal-title').textContent = titulo;
-    document.getElementById('modal-body').textContent  = contenido.replace(/\\n/g, '\n');
+  window.openModal = function(idx) {
+    const item = window._kitItems[idx];
+    if (!item) return;
+    document.getElementById('modal-title').textContent = item.titulo || '';
+    document.getElementById('modal-body').textContent  = item.contenido || '';
     document.getElementById('modal-overlay').classList.add('open');
     document.body.style.overflow = 'hidden';
   };
