@@ -110,6 +110,21 @@ for (const fn of fns) {
   app.all(`/api/${fn}`, netlify(handler));
 }
 
+// Endpoint de diagnóstico de email (solo admin)
+app.post('/api/test-email', async (req, res) => {
+  const { to } = req.body || {};
+  if (!to) return res.status(400).json({ error: 'Falta campo to' });
+  try {
+    const { send, activationEmail } = require('./netlify/lib/email');
+    const url = (process.env.APP_URL || 'http://localhost:3000') + '/app/activar.html?token=TEST&email=' + encodeURIComponent(to);
+    await send(to, '[TEST] Email de prueba Maternal Mind 🌿', activationEmail('Prueba', url));
+    res.json({ success: true, message: `Email enviado a ${to}` });
+  } catch (err) {
+    console.error('test-email error:', err);
+    res.status(500).json({ error: err.message, details: err.errors || null });
+  }
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Maternal Mind → http://localhost:${PORT}`);
