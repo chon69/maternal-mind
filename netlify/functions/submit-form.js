@@ -63,13 +63,20 @@ exports.handler = async (event) => {
   const [leadResult, userResult] = await Promise.allSettled([
     logLead(nombre, email),
     (async () => {
+      console.log(`[submit-form] buscando usuario: ${email}`);
       const existing = await findBy('Usuarios', 'email', email);
-      if (existing && existing.estado === 'activo') return 'already_active';
+      if (existing && existing.estado === 'activo') {
+        console.log(`[submit-form] ya activo: ${email}`);
+        return 'already_active';
+      }
       if (existing && existing.estado === 'pendiente') {
+        console.log(`[submit-form] pendiente, reenviando email a: ${email}`);
         const url = `${APP_URL}/app/activar.html?token=${existing.token_activacion}&email=${encodeURIComponent(email)}`;
-        await send(email, 'Activa tu acceso a Maternal Mind 🌿', activationEmail(nombre, url));
+        await send(email, 'Accede a tu Kit de Bienvenida 🌿', activationEmail(nombre, url));
+        console.log(`[submit-form] email reenviado a: ${email}`);
         return 'resent';
       }
+      console.log(`[submit-form] creando usuario: ${email}`);
       const token = crypto.randomUUID();
       const expiry = new Date(Date.now() + 72 * 3600 * 1000).toISOString();
       const role = email.toLowerCase() === ADMIN_EMAIL.toLowerCase() ? 'admin' : 'client';
@@ -86,13 +93,16 @@ exports.handler = async (event) => {
         last_login: '',
       });
       const url = `${APP_URL}/app/activar.html?token=${token}&email=${encodeURIComponent(email)}`;
-      await send(email, 'Activa tu acceso a Maternal Mind 🌿', activationEmail(nombre, url));
+      console.log(`[submit-form] enviando email de activación a: ${email}`);
+      await send(email, 'Accede a tu Kit de Bienvenida 🌿', activationEmail(nombre, url));
+      console.log(`[submit-form] email enviado a: ${email}`);
       return 'created';
     })(),
   ]);
 
-  if (leadResult.status === 'rejected') console.error('Sheets error:', leadResult.reason);
-  if (userResult.status === 'rejected')  console.error('User create error:', userResult.reason);
+  if (leadResult.status === 'rejected') console.error('[submit-form] Sheets lead error:', leadResult.reason?.message || leadResult.reason);
+  if (userResult.status === 'rejected')  console.error('[submit-form] User/email error:', userResult.reason?.message || userResult.reason);
+  if (userResult.status === 'fulfilled') console.log('[submit-form] resultado:', userResult.value);
 
   return { statusCode: 200, headers: CORS, body: JSON.stringify({ success: true }) };
 };
