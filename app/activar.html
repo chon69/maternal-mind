@@ -48,8 +48,8 @@
     <div class="card-accent"></div>
     <div class="card-body" id="card-content">
       <div class="step-icon">🌿</div>
-      <h1>Activa tu cuenta</h1>
-      <p class="sub">Elige una contraseña para acceder a tu espacio de Maternal Mind cuando quieras.</p>
+      <h1>Elige tu contraseña</h1>
+      <p class="sub">Un último paso y entras directamente a tu Kit de Bienvenida y a todo tu espacio.</p>
       <form id="activate-form" novalidate>
         <label for="password">Contraseña</label>
         <input type="password" id="password" placeholder="Mínimo 8 caracteres" required>
@@ -63,8 +63,8 @@
         <input type="password" id="confirm" placeholder="Repite tu contraseña" required>
         <div id="msg" class="msg" hidden></div>
         <button type="submit" class="btn" id="btn">
-          <span id="btn-text">Activar mi cuenta →</span>
-          <span id="btn-loading" hidden>Activando…</span>
+          <span id="btn-text">Acceder a mi Kit de Bienvenida →</span>
+          <span id="btn-loading" hidden>Entrando…</span>
         </button>
       </form>
     </div>
@@ -126,10 +126,10 @@
       MM.setToken(data.token);
       MM.setUser(data.user);
       msgEl.className = 'msg success';
-      msgEl.textContent = '¡Cuenta activada! Entrando a tu espacio…';
+      msgEl.textContent = '¡Todo listo! Entrando a tu Kit de Bienvenida…';
       msgEl.hidden = false;
       setTimeout(() => {
-        window.location.href = data.user.role === 'admin' ? '/app/admin/' : '/app/cliente/';
+        window.location.href = data.user.role === 'admin' ? '/app/admin/' : '/app/cliente/biblioteca.html';
       }, 1200);
     } catch (err) {
       msgEl.className = 'msg error'; msgEl.textContent = err.message; msgEl.hidden = false;

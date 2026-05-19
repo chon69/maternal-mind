@@ -53,11 +53,13 @@ function wrapEmail(content) {
 function activationEmail(nombre, activationUrl) {
   const content = `
     <p style="margin:0 0 20px;font-family:Georgia,serif;font-size:22px;font-style:italic;color:#3A3A3A;">Hola, ${nombre} 🌿</p>
-    <p style="margin:0 0 16px;color:#5E5E5E;line-height:1.75;">¡Bienvenida a Maternal Mind! Tu acceso a tu espacio personal está listo.</p>
-    <p style="margin:0 0 28px;color:#5E5E5E;line-height:1.75;">Haz clic en el botón para activar tu cuenta y acceder al Kit de Pausa y todo lo que tu espacio tiene para ti.</p>
+    <p style="margin:0 0 16px;color:#5E5E5E;line-height:1.75;">Me alegra mucho que estés aquí.</p>
+    <p style="margin:0 0 16px;color:#5E5E5E;line-height:1.75;">He preparado para ti un espacio pensado para acompañarte en tu maternidad: el <strong style="color:#3A3A3A;">Kit de Bienvenida</strong> con tus primeras prácticas, los eventos y círculos donde encontrarte con otras madres, el blog y el podcast.</p>
+    <p style="margin:0 0 28px;color:#5E5E5E;line-height:1.75;">Un clic y estás dentro. Solo tienes que elegir tu contraseña para acceder cuando quieras.</p>
     <div style="text-align:center;margin:32px 0;">
-      <a href="${activationUrl}" style="display:inline-block;background:#7AACB0;color:#fff;font-family:Arial,sans-serif;font-size:16px;font-weight:600;text-decoration:none;padding:17px 48px;border-radius:8px;">Activar mi cuenta →</a>
+      <a href="${activationUrl}" style="display:inline-block;background:#7AACB0;color:#fff;font-family:Arial,sans-serif;font-size:16px;font-weight:600;text-decoration:none;padding:17px 48px;border-radius:8px;">Acceder a mi Kit de Bienvenida →</a>
     </div>
+    <p style="margin:24px 0 8px;color:#5E5E5E;line-height:1.75;font-style:italic;">Con calma y cariño,<br><strong style="font-style:normal;color:#3A3A3A;">Chon</strong></p>
     <p style="margin:16px 0 0;color:#9EB5B7;font-size:13px;text-align:center;">Este enlace expira en 72 horas. Si no lo has solicitado, ignora este email.</p>`;
   return wrapEmail(content);
 }
