@@ -5,6 +5,19 @@
 
 ---
 
+## URLs públicas (producción)
+
+| | URL |
+|-|-----|
+| **Landing** | https://maternal-mind.onrender.com |
+| **Login** | https://maternal-mind.onrender.com/app/login.html |
+| **Panel Admin** | https://maternal-mind.onrender.com/app/admin/ |
+| **Panel Clientas** | https://maternal-mind.onrender.com/app/cliente/ |
+
+> Alojado en Render.com — se re-despliega automáticamente con cada `git push`
+
+---
+
 ## Arrancar la aplicación en local
 
 ```bash
@@ -19,7 +32,7 @@ App disponible en: **http://localhost:3000**
 
 | Campo       | Valor                          |
 |-------------|--------------------------------|
-| **URL**     | http://localhost:3000/app/admin/ |
+| **URL**     | https://maternal-mind.onrender.com/app/admin/ |
 | **Email**   | chon@maternalmind.es           |
 | **Contraseña** | La que estableciste con `node setup-admin.js` |
 | **Rol**     | admin                          |
