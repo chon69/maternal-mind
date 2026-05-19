@@ -61,16 +61,20 @@ async function run() {
   if (existing) {
     // Actualizar contraseña y activar
     const rowNum = rows.indexOf(existing) + 1;
-    const pwIdx  = headers.indexOf('password_hash');
-    const stIdx  = headers.indexOf('estado');
-    const tokIdx = headers.indexOf('token_activacion');
-    existing[pwIdx]  = hash;
-    existing[stIdx]  = 'activo';
-    existing[tokIdx] = '';
+    const pwIdx   = headers.indexOf('password_hash');
+    const stIdx   = headers.indexOf('estado');
+    const tokIdx  = headers.indexOf('token_activacion');
+    const planIdx = headers.indexOf('plan');
+    const roleIdx = headers.indexOf('role');
+    existing[pwIdx]   = hash;
+    existing[stIdx]   = 'activo';
+    existing[tokIdx]  = '';
+    if (planIdx >= 0) existing[planIdx] = 'biblioteca_mami';
+    if (roleIdx >= 0) existing[roleIdx] = 'admin';
     const endCol = String.fromCharCode(64 + headers.length);
     await sheets.spreadsheets.values.update({
       spreadsheetId: ID,
-      range: `Usuarios!A${rowNum + 1}:${endCol}${rowNum + 1}`,
+      range: `Usuarios!A${rowNum}:${endCol}${rowNum}`,
       valueInputOption: 'USER_ENTERED',
       requestBody: { values: [existing] },
     });
