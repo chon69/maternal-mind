@@ -239,9 +239,28 @@
       font-size: 1.5rem; font-style: italic; font-weight: 300;
       color: var(--turq-deep); margin-bottom: 1.25rem; clear: both;
     }
-    .modal-content {
-      font-size: .92rem; color: var(--ink-soft); line-height: 1.85;
-      font-weight: 300; white-space: pre-line;
+    .modal-content { font-size: .92rem; color: var(--ink-soft); line-height: 1.85; font-weight: 300; }
+    .modal-p { margin: 0 0 .9rem; }
+    .modal-pregunta {
+      margin: 1.1rem 0 .4rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem; font-style: italic;
+      color: var(--turq-deep); font-weight: 400;
+    }
+    .modal-list {
+      list-style: none; margin: .25rem 0 .9rem 0; padding: 0;
+    }
+    .modal-list li {
+      padding: .25rem 0 .25rem 1.2rem; position: relative;
+    }
+    .modal-list li::before { content: '·'; position: absolute; left: 0; color: var(--turq); }
+    .modal-frase {
+      margin: 1.4rem 0 .5rem;
+      font-style: italic; font-size: .95rem;
+      color: var(--turq-deep);
+      border-left: 3px solid var(--gold);
+      padding: .5rem 0 .5rem .9rem;
+      line-height: 1.6;
     }
 
     /* ── Loading / empty ─────────────────────────────────────── */
@@ -508,11 +527,57 @@ function fileType(url, nombre) {
   }
 
   /* ── Modal práctica ─────────────────────────────────────── */
+  function formatContenido(text) {
+    if (!text) return '';
+    const lines = text.split('\n');
+    let html = '';
+    let inList = false;
+
+    for (const raw of lines) {
+      const line = raw.trimEnd();
+
+      /* 💛 Frase semilla */
+      if (line.startsWith('💛')) {
+        if (inList) { html += '</ul>'; inList = false; }
+        const frase = line.replace(/^💛\s*Frase semilla:\s*/i, '').replace(/^"|"$/g, '');
+        html += `<div class="modal-frase">💛 ${frase}</div>`;
+        continue;
+      }
+
+      /* 🌿 Pregunta / sección */
+      if (line.startsWith('🌿')) {
+        if (inList) { html += '</ul>'; inList = false; }
+        html += `<p class="modal-pregunta">${line}</p>`;
+        continue;
+      }
+
+      /* · bullet */
+      if (line.startsWith('·')) {
+        if (!inList) { html += '<ul class="modal-list">'; inList = true; }
+        html += `<li>${line.slice(1).trim()}</li>`;
+        continue;
+      }
+
+      /* línea vacía */
+      if (!line) {
+        if (inList) { html += '</ul>'; inList = false; }
+        continue;
+      }
+
+      /* párrafo normal */
+      if (inList) { html += '</ul>'; inList = false; }
+      html += `<p class="modal-p">${line}</p>`;
+    }
+
+    if (inList) html += '</ul>';
+    return html;
+  }
+
   window.openModal = function(idx) {
     const item = window._kitItems[idx];
     if (!item) return;
     document.getElementById('modal-title').textContent = item.titulo || '';
-    document.getElementById('modal-body').textContent  = item.contenido || '';
+    document.getElementById('modal-body').innerHTML    = formatContenido(item.contenido);
     document.getElementById('modal-overlay').classList.add('open');
     document.body.style.overflow = 'hidden';
   };
