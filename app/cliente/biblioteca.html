@@ -216,6 +216,34 @@
     }
     .btn-upgrade:hover { opacity: .88; }
 
+    /* ── Modal práctica ─────────────────────────────────────── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(58,58,58,.45); z-index: 200;
+      align-items: center; justify-content: center; padding: 1rem;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: #fff; border-radius: 20px; max-width: 560px; width: 100%;
+      max-height: 85vh; overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,.18);
+      padding: 2.5rem 2rem;
+    }
+    .modal-close {
+      float: right; background: none; border: none;
+      font-size: 1.4rem; cursor: pointer; color: var(--ink-soft);
+      line-height: 1; margin: -.5rem -.5rem 0 0;
+    }
+    .modal h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-style: italic; font-weight: 300;
+      color: var(--turq-deep); margin-bottom: 1.25rem; clear: both;
+    }
+    .modal-content {
+      font-size: .92rem; color: var(--ink-soft); line-height: 1.85;
+      font-weight: 300; white-space: pre-line;
+    }
+
     /* ── Loading / empty ─────────────────────────────────────── */
     .loading { text-align: center; padding: 4rem; color: var(--ink-soft); }
     .spinner {
@@ -263,6 +291,15 @@
     <div class="plan-chip" id="plan-chip">Cargando…</div>
     <h1>Biblioteca Maternal Mind</h1>
     <p>Tu espacio de prácticas, audios y recursos para el bienestar en la maternidad</p>
+  </div>
+</div>
+
+<!-- Modal práctica de texto -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('modal-overlay').classList.remove('open')">✕</button>
+    <h2 id="modal-title"></h2>
+    <div class="modal-content" id="modal-body"></div>
   </div>
 </div>
 
@@ -333,10 +370,13 @@ function fileType(url, nombre) {
         const icon = TYPE_ICON[(item.tipo || '').toLowerCase()] || '🌸';
         const url  = resolveUrl(item.url_archivo || '');
         const ft   = fileType(url, item.url_archivo);
+        const contenido = (item.contenido || '').replace(/'/g, "\\'").replace(/\n/g, '\\n');
+        const tituloEsc = (item.titulo || '').replace(/'/g, "\\'");
         let action = '';
         if (ft === 'audio') action = `<audio controls src="${url}" preload="none"></audio>`;
         else if (ft === 'pdf') action = `<a href="${url}" target="_blank" class="btn-resource">📄 Abrir PDF</a>`;
         else if (url)          action = `<a href="${url}" target="_blank" class="btn-resource">↗ Ver recurso</a>`;
+        else if (item.contenido) action = `<button class="btn-resource" onclick="openModal('${tituloEsc}','${contenido}')">📖 Leer práctica</button>`;
         return `
           <div class="kit-card">
             <div class="kit-icon">${icon}</div>
@@ -467,6 +507,20 @@ function fileType(url, nombre) {
         </div>`;
     }).join('');
   }
+
+  /* ── Modal práctica ─────────────────────────────────────── */
+  window.openModal = function(titulo, contenido) {
+    document.getElementById('modal-title').textContent = titulo;
+    document.getElementById('modal-body').textContent  = contenido.replace(/\\n/g, '\n');
+    document.getElementById('modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+  window.closeModal = function(e) {
+    if (e.target === document.getElementById('modal-overlay')) {
+      document.getElementById('modal-overlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  };
 
   /* ── Stripe upgrade ──────────────────────────────────────── */
   window.subscribeNow = async function () {
