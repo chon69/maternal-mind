@@ -436,6 +436,67 @@ function fileType(url, nombre) {
   return null;
 }
 
+/* ── Modal práctica ─────────────────────────────────────── */
+function formatContenido(text) {
+  if (!text) return '';
+  const lines = text.split('\n');
+  let html = '';
+  let inList = false;
+  for (const raw of lines) {
+    const line = raw.trimEnd();
+    if (line.startsWith('💛')) {
+      if (inList) { html += '</ul>'; inList = false; }
+      const frase = line.replace(/^💛\s*Frase semilla:\s*/i, '').replace(/^"|"$/g, '');
+      html += `<div class="modal-frase-body">💛 ${frase}</div>`;
+    } else if (line.startsWith('—')) {
+      if (inList) { html += '</ul>'; inList = false; }
+      html += `<p class="modal-dialogo">${line}</p>`;
+    } else if (line.startsWith('Para cerrar:')) {
+      if (inList) { html += '</ul>'; inList = false; }
+      html += `<p class="modal-cierre">${line}</p>`;
+    } else if (line.startsWith('🌿')) {
+      if (inList) { html += '</ul>'; inList = false; }
+      html += `<p class="modal-pregunta">${line}</p>`;
+    } else if (line.startsWith('·')) {
+      if (!inList) { html += '<ul class="modal-list">'; inList = true; }
+      html += `<li>${line.slice(1).trim()}</li>`;
+    } else if (!line) {
+      if (inList) { html += '</ul>'; inList = false; }
+    } else {
+      if (inList) { html += '</ul>'; inList = false; }
+      html += `<p class="modal-p">${line}</p>`;
+    }
+  }
+  if (inList) html += '</ul>';
+  return html;
+}
+
+window.openModal = function(idx) {
+  const item = window._kitItems && window._kitItems[idx];
+  if (!item) return;
+  document.getElementById('modal-icon').textContent     = FORMAT_ICON[item.tipo||''] || '🌿';
+  document.getElementById('modal-title').textContent    = item.titulo || '';
+  document.getElementById('modal-subtitle').textContent = item.descripcion ? `"${item.descripcion}"` : '';
+  document.getElementById('modal-category').textContent = `MATERNAL MIND · ${(item.modulo_nombre||item.tipo||'PRÁCTICA').toUpperCase()}`;
+  document.getElementById('modal-chips').innerHTML = [
+    item.duracion ? `<span class="modal-chip">⏱ ${item.duracion}</span>` : '',
+    item.tipo     ? `<span class="modal-chip">${item.tipo}</span>` : '',
+  ].join('');
+  const fraseMatch = (item.contenido||'').match(/💛\s*Frase semilla:\s*"?([^"\n]+)"?/i);
+  const fraseEl = document.getElementById('modal-frase-header');
+  if (fraseMatch) { fraseEl.textContent = '💛 ' + fraseMatch[1].trim(); fraseEl.hidden = false; }
+  else { fraseEl.hidden = true; }
+  document.getElementById('modal-body').innerHTML = formatContenido(item.contenido);
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+};
+window.closeModal = function(e) {
+  if (e.target === document.getElementById('modal-overlay')) {
+    document.getElementById('modal-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+};
+
 (async () => {
   const user = MM.requireAuth();
   if (!user) return;
@@ -593,106 +654,6 @@ function fileType(url, nombre) {
         </div>`;
     }).join('');
   }
-
-  /* ── Modal práctica ─────────────────────────────────────── */
-  function formatContenido(text) {
-    if (!text) return '';
-    const lines = text.split('\n');
-    let html = '';
-    let inList = false;
-
-    for (const raw of lines) {
-      const line = raw.trimEnd();
-
-      /* 💛 Frase semilla — en cuerpo queda oculta (ya está en cabecera) */
-      if (line.startsWith('💛')) {
-        if (inList) { html += '</ul>'; inList = false; }
-        const frase = line.replace(/^💛\s*Frase semilla:\s*/i, '').replace(/^"|"$/g, '');
-        html += `<div class="modal-frase-body">💛 ${frase}</div>`;
-        continue;
-      }
-
-      /* — Diálogo */
-      if (line.startsWith('—')) {
-        if (inList) { html += '</ul>'; inList = false; }
-        html += `<p class="modal-dialogo">${line}</p>`;
-        continue;
-      }
-
-      /* Para cerrar: */
-      if (line.startsWith('Para cerrar:')) {
-        if (inList) { html += '</ul>'; inList = false; }
-        html += `<p class="modal-cierre">${line}</p>`;
-        continue;
-      }
-
-      /* 🌿 Pregunta / sección */
-      if (line.startsWith('🌿')) {
-        if (inList) { html += '</ul>'; inList = false; }
-        html += `<p class="modal-pregunta">${line}</p>`;
-        continue;
-      }
-
-      /* · bullet */
-      if (line.startsWith('·')) {
-        if (!inList) { html += '<ul class="modal-list">'; inList = true; }
-        html += `<li>${line.slice(1).trim()}</li>`;
-        continue;
-      }
-
-      /* línea vacía */
-      if (!line) {
-        if (inList) { html += '</ul>'; inList = false; }
-        continue;
-      }
-
-      /* párrafo normal */
-      if (inList) { html += '</ul>'; inList = false; }
-      html += `<p class="modal-p">${line}</p>`;
-    }
-
-    if (inList) html += '</ul>';
-    return html;
-  }
-
-  const TYPE_ICON_MODAL = { 'audio guiado':'🎧', 'micro-práctica':'⚡', 'reflexión y journaling':'✍️', 'lectura':'📖' };
-
-  window.openModal = function(idx) {
-    const item = window._kitItems[idx];
-    if (!item) return;
-
-    const icon = FORMAT_ICON[(item.tipo||'')] || TYPE_ICON[(item.tipo||'').toLowerCase()] || '🌿';
-    document.getElementById('modal-icon').textContent     = icon;
-    document.getElementById('modal-title').textContent    = item.titulo || '';
-    document.getElementById('modal-subtitle').textContent = item.descripcion ? `"${item.descripcion}"` : '';
-    document.getElementById('modal-category').textContent = `MATERNAL MIND · ${(item.modulo_nombre||item.tipo||'PRÁCTICA').toUpperCase()}`;
-
-    const chips = document.getElementById('modal-chips');
-    chips.innerHTML = [
-      item.duracion ? `<span class="modal-chip">⏱ ${item.duracion}</span>` : '',
-      item.tipo     ? `<span class="modal-chip">${item.tipo}</span>` : '',
-    ].join('');
-
-    // Extraer frase semilla del contenido y mostrarla en cabecera
-    const fraseMatch = (item.contenido||'').match(/💛\s*Frase semilla:\s*"?([^"'\n]+)"?/i);
-    const fraseEl = document.getElementById('modal-frase-header');
-    if (fraseMatch) {
-      fraseEl.textContent = '💛 ' + fraseMatch[1].trim();
-      fraseEl.hidden = false;
-    } else {
-      fraseEl.hidden = true;
-    }
-
-    document.getElementById('modal-body').innerHTML = formatContenido(item.contenido);
-    document.getElementById('modal-overlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  };
-  window.closeModal = function(e) {
-    if (e.target === document.getElementById('modal-overlay')) {
-      document.getElementById('modal-overlay').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-  };
 
   /* ── Stripe upgrade ──────────────────────────────────────── */
   window.subscribeNow = async function () {
