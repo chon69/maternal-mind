@@ -25,22 +25,29 @@
   .main{margin-left:var(--sidebar);flex:1;padding:2rem;min-height:100vh}
   .page-header{margin-bottom:2rem;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem}
   .page-header h1{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;font-style:italic}
-  /* GRID */
-  .search-bar{margin-bottom:1.5rem;display:flex;gap:.75rem;flex-wrap:wrap}
-  .search-input{padding:.6rem 1rem;border:1.5px solid var(--turq-light);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.85rem;color:var(--ink);background:#fff;outline:none;min-width:240px;flex:1}
+  /* FILTERS */
+  .filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.25rem}
+  .filter-btn{padding:.35rem .85rem;border-radius:50px;border:1.5px solid var(--turq-light);background:#fff;font-family:'DM Sans',sans-serif;font-size:.78rem;color:var(--ink-soft);cursor:pointer;transition:all .2s}
+  .filter-btn:hover,.filter-btn.active{background:var(--turq);border-color:var(--turq);color:#fff}
+  .search-bar{margin-bottom:1rem;display:flex;gap:.75rem}
+  .search-input{padding:.6rem 1rem;border:1.5px solid var(--turq-light);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.85rem;color:var(--ink);background:#fff;outline:none;flex:1}
   .search-input:focus{border-color:var(--turq)}
-  .books-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem}
-  .book-card{background:#fff;border-radius:14px;border:1px solid rgba(122,172,176,.15);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s}
-  .book-card:hover{box-shadow:0 8px 24px rgba(74,138,142,.1);transform:translateY(-2px)}
-  .book-cover{height:130px;background:linear-gradient(135deg,var(--turq-vlight),var(--gold-light));display:flex;align-items:center;justify-content:center;font-size:2.5rem;flex-shrink:0}
-  .book-cover img{width:100%;height:100%;object-fit:cover}
-  .book-body{padding:1rem;flex:1;display:flex;flex-direction:column;gap:.4rem}
-  .book-title{font-size:.92rem;font-weight:500;line-height:1.4;color:var(--ink)}
-  .book-meta{display:flex;gap:.4rem;flex-wrap:wrap}
-  .book-tag{font-size:.6rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--turq-deep);background:var(--turq-vlight);border:1px solid var(--turq-light);padding:.15rem .5rem;border-radius:50px}
-  .book-desc{font-size:.78rem;color:var(--ink-soft);line-height:1.6;flex:1;margin-top:.25rem}
-  .book-link{display:inline-block;margin-top:.75rem;font-size:.78rem;color:var(--turq-dark);text-decoration:none;font-weight:500}
-  .book-link:hover{text-decoration:underline}
+  /* CARDS */
+  .items-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.1rem}
+  .item-card{background:#fff;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s;box-shadow:0 2px 10px rgba(74,138,142,.07)}
+  .item-card:hover{box-shadow:0 8px 28px rgba(74,138,142,.14);transform:translateY(-2px)}
+  .item-accent{height:5px}
+  .item-cover{height:110px;display:flex;align-items:center;justify-content:center;font-size:2.8rem;background:linear-gradient(135deg,var(--turq-vlight),var(--gold-light));flex-shrink:0;overflow:hidden}
+  .item-cover img{width:100%;height:100%;object-fit:cover}
+  .item-body{padding:1rem 1.1rem;flex:1;display:flex;flex-direction:column;gap:.45rem}
+  .item-cat{font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+  .item-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;font-weight:300;line-height:1.35;color:var(--ink)}
+  .item-chips{display:flex;gap:.35rem;flex-wrap:wrap}
+  .chip{font-size:.6rem;font-weight:500;padding:.15rem .5rem;border-radius:50px;background:var(--turq-vlight);color:var(--turq-deep);border:1px solid var(--turq-light)}
+  .item-desc{font-size:.78rem;color:var(--ink-soft);line-height:1.65;flex:1}
+  .item-frase{font-size:.76rem;font-style:italic;color:var(--turq-deep);background:var(--turq-vlight);border-left:3px solid var(--turq);padding:.5rem .75rem;border-radius:0 6px 6px 0;line-height:1.55;margin-top:.25rem}
+  .item-link{display:inline-block;margin-top:.6rem;font-size:.76rem;color:var(--turq-dark);text-decoration:none;font-weight:500}
+  .item-link:hover{text-decoration:underline}
   /* CONNECT STATE */
   .connect-state{background:#fff;border-radius:16px;border:1px solid rgba(122,172,176,.18);padding:3rem 2rem;text-align:center;max-width:560px;margin:0 auto}
   .connect-state svg{color:var(--turq-light);margin-bottom:1.25rem}
@@ -69,8 +76,11 @@
     <button class="connect-btn" onclick="load()" style="padding:.5rem 1rem;font-size:.8rem">Actualizar</button>
   </div>
 
-  <div class="search-bar" id="search-bar" style="display:none">
-    <input type="search" class="search-input" id="search" placeholder="Buscar en la biblioteca…" oninput="filterItems()">
+  <div id="controls" style="display:none">
+    <div class="search-bar">
+      <input type="search" class="search-input" id="search" placeholder="Buscar en la biblioteca…" oninput="filterItems()">
+    </div>
+    <div class="filters" id="filters"></div>
   </div>
 
   <div id="container">
@@ -84,126 +94,127 @@
   MM.requireAuth('admin');
 
   let allItems = [];
-  let propKeys = [];
+  let activeFilter = 'Todos';
 
-  function guessTitle(item) {
-    for (const k of ['Nombre','nombre','Título','titulo','Title','Name','title','name']) {
-      if (item[k]) return item[k];
-    }
-    for (const k of Object.keys(item)) {
-      if (typeof item[k] === 'string' && item[k] && !['id','url','cover','icon','created','updated'].includes(k)) return item[k];
-    }
-    return 'Sin título';
-  }
-
-  function guessDesc(item, titleKey) {
-    for (const k of ['Descripción','descripcion','Description','Sinopsis','sinopsis','Resumen','resumen','Notas','notas']) {
-      if (item[k] && k !== titleKey) return item[k];
-    }
+  function f(item, ...keys) {
+    for (const k of keys) if (item[k]) return item[k];
     return '';
   }
 
-  function guessTags(item, used) {
-    const tags = [];
-    for (const k of Object.keys(item)) {
-      if (used.includes(k) || ['id','url','cover','icon','created','updated'].includes(k)) continue;
-      const v = item[k];
-      if (typeof v === 'string' && v && v.length < 60 && !v.startsWith('http')) tags.push(v);
-    }
-    return tags.slice(0, 3);
+  const CAT_COLORS = {
+    'Audio':      {bar:'#7AACB0', text:'#4A8A8E', bg:'#EDF4F5'},
+    'Vídeo':      {bar:'#C4A882', text:'#7A5C2A', bg:'#F5EFE6'},
+    'Video':      {bar:'#C4A882', text:'#7A5C2A', bg:'#F5EFE6'},
+    'Texto':      {bar:'#3A9A3A', text:'#166534', bg:'#DCFCE7'},
+    'Meditación': {bar:'#8B5CF6', text:'#4C1D95', bg:'#EDE9FE'},
+    'Movimiento': {bar:'#F59E0B', text:'#92400E', bg:'#FFFBEB'},
+    'Podcast':    {bar:'#EC4899', text:'#831843', bg:'#FCE7F3'},
+  };
+
+  function colors(cat) {
+    return CAT_COLORS[cat] || {bar:'#7AACB0', text:'#4A8A8E', bg:'#EDF4F5'};
   }
 
-  function guessUrl(item) {
-    for (const k of Object.keys(item)) {
-      const v = item[k];
-      if (typeof v === 'string' && (v.startsWith('http://') || v.startsWith('https://'))) return v;
-    }
-    return item.url || null;
-  }
-
-  function renderGrid(items) {
+  function renderCards(items) {
     if (!items.length) {
-      document.getElementById('container').innerHTML = '<div class="empty-state">No hay elementos que coincidan con tu búsqueda.</div>';
+      document.getElementById('container').innerHTML = '<div class="empty-state">No hay elementos que coincidan.</div>';
       return;
     }
-    document.getElementById('container').innerHTML = `<div class="books-grid">${items.map(item => {
-      const title = guessTitle(item);
-      const desc  = guessDesc(item, Object.keys(item).find(k => item[k] === title) || '');
-      const url   = guessUrl(item);
-      const tags  = guessTags(item, [Object.keys(item).find(k => item[k] === title) || '', Object.keys(item).find(k => item[k] === desc) || '']);
+    document.getElementById('container').innerHTML = `<div class="items-grid">${items.map(item => {
+      const titulo    = f(item,'Práctica','Nombre','Name','nombre') || 'Sin título';
+      const cat       = f(item,'Categoría','Categoria','category');
+      const formato   = f(item,'Formato','formato');
+      const duracion  = f(item,'Duración','Duracion','duracion');
+      const notas     = f(item,'Notas','notas','Descripción','descripcion');
+      const frase     = f(item,'Frase semilla','Frase','frase');
+      const c         = colors(cat);
 
-      return `<div class="book-card">
-        <div class="book-cover">
-          ${item.cover ? `<img src="${item.cover}" alt="" onerror="this.parentElement.innerHTML='${item.icon || '📚'}'">` : (item.icon || '📚')}
-        </div>
-        <div class="book-body">
-          <div class="book-title">${title}</div>
-          ${tags.length ? `<div class="book-meta">${tags.map(t => `<span class="book-tag">${t}</span>`).join('')}</div>` : ''}
-          ${desc ? `<div class="book-desc">${desc}</div>` : ''}
-          ${url ? `<a href="${url}" target="_blank" rel="noopener" class="book-link">Ver en Notion →</a>` : `<a href="${item.url}" target="_blank" rel="noopener" class="book-link">Abrir en Notion →</a>`}
+      const chips = [formato, duracion].filter(Boolean);
+      const coverHtml = item.cover
+        ? `<img src="${item.cover}" alt="" onerror="this.parentElement.innerHTML='${item.icon||'📚'}'">`
+        : (item.icon || '📚');
+
+      return `<div class="item-card">
+        <div class="item-accent" style="background:${c.bar}"></div>
+        <div class="item-cover" style="background:linear-gradient(135deg,${c.bg},#fff)">${coverHtml}</div>
+        <div class="item-body">
+          ${cat ? `<div class="item-cat" style="color:${c.text}">${cat}</div>` : ''}
+          <div class="item-title">${titulo}</div>
+          ${chips.length ? `<div class="item-chips">${chips.map(ch=>`<span class="chip">${ch}</span>`).join('')}</div>` : ''}
+          ${notas ? `<div class="item-desc">${notas}</div>` : ''}
+          ${frase ? `<div class="item-frase">"${frase}"</div>` : ''}
+          <a href="${item.url}" target="_blank" rel="noopener" class="item-link">Ver en Notion →</a>
         </div>
       </div>`;
     }).join('')}</div>`;
   }
 
-  function filterItems() {
-    const q = document.getElementById('search').value.toLowerCase();
-    if (!q) { renderGrid(allItems); return; }
-    renderGrid(allItems.filter(item =>
-      Object.values(item).some(v => typeof v === 'string' && v.toLowerCase().includes(q))
-    ));
+  function getFiltered() {
+    const q = (document.getElementById('search').value || '').toLowerCase();
+    return allItems.filter(item => {
+      const catMatch = activeFilter === 'Todos' || f(item,'Categoría','Categoria','category') === activeFilter;
+      const qMatch   = !q || Object.values(item).some(v => typeof v==='string' && v.toLowerCase().includes(q));
+      return catMatch && qMatch;
+    });
+  }
+
+  function filterItems() { renderCards(getFiltered()); }
+
+  function buildFilters() {
+    const cats = ['Todos', ...new Set(allItems.map(i => f(i,'Categoría','Categoria','category')).filter(Boolean))];
+    document.getElementById('filters').innerHTML = cats.map(cat =>
+      `<button class="filter-btn${cat===activeFilter?' active':''}" onclick="setFilter('${cat}')">${cat}</button>`
+    ).join('');
+  }
+
+  function setFilter(cat) {
+    activeFilter = cat;
+    buildFilters();
+    renderCards(getFiltered());
   }
 
   function showConnectState() {
-    document.getElementById('search-bar').style.display = 'none';
+    document.getElementById('controls').style.display = 'none';
     document.getElementById('container').innerHTML = `
       <div class="connect-state">
         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
         </svg>
         <h2>Conecta tu Biblioteca de Notion</h2>
-        <p>La base de datos de Notion aún no está compartida con la integración de Maternal Mind. Sigue estos pasos para conectarla:</p>
-        <div class="steps">
-          <ol>
-            <li>Abre tu base de datos en <strong>Notion</strong></li>
-            <li>Haz clic en los <strong>tres puntos (...)</strong> en la esquina superior derecha</li>
-            <li>Busca <strong>"Connections"</strong> o <strong>"Añadir conexiones"</strong></li>
-            <li>Busca y selecciona la integración <strong>"Maternal Mind"</strong></li>
-            <li>Confirma el acceso y vuelve aquí</li>
-          </ol>
-        </div>
-        <p style="font-size:.8rem;color:var(--ink-soft);margin-top:.5rem">
-          ¿No encuentras la opción? En la vista de la base de datos, prueba: Share → Add connections → Maternal Mind
-        </p>
+        <p>La base de datos de Notion aún no está compartida con la integración de Maternal Mind.</p>
+        <div class="steps"><ol>
+          <li>Abre tu base de datos en <strong>Notion</strong></li>
+          <li>Haz clic en los <strong>tres puntos (...)</strong> arriba a la derecha</li>
+          <li>Busca <strong>"Connections"</strong> o <strong>"Añadir conexiones"</strong></li>
+          <li>Selecciona la integración <strong>"Maternal Mind"</strong></li>
+        </ol></div>
         <button class="connect-btn" onclick="load()">Reintentar conexión</button>
       </div>`;
   }
 
   async function load() {
     document.getElementById('container').innerHTML = '<div class="loading"><div class="spinner"></div>Conectando con Notion…</div>';
+    document.getElementById('controls').style.display = 'none';
     try {
       const res  = await MM.api('/api/notion-biblioteca');
       const data = await res.json();
 
-      if (!data.connected) {
-        showConnectState();
-        return;
-      }
+      if (!data.connected) { showConnectState(); return; }
 
       if (data.dbTitle) {
         document.getElementById('page-title').textContent = data.dbTitle;
-        document.getElementById('page-sub').textContent = `${data.items.length} elemento${data.items.length !== 1 ? 's' : ''} desde Notion`;
+        document.getElementById('page-sub').textContent = `${data.items.length} elemento${data.items.length!==1?'s':''} · Notion`;
       }
 
       allItems = data.items || [];
-
       if (!allItems.length) {
-        document.getElementById('container').innerHTML = '<div class="empty-state">La base de datos está vacía. Añade contenido en Notion y actualiza.</div>';
+        document.getElementById('container').innerHTML = '<div class="empty-state">La base de datos está vacía.</div>';
         return;
       }
 
-      document.getElementById('search-bar').style.display = 'flex';
-      renderGrid(allItems);
+      document.getElementById('controls').style.display = 'block';
+      buildFilters();
+      renderCards(allItems);
     } catch (e) {
       document.getElementById('container').innerHTML = `<div class="empty-state" style="color:var(--red)">Error al cargar: ${e.message}</div>`;
     }

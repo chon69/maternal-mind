@@ -34,6 +34,20 @@
   .stat-label{font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.4rem}
   .stat-value{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--turq-dark);line-height:1}
   .stat-sub{font-size:.72rem;color:var(--ink-soft);margin-top:.3rem}
+  /* CALENDAR */
+  .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+  .cal-day-name{font-size:.62rem;font-weight:600;text-transform:uppercase;color:var(--ink-soft);text-align:center;padding:.3rem 0;letter-spacing:.04em}
+  .cal-day{border-radius:8px;min-height:62px;padding:.3rem .35rem;background:#FAFBFC;border:1px solid rgba(122,172,176,.08);position:relative}
+  .cal-day.today{background:var(--turq-vlight);border-color:var(--turq-light)}
+  .cal-day.empty{background:transparent;border-color:transparent;min-height:0}
+  .cal-day-num{font-weight:500;color:var(--ink-soft);font-size:.7rem;line-height:1}
+  .cal-day.today .cal-day-num{color:var(--turq-dark);font-weight:700}
+  .cal-event{font-size:.58rem;border-radius:4px;padding:.1rem .3rem;margin-top:.2rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500;color:#fff}
+  .cal-event.circulo{background:#065F46}
+  .cal-event.taller{background:var(--turq-dark)}
+  .cal-event.curso{background:#4C1D95}
+  .cal-event.programa{background:#166534}
+  .cal-event.retiro{background:#7A5C2A}
   /* TABLE */
   .card{background:#fff;border-radius:14px;border:1px solid rgba(122,172,176,.15);overflow:hidden;margin-bottom:1.5rem}
   .card-header{padding:1rem 1.5rem;border-bottom:1px solid rgba(122,172,176,.12);display:flex;align-items:center;justify-content:space-between}
@@ -69,6 +83,20 @@
 
   <div class="stats-grid" id="stats">
     <div class="loading"><div class="spinner"></div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h2 id="cal-title">Calendario</h2>
+      <div style="display:flex;gap:.4rem;align-items:center">
+        <button onclick="prevMonth()" style="padding:.25rem .65rem;border-radius:6px;font-size:.8rem;font-family:'DM Sans',sans-serif;cursor:pointer;border:1px solid var(--turq-light);background:var(--turq-vlight);color:var(--turq-dark)">‹</button>
+        <button onclick="nextMonth()" style="padding:.25rem .65rem;border-radius:6px;font-size:.8rem;font-family:'DM Sans',sans-serif;cursor:pointer;border:1px solid var(--turq-light);background:var(--turq-vlight);color:var(--turq-dark)">›</button>
+        <a href="/app/admin/eventos.html" style="font-size:.8rem;color:var(--turq-dark);text-decoration:none;margin-left:.5rem">Gestionar →</a>
+      </div>
+    </div>
+    <div style="padding:1rem 1.25rem" id="cal-container">
+      <div class="loading"><div class="spinner"></div>Cargando…</div>
+    </div>
   </div>
 
   <div class="card">
@@ -130,6 +158,52 @@
   load().catch(() => {
     document.getElementById('stats').innerHTML = '<p style="color:var(--red);font-size:.85rem">Error al cargar datos.</p>';
   });
+
+  // CALENDAR
+  let calDate = new Date();
+  let calEvents = [];
+
+  const MONTHS = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+
+  function renderCalendar() {
+    const y = calDate.getFullYear(), m = calDate.getMonth();
+    document.getElementById('cal-title').textContent = `${MONTHS[m]} ${y}`;
+
+    const firstDow = new Date(y, m, 1).getDay(); // 0=Sun
+    const offset   = firstDow === 0 ? 6 : firstDow - 1; // Mon-start
+    const days     = new Date(y, m + 1, 0).getDate();
+    const today    = new Date();
+    const isNow    = today.getFullYear() === y && today.getMonth() === m;
+
+    const byDay = {};
+    calEvents.forEach(ev => {
+      if (!ev.fecha_inicio) return;
+      const [ey, em, ed] = ev.fecha_inicio.split('T')[0].split('-').map(Number);
+      if (ey === y && em - 1 === m) { (byDay[ed] = byDay[ed] || []).push(ev); }
+    });
+
+    let html = '<div class="cal-grid">';
+    ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'].forEach(d => { html += `<div class="cal-day-name">${d}</div>`; });
+    for (let i = 0; i < offset; i++) html += '<div class="cal-day empty"></div>';
+    for (let d = 1; d <= days; d++) {
+      const cls = (isNow && today.getDate() === d) ? ' today' : '';
+      const evs = byDay[d] || [];
+      html += `<div class="cal-day${cls}"><div class="cal-day-num">${d}</div>
+        ${evs.slice(0,3).map(ev => `<div class="cal-event ${ev.tipo||''}" title="${ev.titulo}">${ev.titulo}</div>`).join('')}
+        ${evs.length > 3 ? `<div style="font-size:.55rem;color:var(--ink-soft);margin-top:.15rem">+${evs.length-3} más</div>` : ''}
+      </div>`;
+    }
+    html += '</div>';
+    document.getElementById('cal-container').innerHTML = html;
+  }
+
+  function prevMonth() { calDate = new Date(calDate.getFullYear(), calDate.getMonth() - 1, 1); renderCalendar(); }
+  function nextMonth() { calDate = new Date(calDate.getFullYear(), calDate.getMonth() + 1, 1); renderCalendar(); }
+
+  MM.api('/api/admin-events').then(r => r.json()).then(data => {
+    calEvents = data;
+    renderCalendar();
+  }).catch(() => renderCalendar());
 </script>
 </body>
 </html>
