@@ -262,6 +262,18 @@
       padding: .5rem 0 .5rem .9rem;
       line-height: 1.6;
     }
+    .modal-dialogo {
+      margin: .3rem 0 .3rem 1rem;
+      font-style: italic; color: var(--ink);
+      font-size: .9rem; line-height: 1.7;
+    }
+    .modal-cierre {
+      margin: 1.2rem 0 .5rem;
+      font-style: italic; color: var(--turq-deep);
+      font-size: .9rem; line-height: 1.75;
+      border-top: 1px solid var(--turq-light);
+      padding-top: 1rem;
+    }
 
     /* ── Loading / empty ─────────────────────────────────────── */
     .loading { text-align: center; padding: 4rem; color: var(--ink-soft); }
@@ -541,6 +553,20 @@ function fileType(url, nombre) {
         if (inList) { html += '</ul>'; inList = false; }
         const frase = line.replace(/^💛\s*Frase semilla:\s*/i, '').replace(/^"|"$/g, '');
         html += `<div class="modal-frase">💛 ${frase}</div>`;
+        continue;
+      }
+
+      /* — Diálogo */
+      if (line.startsWith('—')) {
+        if (inList) { html += '</ul>'; inList = false; }
+        html += `<p class="modal-dialogo">${line}</p>`;
+        continue;
+      }
+
+      /* Para cerrar: */
+      if (line.startsWith('Para cerrar:')) {
+        if (inList) { html += '</ul>'; inList = false; }
+        html += `<p class="modal-cierre">${line}</p>`;
         continue;
       }
 
