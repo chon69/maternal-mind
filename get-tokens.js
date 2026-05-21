@@ -70,8 +70,8 @@ const server = http.createServer(async (req, res) => {
     const { tokens } = await oauth2Client.getToken(code);
 
     res.writeHead(200, { 'Content-Type': 'text/html; charset=UTF-8' });
-    res.end(`<!DOCTYPE html><html><body style="font-family:sans-serif;text-align:center;padding:60px;background:#EDF4F5;">
-      <h2 style="color:#4A8A8E;">✅ ¡Autorización completada!</h2>
+    res.end(`<!DOCTYPE html><html><body style="font-family:sans-serif;text-align:center;padding:60px;background:#EEF9F8;">
+      <h2 style="color:#4AADA7;">✅ ¡Autorización completada!</h2>
       <p>Copia el <strong>GOOGLE_REFRESH_TOKEN</strong> de la terminal y añádelo a .env.local y Netlify.</p>
       <p>Puedes cerrar esta ventana.</p>
     </body></html>`);

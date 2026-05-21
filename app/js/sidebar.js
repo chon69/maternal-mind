@@ -44,8 +44,8 @@
   const html = `
     <a href="/app/admin/" class="sidebar-logo">
       <svg width="28" height="16" viewBox="0 0 52 28" fill="none">
-        <ellipse cx="17" cy="14" rx="13" ry="13" stroke="#7AACB0" stroke-width="3" fill="none"/>
-        <ellipse cx="35" cy="14" rx="13" ry="13" stroke="#C4A882" stroke-width="3" fill="none"/>
+        <ellipse cx="17" cy="14" rx="13" ry="13" stroke="#7DCFCA" stroke-width="3" fill="none"/>
+        <ellipse cx="35" cy="14" rx="13" ry="13" stroke="#F2C14E" stroke-width="3" fill="none"/>
       </svg>
       <div class="logo-text">maternal <span>mind</span></div>
     </a>
