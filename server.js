@@ -110,6 +110,29 @@ for (const fn of fns) {
   app.all(`/api/${fn}`, netlify(handler));
 }
 
+// Endpoint de diagnóstico del sheet (cabeceras reales vs esperadas)
+app.get('/api/diag-sheet', async (req, res) => {
+  try {
+    const { google } = require('googleapis');
+    const auth = new google.auth.OAuth2(
+      process.env.GOOGLE_CLIENT_ID,
+      process.env.GOOGLE_CLIENT_SECRET
+    );
+    auth.setCredentials({ refresh_token: process.env.GOOGLE_REFRESH_TOKEN });
+    const sheets = google.sheets({ version: 'v4', auth });
+    const result = await sheets.spreadsheets.values.get({
+      spreadsheetId: process.env.GOOGLE_SPREADSHEET_ID,
+      range: 'Usuarios!A1:Z1',
+    });
+    const actual   = result.data.values?.[0] || [];
+    const expected = ['id','nombre','email','password_hash','role','estado','token_activacion','token_expiry','created_at','last_login','plan'];
+    const match    = JSON.stringify(actual) === JSON.stringify(expected);
+    res.json({ match, expected, actual, APP_URL: process.env.APP_URL || '(no configurado → usa localhost:3000)' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // Endpoint de diagnóstico de email (solo admin)
 app.post('/api/test-email', async (req, res) => {
   const { to } = req.body || {};
