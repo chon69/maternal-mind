@@ -60,7 +60,17 @@
   .loading{text-align:center;padding:4rem;color:var(--ink-soft)}
   .spinner{width:36px;height:36px;border:3px solid var(--turq-light);border-top-color:var(--turq);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 1rem}@keyframes spin{to{transform:rotate(360deg)}}
   .empty{text-align:center;padding:4rem;color:var(--ink-soft)}.empty p{font-size:.95rem;font-weight:300}
-  @media(max-width:600px){.nav-links{display:none}.blog-grid{grid-template-columns:1fr}.modal-header,.modal-content-wrap{padding:1.25rem}}
+  .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:.4rem;flex-direction:column;justify-content:center;gap:5px}
+  .nav-hamburger span{display:block;width:22px;height:2px;background:var(--turq-dark);border-radius:2px}
+  @media(max-width:600px){
+    .nav-hamburger{display:flex}
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;border-bottom:1px solid rgba(122,172,176,.18);box-shadow:0 8px 20px rgba(0,0,0,.06);padding:.5rem 5vw .75rem;gap:0;z-index:49}
+    .nav-links.open{display:flex}
+    .nav-links a{padding:.65rem 0;border-bottom:1px solid rgba(122,172,176,.07);font-size:.9rem}
+    .nav-links a:last-child{border-bottom:none}
+    .nav-greeting{display:none}
+    .blog-grid{grid-template-columns:1fr}.modal-header,.modal-content-wrap{padding:1.25rem}
+  }
 </style>
 </head>
 <body>
@@ -77,6 +87,7 @@
     <a href="/app/cliente/podcast.html">Podcast</a>
     <a href="/app/cliente/perfil.html">Mi perfil</a>
   </div>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
   <div class="nav-user">
     <span class="nav-greeting" id="greeting"></span>
     <button class="btn-logout" onclick="MM.logout()">Salir</button>
@@ -188,5 +199,6 @@
   }
   load();
 </script>
+<script>(function(){var b=document.getElementById('nav-hamburger'),l=document.querySelector('.nav-links');if(b&&l){b.addEventListener('click',function(e){e.stopPropagation();l.classList.toggle('open')});document.addEventListener('click',function(){l.classList.remove('open')})}})();</script>
 </body>
 </html>

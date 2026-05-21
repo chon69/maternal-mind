@@ -331,8 +331,15 @@
     @keyframes spin { to { transform: rotate(360deg); } }
     .empty { text-align: center; padding: 3rem; color: var(--ink-soft); font-weight: 300; }
 
+    .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:.4rem;flex-direction:column;justify-content:center;gap:5px}
+    .nav-hamburger span{display:block;width:22px;height:2px;background:var(--turq-dark);border-radius:2px}
     @media (max-width: 600px) {
-      .nav-links { display: none; }
+      .nav-hamburger{display:flex}
+      .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;border-bottom:1px solid rgba(122,172,176,.18);box-shadow:0 8px 20px rgba(0,0,0,.06);padding:.5rem 5vw .75rem;gap:0;z-index:49}
+      .nav-links.open{display:flex}
+      .nav-links a{padding:.65rem 0;border-bottom:1px solid rgba(122,172,176,.07);font-size:.9rem}
+      .nav-links a:last-child{border-bottom:none}
+      .nav-greeting{display:none}
       .cards-grid, .kit-grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -356,6 +363,7 @@
     <a href="/app/cliente/podcast.html">Podcast</a>
     <a href="/app/cliente/perfil.html">Mi perfil</a>
   </div>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
   <div class="nav-user">
     <span class="nav-greeting" id="greeting"></span>
     <button class="btn-logout" onclick="MM.logout()">Cerrar sesión</button>
@@ -669,6 +677,7 @@ window.closeModal = function(e) {
 
 })();
 </script>
+<script>(function(){var b=document.getElementById('nav-hamburger'),l=document.querySelector('.nav-links');if(b&&l){b.addEventListener('click',function(e){e.stopPropagation();l.classList.toggle('open')});document.addEventListener('click',function(){l.classList.remove('open')})}})();</script>
 
 </body>
 </html>
