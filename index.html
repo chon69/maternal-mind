@@ -937,10 +937,10 @@
       try {
         const res = await fetch('/api/submit-form', {
           method:  'POST',
-          mode:    'no-cors',
-          headers: { 'Content-Type': 'text/plain' },
+          headers: { 'Content-Type': 'application/json' },
           body:    JSON.stringify({ nombre, email }),
         });
+        if (!res.ok) throw new Error(`Error ${res.status}`);
 
         form.hidden = true;
         if (successEl) successEl.hidden = false;
