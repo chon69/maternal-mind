@@ -55,7 +55,7 @@ exports.handler = async (event) => {
       requestBody: { role: 'reader', type: 'anyone' },
     });
 
-    const url = `https://drive.google.com/uc?export=view&id=${fileId}`;
+    const url = `https://lh3.googleusercontent.com/d/${fileId}`;
     return ok({ url, fileId });
   } catch (err) {
     console.error(err);
