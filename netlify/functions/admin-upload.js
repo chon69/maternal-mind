@@ -55,8 +55,7 @@ exports.handler = async (event) => {
       requestBody: { role: 'reader', type: 'anyone' },
     });
 
-    // Direct link for audio/media embeds
-    const url = `https://drive.google.com/uc?id=${fileId}&export=download`;
+    const url = `https://drive.google.com/uc?export=view&id=${fileId}`;
     return ok({ url, fileId });
   } catch (err) {
     console.error(err);
