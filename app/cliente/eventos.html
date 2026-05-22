@@ -131,6 +131,7 @@
           <p class="event-desc">${e.descripcion}</p>
           <div class="event-meta">
             ${e.fecha_inicio ? `📅 ${formatDate(e.fecha_inicio)}` : ''}
+            ${(e.hora_inicio||e.hora_fin) ? `🕐 ${e.hora_inicio||''}${e.hora_fin ? ` – ${e.hora_fin}` : ''}` : ''}
             ${e.precio && e.precio !== '0' ? `💶 ${e.precio} ${e.moneda||'EUR'}` : '<span style="color:var(--gold)">💛 Gratuito</span>'}
           </div>
           ${e.url_inscripcion

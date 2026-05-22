@@ -5,7 +5,7 @@ const SPREADSHEET_ID = process.env.GOOGLE_SPREADSHEET_ID;
 const HEADERS = {
   Usuarios:  ['id','nombre','email','password_hash','role','estado','token_activacion','token_expiry','created_at','last_login','plan'],
   Recursos:  ['id','titulo','descripcion','tipo','modulo','modulo_nombre','orden','contenido','url_archivo','duracion','activo','created_at','premium'],
-  Eventos:   ['id','titulo','descripcion','tipo','fecha_inicio','fecha_fin','precio','moneda','url_inscripcion','imagen_url','activo','destacado','created_at','imagen_posicion'],
+  Eventos:   ['id','titulo','descripcion','tipo','fecha_inicio','fecha_fin','hora_inicio','hora_fin','precio','moneda','url_inscripcion','imagen_url','activo','destacado','created_at','imagen_posicion'],
   Plantillas:['id','nombre','asunto','cuerpo_html','tipo','activo','created_at'],
   Articulos: ['id','titulo','slug','descripcion','contenido_html','imagen_url','categoria','activo','created_at'],
   Podcast:   ['id','titulo','descripcion','numero_episodio','temporada','url_spotify','url_apple','url_ivoox','imagen_url','activo','created_at'],

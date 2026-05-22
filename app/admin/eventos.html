@@ -98,6 +98,10 @@
         <div><label>Fecha fin</label><input type="date" id="f-fecha-fin"></div>
       </div>
       <div class="form-row">
+        <div><label>Hora inicio</label><input type="time" id="f-hora-ini"></div>
+        <div><label>Hora fin</label><input type="time" id="f-hora-fin"></div>
+      </div>
+      <div class="form-row">
         <div><label>Precio</label><input type="number" id="f-precio" value="0" min="0"></div>
         <div><label>Moneda</label><select id="f-moneda"><option>EUR</option><option>USD</option></select></div>
       </div>
@@ -179,6 +183,8 @@
     document.getElementById('f-desc').value      = e?.descripcion||'';
     document.getElementById('f-fecha-ini').value = e?.fecha_inicio?.split('T')[0]||'';
     document.getElementById('f-fecha-fin').value = e?.fecha_fin?.split('T')[0]||'';
+    document.getElementById('f-hora-ini').value  = e?.hora_inicio||'';
+    document.getElementById('f-hora-fin').value  = e?.hora_fin||'';
     document.getElementById('f-precio').value    = e?.precio||'0';
     document.getElementById('f-moneda').value    = e?.moneda||'EUR';
     document.getElementById('f-url-ins').value   = e?.url_inscripcion||'';
@@ -288,6 +294,8 @@
       descripcion:     document.getElementById('f-desc').value.trim(),
       fecha_inicio:    document.getElementById('f-fecha-ini').value,
       fecha_fin:       document.getElementById('f-fecha-fin').value,
+      hora_inicio:     document.getElementById('f-hora-ini').value,
+      hora_fin:        document.getElementById('f-hora-fin').value,
       precio:          document.getElementById('f-precio').value,
       moneda:          document.getElementById('f-moneda').value,
       url_inscripcion: document.getElementById('f-url-ins').value.trim(),
