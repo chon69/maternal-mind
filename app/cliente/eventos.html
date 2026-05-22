@@ -124,7 +124,7 @@
     container.innerHTML = `<div class="events-grid">${events.map(e => `
       <div class="event-card" style="position:relative">
         ${e.destacado === 'TRUE' ? '<span class="event-badge-dest">✨ Destacado</span>' : ''}
-        <div class="event-img">${e.imagen_url ? `<img src="${e.imagen_url}" alt="${e.titulo}" loading="lazy">` : TYPE_EMOJI[e.tipo]||'🌿'}</div>
+        <div class="event-img">${e.imagen_url ? `<img src="${e.imagen_url}" alt="${e.titulo}" loading="lazy" style="object-position:${e.imagen_posicion||'50% 50%'}">` : TYPE_EMOJI[e.tipo]||'🌿'}</div>
         <div class="event-body">
           <span class="event-type">${e.tipo}</span>
           <h3>${e.titulo}</h3>
