@@ -12,7 +12,10 @@ exports.handler = async (event) => {
     return fail('Stripe no configurado. Añade STRIPE_SECRET_KEY y STRIPE_PRICE_ID al .env.local', 503);
   }
 
-  const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+  const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY, {
+    maxNetworkRetries: 0,
+    timeout: 15000,
+  });
   const APP_URL = process.env.APP_URL || 'http://localhost:3000';
 
   try {
@@ -27,7 +30,9 @@ exports.handler = async (event) => {
     });
     return ok({ url: session.url });
   } catch (err) {
-    console.error('Stripe error:', err);
-    return fail('Error al crear sesión de pago: ' + err.message, 500);
+    console.error('Stripe error type:', err.type);
+    console.error('Stripe error code:', err.code);
+    console.error('Stripe error:', err.message);
+    return fail(`Error Stripe [${err.type||'unknown'}]: ${err.message}`, 500);
   }
 };
