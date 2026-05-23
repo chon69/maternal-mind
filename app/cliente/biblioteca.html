@@ -665,19 +665,19 @@ window.closeModal = function(e) {
     }).join('');
   }
 
-  /* ── Stripe upgrade ──────────────────────────────────────── */
-  window.subscribeNow = async function () {
-    try {
-      const r    = await MM.api('/api/stripe-checkout', { method: 'POST', body: JSON.stringify({}) });
-      const data = await r.json();
-      if (data.url) location.href = data.url;
-      else alert(data.error || 'Error al iniciar el pago. Contacta con nosotras.');
-    } catch {
-      alert('Error de conexión. Inténtalo de nuevo.');
-    }
-  };
-
 })();
+
+/* ── Stripe upgrade ──────────────────────────────────────── */
+async function subscribeNow() {
+  try {
+    const r    = await MM.api('/api/stripe-checkout', { method: 'POST', body: JSON.stringify({}) });
+    const data = await r.json();
+    if (data.url) location.href = data.url;
+    else alert(data.error || 'Error al iniciar el pago. Contacta con nosotras.');
+  } catch {
+    alert('Error de conexión. Inténtalo de nuevo.');
+  }
+}
 </script>
 <script>(function(){var b=document.getElementById('nav-hamburger'),l=document.querySelector('.nav-links');if(b&&l){b.addEventListener('click',function(e){e.stopPropagation();l.classList.toggle('open')});document.addEventListener('click',function(){l.classList.remove('open')})}})();</script>
 
