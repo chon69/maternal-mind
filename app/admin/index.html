@@ -121,8 +121,12 @@
   }
 
   async function load() {
-    const res   = await MM.api('/api/admin-users');
-    const users = await res.json();
+    const [resUsers, resMsgs] = await Promise.all([
+      MM.api('/api/admin-users'),
+      MM.api('/api/admin-messages'),
+    ]);
+    const users = await resUsers.json();
+    const msgs  = await resMsgs.json().catch(() => []);
 
     // Stats
     const total    = users.length;
@@ -133,12 +137,14 @@
       const n = new Date();
       return d.getMonth() === n.getMonth() && d.getFullYear() === n.getFullYear();
     }).length;
+    const msgsPendientes = Array.isArray(msgs) ? msgs.filter(m => m.estado === 'pendiente').length : 0;
 
     document.getElementById('stats').innerHTML = `
       <div class="stat-card"><div class="stat-label">Total usuarias</div><div class="stat-value">${total}</div></div>
       <div class="stat-card"><div class="stat-label">Activas</div><div class="stat-value">${activos}</div><div class="stat-sub">Han activado su cuenta</div></div>
       <div class="stat-card"><div class="stat-label">Pendientes</div><div class="stat-value">${pending}</div><div class="stat-sub">Sin activar aún</div></div>
-      <div class="stat-card"><div class="stat-label">Este mes</div><div class="stat-value">${thisMonth}</div><div class="stat-sub">Nuevas registradas</div></div>`;
+      <div class="stat-card"><div class="stat-label">Este mes</div><div class="stat-value">${thisMonth}</div><div class="stat-sub">Nuevas registradas</div></div>
+      <a href="/app/admin/mensajes.html" class="stat-card" style="text-decoration:none;border-color:${msgsPendientes>0?'var(--gold)':'rgba(125,207,202,.15)'}"><div class="stat-label">Mensajes sin responder</div><div class="stat-value" style="color:${msgsPendientes>0?'var(--gold)':'var(--turq-dark)'}">${msgsPendientes}</div><div class="stat-sub">Ver bandeja →</div></a>`;
 
     // Recent 10
     const recent = [...users].sort((a,b) => new Date(b.created_at)-new Date(a.created_at)).slice(0,10);
