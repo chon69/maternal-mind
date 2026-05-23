@@ -37,8 +37,8 @@ exports.handler = async (event) => {
   try { user = requireAuth(event); }
   catch (e) { return fail(e.message, e.status || 401); }
 
-  const KEY      = process.env.STRIPE_SECRET_KEY;
-  const PRICE_ID = process.env.STRIPE_PRICE_ID;
+  const KEY      = (process.env.STRIPE_SECRET_KEY  || '').trim();
+  const PRICE_ID = (process.env.STRIPE_PRICE_ID    || '').trim();
   const APP_URL  = process.env.APP_URL || 'http://localhost:3000';
 
   if (!KEY || !PRICE_ID) {
