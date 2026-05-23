@@ -932,7 +932,17 @@
 
       const nombre = (form.querySelector('[name="nombre"]').value || '').trim();
       const email  = (form.querySelector('[name="email"]').value  || '').trim();
+      const privacy = form.querySelector('input[type="checkbox"]');
       if (!nombre || !email) return;
+      if (privacy && !privacy.checked) {
+        privacy.style.outline = '2px solid #D95555';
+        privacy.closest('div').querySelector('label').style.color = '#D95555';
+        setTimeout(() => {
+          privacy.style.outline = '';
+          privacy.closest('div').querySelector('label').style.color = '';
+        }, 3000);
+        return;
+      }
 
       const btn       = form.querySelector('button[type="submit"]');
       const btnText   = btn.querySelector('.btn-text');
