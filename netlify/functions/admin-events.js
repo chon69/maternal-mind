@@ -18,7 +18,7 @@ exports.handler = async (event) => {
     const body = JSON.parse(event.body || '{}');
 
     if (event.httpMethod === 'POST') {
-      const { titulo, descripcion, tipo, fecha_inicio, fecha_fin, precio, moneda, url_inscripcion, imagen_url, destacado } = body;
+      const { titulo, descripcion, tipo, fecha_inicio, fecha_fin, hora_inicio, hora_fin, precio, moneda, url_inscripcion, imagen_url, destacado } = body;
       if (!titulo) return fail('El título es obligatorio');
       await append('Eventos', {
         id: crypto.randomUUID(),
@@ -26,6 +26,8 @@ exports.handler = async (event) => {
         tipo: tipo || 'taller',
         fecha_inicio: fecha_inicio || '',
         fecha_fin: fecha_fin || '',
+        hora_inicio: hora_inicio || '',
+        hora_fin: hora_fin || '',
         precio: precio || '0',
         moneda: moneda || 'EUR',
         url_inscripcion: url_inscripcion || '',

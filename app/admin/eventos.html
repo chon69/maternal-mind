@@ -163,7 +163,7 @@
         <tbody>${events.map(e => `<tr>
           <td><strong>${e.titulo}</strong>${e.destacado==='TRUE'?'<span style="margin-left:.4rem;font-size:.6rem;color:var(--gold)">✨ Dest.</span>':''}</td>
           <td><span class="badge ${e.tipo}">${e.tipo}</span></td>
-          <td style="font-size:.78rem;color:var(--ink-soft)">${fmtDate(e.fecha_inicio)}${e.fecha_fin ? ` – ${fmtDate(e.fecha_fin)}` : ''}</td>
+          <td style="font-size:.78rem;color:var(--ink-soft)">${fmtDate(e.fecha_inicio)}${e.fecha_fin ? ` – ${fmtDate(e.fecha_fin)}` : ''}${(e.hora_inicio||e.hora_fin) ? `<br><span style="color:var(--turq-deep)">🕐 ${e.hora_inicio||''}${e.hora_fin ? ` – ${e.hora_fin}` : ''}</span>` : ''}</td>
           <td>${e.precio && e.precio!=='0' ? `${e.precio} ${e.moneda}` : '<span style="color:var(--gold)">Gratis</span>'}</td>
           <td>${e.activo==='TRUE' ? '<span style="color:var(--green);font-size:.8rem">● Visible</span>' : '<span style="color:var(--ink-soft);font-size:.8rem">○ Oculto</span>'}</td>
           <td><div class="actions">
