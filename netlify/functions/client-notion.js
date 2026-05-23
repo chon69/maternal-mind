@@ -1,5 +1,6 @@
 const https    = require('https');
 const { requireAuth, ok, fail, preflight } = require('../lib/auth');
+const { findBy } = require('../lib/sheets');
 
 const DB_ID = '7bf6ca6c73054454aa6b432374420b5f';
 
@@ -58,7 +59,9 @@ exports.handler = async (event) => {
   try { user = requireAuth(event); }
   catch (e) { return fail(e.message, e.status || 401); }
 
-  const isPremium = (user.plan || 'free') === 'biblioteca_mami';
+  // Leer plan actualizado de Sheets (el JWT puede tener el plan antiguo)
+  const dbUser    = await findBy('Usuarios', 'id', user.id).catch(() => null);
+  const isPremium = (dbUser?.plan || user.plan || 'free') === 'biblioteca_mami';
 
   try {
     const pages = [];
