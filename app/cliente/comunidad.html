@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comunidad · Maternal Mind</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--turq:#7DCFCA;--turq-dark:#5BBFB9;--turq-deep:#4AADA7;--turq-light:#C8EDEB;--turq-vlight:#EEF9F8;--gold:#F2C14E;--gold-light:#FEF7E0;--ink:#3A3A3A;--ink-soft:#5E5E5E;--cream:#FDFAF5}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh}
+  nav{background:#fff;border-bottom:1px solid rgba(125,207,202,.18);padding:.9rem 5vw;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+  .nav-logo{display:flex;align-items:center;gap:.5rem;text-decoration:none}
+  .logo-text{font-size:.95rem;color:var(--turq-dark)}.logo-text span{color:var(--gold);font-weight:500}
+  .nav-links{display:flex;align-items:center;gap:1.5rem}
+  .nav-links a{font-size:.85rem;color:var(--ink-soft);text-decoration:none;transition:color .2s}
+  .nav-links a:hover,.nav-links a.active{color:var(--turq-dark)}
+  .nav-user{display:flex;align-items:center;gap:.75rem}
+  .nav-greeting{font-size:.82rem;color:var(--ink-soft)}
+  .btn-logout{font-size:.8rem;color:var(--turq-deep);background:none;border:1px solid var(--turq-light);border-radius:20px;padding:.35rem .85rem;cursor:pointer;transition:background .2s}
+  .btn-logout:hover{background:var(--turq-vlight)}
+  .hero-banner{background:linear-gradient(135deg,var(--turq-vlight),var(--gold-light));padding:3rem 5vw;border-bottom:1px solid rgba(125,207,202,.15)}
+  .hero-inner{max-width:720px;margin:0 auto}
+  .hero-banner h1{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:300;font-style:italic;margin-bottom:.5rem}
+  .hero-banner p{font-size:.95rem;color:var(--ink-soft);font-weight:300}
+  .content{max-width:720px;margin:0 auto;padding:2rem 5vw}
+  /* COMPOSE */
+  .compose-card{background:#fff;border:1px solid rgba(125,207,202,.2);border-radius:14px;padding:1.25rem;margin-bottom:1.75rem}
+  .compose-header{font-size:.8rem;font-weight:500;color:var(--ink-soft);margin-bottom:.75rem;letter-spacing:.04em}
+  .compose-body{display:flex;flex-direction:column;gap:.65rem}
+  .cat-row{display:flex;gap:.4rem;flex-wrap:wrap}
+  .cat-btn{padding:.3rem .8rem;border-radius:50px;border:1.5px solid var(--turq-light);background:#fff;color:var(--ink-soft);font-size:.75rem;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .15s}
+  .cat-btn.selected,.cat-btn:hover{background:var(--turq);border-color:var(--turq);color:#fff}
+  textarea.compose-input{width:100%;padding:.75rem;border:1.5px solid var(--turq-light);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--ink);background:#FDFAF5;outline:none;resize:vertical;min-height:90px;transition:border-color .2s}
+  textarea.compose-input:focus{border-color:var(--turq);background:#fff}
+  .compose-footer{display:flex;justify-content:flex-end}
+  .btn-publish{padding:.55rem 1.25rem;background:var(--turq);color:#fff;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:500;cursor:pointer;transition:opacity .2s}
+  .btn-publish:hover{opacity:.88}
+  .btn-publish:disabled{opacity:.6;cursor:not-allowed}
+  /* FILTERS */
+  .filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+  .filter-btn{padding:.35rem .9rem;border-radius:50px;border:1.5px solid var(--turq-light);background:#fff;color:var(--ink-soft);font-size:.78rem;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s}
+  .filter-btn.active,.filter-btn:hover{background:var(--turq);border-color:var(--turq);color:#fff}
+  /* FEED */
+  .feed{display:flex;flex-direction:column;gap:1rem}
+  .post-card{background:#fff;border:1px solid rgba(125,207,202,.18);border-radius:14px;padding:1.1rem 1.25rem}
+  .post-head{display:flex;align-items:center;gap:.7rem;margin-bottom:.65rem}
+  .avatar{width:36px;height:36px;border-radius:50%;background:var(--turq);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:500;flex-shrink:0}
+  .post-meta{flex:1;min-width:0}
+  .post-author{font-size:.85rem;font-weight:500;color:var(--ink)}
+  .post-info{display:flex;align-items:center;gap:.5rem;margin-top:.1rem}
+  .cat-badge{font-size:.62rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.15rem .5rem;border-radius:50px}
+  .cat-badge.general{background:var(--turq-vlight);color:var(--turq-deep)}
+  .cat-badge.eventos{background:#EDE9FE;color:#4C1D95}
+  .cat-badge.practicas{background:#DCFCE7;color:#166534}
+  .post-time{font-size:.72rem;color:var(--ink-soft)}
+  .post-content{font-size:.88rem;line-height:1.65;color:var(--ink);white-space:pre-wrap;word-break:break-word}
+  .loading{text-align:center;padding:3rem;color:var(--ink-soft)}.spinner{width:32px;height:32px;border:2.5px solid var(--turq-light);border-top-color:var(--turq);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto .75rem}@keyframes spin{to{transform:rotate(360deg)}}
+  .empty{text-align:center;padding:3rem;color:var(--ink-soft);font-size:.9rem}
+  .toast{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--ink);color:#fff;padding:.75rem 1.25rem;border-radius:10px;font-size:.85rem;z-index:999;opacity:0;transition:opacity .3s;pointer-events:none}.toast.show{opacity:1}
+  .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:.4rem;flex-direction:column;justify-content:center;gap:5px}
+  .nav-hamburger span{display:block;width:22px;height:2px;background:var(--turq-dark);border-radius:2px}
+  @media(max-width:600px){
+    .nav-hamburger{display:flex}
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;border-bottom:1px solid rgba(125,207,202,.18);box-shadow:0 8px 20px rgba(0,0,0,.06);padding:.5rem 5vw .75rem;gap:0;z-index:49}
+    .nav-links.open{display:flex}
+    .nav-links a{padding:.65rem 0;border-bottom:1px solid rgba(125,207,202,.07);font-size:.9rem}
+    .nav-links a:last-child{border-bottom:none}
+    .nav-greeting{display:none}
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="/app/cliente/" class="nav-logo">
+    <svg width="28" height="16" viewBox="0 0 52 28" fill="none"><ellipse cx="17" cy="14" rx="13" ry="13" stroke="#7DCFCA" stroke-width="3" fill="none"/><ellipse cx="35" cy="14" rx="13" ry="13" stroke="#F2C14E" stroke-width="3" fill="none"/></svg>
+    <div class="logo-text">maternal <span>mind</span></div>
+  </a>
+  <div class="nav-links">
+    <a href="/app/cliente/">Inicio</a>
+    <a href="/app/cliente/biblioteca.html" style="color:#B8820A;font-weight:500">✨ Biblioteca</a>
+    <a href="/app/cliente/eventos.html">Eventos</a>
+    <a href="/app/cliente/blog.html">Blog</a>
+    <a href="/app/cliente/podcast.html">Podcast</a>
+    <a href="/app/cliente/comunidad.html" class="active">Comunidad</a>
+    <a href="/app/cliente/mensajes.html">Mensajes</a>
+    <a href="/app/cliente/perfil.html">Mi perfil</a>
+  </div>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
+  <div class="nav-user">
+    <span class="nav-greeting" id="greeting"></span>
+    <button class="btn-logout" onclick="MM.logout()">Cerrar sesión</button>
+  </div>
+</nav>
+
+<div class="hero-banner">
+  <div class="hero-inner">
+    <h1>Comunidad</h1>
+    <p>Un espacio para compartir, preguntar y acompañaros en el camino.</p>
+  </div>
+</div>
+
+<div class="content">
+  <div class="compose-card">
+    <div class="compose-header">Nueva publicación</div>
+    <div class="compose-body">
+      <div class="cat-row" id="cat-row">
+        <button class="cat-btn selected" data-cat="general" onclick="selectCat(this)">General</button>
+        <button class="cat-btn" data-cat="eventos" onclick="selectCat(this)">Eventos</button>
+        <button class="cat-btn" data-cat="practicas" onclick="selectCat(this)">Prácticas</button>
+      </div>
+      <textarea class="compose-input" id="compose-text" placeholder="Comparte algo con la comunidad…" maxlength="1200"></textarea>
+      <div class="compose-footer">
+        <button class="btn-publish" id="publish-btn" onclick="publish()">Publicar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="filters">
+    <button class="filter-btn active" onclick="filter('todos',this)">Todos</button>
+    <button class="filter-btn" onclick="filter('general',this)">General</button>
+    <button class="filter-btn" onclick="filter('eventos',this)">Eventos</button>
+    <button class="filter-btn" onclick="filter('practicas',this)">Prácticas</button>
+  </div>
+
+  <div id="feed"><div class="loading"><div class="spinner"></div>Cargando…</div></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="/app/js/auth.js"></script>
+<script>
+  const user = MM.requireAuth('client');
+  if (user) document.getElementById('greeting').textContent = user.nombre.split(' ')[0];
+
+  let selectedCat = 'general';
+  let allPosts = [];
+  let currentFilter = 'todos';
+
+  function selectCat(btn) {
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selectedCat = btn.dataset.cat;
+  }
+
+  function timeAgo(iso) {
+    const diff = Date.now() - new Date(iso).getTime();
+    const m = Math.floor(diff / 60000);
+    if (m < 1) return 'ahora mismo';
+    if (m < 60) return `hace ${m} min`;
+    const h = Math.floor(m / 60);
+    if (h < 24) return `hace ${h}h`;
+    const d = Math.floor(h / 24);
+    return `hace ${d}d`;
+  }
+
+  function avatarColor(name) {
+    const colors = ['#7DCFCA','#F2C14E','#A78BFA','#6EE7B7','#FCA5A5','#93C5FD'];
+    let hash = 0;
+    for (const c of name) hash = (hash * 31 + c.charCodeAt(0)) % colors.length;
+    return colors[Math.abs(hash)];
+  }
+
+  function renderFeed(posts) {
+    const feed = document.getElementById('feed');
+    if (!posts.length) {
+      feed.innerHTML = '<div class="empty">Aún no hay publicaciones en esta categoría. ¡Sé la primera! 🌱</div>';
+      return;
+    }
+    feed.innerHTML = `<div class="feed">${posts.map(p => `
+      <div class="post-card">
+        <div class="post-head">
+          <div class="avatar" style="background:${avatarColor(p.autor_nombre)}">${p.autor_nombre.charAt(0).toUpperCase()}</div>
+          <div class="post-meta">
+            <div class="post-author">${p.autor_nombre}</div>
+            <div class="post-info">
+              <span class="cat-badge ${p.categoria}">${p.categoria === 'practicas' ? 'Prácticas' : p.categoria.charAt(0).toUpperCase() + p.categoria.slice(1)}</span>
+              <span class="post-time">${timeAgo(p.created_at)}</span>
+            </div>
+          </div>
+        </div>
+        <div class="post-content">${escHtml(p.contenido)}</div>
+      </div>`).join('')}</div>`;
+  }
+
+  function escHtml(s) {
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function filter(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = cat;
+    renderFeed(cat === 'todos' ? allPosts : allPosts.filter(p => p.categoria === cat));
+  }
+
+  function toast(msg, ok=true) {
+    const el = document.getElementById('toast');
+    el.textContent = msg;
+    el.style.background = ok ? '#166534' : '#991B1B';
+    el.classList.add('show');
+    setTimeout(() => el.classList.remove('show'), 2800);
+  }
+
+  async function publish() {
+    const text = document.getElementById('compose-text').value.trim();
+    if (!text) { toast('Escribe algo antes de publicar', false); return; }
+    const btn = document.getElementById('publish-btn');
+    btn.disabled = true; btn.textContent = 'Publicando…';
+    try {
+      const res = await MM.api('/api/client-community', {
+        method: 'POST',
+        body: JSON.stringify({ categoria: selectedCat, contenido: text }),
+      });
+      if (!res.ok) throw new Error((await res.json()).error);
+      document.getElementById('compose-text').value = '';
+      toast('Publicado');
+      await load();
+    } catch(e) { toast(e.message, false); }
+    finally { btn.disabled = false; btn.textContent = 'Publicar'; }
+  }
+
+  async function load() {
+    try {
+      const res = await MM.api('/api/client-community');
+      allPosts = await res.json();
+      renderFeed(currentFilter === 'todos' ? allPosts : allPosts.filter(p => p.categoria === currentFilter));
+    } catch {
+      document.getElementById('feed').innerHTML = '<div class="empty">Error al cargar la comunidad. Intenta recargar.</div>';
+    }
+  }
+
+  load();
+</script>
+<script>(function(){var b=document.getElementById('nav-hamburger'),l=document.querySelector('.nav-links');if(b&&l){b.addEventListener('click',function(e){e.stopPropagation();l.classList.toggle('open')});document.addEventListener('click',function(){l.classList.remove('open')})}})();</script>
+</body>
+</html>

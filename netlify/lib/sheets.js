@@ -9,6 +9,8 @@ const HEADERS = {
   Plantillas:['id','nombre','asunto','cuerpo_html','tipo','activo','created_at'],
   Articulos: ['id','titulo','slug','descripcion','contenido_html','imagen_url','categoria','activo','created_at'],
   Podcast:   ['id','titulo','descripcion','numero_episodio','temporada','url_spotify','url_apple','url_ivoox','imagen_url','activo','created_at'],
+  Comunidad: ['id','autor_id','autor_nombre','categoria','contenido','activo','created_at'],
+  Mensajes:  ['id','cliente_id','cliente_nombre','cliente_email','asunto','contenido','respuesta','estado','created_at','respondido_at'],
 };
 
 function getAuth() {
