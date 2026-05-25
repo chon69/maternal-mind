@@ -45,7 +45,7 @@ function wrapEmail(content) {
 </td></tr>
 <tr><td style="padding:36px;">${content}</td></tr>
 <tr><td style="padding:24px 36px;background:#EEF9F8;border-top:1px solid #C8EDEB;">
-  <p style="margin:0;font-family:Arial,sans-serif;font-size:11px;color:#5BBFB9;text-align:center;">© 2026 Maternal Mind · maternalmind.es</p>
+  <p style="margin:0;font-family:Arial,sans-serif;font-size:11px;color:#5BBFB9;text-align:center;">© 2026 Maternal Mind · <a href="https://maternal-mind.onrender.com/app/cliente/" style="color:#5BBFB9;text-decoration:none;">Acceder a la plataforma</a></p>
 </td></tr>
 </table></td></tr></table></body></html>`;
 }
