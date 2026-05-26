@@ -104,8 +104,13 @@
       </div>
       <label>Descripción (resumen)</label>
       <textarea id="f-descripcion" rows="2" placeholder="Breve descripción que aparece en la tarjeta"></textarea>
-      <label>Imagen de portada (URL)</label>
-      <input type="url" id="f-imagen" placeholder="https://...">
+      <label>Imagen de portada</label>
+      <div style="display:flex;gap:.5rem;align-items:center">
+        <input type="url" id="f-imagen" placeholder="https://… o sube una foto" style="flex:1">
+        <button type="button" onclick="document.getElementById('img-file-input').click()" style="padding:.6rem .9rem;background:var(--turq-vlight);border:1.5px solid var(--turq-light);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.8rem;color:var(--turq-dark);cursor:pointer;white-space:nowrap">📷 Subir foto</button>
+        <input type="file" id="img-file-input" accept="image/*" style="display:none" onchange="uploadImage(this)">
+      </div>
+      <div id="img-upload-status" style="display:none;font-size:.75rem;color:var(--turq-dark);margin-top:.3rem">⏳ Subiendo imagen…</div>
       <label>Contenido</label>
       <div id="f-contenido-editor"></div>
     </div>
@@ -232,6 +237,34 @@
     await MM.api('/api/admin-blog', { method:'DELETE', body: JSON.stringify({ id }) });
     toast('Artículo eliminado');
     await load();
+  }
+
+  async function uploadImage(input) {
+    const file = input.files[0];
+    if (!file) return;
+    const status = document.getElementById('img-upload-status');
+    status.style.display = 'block';
+    try {
+      const data = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload  = e => resolve(e.target.result.split(',')[1]);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+      const res = await MM.api('/api/admin-upload', {
+        method: 'POST',
+        body: JSON.stringify({ filename: file.name, mimeType: file.type, data }),
+      });
+      if (!res.ok) throw new Error((await res.json()).error);
+      const { url } = await res.json();
+      document.getElementById('f-imagen').value = url;
+      toast('Imagen subida correctamente');
+    } catch(e) {
+      toast('Error al subir la imagen: ' + e.message, false);
+    } finally {
+      status.style.display = 'none';
+      input.value = '';
+    }
   }
 
   document.addEventListener('keydown', e => { if (e.key==='Escape') closeModal(); });
