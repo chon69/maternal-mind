@@ -3,22 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Acceder · Maternal Mind</title>
+<title>Recuperar contraseña · Maternal Mind</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --turq:#7DCFCA; --turq-dark:#5BBFB9; --turq-deep:#4AADA7;
-    --turq-light:#C8EDEB; --turq-vlight:#EEF9F8;
-    --gold:#F2C14E; --ink:#3A3A3A; --ink-soft:#5E5E5E;
-    --cream:#FDFAF5; --red:#D95555;
-  }
+  :root{--turq:#7DCFCA;--turq-dark:#5BBFB9;--turq-deep:#4AADA7;--turq-light:#C8EDEB;--turq-vlight:#EEF9F8;--gold:#F2C14E;--ink:#3A3A3A;--ink-soft:#5E5E5E;--cream:#FDFAF5;--red:#D95555}
   *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
   body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;display:flex;flex-direction:column}
   header{padding:1.25rem 8vw;display:flex;align-items:center;border-bottom:1px solid rgba(125,207,202,.18)}
   .logo{display:flex;align-items:center;gap:.6rem;text-decoration:none}
-  .logo-text{font-size:1rem;color:var(--turq-dark)}
-  .logo-text span{color:var(--gold);font-weight:500}
+  .logo-text{font-size:1rem;color:var(--turq-dark)}.logo-text span{color:var(--gold);font-weight:500}
   main{flex:1;display:flex;align-items:center;justify-content:center;padding:3rem 1rem}
   .card{background:#fff;border-radius:20px;box-shadow:0 8px 40px rgba(125,207,202,.18),0 2px 12px rgba(0,0,0,.06);width:100%;max-width:420px;overflow:hidden}
   .card-accent{height:5px;background:linear-gradient(90deg,var(--turq),var(--turq-dark))}
@@ -26,15 +20,15 @@
   .card-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-style:italic;font-weight:300;margin-bottom:6px}
   .card-sub{font-size:.85rem;color:var(--ink-soft);font-weight:300;margin-bottom:1.75rem}
   label{display:block;font-size:.75rem;font-weight:500;color:var(--turq-deep);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.35rem;margin-top:.9rem}
-  input[type=email],input[type=password]{width:100%;padding:13px 15px;border:1.5px solid var(--turq-light);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.95rem;color:var(--ink);background:var(--cream);outline:none;transition:border-color .2s,box-shadow .2s}
+  input[type=email]{width:100%;padding:13px 15px;border:1.5px solid var(--turq-light);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.95rem;color:var(--ink);background:var(--cream);outline:none;transition:border-color .2s,box-shadow .2s}
   input:focus{border-color:var(--turq);background:#fff;box-shadow:0 0 0 3px rgba(125,207,202,.15)}
   .btn{width:100%;padding:14px;background:linear-gradient(135deg,var(--turq),var(--turq-dark));color:#fff;border:none;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;cursor:pointer;margin-top:1.25rem;transition:transform .2s,box-shadow .2s}
   .btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 24px rgba(125,207,202,.4)}
   .btn:disabled{opacity:.65;cursor:not-allowed}
   .error{background:#FEF2F2;border:1px solid #FCA5A5;color:var(--red);font-size:.85rem;padding:.7rem 1rem;border-radius:8px;margin-top:1rem}
+  .success{background:var(--turq-vlight);border:1px solid var(--turq-light);color:var(--turq-dark);font-size:.85rem;padding:.7rem 1rem;border-radius:8px;margin-top:1rem;line-height:1.6}
   .hint{text-align:center;font-size:.78rem;color:var(--ink-soft);margin-top:1.25rem;font-weight:300}
   .hint a{color:var(--turq-dark);text-decoration:none}
-  .hint a:hover{text-decoration:underline}
 </style>
 </head>
 <body>
@@ -48,63 +42,51 @@
   <div class="card">
     <div class="card-accent"></div>
     <div class="card-body">
-      <h1 class="card-title">Bienvenida de vuelta</h1>
-      <p class="card-sub">Accede a tu espacio de Maternal Mind</p>
-      <form id="login-form" novalidate>
+      <h1 class="card-title">Recuperar contraseña</h1>
+      <p class="card-sub">Te enviaremos un enlace para crear una nueva contraseña</p>
+      <form id="forgot-form" novalidate>
         <label for="email">Email</label>
         <input type="email" id="email" placeholder="tu@email.com" autocomplete="email" required>
-        <label for="password">Contraseña</label>
-        <input type="password" id="password" placeholder="Tu contraseña" autocomplete="current-password" required>
         <div id="error" class="error" hidden></div>
+        <div id="success" class="success" hidden>Revisa tu bandeja de entrada — si el email está registrado, recibirás el enlace en breve.</div>
         <button type="submit" class="btn" id="btn">
-          <span id="btn-text">Acceder →</span>
-          <span id="btn-loading" hidden>Entrando…</span>
+          <span id="btn-text">Enviar enlace →</span>
+          <span id="btn-loading" hidden>Enviando…</span>
         </button>
       </form>
-      <p class="hint">¿Aún no tienes cuenta? <a href="/">Regístrate gratis</a></p>
-      <p class="hint"><a href="/app/forgot.html">¿Olvidaste tu contraseña?</a></p>
+      <p class="hint"><a href="/app/login.html">← Volver al acceso</a></p>
     </div>
   </div>
 </main>
-<script src="/app/js/auth.js"></script>
 <script>
-  // Redirect if already logged in
-  const user = MM.getUser();
-  if (user && MM.getToken()) {
-    window.location.href = user.role === 'admin' ? '/app/admin/' : '/app/cliente/';
-  }
-
-  document.getElementById('login-form').addEventListener('submit', async e => {
+  document.getElementById('forgot-form').addEventListener('submit', async e => {
     e.preventDefault();
-    const email    = document.getElementById('email').value.trim();
-    const password = document.getElementById('password').value;
-    const errEl    = document.getElementById('error');
-    const btn      = document.getElementById('btn');
-    const btnText  = document.getElementById('btn-text');
-    const btnLoad  = document.getElementById('btn-loading');
+    const email  = document.getElementById('email').value.trim();
+    const errEl  = document.getElementById('error');
+    const okEl   = document.getElementById('success');
+    const btn    = document.getElementById('btn');
 
     errEl.hidden = true;
+    okEl.hidden  = true;
     btn.disabled = true;
-    btnText.hidden = true;
-    btnLoad.hidden = false;
+    document.getElementById('btn-text').hidden   = true;
+    document.getElementById('btn-loading').hidden = false;
 
     try {
-      const res = await fetch('/api/auth-login', {
+      const res = await fetch('/api/auth-forgot', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email }),
       });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Error al iniciar sesión');
-      MM.setToken(data.token);
-      MM.setUser(data.user);
-      window.location.href = data.user.role === 'admin' ? '/app/admin/' : '/app/cliente/';
+      if (!res.ok) throw new Error('Error al enviar. Inténtalo de nuevo.');
+      document.getElementById('forgot-form').hidden = true;
+      okEl.hidden = false;
     } catch (err) {
       errEl.textContent = err.message;
       errEl.hidden = false;
       btn.disabled = false;
-      btnText.hidden = false;
-      btnLoad.hidden = true;
+      document.getElementById('btn-text').hidden   = false;
+      document.getElementById('btn-loading').hidden = true;
     }
   });
 </script>

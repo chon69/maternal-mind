@@ -86,6 +86,7 @@ const fns = [
   'auth-me',
   'auth-set-password',
   'auth-change-password',
+  'auth-forgot',
   'admin-chat',
   'admin-email-send',
   'admin-events',
