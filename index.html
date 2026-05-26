@@ -650,6 +650,7 @@
               <span class="btn-text">Quiero mi Kit de Pausa →</span>
               <span class="btn-loading" hidden>Enviando…</span>
             </button>
+            <p class="form-slow-msg" hidden style="margin-top:.75rem;font-size:.78rem;color:#9EB5B7;text-align:center;">Un momento… el servidor está arrancando, puede tardar hasta 1 minuto.</p>
           </form>
           <div class="form-success" hidden>
             <div class="success-icon">🌿</div>
@@ -897,6 +898,7 @@
         <span class="btn-text">Quiero mi Kit de Pausa →</span>
         <span class="btn-loading" hidden>Enviando…</span>
       </button>
+      <p class="form-slow-msg" hidden style="margin-top:.75rem;font-size:.78rem;color:rgba(255,255,255,.5);text-align:center;">Un momento… el servidor está arrancando, puede tardar hasta 1 minuto.</p>
     </form>
     <div class="form-success form-success-light" hidden>
       <div class="success-icon">🌿</div>
@@ -952,21 +954,27 @@
       btnLoading.hidden = false;
       btn.disabled      = true;
 
+      const slowMsg = form.querySelector('.form-slow-msg');
+      const slowTimer = setTimeout(() => { if (slowMsg) slowMsg.hidden = false; }, 4000);
+
       try {
         const res = await fetch('/api/submit-form', {
           method:  'POST',
           headers: { 'Content-Type': 'application/json' },
           body:    JSON.stringify({ nombre, email }),
         });
+        clearTimeout(slowTimer);
         if (!res.ok) throw new Error(`Error ${res.status}`);
 
         form.hidden = true;
         if (successEl) successEl.hidden = false;
       } catch (err) {
+        clearTimeout(slowTimer);
         console.error(err);
         btnText.hidden    = false;
         btnLoading.hidden = true;
         btn.disabled      = false;
+        if (slowMsg) slowMsg.hidden = true;
         alert('Ha ocurrido un error. Por favor, inténtalo de nuevo.');
       }
     });
