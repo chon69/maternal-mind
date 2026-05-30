@@ -38,7 +38,9 @@
   .event-body{padding:1.25rem}
   .event-type{display:inline-block;font-size:.62rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--turq-deep);background:var(--turq-vlight);border:1px solid var(--turq-light);padding:.2rem .6rem;border-radius:50px;margin-bottom:.65rem}
   .event-card h3{font-family:'DM Sans',sans-serif;font-size:.98rem;font-weight:500;color:var(--ink);margin-bottom:.4rem}
-  .event-desc{font-size:.82rem;color:var(--ink-soft);line-height:1.65;font-weight:300;margin-bottom:.9rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .event-desc{font-size:.82rem;color:var(--ink-soft);line-height:1.65;font-weight:300;margin-bottom:.5rem}
+  .event-desc.clamped{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .btn-expand{background:none;border:none;font-size:.75rem;color:var(--turq-dark);cursor:pointer;padding:0;margin-bottom:.75rem;font-family:'DM Sans',sans-serif;text-decoration:underline}
   .event-meta{display:flex;flex-wrap:wrap;gap:.5rem .9rem;font-size:.75rem;color:var(--turq-deep);margin-bottom:1rem}
   .event-badge-dest{position:absolute;top:.75rem;right:.75rem;background:var(--gold);color:#fff;font-size:.62rem;font-weight:500;padding:.2rem .6rem;border-radius:50px}
   .event-cta{display:block;text-align:center;background:var(--turq);color:#fff;text-decoration:none;padding:.7rem 1rem;border-radius:8px;font-size:.85rem;font-weight:500;transition:opacity .2s}
@@ -92,7 +94,7 @@
 <div class="content">
   <div class="filters" id="filters">
     <button class="filter-btn active" data-tipo="todos" onclick="filterEvents('todos',this)">Todos</button>
-    <button class="filter-btn" data-tipo="circulo" onclick="filterEvents('circulo',this)">🌙 Círculos</button>
+    <button class="filter-btn" data-tipo="circulo" onclick="filterEvents('circulo',this)">Círculos</button>
     <button class="filter-btn" data-tipo="taller" onclick="filterEvents('taller',this)">Talleres</button>
     <button class="filter-btn" data-tipo="curso" onclick="filterEvents('curso',this)">Cursos</button>
     <button class="filter-btn" data-tipo="programa" onclick="filterEvents('programa',this)">Programas</button>
@@ -108,7 +110,7 @@
   const user = MM.requireAuth('client');
   if (user) document.getElementById('greeting').textContent = user.nombre.split(' ')[0];
 
-  const TYPE_EMOJI = { circulo:'🌙', taller:'🌿', curso:'📚', programa:'🌱', retiro:'✨' };
+  const TYPE_EMOJI = { circulo:'🌿', taller:'🌿', curso:'📚', programa:'🌱', retiro:'✨' };
   let allEvents = [];
 
   function formatDate(str) {
@@ -130,7 +132,8 @@
         <div class="event-body">
           <span class="event-type">${e.tipo}</span>
           <h3>${e.titulo}</h3>
-          <p class="event-desc">${e.descripcion}</p>
+          <p class="event-desc clamped" id="desc-${e.id}">${e.descripcion}</p>
+          ${e.descripcion && e.descripcion.length > 120 ? `<button class="btn-expand" onclick="toggleDesc('${e.id}',this)">Leer más</button>` : ''}
           <div class="event-meta">
             ${e.fecha_inicio ? `📅 ${formatDate(e.fecha_inicio)}` : ''}
             ${(e.hora_inicio||e.hora_fin) ? `🕐 ${e.hora_inicio||''}${e.hora_fin ? ` – ${e.hora_fin}` : ''}` : ''}
@@ -141,6 +144,13 @@
             : '<span style="font-size:.8rem;color:var(--ink-soft)">Próximamente</span>'}
         </div>
       </div>`).join('')}</div>`;
+  }
+
+  function toggleDesc(id, btn) {
+    const p = document.getElementById('desc-' + id);
+    const expanded = !p.classList.contains('clamped');
+    p.classList.toggle('clamped', expanded);
+    btn.textContent = expanded ? 'Leer más' : 'Leer menos';
   }
 
   function filterEvents(tipo, btn) {
