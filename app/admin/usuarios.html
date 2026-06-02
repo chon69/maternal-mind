@@ -66,11 +66,6 @@
       <option value="pendiente">Pendiente</option>
       <option value="inactivo">Inactivo</option>
     </select>
-    <select class="filter-sel" id="filter-role" onchange="filterTable()">
-      <option value="">Todos los roles</option>
-      <option value="client">Cliente</option>
-      <option value="admin">Admin</option>
-    </select>
   </div>
 
   <div class="card" id="table-wrap">
@@ -96,11 +91,9 @@
   function filterTable() {
     const q      = document.getElementById('search').value.toLowerCase();
     const estado = document.getElementById('filter-estado').value;
-    const role   = document.getElementById('filter-role').value;
     const filtered = allUsers.filter(u =>
       (!q || u.nombre.toLowerCase().includes(q) || u.email.toLowerCase().includes(q)) &&
-      (!estado || u.estado === estado) &&
-      (!role   || u.role   === role)
+      (!estado || u.estado === estado)
     );
     renderTable(filtered);
   }
@@ -112,11 +105,10 @@
     }
     document.getElementById('table-wrap').innerHTML = `
       <table>
-        <thead><tr><th>Nombre</th><th>Email</th><th>Rol</th><th>Estado</th><th>Registrada</th><th>Últ. acceso</th><th>Acciones</th></tr></thead>
+        <thead><tr><th>Nombre</th><th>Email</th><th>Estado</th><th>Registrada</th><th>Últ. acceso</th><th>Acciones</th></tr></thead>
         <tbody>${users.map(u => `<tr id="row-${u.id}">
           <td><strong>${u.nombre}</strong></td>
           <td style="color:var(--ink-soft)">${u.email}</td>
-          <td><span class="badge ${u.role}">${u.role}</span></td>
           <td><span class="badge ${u.estado}">${u.estado}</span></td>
           <td style="font-size:.75rem;color:var(--ink-soft)">${u.created_at ? new Date(u.created_at).toLocaleDateString('es-ES') : '—'}</td>
           <td style="font-size:.75rem;color:var(--ink-soft)">${u.last_login ? new Date(u.last_login).toLocaleDateString('es-ES') : '—'}</td>
@@ -124,9 +116,6 @@
             ${u.estado === 'activo'
               ? `<button class="btn-sm warn" onclick="toggleEstado('${u.id}','inactivo')">Desactivar</button>`
               : `<button class="btn-sm primary" onclick="toggleEstado('${u.id}','activo')">Activar</button>`}
-            ${u.role === 'client'
-              ? `<button class="btn-sm primary" onclick="setRole('${u.id}','admin')">→ Admin</button>`
-              : `<button class="btn-sm warn" onclick="setRole('${u.id}','client')">→ Cliente</button>`}
             <button class="btn-sm danger" onclick="deleteUser('${u.id}','${u.nombre}')">Eliminar</button>
           </div></td>
         </tr>`).join('')}</tbody>
