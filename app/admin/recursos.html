@@ -184,7 +184,7 @@
               <p>${r.descripcion || '—'}</p>
               ${r.duracion ? `<span style="font-size:.72rem;color:var(--ink-soft)">⏱️ ${r.duracion}</span>` : ''}
               <div class="resource-actions">
-                <button class="btn-sm primary" onclick='editResource(${JSON.stringify(r).replace(/'/g,"&#39;")})'>Editar</button>
+                <button class="btn-sm primary" onclick="editResource('${r.id}')">Editar</button>
                 <button class="btn-sm warn" onclick="toggleActive('${r.id}','${r.activo === 'TRUE' ? 'FALSE' : 'TRUE'}')">${r.activo==='TRUE'?'Ocultar':'Mostrar'}</button>
                 <button class="btn-sm danger" onclick="deleteResource('${r.id}')">Eliminar</button>
               </div>
@@ -210,7 +210,7 @@
     document.body.style.overflow = 'hidden';
   }
 
-  function editResource(r) { openModal(r); }
+  function editResource(id) { openModal(allResources.find(r => r.id === id)); }
   function closeModal() {
     document.getElementById('modal').classList.remove('open');
     document.body.style.overflow='';

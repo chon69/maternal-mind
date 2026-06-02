@@ -170,7 +170,7 @@
         <td style="white-space:nowrap">${formatDate(p.created_at)}</td>
         <td><span class="badge ${p.activo==='TRUE'?'activo':'inactivo'}">${p.activo==='TRUE'?'Publicado':'Borrador'}</span></td>
         <td><div class="actions">
-          <button class="btn-sm primary" onclick="edit(${JSON.stringify(p).replace(/"/g,'&quot;')})">Editar</button>
+          <button class="btn-sm primary" onclick="edit('${p.id}')">Editar</button>
           <button class="btn-sm warn" onclick="toggle('${p.id}','${p.activo==='TRUE'?'FALSE':'TRUE'}')">${p.activo==='TRUE'?'Despublicar':'Publicar'}</button>
           <button class="btn-sm danger" onclick="del('${p.id}')">Eliminar</button>
         </div></td>
@@ -196,7 +196,7 @@
     document.getElementById('modal').classList.add('open');
   }
 
-  function edit(p) { openModal(p); }
+  function edit(id) { openModal(posts.find(p => p.id === id)); }
   function closeModal() { document.getElementById('modal').classList.remove('open'); }
 
   async function save() {

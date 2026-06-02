@@ -142,6 +142,8 @@
 <script>
   MM.requireAuth('admin');
 
+  let allEvents = [];
+
   function toast(msg, ok=true) {
     const el = document.getElementById('toast');
     el.textContent = msg;
@@ -167,7 +169,7 @@
           <td>${e.precio && e.precio!=='0' ? `${e.precio} ${e.moneda}` : '<span style="color:var(--gold)">Gratis</span>'}</td>
           <td>${e.activo==='TRUE' ? '<span style="color:var(--green);font-size:.8rem">● Visible</span>' : '<span style="color:var(--ink-soft);font-size:.8rem">○ Oculto</span>'}</td>
           <td><div class="actions">
-            <button class="btn-sm primary" onclick='editEvent(${JSON.stringify(e).replace(/'/g,"&#39;")})'>Editar</button>
+            <button class="btn-sm primary" onclick="editEvent('${e.id}')">Editar</button>
             <button class="btn-sm warn" onclick="toggleActive('${e.id}','${e.activo==='TRUE'?'FALSE':'TRUE'}')">${e.activo==='TRUE'?'Ocultar':'Mostrar'}</button>
             <button class="btn-sm danger" onclick="deleteEvent('${e.id}')">Eliminar</button>
           </div></td>
@@ -196,7 +198,7 @@
     document.getElementById('modal').classList.add('open');
     document.body.style.overflow='hidden';
   }
-  function editEvent(e) { openModal(e); }
+  function editEvent(id) { openModal(allEvents.find(e => e.id === id)); }
   function closeModal() {
     document.getElementById('modal').classList.remove('open');
     document.body.style.overflow='';
@@ -328,7 +330,8 @@
 
   async function load() {
     const res = await MM.api('/api/admin-events');
-    render(await res.json());
+    allEvents = await res.json();
+    render(allEvents);
   }
   load();
   document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
