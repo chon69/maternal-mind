@@ -41,7 +41,6 @@
   .ep-link:hover{opacity:.82}
   .ep-link.spotify{background:#1DB954;color:#fff;border-color:#1DB954}
   .ep-link.apple{background:#9B59B6;color:#fff;border-color:#9B59B6}
-  .ep-link.ivoox{background:#F59E0B;color:#fff;border-color:#F59E0B}
   .ep-link.default{background:var(--turq-vlight);color:var(--turq-dark);border-color:var(--turq-light)}
   .loading{text-align:center;padding:4rem;color:var(--ink-soft)}
   .spinner{width:36px;height:36px;border:3px solid var(--turq-light);border-top-color:var(--turq);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 1rem}@keyframes spin{to{transform:rotate(360deg)}}
@@ -128,8 +127,7 @@
           ? `<iframe style="border-radius:8px;margin-top:.75rem;display:block" src="https://open.spotify.com/embed/episode/${epMatch[1]}?utm_source=generator" width="100%" height="80" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`
           : '';
         const links = [
-          ep.url_apple && `<a href="${ep.url_apple}" target="_blank" rel="noopener" class="ep-link apple">▶ Apple</a>`,
-          ep.url_ivoox && `<a href="${ep.url_ivoox}" target="_blank" rel="noopener" class="ep-link ivoox">▶ iVoox</a>`,
+          ep.url_apple && `<a href="${ep.url_apple}" target="_blank" rel="noopener" class="ep-link apple">▶ Apple Podcasts</a>`,
         ].filter(Boolean).join('');
         return `
           <div class="ep-card">
