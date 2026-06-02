@@ -255,7 +255,8 @@
   // Próximos eventos — tarjetas con fecha visual
   MM.api('/api/client-events').then(r => r.json()).then(events => {
     const el = document.getElementById('recent-events');
-    const next = events.filter(e => new Date(e.fecha_inicio) >= new Date()).slice(0, 3);
+    const oneWeekAgo = new Date(Date.now() - 7 * 86400000);
+    const next = events.filter(e => new Date(e.fecha_inicio) >= oneWeekAgo).slice(0, 3);
     if (!next.length) { el.innerHTML = '<li class="event-empty">No hay eventos próximos</li>'; return; }
     el.innerHTML = next.map(e => {
       const d = new Date(e.fecha_inicio);
@@ -294,9 +295,11 @@
            .map(i => ({ tipo: 'practica', titulo: i.titulo, href: '/app/cliente/biblioteca.html', fecha: i.created_at }))).catch(() => []),
   ]).then(results => {
     const all = results.flatMap(r => r.status === 'fulfilled' ? r.value : []);
-    all.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
+    const oneMonthAgo = new Date(Date.now() - 30 * 86400000);
+    const recent = all.filter(n => !n.fecha || new Date(n.fecha) >= oneMonthAgo);
+    recent.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
     const el = document.getElementById('novedades-list');
-    const top = all.slice(0, 5);
+    const top = recent.slice(0, 5);
     if (!top.length) { el.innerHTML = '<li><span class="empty-msg">Pronto habrá novedades aquí</span></li>'; return; }
     const labels = { blog: 'Blog', podcast: 'Podcast', practica: 'Práctica' };
     el.innerHTML = top.map(n => `<li class="nov-item ${n.tipo}">
