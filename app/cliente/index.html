@@ -59,15 +59,40 @@
   .card-arrow{margin-top:1.25rem;font-size:.82rem;color:var(--turq-dark);font-weight:500}
   .card-lock{margin-top:1.25rem;display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;color:var(--gold-dark);background:var(--gold-light);padding:.3rem .7rem;border-radius:50px}
   .card-badge{position:absolute;top:1rem;right:1rem;font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .6rem;border-radius:50px;background:var(--gold-light);color:var(--gold-dark)}
-  /* RECENT */
+  /* TABLÓN INFERIOR */
   .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem}
-  .mini-card{background:#fff;border-radius:14px;border:1px solid rgba(125,207,202,.15);padding:1.25rem}
-  .mini-card h4{font-size:.82rem;font-weight:500;color:var(--turq-dark);letter-spacing:.04em;text-transform:uppercase;margin-bottom:.85rem}
-  .mini-list{list-style:none;display:flex;flex-direction:column;gap:.6rem}
-  .mini-list li{font-size:.85rem;color:var(--ink-soft);font-weight:300;line-height:1.5}
-  .mini-list li a{color:var(--ink);text-decoration:none;font-weight:400}
-  .mini-list li a:hover{color:var(--turq-dark)}
-  .mini-list .empty-msg{color:var(--turq-light);font-style:italic}
+  .mini-card{background:#fff;border-radius:16px;border:1px solid rgba(125,207,202,.15);padding:1.5rem;display:flex;flex-direction:column}
+  .mini-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.1rem}
+  .mini-card-header h4{font-size:.9rem;font-weight:500;color:var(--turq-dark);letter-spacing:.08em;text-transform:uppercase}
+  .mini-card-header a{font-size:.72rem;color:var(--turq-dark);text-decoration:none;opacity:.7}
+  .mini-card-header a:hover{opacity:1}
+  /* EVENTOS */
+  .event-list{list-style:none;display:flex;flex-direction:column;gap:.75rem}
+  .event-item{display:flex;align-items:flex-start;gap:.85rem;padding:.75rem;border-radius:12px;background:var(--turq-vlight);border:1px solid rgba(125,207,202,.2);text-decoration:none;color:inherit;transition:box-shadow .2s}
+  .event-item:hover{box-shadow:0 4px 14px rgba(125,207,202,.22)}
+  .event-date{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:44px;height:44px;background:var(--turq-dark);border-radius:10px;color:#fff;flex-shrink:0}
+  .event-date .ev-day{font-size:1.05rem;font-weight:600;line-height:1}
+  .event-date .ev-mon{font-size:.55rem;font-weight:400;text-transform:uppercase;letter-spacing:.06em;opacity:.85}
+  .event-body{flex:1;min-width:0}
+  .event-title{font-size:.85rem;font-weight:500;color:var(--ink);line-height:1.35;margin-bottom:.2rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .event-meta{font-size:.72rem;color:var(--turq-dark);font-weight:300}
+  .event-empty{font-size:.83rem;color:var(--turq-light);font-style:italic;padding:.5rem 0}
+  /* NOVEDADES */
+  .nov-list{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+  .nov-item{display:flex;align-items:flex-start;gap:.7rem;padding:.7rem .85rem;border-radius:10px;border-left:3px solid var(--turq-light);background:#FAFEFE;transition:background .18s}
+  .nov-item:hover{background:var(--turq-vlight)}
+  .nov-item.blog{border-left-color:var(--turq-dark)}
+  .nov-item.podcast{border-left-color:var(--gold)}
+  .nov-item.practica{border-left-color:#A8D5A2}
+  .nov-tag{font-size:.58rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.18rem .45rem;border-radius:50px;flex-shrink:0;margin-top:.15rem}
+  .nov-tag.blog{background:var(--turq-vlight);color:var(--turq-deep)}
+  .nov-tag.podcast{background:var(--gold-light);color:var(--gold-dark)}
+  .nov-tag.practica{background:#EDF7EC;color:#4A8A46}
+  .nov-body{flex:1;min-width:0}
+  .nov-title{font-size:.83rem;font-weight:400;color:var(--ink);line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .nov-title a{color:inherit;text-decoration:none}.nov-title a:hover{color:var(--turq-dark)}
+  .nov-date{font-size:.7rem;color:var(--ink-soft);font-weight:300;margin-top:.15rem;opacity:.7}
+  .mini-list .empty-msg{font-size:.83rem;color:var(--turq-light);font-style:italic;padding:.5rem 0}
   /* LOADING */
   .spinner{width:28px;height:28px;border:2.5px solid var(--turq-light);border-top-color:var(--turq);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto}@keyframes spin{to{transform:rotate(360deg)}}
   .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:.4rem;flex-direction:column;justify-content:center;gap:5px}
@@ -80,6 +105,7 @@
     .nav-links a:last-child{border-bottom:none}
     .nav-greeting{display:none}
     .hero-inner{flex-direction:column}.upgrade-box{max-width:100%}.two-col{grid-template-columns:1fr}.sections-grid{grid-template-columns:1fr}
+    .event-title{white-space:normal}
   }
 </style>
 </head>
@@ -171,14 +197,22 @@
   </div>
 
   <div class="two-col" id="two-col">
+
     <div class="mini-card">
-      <h4>Próximos eventos</h4>
-      <ul class="mini-list" id="recent-events"><li><div class="spinner"></div></li></ul>
+      <div class="mini-card-header">
+        <h4>Próximos eventos</h4>
+        <a href="/app/cliente/eventos.html">Ver todos →</a>
+      </div>
+      <ul class="event-list" id="recent-events"><li><div class="spinner"></div></li></ul>
     </div>
+
     <div class="mini-card">
-      <h4>Últimos artículos</h4>
-      <ul class="mini-list" id="recent-blog"><li><div class="spinner"></div></li></ul>
+      <div class="mini-card-header">
+        <h4>📌 Novedades</h4>
+      </div>
+      <ul class="nov-list" id="novedades-list"><li><div class="spinner"></div></li></ul>
     </div>
+
   </div>
 </div>
 
@@ -218,22 +252,61 @@
     btn.disabled = false;
   }
 
-  // Load recent events
+  // Próximos eventos — tarjetas con fecha visual
   MM.api('/api/client-events').then(r => r.json()).then(events => {
     const el = document.getElementById('recent-events');
-    const next = events.filter(e => new Date(e.fecha_inicio) >= new Date()).slice(0,3);
-    el.innerHTML = next.length
-      ? next.map(e => `<li><a href="/app/cliente/eventos.html">${e.titulo}</a><br><small style="color:var(--turq-dark)">${new Date(e.fecha_inicio).toLocaleDateString('es-ES',{day:'numeric',month:'long'})}</small></li>`).join('')
-      : '<li class="empty-msg">No hay eventos próximos</li>';
-  }).catch(() => { document.getElementById('recent-events').innerHTML = '<li class="empty-msg">—</li>'; });
+    const next = events.filter(e => new Date(e.fecha_inicio) >= new Date()).slice(0, 3);
+    if (!next.length) { el.innerHTML = '<li class="event-empty">No hay eventos próximos</li>'; return; }
+    el.innerHTML = next.map(e => {
+      const d = new Date(e.fecha_inicio);
+      const day = d.toLocaleDateString('es-ES', { day: '2-digit' });
+      const mon = d.toLocaleDateString('es-ES', { month: 'short' }).replace('.','');
+      const hora = e.hora_inicio ? ` · ${e.hora_inicio.slice(0,5)}h` : '';
+      const formato = e.formato ? ` · ${e.formato}` : '';
+      return `<li><a href="/app/cliente/eventos.html" class="event-item">
+        <div class="event-date"><span class="ev-day">${day}</span><span class="ev-mon">${mon}</span></div>
+        <div class="event-body">
+          <div class="event-title">${e.titulo}</div>
+          <div class="event-meta">${mon} ${day}${hora}${formato}</div>
+        </div>
+      </a></li>`;
+    }).join('');
+  }).catch(() => { document.getElementById('recent-events').innerHTML = '<li class="event-empty">—</li>'; });
 
-  // Load recent blog
-  MM.api('/api/client-blog').then(r => r.json()).then(posts => {
-    const el = document.getElementById('recent-blog');
-    el.innerHTML = posts.slice(0,3).length
-      ? posts.slice(0,3).map(p => `<li><a href="/app/cliente/blog.html">${p.titulo}</a>${p.categoria ? `<br><small style="color:var(--turq-dark)">${p.categoria}</small>` : ''}</li>`).join('')
-      : '<li class="empty-msg">Pronto habrá artículos aquí</li>';
-  }).catch(() => { document.getElementById('recent-blog').innerHTML = '<li class="empty-msg">—</li>'; });
+  // Novedades — tablón combinado: blog + podcast + prácticas
+  function timeAgo(dateStr) {
+    const diff = Date.now() - new Date(dateStr);
+    const d = Math.floor(diff / 86400000);
+    if (d === 0) return 'hoy';
+    if (d === 1) return 'ayer';
+    if (d < 7) return `hace ${d} días`;
+    if (d < 30) return `hace ${Math.floor(d/7)} sem.`;
+    return new Date(dateStr).toLocaleDateString('es-ES', { day:'numeric', month:'short' });
+  }
+
+  Promise.allSettled([
+    MM.api('/api/client-blog').then(r => r.json()).then(posts =>
+      posts.map(p => ({ tipo: 'blog', titulo: p.titulo, href: '/app/cliente/blog.html', fecha: p.fecha_publicacion || p.created_at }))),
+    MM.api('/api/client-podcast').then(r => r.json()).then(eps =>
+      eps.map(p => ({ tipo: 'podcast', titulo: p.titulo, href: '/app/cliente/podcast.html', fecha: p.fecha_publicacion || p.created_at }))).catch(() => []),
+    MM.api('/api/client-resources').then(r => r.json()).then(items =>
+      items.sort((a,b) => new Date(b.created_at) - new Date(a.created_at)).slice(0,2)
+           .map(i => ({ tipo: 'practica', titulo: i.titulo, href: '/app/cliente/biblioteca.html', fecha: i.created_at }))).catch(() => []),
+  ]).then(results => {
+    const all = results.flatMap(r => r.status === 'fulfilled' ? r.value : []);
+    all.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
+    const el = document.getElementById('novedades-list');
+    const top = all.slice(0, 5);
+    if (!top.length) { el.innerHTML = '<li><span class="empty-msg">Pronto habrá novedades aquí</span></li>'; return; }
+    const labels = { blog: 'Blog', podcast: 'Podcast', practica: 'Práctica' };
+    el.innerHTML = top.map(n => `<li class="nov-item ${n.tipo}">
+      <span class="nov-tag ${n.tipo}">${labels[n.tipo]}</span>
+      <div class="nov-body">
+        <div class="nov-title"><a href="${n.href}">${n.titulo}</a></div>
+        ${n.fecha ? `<div class="nov-date">${timeAgo(n.fecha)}</div>` : ''}
+      </div>
+    </li>`).join('');
+  });
 
   // Refresh plan from server in case Stripe just activated it
   MM.api('/api/auth-me').then(r => r?.json()).then(data => {
