@@ -21,7 +21,11 @@ if (!password || password.length < 8) {
   process.exit(1);
 }
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+const isLocal = (process.env.DATABASE_URL || '').includes('localhost');
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: isLocal ? false : { rejectUnauthorized: false },
+});
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'chon@maternalmind.es';
 
 async function run() {
