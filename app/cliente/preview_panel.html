@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preview Panel · Maternal Mind</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--turq:#7DCFCA;--turq-dark:#5BBFB9;--turq-deep:#4AADA7;--turq-light:#C8EDEB;--turq-vlight:#EEF9F8;--gold:#F2C14E;--gold-dark:#B8820A;--gold-light:#FEF7E0;--ink:#3A3A3A;--ink-soft:#5E5E5E;--cream:#FDFAF5}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh}
+  nav{background:#fff;border-bottom:1px solid rgba(125,207,202,.18);padding:.9rem 5vw;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+  .nav-logo{display:flex;align-items:center;gap:.5rem;text-decoration:none}
+  .logo-text{font-size:.95rem;color:var(--turq-dark)}.logo-text span{color:var(--gold);font-weight:500}
+  .nav-links{display:flex;align-items:center;gap:1.25rem}
+  .nav-links a{font-size:.83rem;color:var(--ink-soft);text-decoration:none;font-weight:400}
+  .nav-links a.active{color:var(--turq-dark)}
+  .nav-links .premium-link{color:var(--gold-dark);font-weight:500}
+  .nav-user{display:flex;align-items:center;gap:.75rem}
+  .nav-greeting{font-size:.82rem;color:var(--ink-soft)}
+  .btn-logout{font-size:.8rem;color:var(--turq-deep);background:none;border:1px solid var(--turq-light);border-radius:20px;padding:.35rem .85rem;cursor:pointer}
+  .hero{background:linear-gradient(135deg,var(--turq-vlight) 0%,var(--gold-light) 100%);padding:3.5rem 5vw;border-bottom:1px solid rgba(125,207,202,.15)}
+  .hero-inner{max-width:1100px;margin:0 auto;display:flex;align-items:flex-start;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+  .hero-text h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:300;font-style:italic;color:var(--ink);margin-bottom:.5rem}
+  .hero-text p{font-size:.95rem;color:var(--ink-soft);font-weight:300;max-width:480px;line-height:1.7}
+  .plan-badge{display:inline-flex;align-items:center;gap:.4rem;padding:.45rem 1rem;border-radius:50px;font-size:.75rem;font-weight:500;letter-spacing:.04em;margin-top:1rem;background:#fff;border:1.5px solid var(--turq-light);color:var(--turq-dark)}
+  .upgrade-box{background:#fff;border-radius:16px;padding:1.5rem 1.75rem;box-shadow:0 4px 20px rgba(242,193,78,.15);border:1.5px solid rgba(242,193,78,.3);max-width:300px}
+  .upgrade-box h3{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-style:italic;color:var(--ink);margin-bottom:.5rem}
+  .upgrade-box p{font-size:.83rem;color:var(--ink-soft);line-height:1.6;margin-bottom:1rem}
+  .btn-upgrade{display:block;text-align:center;background:linear-gradient(135deg,var(--gold) 0%,#F5DFA0 100%);color:#fff;text-decoration:none;padding:.75rem 1.5rem;border-radius:10px;font-size:.88rem;font-weight:500;width:100%}
+  .content{max-width:1100px;margin:0 auto;padding:2.5rem 5vw}
+  .section-label{font-size:.65rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--turq-deep);margin-bottom:1.5rem;display:flex;align-items:center;gap:.5rem}
+  .section-label::after{content:'';flex:1;height:1px;background:var(--turq-light)}
+  .sections-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem}
+  .section-card{background:#fff;border-radius:16px;border:1px solid rgba(125,207,202,.18);padding:1.75rem;text-decoration:none;color:inherit;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:box-shadow .22s,transform .22s}
+  .section-card:hover{box-shadow:0 8px 30px rgba(125,207,202,.18);transform:translateY(-3px)}
+  .section-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+  .section-card.turq::before{background:var(--turq)}
+  .section-card.gold::before{background:var(--gold)}
+  .section-card.soft::before{background:var(--turq-light)}
+  .card-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1rem}
+  .card-icon.turq{background:var(--turq-vlight)}.card-icon.gold{background:var(--gold-light)}.card-icon.soft{background:#F0F4F4}
+  .section-card h3{font-size:1rem;font-weight:500;color:var(--ink);margin-bottom:.4rem}
+  .section-card p{font-size:.83rem;color:var(--ink-soft);line-height:1.65;font-weight:300;flex:1}
+  .card-arrow{margin-top:1.25rem;font-size:.82rem;color:var(--turq-dark);font-weight:500}
+  .card-lock{margin-top:1.25rem;display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;color:var(--gold-dark);background:var(--gold-light);padding:.3rem .7rem;border-radius:50px}
+  .card-badge{position:absolute;top:1rem;right:1rem;font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .6rem;border-radius:50px;background:var(--gold-light);color:var(--gold-dark)}
+  /* TABLÓN */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem}
+  .mini-card{background:#fff;border-radius:16px;border:1px solid rgba(125,207,202,.15);padding:1.5rem;display:flex;flex-direction:column}
+  .mini-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.1rem}
+  .mini-card-header h4{font-size:.9rem;font-weight:500;color:var(--turq-dark);letter-spacing:.08em;text-transform:uppercase}
+  .mini-card-header a{font-size:.72rem;color:var(--turq-dark);text-decoration:none;opacity:.7}
+  /* EVENTOS */
+  .event-list{list-style:none;display:flex;flex-direction:column;gap:.75rem}
+  .event-item{display:flex;align-items:flex-start;gap:.85rem;padding:.75rem;border-radius:12px;background:var(--turq-vlight);border:1px solid rgba(125,207,202,.2);text-decoration:none;color:inherit;transition:box-shadow .2s}
+  .event-item:hover{box-shadow:0 4px 14px rgba(125,207,202,.22)}
+  .event-date{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:44px;height:44px;background:var(--turq-dark);border-radius:10px;color:#fff;flex-shrink:0}
+  .event-date .ev-day{font-size:1.05rem;font-weight:600;line-height:1}
+  .event-date .ev-mon{font-size:.55rem;font-weight:400;text-transform:uppercase;letter-spacing:.06em;opacity:.85}
+  .event-body{flex:1;min-width:0}
+  .event-title{font-size:.85rem;font-weight:500;color:var(--ink);line-height:1.35;margin-bottom:.2rem}
+  .event-meta{font-size:.72rem;color:var(--turq-dark);font-weight:300}
+  /* NOVEDADES */
+  .nov-list{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+  .nov-item{display:flex;align-items:flex-start;gap:.7rem;padding:.7rem .85rem;border-radius:10px;border-left:3px solid var(--turq-light);background:#FAFEFE;transition:background .18s}
+  .nov-item:hover{background:var(--turq-vlight)}
+  .nov-item.blog{border-left-color:var(--turq-dark)}
+  .nov-item.podcast{border-left-color:var(--gold)}
+  .nov-item.practica{border-left-color:#A8D5A2}
+  .nov-tag{font-size:.58rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.18rem .45rem;border-radius:50px;flex-shrink:0;margin-top:.15rem}
+  .nov-tag.blog{background:var(--turq-vlight);color:var(--turq-deep)}
+  .nov-tag.podcast{background:var(--gold-light);color:var(--gold-dark)}
+  .nov-tag.practica{background:#EDF7EC;color:#4A8A46}
+  .nov-body{flex:1;min-width:0}
+  .nov-title{font-size:.83rem;font-weight:400;color:var(--ink);line-height:1.35}
+  .nov-date{font-size:.7rem;color:var(--ink-soft);font-weight:300;margin-top:.15rem;opacity:.7}
+  footer{text-align:center;padding:2rem 5vw;border-top:1px solid rgba(125,207,202,.12);margin-top:3rem}
+  footer p{font-size:.72rem;color:#9EB5B7}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <svg width="28" height="16" viewBox="0 0 52 28" fill="none"><ellipse cx="17" cy="14" rx="13" ry="13" stroke="#7DCFCA" stroke-width="3" fill="none"/><ellipse cx="35" cy="14" rx="13" ry="13" stroke="#F2C14E" stroke-width="3" fill="none"/></svg>
+    <div class="logo-text">maternal <span>mind</span></div>
+  </a>
+  <div class="nav-links">
+    <a href="#" class="active">Inicio</a>
+    <a href="#" class="premium-link">✨ Biblioteca</a>
+    <a href="#">Eventos</a>
+    <a href="#">Blog</a>
+    <a href="#">Podcast</a>
+    <a href="#">Comunidad</a>
+    <a href="#">Mi perfil</a>
+  </div>
+  <div class="nav-user">
+    <span class="nav-greeting">Hola, Chon</span>
+    <button class="btn-logout">Salir</button>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <h1>Tu espacio, Chon</h1>
+      <p>Aquí encuentras todo el contenido de Maternal Mind — prácticas, talleres, artículos y episodios — en un solo lugar.</p>
+      <span class="plan-badge">Plan gratuito</span>
+    </div>
+    <div class="upgrade-box">
+      <h3>Biblioteca Mami</h3>
+      <p>Acceso completo a la biblioteca en crecimiento: recursos exclusivos, prácticas de mindfulness y contenido que se va ampliando cada mes.</p>
+      <button class="btn-upgrade">Suscribirme a la Biblioteca →</button>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <div class="section-label">Tu espacio Maternal Mind</div>
+  <div class="sections-grid">
+
+    <a href="#" class="section-card turq">
+      <div class="card-icon turq">🌿</div>
+      <h3>Kit de Pausa</h3>
+      <p>Tus 5 prácticas de bienvenida: audios guiados, journaling y micro-momentos para volver a ti en cualquier momento del día.</p>
+      <span class="card-arrow">Ir a mis prácticas →</span>
+    </a>
+
+    <a href="#" class="section-card gold">
+      <div class="card-badge">Premium</div>
+      <div class="card-icon gold">📚</div>
+      <h3>Biblioteca Mami</h3>
+      <p>La biblioteca completa que crece cada mes: recursos de mindfulness, maternidad consciente y bienestar en profundidad.</p>
+      <span class="card-lock">🔒 Requiere suscripción</span>
+    </a>
+
+    <a href="#" class="section-card soft">
+      <div class="card-icon soft">🗓️</div>
+      <h3>Eventos y círculos</h3>
+      <p>Talleres, cursos, retiros y círculos de maternidad. Encuéntrate con otras mamás en espacios de presencia y cuidado.</p>
+      <span class="card-arrow">Ver próximos eventos →</span>
+    </a>
+
+    <a href="#" class="section-card soft">
+      <div class="card-icon soft">✍️</div>
+      <h3>Blog</h3>
+      <p>Artículos sobre maternidad consciente, mindfulness, regulación emocional y todo lo que Chon va compartiendo.</p>
+      <span class="card-arrow">Leer artículos →</span>
+    </a>
+
+    <a href="#" class="section-card soft">
+      <div class="card-icon soft">🎙️</div>
+      <h3>Podcast</h3>
+      <p>Escucha los episodios en tu plataforma favorita: Spotify, Apple Podcasts o iVoox. Conversaciones reales sobre maternidad.</p>
+      <span class="card-arrow">Escuchar el podcast →</span>
+    </a>
+
+    <a href="#" class="section-card soft">
+      <div class="card-icon soft">👤</div>
+      <h3>Mi perfil</h3>
+      <p>Gestiona tu cuenta, cambia tu contraseña y consulta los detalles de tu suscripción.</p>
+      <span class="card-arrow">Ir a mi perfil →</span>
+    </a>
+
+  </div>
+
+  <div class="two-col">
+
+    <div class="mini-card">
+      <div class="mini-card-header">
+        <h4>Próximos eventos</h4>
+        <a href="#">Ver todos →</a>
+      </div>
+      <ul class="event-list">
+        <li><a href="#" class="event-item">
+          <div class="event-date"><span class="ev-day">10</span><span class="ev-mon">jun</span></div>
+          <div class="event-body">
+            <div class="event-title">Círculo de maternidad consciente</div>
+            <div class="event-meta">10 jun · 18:00h · Online</div>
+          </div>
+        </a></li>
+        <li><a href="#" class="event-item">
+          <div class="event-date"><span class="ev-day">18</span><span class="ev-mon">jun</span></div>
+          <div class="event-body">
+            <div class="event-title">Taller: Mindfulness en el posparto</div>
+            <div class="event-meta">18 jun · 17:30h · Online</div>
+          </div>
+        </a></li>
+        <li><a href="#" class="event-item">
+          <div class="event-date"><span class="ev-day">05</span><span class="ev-mon">jul</span></div>
+          <div class="event-body">
+            <div class="event-title">Retiro de verano para madres</div>
+            <div class="event-meta">5 jul · Presencial · Sevilla</div>
+          </div>
+        </a></li>
+      </ul>
+    </div>
+
+    <div class="mini-card">
+      <div class="mini-card-header">
+        <h4>📌 Novedades</h4>
+      </div>
+      <ul class="nov-list">
+        <li class="nov-item practica">
+          <span class="nov-tag practica">Práctica</span>
+          <div class="nov-body">
+            <div class="nov-title">Nueva meditación: Soltar el control</div>
+            <div class="nov-date">hoy</div>
+          </div>
+        </li>
+        <li class="nov-item podcast">
+          <span class="nov-tag podcast">Podcast</span>
+          <div class="nov-body">
+            <div class="nov-title">Ep. 12 · La culpa materna</div>
+            <div class="nov-date">hace 2 días</div>
+          </div>
+        </li>
+        <li class="nov-item blog">
+          <span class="nov-tag blog">Blog</span>
+          <div class="nov-body">
+            <div class="nov-title">Cómo practicar mindfulness con un bebé en brazos</div>
+            <div class="nov-date">hace 4 días</div>
+          </div>
+        </li>
+        <li class="nov-item podcast">
+          <span class="nov-tag podcast">Podcast</span>
+          <div class="nov-body">
+            <div class="nov-title">Ep. 11 · Maternidad y pareja</div>
+            <div class="nov-date">hace 1 sem.</div>
+          </div>
+        </li>
+        <li class="nov-item blog">
+          <span class="nov-tag blog">Blog</span>
+          <div class="nov-body">
+            <div class="nov-title">El cuerpo después del parto: lo que nadie te cuenta</div>
+            <div class="nov-date">hace 1 sem.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Maternal Mind · Privacidad · Aviso legal · Condiciones</p>
+</footer>
+
+</body>
+</html>
