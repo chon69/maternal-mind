@@ -1,5 +1,5 @@
 const { requireAuth, ok, fail, preflight } = require('../lib/auth');
-const { getAll } = require('../lib/db');
+const { getAll, findBy } = require('../lib/db');
 
 exports.handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') return preflight();
@@ -8,7 +8,9 @@ exports.handler = async (event) => {
   try { user = requireAuth(event); }
   catch (e) { return fail(e.message, e.status || 401); }
 
-  const isPremium = (user.plan || 'free') === 'biblioteca_mami';
+  // Leer plan desde DB (el JWT puede estar desactualizado tras un pago)
+  const dbUser    = await findBy('Usuarios', 'id', user.id).catch(() => null);
+  const isPremium = (dbUser?.plan || user.plan || 'free') === 'biblioteca_mami';
 
   try {
     const rows = await getAll('Recursos');
