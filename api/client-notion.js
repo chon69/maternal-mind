@@ -1,6 +1,6 @@
 const https    = require('https');
 const { requireAuth, ok, fail, preflight } = require('../lib/auth');
-const { findBy } = require('../lib/sheets');
+const { findBy } = require('../lib/db');
 
 const DB_ID = '7bf6ca6c73054454aa6b432374420b5f';
 

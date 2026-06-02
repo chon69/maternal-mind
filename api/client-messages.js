@@ -1,6 +1,6 @@
 const crypto = require('crypto');
 const { requireAuth, ok, fail, preflight } = require('../lib/auth');
-const { getAll, append } = require('../lib/sheets');
+const { getAll, append } = require('../lib/db');
 const { send, wrapEmail } = require('../lib/email');
 
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'chon@maternalmind.es';

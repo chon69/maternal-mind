@@ -1,6 +1,6 @@
 const crypto = require('crypto');
 const { requireAdmin, ok, fail, preflight } = require('../lib/auth');
-const { getAll, append } = require('../lib/sheets');
+const { getAll, append } = require('../lib/db');
 
 const MODULE_NAME = 'Prácticas esenciales';
 

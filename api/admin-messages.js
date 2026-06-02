@@ -1,5 +1,5 @@
 const { requireAdmin, ok, fail, preflight } = require('../lib/auth');
-const { getAll, updateById } = require('../lib/sheets');
+const { getAll, updateById } = require('../lib/db');
 const { send, wrapEmail } = require('../lib/email');
 
 exports.handler = async (event) => {

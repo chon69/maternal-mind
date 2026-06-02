@@ -1,6 +1,6 @@
 const crypto = require('crypto');
 const { requireAdmin, ok, fail, preflight } = require('../lib/auth');
-const { getAll, append, updateById, deleteById } = require('../lib/sheets');
+const { getAll, append, updateById, deleteById } = require('../lib/db');
 
 exports.handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') return preflight();
@@ -10,23 +10,28 @@ exports.handler = async (event) => {
 
   try {
     if (event.httpMethod === 'GET') {
-      const rows = await getAll('Recursos');
-      rows.sort((a, b) => Number(a.modulo) - Number(b.modulo) || Number(a.orden) - Number(b.orden));
+      const rows = await getAll('Podcast');
+      rows.sort((a, b) => Number(b.numero_episodio || 0) - Number(a.numero_episodio || 0));
       return ok(rows);
     }
 
     const body = JSON.parse(event.body || '{}');
 
     if (event.httpMethod === 'POST') {
-      const { titulo, descripcion, tipo, modulo, modulo_nombre, orden, contenido, url_archivo, duracion } = body;
+      const { titulo, descripcion, numero_episodio, temporada, url_spotify, url_apple, url_ivoox, imagen_url } = body;
       if (!titulo) return fail('El título es obligatorio');
-      await append('Recursos', {
+      await append('Podcast', {
         id: crypto.randomUUID(),
-        titulo, descripcion: descripcion || '', tipo: tipo || 'texto',
-        modulo: modulo || '1', modulo_nombre: modulo_nombre || '',
-        orden: orden || '1', contenido: contenido || '',
-        url_archivo: url_archivo || '', duracion: duracion || '',
-        activo: 'TRUE', created_at: new Date().toISOString(),
+        titulo,
+        descripcion: descripcion || '',
+        numero_episodio: numero_episodio || '',
+        temporada: temporada || '1',
+        url_spotify: url_spotify || '',
+        url_apple: url_apple || '',
+        url_ivoox: url_ivoox || '',
+        imagen_url: imagen_url || '',
+        activo: 'TRUE',
+        created_at: new Date().toISOString(),
       });
       return ok({ success: true }, 201);
     }
@@ -35,15 +40,15 @@ exports.handler = async (event) => {
       const { id, ...updates } = body;
       if (!id) return fail('ID requerido');
       delete updates.created_at;
-      const done = await updateById('Recursos', id, updates);
-      return done ? ok({ success: true }) : fail('Recurso no encontrado', 404);
+      const done = await updateById('Podcast', id, updates);
+      return done ? ok({ success: true }) : fail('Episodio no encontrado', 404);
     }
 
     if (event.httpMethod === 'DELETE') {
       const { id } = body;
       if (!id) return fail('ID requerido');
-      const done = await deleteById('Recursos', id);
-      return done ? ok({ success: true }) : fail('Recurso no encontrado', 404);
+      const done = await deleteById('Podcast', id);
+      return done ? ok({ success: true }) : fail('Episodio no encontrado', 404);
     }
 
     return fail('Method not allowed', 405);

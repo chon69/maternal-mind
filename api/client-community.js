@@ -1,6 +1,6 @@
 const crypto = require('crypto');
 const { requireAuth, ok, fail, preflight } = require('../lib/auth');
-const { getAll, append } = require('../lib/sheets');
+const { getAll, append } = require('../lib/db');
 
 const CATEGORIAS = ['general', 'eventos', 'practicas'];
 

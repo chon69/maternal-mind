@@ -1,5 +1,5 @@
 const crypto = require('crypto');
-const { findBy, updateById } = require('../lib/sheets');
+const { findBy, updateById } = require('../lib/db');
 const { ok, fail, preflight } = require('../lib/auth');
 const { send, activationEmail } = require('../lib/email');
 

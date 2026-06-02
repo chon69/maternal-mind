@@ -31,7 +31,7 @@ app.post('/api/stripe-webhook', express.raw({ type: 'application/json' }), async
     return res.status(400).send(`Webhook Error: ${err.message}`);
   }
 
-  const { updateById } = require('./netlify/lib/sheets');
+  const { updateById, findBy } = require('./lib/db');
 
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object;
@@ -43,10 +43,9 @@ app.post('/api/stripe-webhook', express.raw({ type: 'application/json' }), async
   }
 
   if (event.type === 'customer.subscription.deleted') {
-    const sub    = event.data.object;
-    const email  = sub.customer_email;
+    const sub   = event.data.object;
+    const email = sub.customer_email;
     if (email) {
-      const { findBy } = require('./netlify/lib/sheets');
       const user = await findBy('Usuarios', 'email', email);
       if (user) await updateById('Usuarios', user.id, { plan: 'free' });
     }
@@ -58,8 +57,8 @@ app.post('/api/stripe-webhook', express.raw({ type: 'application/json' }), async
 app.use(express.json({ limit: '50mb' }));
 app.use(express.static(path.join(__dirname)));
 
-// Converts an Express req/res pair to the Netlify Lambda handler contract
-function netlify(handler) {
+// Adapts Express req/res to the Lambda-style handler contract used by api/ functions
+function wrapHandler(handler) {
   return async (req, res) => {
     const event = {
       httpMethod: req.method,
@@ -111,39 +110,16 @@ const fns = [
 ];
 
 for (const fn of fns) {
-  const { handler } = require(`./netlify/functions/${fn}`);
-  app.all(`/api/${fn}`, netlify(handler));
+  const { handler } = require(`./api/${fn}`);
+  app.all(`/api/${fn}`, wrapHandler(handler));
 }
-
-// Endpoint de diagnóstico del sheet (cabeceras reales vs esperadas)
-app.get('/api/diag-sheet', async (req, res) => {
-  try {
-    const { google } = require('googleapis');
-    const auth = new google.auth.OAuth2(
-      process.env.GOOGLE_CLIENT_ID,
-      process.env.GOOGLE_CLIENT_SECRET
-    );
-    auth.setCredentials({ refresh_token: process.env.GOOGLE_REFRESH_TOKEN });
-    const sheets = google.sheets({ version: 'v4', auth });
-    const result = await sheets.spreadsheets.values.get({
-      spreadsheetId: process.env.GOOGLE_SPREADSHEET_ID,
-      range: 'Usuarios!A1:Z1',
-    });
-    const actual   = result.data.values?.[0] || [];
-    const expected = ['id','nombre','email','password_hash','role','estado','token_activacion','token_expiry','created_at','last_login','plan'];
-    const match    = JSON.stringify(actual) === JSON.stringify(expected);
-    res.json({ match, expected, actual, APP_URL: process.env.APP_URL || '(no configurado → usa localhost:3000)' });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
 
 // Endpoint de diagnóstico de email (solo admin)
 app.post('/api/test-email', async (req, res) => {
   const { to } = req.body || {};
   if (!to) return res.status(400).json({ error: 'Falta campo to' });
   try {
-    const { send, activationEmail } = require('./netlify/lib/email');
+    const { send, activationEmail } = require('./lib/email');
     const url = (process.env.APP_URL || 'http://localhost:3000') + '/app/activar.html?token=TEST&email=' + encodeURIComponent(to);
     await send(to, '[TEST] Email de prueba Maternal Mind 🌿', activationEmail('Prueba', url));
     res.json({ success: true, message: `Email enviado a ${to}` });

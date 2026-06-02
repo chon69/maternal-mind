@@ -1,6 +1,6 @@
 const crypto = require('crypto');
 const { requireAdmin, ok, fail, preflight } = require('../lib/auth');
-const { getAll, append, updateById, deleteById } = require('../lib/sheets');
+const { getAll, append, updateById, deleteById } = require('../lib/db');
 const { send, wrapEmail } = require('../lib/email');
 
 exports.handler = async (event) => {

@@ -1,5 +1,5 @@
 const { requireAdmin, ok, fail, preflight } = require('../lib/auth');
-const { getAll, updateById, deleteById } = require('../lib/sheets');
+const { getAll, updateById, deleteById } = require('../lib/db');
 
 exports.handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') return preflight();

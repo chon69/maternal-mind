@@ -1,5 +1,5 @@
 const { requireAuth, ok, fail, preflight } = require('../lib/auth');
-const { findBy } = require('../lib/sheets');
+const { findBy } = require('../lib/db');
 
 exports.handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') return preflight();

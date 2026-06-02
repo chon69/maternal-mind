@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const { requireAuth, ok, fail, preflight } = require('../lib/auth');
-const { updateById } = require('../lib/sheets');
+const { updateById } = require('../lib/db');
 
 exports.handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') return preflight();
