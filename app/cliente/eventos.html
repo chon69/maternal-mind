@@ -87,18 +87,18 @@
 <div class="hero-banner">
   <div class="hero-inner">
     <h1>Próximos eventos</h1>
-    <p>Cursos, talleres, programas y retiros para acompañarte en tu maternidad.</p>
+    <p>Círculos, talleres, programas, retos y retiros para acompañarte en tu maternidad.</p>
   </div>
 </div>
 
 <div class="content">
   <div class="filters" id="filters">
     <button class="filter-btn active" data-tipo="todos" onclick="filterEvents('todos',this)">Todos</button>
-    <button class="filter-btn" data-tipo="circulo" onclick="filterEvents('circulo',this)">Círculos</button>
-    <button class="filter-btn" data-tipo="taller" onclick="filterEvents('taller',this)">Talleres</button>
-    <button class="filter-btn" data-tipo="curso" onclick="filterEvents('curso',this)">Cursos</button>
-    <button class="filter-btn" data-tipo="programa" onclick="filterEvents('programa',this)">Programas</button>
-    <button class="filter-btn" data-tipo="retiro" onclick="filterEvents('retiro',this)">Retiros</button>
+    <button class="filter-btn" data-tipo="circulo" onclick="filterEvents('circulo',this)">🌙 Círculos</button>
+    <button class="filter-btn" data-tipo="taller" onclick="filterEvents('taller',this)">🌸 Talleres</button>
+    <button class="filter-btn" data-tipo="programa" onclick="filterEvents('programa',this)">🌱 Programas</button>
+    <button class="filter-btn" data-tipo="reto" onclick="filterEvents('reto',this)">💫 Retos</button>
+    <button class="filter-btn" data-tipo="retiro" onclick="filterEvents('retiro',this)">🏔️ Retiros</button>
   </div>
   <div id="events-container">
     <div class="loading"><div class="spinner"></div>Cargando eventos…</div>
@@ -110,7 +110,7 @@
   const user = MM.requireAuth('client');
   if (user) document.getElementById('greeting').textContent = user.nombre.split(' ')[0];
 
-  const TYPE_EMOJI = { circulo:'🌿', taller:'🌿', curso:'📚', programa:'🌱', retiro:'✨' };
+  const TYPE_EMOJI = { circulo:'🌙', taller:'🌸', programa:'🌱', reto:'💫', retiro:'🏔️' };
   let allEvents = [];
 
   function formatDate(str) {
