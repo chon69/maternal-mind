@@ -18,23 +18,25 @@ exports.handler = async (event) => {
     const body = JSON.parse(event.body || '{}');
 
     if (event.httpMethod === 'POST') {
-      const { titulo, descripcion, tipo, fecha_inicio, fecha_fin, hora_inicio, hora_fin, precio, moneda, url_inscripcion, imagen_url, destacado } = body;
+      const { titulo, descripcion, tipo, fecha_inicio, fecha_fin, hora_inicio, hora_fin, precio, moneda, url_inscripcion, imagen_url, imagen_posicion, destacado } = body;
       if (!titulo) return fail('El título es obligatorio');
       await append('Eventos', {
         id: crypto.randomUUID(),
-        titulo, descripcion: descripcion || '',
-        tipo: tipo || 'taller',
-        fecha_inicio: fecha_inicio || '',
-        fecha_fin: fecha_fin || '',
-        hora_inicio: hora_inicio || '',
-        hora_fin: hora_fin || '',
-        precio: precio || '0',
-        moneda: moneda || 'EUR',
+        titulo,
+        descripcion:     descripcion || '',
+        tipo:            tipo || 'taller',
+        fecha_inicio:    fecha_inicio || null,
+        fecha_fin:       fecha_fin    || null,
+        hora_inicio:     hora_inicio  || '',
+        hora_fin:        hora_fin     || '',
+        precio:          precio       || '0',
+        moneda:          moneda       || 'EUR',
         url_inscripcion: url_inscripcion || '',
-        imagen_url: imagen_url || '',
-        activo: 'TRUE',
-        destacado: destacado ? 'TRUE' : 'FALSE',
-        created_at: new Date().toISOString(),
+        imagen_url:      imagen_url   || '',
+        imagen_posicion: imagen_posicion || 'center',
+        activo:          true,
+        destacado:       destacado === true || destacado === 'TRUE',
+        created_at:      new Date().toISOString(),
       });
       return ok({ success: true }, 201);
     }
@@ -43,6 +45,12 @@ exports.handler = async (event) => {
       const { id, ...updates } = body;
       if (!id) return fail('ID requerido');
       delete updates.created_at;
+      // Convertir fechas vacías a null para columnas DATE de PostgreSQL
+      if ('fecha_inicio' in updates) updates.fecha_inicio = updates.fecha_inicio || null;
+      if ('fecha_fin'    in updates) updates.fecha_fin    = updates.fecha_fin    || null;
+      // Normalizar booleanos que llegan como strings desde el formulario
+      if ('activo'    in updates) updates.activo    = updates.activo    === true || updates.activo    === 'TRUE';
+      if ('destacado' in updates) updates.destacado = updates.destacado === true || updates.destacado === 'TRUE';
       const done = await updateById('Eventos', id, updates);
       return done ? ok({ success: true }) : fail('Evento no encontrado', 404);
     }
