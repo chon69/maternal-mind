@@ -15,7 +15,5 @@
     "pg": "^8.21.0",
     "stripe": "^17.7.0"
   },
-  "devDependencies": {
-    "puppeteer": "^24.43.1"
-  }
+  "devDependencies": {}
 }
