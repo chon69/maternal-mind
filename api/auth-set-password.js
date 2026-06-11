@@ -18,14 +18,13 @@ exports.handler = async (event) => {
     const user = await findBy('Usuarios', 'email', email.trim().toLowerCase());
     if (!user) return fail('Usuario no encontrado', 404);
     if (user.token_activacion !== token) return fail('Enlace inválido', 400);
-    if (new Date(user.token_expiry) < new Date()) return fail('El enlace ha expirado. Regístrate de nuevo.', 410);
 
     const hash = await bcrypt.hash(password, 10);
     await updateById('Usuarios', user.id, {
       password_hash: hash,
       estado: 'activo',
       token_activacion: '',
-      token_expiry: '',
+      token_expiry: null,
     });
 
     const { sign } = require('../lib/auth');

@@ -21,7 +21,7 @@ exports.handler = async (event) => {
   catch { return { statusCode: 400, headers: CORS, body: JSON.stringify({ error: 'Invalid JSON' }) }; }
 
   const nombre = (body.nombre || '').trim();
-  const email  = (body.email  || '').trim();
+  const email  = (body.email  || '').trim().toLowerCase();
   if (!nombre || !email) return { statusCode: 400, headers: CORS, body: JSON.stringify({ error: 'Faltan datos' }) };
 
   const [leadResult, userResult] = await Promise.allSettled([
@@ -30,22 +30,24 @@ exports.handler = async (event) => {
       const existing = await findBy('Usuarios', 'email', email);
       if (existing && existing.estado === 'activo') return 'already_active';
       if (existing && existing.estado === 'pendiente') {
-        const url = `${APP_URL}/app/activar.html?token=${existing.token_activacion}&email=${encodeURIComponent(email)}`;
+        const newToken = crypto.randomUUID();
+        const { updateById } = require('../lib/db');
+        await updateById('Usuarios', existing.id, { token_activacion: newToken, token_expiry: null });
+        const url = `${APP_URL}/app/activar.html?token=${newToken}&email=${encodeURIComponent(email)}`;
         await send(email, 'Accede a tu Kit de Bienvenida 🌿', activationEmail(nombre, url));
         return 'resent';
       }
-      const token  = crypto.randomUUID();
-      const expiry = new Date(Date.now() + 72 * 3600 * 1000).toISOString();
-      const role   = email.toLowerCase() === ADMIN_EMAIL.toLowerCase() ? 'admin' : 'client';
+      const token = crypto.randomUUID();
+      const role  = email === ADMIN_EMAIL.toLowerCase() ? 'admin' : 'client';
       await append('Usuarios', {
         id: crypto.randomUUID(),
         nombre, email,
         password_hash: '',
         role, estado: 'pendiente',
         token_activacion: token,
-        token_expiry: expiry,
+        token_expiry: null,
         created_at: new Date().toISOString(),
-        last_login: '',
+        last_login: null,
       });
       const url = `${APP_URL}/app/activar.html?token=${token}&email=${encodeURIComponent(email)}`;
       await send(email, 'Accede a tu Kit de Bienvenida 🌿', activationEmail(nombre, url));

@@ -20,9 +20,8 @@ exports.handler = async (event) => {
     const user = await findBy('Usuarios', 'email', email);
     if (!user) return ok({ success: true }); // no revelar si existe o no
 
-    const token  = crypto.randomUUID();
-    const expiry = new Date(Date.now() + 72 * 3600 * 1000).toISOString();
-    await updateById('Usuarios', user.id, { token_activacion: token, token_expiry: expiry });
+    const token = crypto.randomUUID();
+    await updateById('Usuarios', user.id, { token_activacion: token, token_expiry: null });
 
     const url = `${APP_URL}/app/activar.html?token=${token}&email=${encodeURIComponent(email)}`;
     await send(email, 'Restablecer contraseña · Maternal Mind', activationEmail(user.nombre, url));
