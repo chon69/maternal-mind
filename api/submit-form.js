@@ -1,4 +1,4 @@
-const { append, findBy } = require('../lib/db');
+const { append, findBy, updateById } = require('../lib/db');
 const { send, activationEmail } = require('../lib/email');
 const crypto = require('crypto');
 
@@ -31,7 +31,6 @@ exports.handler = async (event) => {
       if (existing && existing.estado === 'activo') return 'already_active';
       if (existing && existing.estado === 'pendiente') {
         const newToken = crypto.randomUUID();
-        const { updateById } = require('../lib/db');
         await updateById('Usuarios', existing.id, { token_activacion: newToken, token_expiry: null });
         const url = `${APP_URL}/app/activar.html?token=${newToken}&email=${encodeURIComponent(email)}`;
         await send(email, 'Accede a tu Kit de Bienvenida 🌿', activationEmail(nombre, url));
