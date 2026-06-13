@@ -130,7 +130,7 @@
   if (!user) throw new Error('no auth');
   document.getElementById('greeting').textContent = user.nombre.split(' ')[0];
 
-  const CAT_EMOJI = { mindfulness:'🧘', maternidad:'🌿', bienestar:'💛', relacion:'💞', general:'✍️' };
+  const CAT_EMOJI = { mindfulness:'🧘', maternidad:'🌿', bienestar:'💛', relacion:'💞', general:'✍️', '12lunas':'🌙' };
   let allPosts = [], currentCat = 'todos';
 
   function formatDate(str) {
