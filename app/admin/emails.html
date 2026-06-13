@@ -96,12 +96,16 @@
       <input type="text" id="send-asunto" placeholder="Asunto del email">
       <label>Destinatarias</label>
       <select id="send-dest">
-        <option value="all">Todas las clientas activas</option>
-        <option value="custom">Email concreto…</option>
+        <option value="all">✅ Todas las clientas activas</option>
+        <option value="pendientes">⏳ Clientas pendientes (sin activar)</option>
+        <option value="todas">👥 Todas (activas + pendientes)</option>
+        <option value="biblioteca">📚 Plan Biblioteca MaMi</option>
+        <option value="custom">✉️ Email concreto…</option>
       </select>
       <div id="send-email-wrap" hidden style="margin-top:.5rem">
         <input type="email" id="send-email" placeholder="email@ejemplo.com">
       </div>
+      <div id="send-dest-count" style="font-size:.75rem;color:var(--turq-dark);margin-top:.4rem;min-height:1.1em"></div>
       <label>Cuerpo del email (HTML o texto)</label>
       <textarea id="send-body" rows="8" placeholder="Escribe el contenido aquí. Puedes usar {{nombre}} para personalizar."></textarea>
       <div style="font-size:.72rem;color:var(--ink-soft);margin-top:.35rem">💡 Usa {{nombre}} para insertar el nombre de la destinataria.</div>
@@ -151,8 +155,34 @@
     el.classList.add('show'); setTimeout(() => el.classList.remove('show'), 2800);
   }
 
+  let allUsers = [];
+
+  async function loadUsers() {
+    try {
+      const res = await MM.api('/api/admin-users');
+      allUsers = await res.json();
+      updateDestCount();
+    } catch(e) {}
+  }
+
+  function countForGroup(group) {
+    if (group === 'all')        return allUsers.filter(u => u.estado === 'activo').length;
+    if (group === 'pendientes') return allUsers.filter(u => u.estado === 'pendiente').length;
+    if (group === 'todas')      return allUsers.filter(u => u.estado === 'activo' || u.estado === 'pendiente').length;
+    if (group === 'biblioteca') return allUsers.filter(u => u.plan === 'biblioteca_mami').length;
+    return null;
+  }
+
+  function updateDestCount() {
+    const group = document.getElementById('send-dest').value;
+    const countEl = document.getElementById('send-dest-count');
+    const n = countForGroup(group);
+    countEl.textContent = n !== null ? `${n} destinataria${n !== 1 ? 's' : ''}` : '';
+  }
+
   document.getElementById('send-dest').addEventListener('change', e => {
     document.getElementById('send-email-wrap').hidden = e.target.value !== 'custom';
+    updateDestCount();
   });
 
   let templates = [];
@@ -253,6 +283,7 @@
     renderTemplates();
   }
   loadTemplates();
+  loadUsers();
   document.addEventListener('keydown', e => { if(e.key==='Escape') closeTmpl(); });
 </script>
 </body>

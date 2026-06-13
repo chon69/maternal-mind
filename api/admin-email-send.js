@@ -25,9 +25,16 @@ exports.handler = async (event) => {
         const { asunto, cuerpo_html, destinatarios } = body;
         if (!asunto || !cuerpo_html) return fail('Faltan asunto y cuerpo');
         let targets = [];
-        if (destinatarios === 'all') {
+        const GROUP_KEYS = ['all', 'pendientes', 'todas', 'biblioteca'];
+        if (GROUP_KEYS.includes(destinatarios)) {
           const users = await getAll('Usuarios');
-          targets = users.filter(u => u.estado === 'activo').map(u => ({ email: u.email, nombre: u.nombre }));
+          const filtered = users.filter(u => {
+            if (destinatarios === 'all')        return u.estado === 'activo';
+            if (destinatarios === 'pendientes') return u.estado === 'pendiente';
+            if (destinatarios === 'todas')      return u.estado === 'activo' || u.estado === 'pendiente';
+            if (destinatarios === 'biblioteca') return u.plan === 'biblioteca_mami';
+          });
+          targets = filtered.map(u => ({ email: u.email, nombre: u.nombre }));
         } else {
           targets = [{ email: destinatarios, nombre: '' }];
         }
