@@ -260,7 +260,7 @@
     const btn    = document.getElementById('send-btn');
 
     if (!asunto || !body) { msgEl.className='result-msg err'; msgEl.textContent='Asunto y cuerpo son obligatorios.'; msgEl.hidden=false; return; }
-    const destinatarios = dest === 'all' ? 'all' : email;
+    const destinatarios = dest === 'custom' ? email : dest;
     if (dest === 'custom' && !email) { msgEl.className='result-msg err'; msgEl.textContent='Introduce un email.'; msgEl.hidden=false; return; }
 
     btn.disabled=true; btn.textContent='Enviando…'; msgEl.hidden=true;
