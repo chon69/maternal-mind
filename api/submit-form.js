@@ -30,9 +30,15 @@ exports.handler = async (event) => {
       const existing = await findBy('Usuarios', 'email', email);
       if (existing && existing.estado === 'activo') return 'already_active';
       if (existing && existing.estado === 'pendiente') {
-        const newToken = crypto.randomUUID();
-        await updateById('Usuarios', existing.id, { token_activacion: newToken, token_expiry: null });
-        const url = `${APP_URL}/app/activar.html?token=${newToken}&email=${encodeURIComponent(email)}`;
+        // Reutilizamos el token existente: así TODOS los emails de activación
+        // enviados a esta madre siguen siendo válidos (el enlace nunca caduca).
+        // Solo generamos uno si por algún motivo no lo tuviera.
+        let token = existing.token_activacion;
+        if (!token) {
+          token = crypto.randomUUID();
+          await updateById('Usuarios', existing.id, { token_activacion: token, token_expiry: null });
+        }
+        const url = `${APP_URL}/app/activar.html?token=${token}&email=${encodeURIComponent(email)}`;
         await send(email, 'Accede a tu Kit de Bienvenida 🌿', activationEmail(nombre, url));
         return 'resent';
       }

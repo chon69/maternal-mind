@@ -17,6 +17,11 @@ exports.handler = async (event) => {
   try {
     const user = await findBy('Usuarios', 'email', email.trim().toLowerCase());
     if (!user) return fail('Usuario no encontrado', 404);
+    // La cuenta ya estaba activada (p. ej. clic por segunda vez en el enlace):
+    // no es un error de caducidad, solo hay que iniciar sesión.
+    if (user.estado === 'activo' && user.token_activacion !== token) {
+      return fail('Tu cuenta ya está activa. Inicia sesión con tu email y contraseña.', 409);
+    }
     if (user.token_activacion !== token) return fail('Enlace inválido', 400);
 
     const hash = await bcrypt.hash(password, 10);
