@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS articulos (
   descripcion   TEXT        NOT NULL DEFAULT '',
   contenido_html TEXT       NOT NULL DEFAULT '',
   imagen_url    TEXT        NOT NULL DEFAULT '',
+  url_substack  TEXT        NOT NULL DEFAULT '',
   categoria     TEXT        NOT NULL DEFAULT 'general',
   activo        BOOLEAN     NOT NULL DEFAULT TRUE,
   created_at    TIMESTAMPTZ NOT NULL DEFAULT NOW()

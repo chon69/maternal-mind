@@ -57,6 +57,9 @@
   .article-body ul,.article-body ol{padding-left:1.5rem;margin-bottom:1.1rem}
   .article-body li{margin-bottom:.4rem}
   .article-body blockquote{border-left:3px solid var(--turq);padding-left:1rem;color:var(--ink-soft);font-style:italic;margin:1.25rem 0}
+  .substack-link{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.5rem;padding:.65rem 1.25rem;background:#FF6719;color:#fff;text-decoration:none;border-radius:50px;font-size:.85rem;font-weight:500;transition:opacity .2s}
+  .substack-link:hover{opacity:.88}
+  .blog-substack-badge{display:inline-block;margin-left:.4rem;font-size:.62rem;font-weight:500;letter-spacing:.04em;color:#FF6719;background:#FFF1E8;border:1px solid #FFD4B8;padding:.15rem .5rem;border-radius:50px;vertical-align:middle}
   .loading{text-align:center;padding:4rem;color:var(--ink-soft)}
   .spinner{width:36px;height:36px;border:3px solid var(--turq-light);border-top-color:var(--turq);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 1rem}@keyframes spin{to{transform:rotate(360deg)}}
   .empty{text-align:center;padding:4rem;color:var(--ink-soft)}.empty p{font-size:.95rem;font-weight:300}
@@ -120,6 +123,7 @@
     </div>
     <div class="modal-content-wrap">
       <div class="article-body" id="modal-body"></div>
+      <div id="modal-substack"></div>
     </div>
   </div>
 </div>
@@ -165,7 +169,7 @@
           ${p.categoria ? `<span class="blog-cat">${p.categoria}</span>` : ''}
           <h3>${p.titulo}</h3>
           <p>${p.descripcion || ''}</p>
-          <div class="blog-meta">📅 ${formatDate(p.created_at)}</div>
+          <div class="blog-meta">📅 ${formatDate(p.created_at)}${p.url_substack ? '<span class="blog-substack-badge">Substack</span>' : ''}</div>
         </div>
       </div>`).join('')}</div>`;
   }
@@ -175,6 +179,9 @@
     document.getElementById('modal-title').textContent = p.titulo;
     document.getElementById('modal-meta').textContent  = `📅 ${formatDate(p.created_at)}`;
     document.getElementById('modal-body').innerHTML = p.contenido_html || `<p style="color:var(--ink-soft);font-style:italic">${p.descripcion || 'Contenido próximamente.'}</p>`;
+    document.getElementById('modal-substack').innerHTML = p.url_substack
+      ? `<a href="${p.url_substack}" target="_blank" rel="noopener" class="substack-link">📖 Leer el artículo completo en Substack</a>`
+      : '';
     document.getElementById('modal').classList.add('open');
     document.body.style.overflow = 'hidden';
   }

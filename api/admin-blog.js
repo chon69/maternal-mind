@@ -18,7 +18,7 @@ exports.handler = async (event) => {
     const body = JSON.parse(event.body || '{}');
 
     if (event.httpMethod === 'POST') {
-      const { titulo, slug, descripcion, contenido_html, imagen_url, categoria } = body;
+      const { titulo, slug, descripcion, contenido_html, imagen_url, url_substack, categoria } = body;
       if (!titulo) return fail('El título es obligatorio');
       const safeSlug = slug || titulo.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
       await append('Articulos', {
@@ -28,6 +28,7 @@ exports.handler = async (event) => {
         descripcion: descripcion || '',
         contenido_html: contenido_html || '',
         imagen_url: imagen_url || '',
+        url_substack: url_substack || '',
         categoria: categoria || 'general',
         activo: 'TRUE',
         created_at: new Date().toISOString(),

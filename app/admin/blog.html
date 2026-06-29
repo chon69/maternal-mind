@@ -112,6 +112,9 @@
         <input type="file" id="img-file-input" accept="image/*" style="display:none" onchange="uploadImage(this)">
       </div>
       <div id="img-upload-status" style="display:none;font-size:.75rem;color:var(--turq-dark);margin-top:.3rem">⏳ Subiendo imagen…</div>
+      <label>Enlace de Substack</label>
+      <input type="url" id="f-substack" placeholder="https://tublog.substack.com/p/...">
+      <p class="hint">Opcional. Si el artículo está publicado en Substack, pega aquí el enlace y aparecerá un botón para leerlo allí. Puedes dejarlo vacío y escribir el contenido directamente abajo.</p>
       <label>Contenido</label>
       <div id="f-contenido-editor"></div>
     </div>
@@ -193,6 +196,7 @@
     document.getElementById('f-activo').value     = data?.activo     || 'TRUE';
     document.getElementById('f-descripcion').value= data?.descripcion|| '';
     document.getElementById('f-imagen').value     = data?.imagen_url || '';
+    document.getElementById('f-substack').value   = data?.url_substack || '';
     quill.clipboard.dangerouslyPasteHTML(data?.contenido_html || '');
     document.getElementById('modal').classList.add('open');
   }
@@ -210,6 +214,7 @@
       activo:       document.getElementById('f-activo').value,
       descripcion:  document.getElementById('f-descripcion').value,
       imagen_url:   document.getElementById('f-imagen').value,
+      url_substack: document.getElementById('f-substack').value.trim(),
       contenido_html: quill.root.innerHTML,
     };
     const btn = document.getElementById('btn-save');
