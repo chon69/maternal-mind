@@ -118,3 +118,14 @@ CREATE TABLE IF NOT EXISTS leads (
   email      TEXT        NOT NULL,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+
+CREATE TABLE IF NOT EXISTS testimonios (
+  id          UUID        PRIMARY KEY DEFAULT gen_random_uuid(),
+  nombre      TEXT        NOT NULL,
+  contexto    TEXT        NOT NULL DEFAULT '',
+  testimonio  TEXT        NOT NULL,
+  destacado   BOOLEAN     NOT NULL DEFAULT FALSE,
+  activo      BOOLEAN     NOT NULL DEFAULT TRUE,
+  orden       INTEGER     NOT NULL DEFAULT 0,
+  created_at  TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);

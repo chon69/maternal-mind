@@ -37,6 +37,10 @@ App disponible en: **http://localhost:3000**
 | **Contraseña** | La que estableciste con `node setup-admin.js` |
 | **Rol**     | admin                          |
 
+> ✅ **Verificado 2026-06-28:** acceso admin restablecido y panel comprobado en producción.
+> Login `role=admin` (200) y APIs del dashboard OK: `admin-users` (30 registros),
+> `admin-events` (5), `admin-messages` (1). La contraseña se guarda aparte, no en este archivo.
+
 ### Restablecer / cambiar contraseña de admin
 
 ```bash
@@ -53,6 +57,7 @@ node setup-admin.js <nueva-contraseña>
 | Blog            | Escribir y publicar artículos (editor HTML)          |
 | Podcast         | Añadir episodios con links Spotify / Apple / iVoox   |
 | Biblioteca      | Vista de la base de datos Notion (Biblioteca Mami)   |
+| Testimonios     | Añadir/editar testimonios de madres (web + plataforma)|
 | Emails          | Plantillas y envío de emails a usuarias              |
 | Chat IA         | Asistente inteligente con Groq                       |
 | Usuarias        | Gestión de cuentas, activar plan premium             |

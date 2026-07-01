@@ -913,6 +913,30 @@ src="https://www.facebook.com/tr?id=1468723284535693&ev=PageView&noscript=1"
 </section>
 
 
+<!-- ══ TESTIMONIOS ══ -->
+<style>
+  .section-testimonios { background: var(--turq-vlight); }
+  .section-testimonios .section-inner { text-align: center; }
+  .tst-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.25rem; margin-top: 2.75rem; text-align: left; }
+  .tst-card { background: #fff; border: 1px solid var(--turq-light); border-radius: 16px; padding: 1.6rem 1.75rem; box-shadow: 0 2px 14px rgba(0,0,0,.04); display: flex; flex-direction: column; }
+  .tst-card.destacado { border-color: var(--gold); background: linear-gradient(180deg,#fff,var(--gold-light)); }
+  .tst-mark { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; line-height: .6; color: var(--turq-light); height: 1.1rem; }
+  .tst-text { font-size: .98rem; font-weight: 300; line-height: 1.75; color: var(--ink); white-space: pre-wrap; word-break: break-word; flex: 1; }
+  .tst-foot { display: flex; align-items: center; gap: .7rem; margin-top: 1.4rem; }
+  .tst-avatar { width: 40px; height: 40px; border-radius: 50%; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 500; flex-shrink: 0; font-family: 'DM Sans', sans-serif; }
+  .tst-name { font-size: .9rem; font-weight: 500; color: var(--ink); }
+  .tst-ctx { font-size: .78rem; color: var(--ink-soft); margin-top: .1rem; }
+</style>
+<section class="section-testimonios" id="testimonios" hidden>
+  <div class="section-inner">
+    <div class="section-label-wrap"><span class="section-label">Historias reales</span></div>
+    <h2 class="section-title">Lo que otras madres<br><em>han descubierto.</em></h2>
+    <p class="section-lead">"Hay cosas de ti que solo se revelan cuando te ves reflejada en otras mujeres que están en el mismo umbral."</p>
+    <div class="tst-grid" id="tst-grid"></div>
+  </div>
+</section>
+
+
 <!-- ══ ES EL MOMENTO — CTA CON FORMULARIO FOOTER ══ -->
 <section class="section-cta">
   <div class="section-label-wrap"><span class="section-label section-label-light">Es el momento</span></div>
@@ -1020,6 +1044,36 @@ src="https://www.facebook.com/tr?id=1468723284535693&ev=PageView&noscript=1"
 
   setupForm('hero-form');
   setupForm('footer-form');
+
+  // ── Testimonios (carga pública) ──
+  (function loadTestimonios() {
+    function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function avatarColor(name){
+      const colors=['#7DCFCA','#F2C14E','#A78BFA','#6EE7B7','#FCA5A5','#93C5FD'];
+      let h=0; for(const c of (name||'M')) h=(h*31+c.charCodeAt(0))%colors.length;
+      return colors[Math.abs(h)];
+    }
+    fetch('/api/client-testimonios')
+      .then(r => r.ok ? r.json() : [])
+      .then(list => {
+        if (!Array.isArray(list) || !list.length) return; // sin testimonios → sección oculta
+        const grid = document.getElementById('tst-grid');
+        grid.innerHTML = list.map(t => `
+          <div class="tst-card${t.destacado ? ' destacado' : ''}">
+            <div class="tst-mark">“</div>
+            <div class="tst-text">${esc(t.testimonio)}</div>
+            <div class="tst-foot">
+              <div class="tst-avatar" style="background:${avatarColor(t.nombre)}">${esc((t.nombre||'M').charAt(0).toUpperCase())}</div>
+              <div>
+                <div class="tst-name">${esc(t.nombre)}</div>
+                ${t.contexto ? `<div class="tst-ctx">${esc(t.contexto)}</div>` : ''}
+              </div>
+            </div>
+          </div>`).join('');
+        document.getElementById('testimonios').hidden = false;
+      })
+      .catch(() => {});
+  })();
 </script>
 </body>
 </html>
