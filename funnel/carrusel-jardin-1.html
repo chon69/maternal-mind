@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Carrusel Jardín 1 · El Piloto Automático</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#b8b8b8; font-family:'DM Sans',sans-serif; padding:40px 20px; display:flex; flex-direction:column; align-items:center; gap:24px; }
+.hint { color:rgba(0,0,0,0.35); font-size:12px; letter-spacing:0.14em; text-transform:uppercase; }
+.viewer { position:relative; width:1080px; max-width:100%; }
+.wrap { overflow:hidden; box-shadow:0 24px 80px rgba(0,0,0,0.15); }
+.slides { display:flex; transition:transform 0.52s cubic-bezier(0.4,0,0.2,1); }
+.slide { width:1080px; height:1080px; flex-shrink:0; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.accent { position:absolute; top:0; left:0; right:0; height:5px; background:linear-gradient(90deg,#4AADA7 0%,#7DCFCA 55%,#F2C14E 100%); z-index:5; }
+.logo { position:absolute; bottom:50px; left:0; right:0; display:flex; align-items:center; justify-content:center; gap:9px; z-index:5; }
+.ld { width:5px; height:5px; border-radius:50%; }
+.lt { font-family:'DM Sans',sans-serif; font-size:15px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; }
+.s1 { background:#FDFAF5; }
+.s1 .wash { position:absolute; top:-160px; right:-160px; width:640px; height:640px; border-radius:50%; background:radial-gradient(circle,#C8EDEB 0%,#EEF9F8 40%,transparent 70%); }
+.s1 .wash2 { position:absolute; bottom:-100px; left:-80px; width:400px; height:400px; border-radius:50%; background:radial-gradient(circle,rgba(245,223,160,0.4) 0%,transparent 70%); }
+.s1 .body { position:relative; z-index:2; text-align:center; padding:100px; }
+.s1 .tag { font-size:19px; font-weight:500; letter-spacing:0.22em; text-transform:uppercase; color:#4AADA7; margin-bottom:52px; }
+.s1 .h1 { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:100px; line-height:1.02; color:#3A3A3A; letter-spacing:-0.02em; }
+.s1 .h1 em { font-style:italic; color:#4AADA7; }
+.s1 .sub { margin-top:44px; font-size:24px; font-weight:300; color:#5E5E5E; letter-spacing:0.03em; line-height:1.5; }
+.s-cream { background:#FDFAF5; }
+.s-cream .wash { position:absolute; top:-200px; right:-200px; width:700px; height:700px; border-radius:50%; background:radial-gradient(circle,rgba(200,237,235,0.55) 0%,transparent 68%); }
+.s-cream .num { position:absolute; top:72px; right:80px; font-family:'Cormorant Garamond',serif; font-size:200px; font-weight:300; font-style:italic; color:rgba(74,173,167,0.08); line-height:1; z-index:1; user-select:none; }
+.s-cream .body { position:relative; z-index:2; padding:80px 110px; text-align:left; width:100%; }
+.s-cream .label { font-size:18px; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:#4AADA7; margin-bottom:52px; }
+.s-cream .text { font-family:'Cormorant Garamond',serif; font-size:66px; font-weight:300; line-height:1.2; color:#3A3A3A; letter-spacing:-0.01em; }
+.s-cream .text em { font-style:italic; color:#4AADA7; }
+.s-cream .text .gold { font-style:italic; color:#F2C14E; }
+.s6 { background:#4AADA7; }
+.s6 .wash { position:absolute; top:-150px; right:-120px; width:600px; height:600px; border-radius:50%; background:radial-gradient(circle,rgba(255,255,255,0.15) 0%,transparent 70%); }
+.s6 .wash2 { position:absolute; bottom:-120px; left:-80px; width:480px; height:480px; border-radius:50%; background:radial-gradient(circle,rgba(242,193,78,0.18) 0%,transparent 70%); }
+.s6 .body { position:relative; z-index:2; text-align:center; padding:80px 100px; display:flex; flex-direction:column; align-items:center; }
+.s6 .tag { font-size:19px; font-weight:500; letter-spacing:0.22em; text-transform:uppercase; color:rgba(253,250,245,0.92); margin-bottom:44px; }
+.s6 .h1 { font-family:'Cormorant Garamond',serif; font-size:82px; font-weight:300; font-style:italic; color:#FDFAF5; line-height:1.12; margin-bottom:48px; }
+.s6 .h1 .gold { color:#F5DFA0; }
+.s6 .line { font-size:28px; font-weight:300; color:rgba(253,250,245,0.92); margin-bottom:52px; }
+.s6 .pill { background:rgba(255,255,255,0.18); border:1.5px solid rgba(255,255,255,0.3); border-radius:60px; padding:22px 56px; font-size:26px; font-weight:400; color:#FDFAF5; letter-spacing:0.05em; }
+.nav { position:absolute; top:50%; transform:translateY(-50%); width:54px; height:54px; border-radius:50%; background:rgba(255,255,255,0.5); border:1px solid rgba(255,255,255,0.6); font-size:22px; color:#3A3A3A; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:10; transition:background .2s; user-select:none; box-shadow:0 4px 16px rgba(0,0,0,0.1); }
+.nav:hover { background:rgba(255,255,255,0.75); }
+.nav.p { left:-74px; } .nav.n { right:-74px; }
+.pb { display:flex; gap:8px; justify-content:center; }
+.pd { width:8px; height:8px; border-radius:50%; background:rgba(0,0,0,0.15); cursor:pointer; transition:all .3s; }
+.pd.a { background:#4AADA7; width:28px; border-radius:4px; }
+.cnt { color:rgba(0,0,0,0.3); font-size:12px; letter-spacing:0.08em; margin-top:10px; text-align:center; }
+</style>
+</head>
+<body>
+<div class="hint">← → para navegar · 5 slides · El Jardín · Semana 1</div>
+<button id="dl" onclick="descargarTodo()" style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;letter-spacing:.04em;color:#fff;background:#4AADA7;border:none;border-radius:40px;padding:14px 32px;cursor:pointer;box-shadow:0 6px 20px rgba(74,173,167,.35);">⬇ Descargar las 5 imágenes</button>
+<div class="viewer">
+  <button class="nav p" onclick="prev()">‹</button>
+  <button class="nav n" onclick="next()">›</button>
+  <div class="wrap">
+    <div class="slides" id="sl">
+
+      <div class="slide s1">
+        <div class="accent"></div>
+        <div class="wash"></div><div class="wash2"></div>
+        <div class="body">
+          <div class="tag">Maternal Mind · El Jardín</div>
+          <div class="h1" style="font-size:84px;">Tu maternidad:<br>¿la <em>sobrevives</em><br>o la <em style="color:#F2C14E;">habitas?</em></div>
+          <div class="sub">El error de cuidar tu vida familiar<br>solo con la azada en la mano.</div>
+        </div>
+        <div class="logo"><div class="ld" style="background:#C8EDEB"></div><div class="lt"><span style="color:#4AADA7">maternal </span><span style="color:#F2C14E">mind</span></div><div class="ld" style="background:#C8EDEB"></div></div>
+      </div>
+
+      <div class="slide s-cream">
+        <div class="accent"></div><div class="wash"></div>
+        <div class="num">01</div>
+        <div class="body">
+          <div class="label">Semana 1 · El piloto automático</div>
+          <div class="text">Imagina que tu vida es un <span style="color:#F2C14E;font-style:italic;">jardín</span>. Hay parcelas que cuidas con mimo. Y también zonas secas, <em>cactus</em> que pinchan, piedras y malas hierbas.</div>
+        </div>
+        <div class="logo"><div class="ld" style="background:#C8EDEB"></div><div class="lt"><span style="color:#4AADA7">maternal </span><span style="color:#F2C14E">mind</span></div><div class="ld" style="background:#C8EDEB"></div></div>
+      </div>
+
+      <div class="slide s-cream">
+        <div class="accent"></div>
+        <div class="wash" style="background:radial-gradient(circle,rgba(242,193,78,0.18) 0%,transparent 68%);top:auto;bottom:-180px;left:-180px;right:auto;"></div>
+        <div class="num">02</div>
+        <div class="body">
+          <div class="label">Semana 1 · El piloto automático</div>
+          <div class="text" style="font-size:56px;">Revolotean <em>pájaros</em> —tus pensamientos, dudas— que se comen las semillas. Y el <span class="gold">clima</span> —tus emociones— cambia: a veces sol y a veces tormenta.</div>
+        </div>
+        <div class="logo"><div class="ld" style="background:#C8EDEB"></div><div class="lt"><span style="color:#4AADA7">maternal </span><span style="color:#F2C14E">mind</span></div><div class="ld" style="background:#C8EDEB"></div></div>
+      </div>
+
+      <div class="slide s-cream">
+        <div class="accent"></div><div class="wash"></div>
+        <div class="num">03</div>
+        <div class="body">
+          <div class="label">Semana 1 · El piloto automático</div>
+          <div class="text" style="font-size:56px;">El <em style="color:#F2C14E;">modo Hacer</em> te empuja a entrar con la azada —quitar malas hierbas, piedras— y espantar los pájaros. Terminas el día, todo «limpio»… pero <em>no has estado allí.</em></div>
+        </div>
+        <div class="logo"><div class="ld" style="background:#C8EDEB"></div><div class="lt"><span style="color:#4AADA7">maternal </span><span style="color:#F2C14E">mind</span></div><div class="ld" style="background:#C8EDEB"></div></div>
+      </div>
+
+      <div class="slide s6">
+        <div class="accent" style="background:linear-gradient(90deg,rgba(255,255,255,0.3) 0%,rgba(255,255,255,0.15) 100%)"></div>
+        <div class="wash"></div><div class="wash2"></div>
+        <div class="body">
+          <div class="tag">Y existe otra forma</div>
+          <div class="h1">El <span style="color:#F2C14E;">modo Ser</span> es<br>sentarte en el <span class="gold">borde.</span></div>
+          <div class="line">Mirar qué necesita tu jardín antes de actuar.</div>
+          <div class="pill">Sigue leyendo abajo 👇</div>
+        </div>
+        <div class="logo"><div class="ld" style="background:rgba(255,255,255,0.35)"></div><div class="lt"><span style="color:rgba(255,255,255,0.65)">maternal </span><span style="color:rgba(245,223,160,0.75)">mind</span></div><div class="ld" style="background:rgba(255,255,255,0.35)"></div></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="pb" id="pb">
+  <div class="pd a" onclick="go(0)"></div><div class="pd" onclick="go(1)"></div><div class="pd" onclick="go(2)"></div><div class="pd" onclick="go(3)"></div><div class="pd" onclick="go(4)"></div>
+</div>
+<div class="cnt" id="cnt">1 / 5</div>
+<script>
+let c=0,T=5;
+function upd(){ document.getElementById('sl').style.transform=`translateX(-${c*1080}px)`; document.querySelectorAll('.pd').forEach((d,i)=>d.classList.toggle('a',i===c)); document.getElementById('cnt').textContent=`${c+1} / ${T}`; }
+function next(){if(c<T-1){c++;upd();}}
+function prev(){if(c>0){c--;upd();}}
+function go(i){c=i;upd();}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev();});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+async function descargarTodo(){
+  const btn=document.getElementById('dl'); btn.disabled=true;
+  try{ await document.fonts.ready; }catch(e){}
+  const slides=document.querySelectorAll('.slide');
+  for(let i=0;i<slides.length;i++){
+    btn.textContent='Generando '+(i+1)+' / '+slides.length+'…';
+    const canvas=await html2canvas(slides[i],{scale:2,backgroundColor:null,logging:false,width:1080,height:1080});
+    const a=document.createElement('a');
+    a.download='jardin1-s'+(i+1)+'.png';
+    a.href=canvas.toDataURL('image/png');
+    a.click();
+    await new Promise(r=>setTimeout(r,500));
+  }
+  btn.textContent='✓ Descargadas — revisa tu carpeta de Descargas'; btn.disabled=false;
+}
+</script>
+</body>
+</html>
