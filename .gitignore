@@ -5,3 +5,6 @@ node_modules/
 .DS_Store
 # Local Netlify folder
 .netlify
+
+# PNG exportados de los carruseles (regenerables desde el HTML; iCloud los reescribe)
+funnel/jardin-img/
