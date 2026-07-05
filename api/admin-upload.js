@@ -1,8 +1,7 @@
 const { Readable } = require('stream');
-const { google } = require('googleapis');
 const { requireAdmin, ok, fail, preflight } = require('../lib/auth');
 
-function getAuth() {
+function getAuth(google) {
   const auth = new google.auth.OAuth2(
     process.env.GOOGLE_CLIENT_ID,
     process.env.GOOGLE_CLIENT_SECRET
@@ -38,7 +37,10 @@ exports.handler = async (event) => {
     if (!filename || !mimeType || !data) return fail('filename, mimeType y data son requeridos');
 
     const buffer = Buffer.from(data, 'base64');
-    const drive = google.drive({ version: 'v3', auth: getAuth() });
+    // Carga perezosa de 'googleapis' (~800 ficheros): solo al subir un archivo,
+    // no al arrancar el servidor.
+    const { google } = require('googleapis');
+    const drive = google.drive({ version: 'v3', auth: getAuth(google) });
 
     const folderId = await getOrCreateFolder(drive);
 
