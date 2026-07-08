@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Círculo · Feed Instagram</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { width:1080px; height:1350px; background:#120E08; }
+  body {
+    width:1080px; height:1350px; overflow:hidden;
+    font-family:'DM Sans', sans-serif;
+    background:#120E08; color:#F5EDD8;
+    transform-origin:top left;
+    position:relative;
+  }
+
+  /* ── FOTO HERO (top 57%) ── */
+  .photo-wrap {
+    position:absolute;
+    top:0; left:0; right:0;
+    height:770px;
+    overflow:hidden;
+  }
+
+  .photo-wrap img {
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:center 20%;
+    display:block;
+  }
+
+  /* Degradado sobre foto → oscuro */
+  .photo-wrap::after {
+    content:'';
+    position:absolute;
+    inset:0;
+    background:
+      linear-gradient(180deg,
+        rgba(18,14,8,0.35) 0%,
+        rgba(18,14,8,0.1) 30%,
+        rgba(18,14,8,0.15) 55%,
+        rgba(18,14,8,0.75) 78%,
+        rgba(18,14,8,1) 100%
+      ),
+      linear-gradient(90deg,
+        rgba(18,14,8,0.4) 0%,
+        transparent 40%
+      );
+  }
+
+  /* ── SECCIÓN OSCURA (bottom 43%) ── */
+  .dark-section {
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height:580px;
+    background:#120E08;
+    padding:0 80px 56px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+
+  /* Línea dorada separadora */
+  .gold-line {
+    position:absolute;
+    top:0; left:80px; right:80px;
+    height:1px;
+    background:linear-gradient(90deg, #F2C14E 0%, rgba(242,193,78,0.3) 60%, transparent 100%);
+  }
+
+  /* ── ELEMENTOS SOBRE LA FOTO ── */
+  .over-photo {
+    position:absolute;
+    top:0; left:0; right:0;
+    height:770px;
+    z-index:2;
+    padding:48px 80px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+
+  .top-row {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+
+  .brand {
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .brand-name {
+    font-size:17px; font-weight:400;
+    color:rgba(245,237,216,0.85);
+    letter-spacing:0.04em;
+  }
+  .brand-name span { color:#F2C14E; font-weight:600; }
+
+  .badge-plazas {
+    font-size:11px; font-weight:600;
+    letter-spacing:0.2em; text-transform:uppercase;
+    color:#120E08;
+    background:#F2C14E;
+    padding:7px 18px; border-radius:50px;
+  }
+
+  /* Headline sobre foto */
+  .headline-wrap {
+    padding-bottom:40px;
+  }
+
+  .event-eyebrow {
+    font-size:12px; font-weight:600;
+    letter-spacing:0.28em; text-transform:uppercase;
+    color:#F2C14E; opacity:0.85;
+    margin-bottom:16px;
+  }
+
+  .headline {
+    font-family:'Cormorant Garamond', serif;
+    font-size:118px; font-weight:300;
+    line-height:0.92;
+    color:#F5EDD8;
+    letter-spacing:-0.01em;
+  }
+
+  .headline em {
+    font-style:italic;
+    color:#F2C14E;
+  }
+
+  /* ── SECCIÓN OSCURA: props ── */
+  .props-row {
+    display:flex;
+    gap:32px;
+    padding-top:18px;
+  }
+
+  .prop-item {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex:1;
+  }
+
+  .prop-dot {
+    width:6px; height:6px; border-radius:50%;
+    background:#F2C14E; flex-shrink:0;
+    box-shadow:0 0 0 3px rgba(242,193,78,0.15);
+  }
+
+  .prop-text {
+    font-size:16px; font-weight:300;
+    color:rgba(245,237,216,0.65);
+    letter-spacing:0.06em; text-transform:uppercase;
+    line-height:1.3;
+  }
+
+  /* ── LOGISTICS ── */
+  .logistics {
+    display:flex;
+    gap:0;
+    padding:20px 24px;
+    border:1px solid rgba(242,193,78,0.2);
+    border-radius:12px;
+    background:rgba(242,193,78,0.05);
+  }
+
+  .logistic-item {
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    padding-right:24px; margin-right:24px;
+    border-right:1px solid rgba(242,193,78,0.15);
+  }
+  .logistic-item:last-child { border-right:none; padding-right:0; margin-right:0; }
+
+  .logistic-label {
+    font-size:10px; font-weight:600;
+    letter-spacing:0.22em; text-transform:uppercase;
+    color:rgba(242,193,78,0.55);
+  }
+  .logistic-value {
+    font-size:21px; font-weight:400;
+    color:#F5EDD8; line-height:1.3;
+  }
+
+  /* ── BOTTOM ROW ── */
+  .bottom-row {
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+  }
+
+  .price-block {
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+  }
+  .price-label {
+    font-size:10px; font-weight:600;
+    letter-spacing:0.22em; text-transform:uppercase;
+    color:rgba(242,193,78,0.5);
+  }
+  .price-main {
+    font-family:'Cormorant Garamond', serif;
+    font-size:62px; font-weight:300;
+    color:#F2C14E; line-height:1;
+  }
+  .price-sub {
+    font-size:14px; font-weight:300;
+    color:rgba(245,237,216,0.4);
+  }
+
+  .right-col {
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:14px;
+  }
+
+  .chon-line {
+    text-align:right;
+    font-size:14px; font-weight:300;
+    color:rgba(245,237,216,0.45);
+    line-height:1.5;
+  }
+  .chon-line strong {
+    font-weight:500; color:rgba(245,237,216,0.7);
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic; font-size:18px;
+  }
+
+  .cta-btn {
+    display:inline-flex;
+    align-items:center; gap:10px;
+    background:#F2C14E;
+    color:#120E08;
+    font-size:16px; font-weight:600;
+    letter-spacing:0.06em;
+    padding:16px 30px; border-radius:50px;
+    box-shadow:0 6px 28px rgba(242,193,78,0.3);
+    white-space:nowrap;
+  }
+
+  .web-ref {
+    font-size:13px; font-weight:300;
+    color:rgba(242,193,78,0.4);
+    letter-spacing:0.08em;
+  }
+</style>
+</head>
+<body>
+<script>
+  const s = Math.min(window.innerWidth/1080, window.innerHeight/1350);
+  document.body.style.transform = `scale(${s})`;
+</script>
+
+<!-- FOTO -->
+<div class="photo-wrap">
+  <img src="circulo-foto.jpg" alt="Círculo de Maternidad">
+</div>
+
+<!-- ELEMENTOS SOBRE LA FOTO -->
+<div class="over-photo">
+  <div class="top-row">
+    <div class="brand">
+      <svg width="28" height="28" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="19" stroke="rgba(245,237,216,0.5)" stroke-width="1.5" fill="none"/>
+        <path d="M12 26 Q20 10 28 26" stroke="#F2C14E" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <circle cx="20" cy="15" r="3.5" fill="#F2C14E" opacity="0.9"/>
+      </svg>
+      <span class="brand-name">Maternal <span>Mind</span></span>
+    </div>
+    <span class="badge-plazas">Plazas limitadas</span>
+  </div>
+
+  <div class="headline-wrap">
+    <h1 class="headline">
+      Ser<br>
+      <em>mamá</em><br>
+      contigo.
+    </h1>
+  </div>
+</div>
+
+<!-- SECCIÓN OSCURA -->
+<div class="dark-section">
+  <div class="gold-line"></div>
+
+  <div style="display:flex;align-items:center;justify-content:space-between;padding-top:28px;">
+    <span style="font-size:18px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:rgba(242,193,78,0.85);">Círculo de Maternidad</span>
+    <span style="font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:rgba(245,237,216,0.5);border:1px solid rgba(245,237,216,0.2);padding:5px 14px;border-radius:50px;">Presencial</span>
+  </div>
+
+  <div class="props-row">
+    <div class="prop-item"><div class="prop-dot"></div><span class="prop-text">Un espacio para ser tú</span></div>
+    <div class="prop-item"><div class="prop-dot"></div><span class="prop-text">Sabiduría femenina</span></div>
+    <div class="prop-item"><div class="prop-dot"></div><span class="prop-text">Tu tribu empieza aquí</span></div>
+  </div>
+
+  <div class="logistics">
+    <div class="logistic-item">
+      <span class="logistic-label">Fecha</span>
+      <span class="logistic-value">27 junio 2026</span>
+    </div>
+    <div class="logistic-item">
+      <span class="logistic-label">Hora</span>
+      <span class="logistic-value">10:15 – 12:30 h</span>
+    </div>
+    <div class="logistic-item">
+      <span class="logistic-label">Lugar</span>
+      <span class="logistic-value">Adyanta Yoga<br>Barajas · Madrid</span>
+    </div>
+  </div>
+
+  <div class="bottom-row">
+    <div class="price-block">
+      <span class="price-label">Inversión</span>
+      <div class="price-main">20€</div>
+      <span class="price-sub">Reserva por solo 10€</span>
+    </div>
+    <div class="right-col">
+      <div class="chon-line">Con <strong>Chon Jorquera</strong><br>Pediatra · Mindfulness · Círculos</div>
+      <div class="cta-btn">Reserva tu plaza →</div>
+      <span class="web-ref">maternalmind.es</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
