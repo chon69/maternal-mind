@@ -93,6 +93,8 @@ const fns = [
   'admin-seed-kit',
   'admin-upload',
   'admin-users',
+  'admin-import-substack',
+  'admin-invitar-kit',
   'admin-blog',
   'admin-podcast',
   'admin-community',

@@ -1,5 +1,6 @@
 const { append, findBy, updateById } = require('../lib/db');
 const { send, activationEmail } = require('../lib/email');
+const { subscribe } = require('../lib/substack');
 const crypto = require('crypto');
 
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'chon@maternalmind.es';
@@ -24,12 +25,14 @@ exports.handler = async (event) => {
   const email  = (body.email  || '').trim().toLowerCase();
   if (!nombre || !email) return { statusCode: 400, headers: CORS, body: JSON.stringify({ error: 'Faltan datos' }) };
 
-  const [leadResult, userResult] = await Promise.allSettled([
-    append('Leads', { nombre, email, created_at: new Date().toISOString() }),
+  const [leadResult, userResult, substackResult] = await Promise.allSettled([
+    append('Leads', { nombre, email, created_at: new Date().toISOString(), origen: 'web' }),
     (async () => {
       const existing = await findBy('Usuarios', 'email', email);
       if (existing && existing.estado === 'activo') return 'already_active';
-      if (existing && existing.estado === 'pendiente') {
+      if (existing) {
+        // Cualquier contacto que aún no ha activado su cuenta: puede estar
+        // 'pendiente' (ya se le invitó) o 'suscriptor' (llegó importado de Substack).
         // Reutilizamos el token existente: así TODOS los emails de activación
         // enviados a esta madre siguen siendo válidos (el enlace nunca caduca).
         // Solo generamos uno si por algún motivo no lo tuviera.
@@ -38,6 +41,9 @@ exports.handler = async (event) => {
           token = crypto.randomUUID();
           await updateById('Usuarios', existing.id, { token_activacion: token, token_expiry: null });
         }
+        // El nombre importado de Substack es una suposición a partir del email:
+        // el que escribe ella en el formulario manda.
+        await updateById('Usuarios', existing.id, { nombre, estado: 'pendiente' });
         const url = `${APP_URL}/app/activar.html?token=${token}&email=${encodeURIComponent(email)}`;
         await send(email, 'Accede a tu Kit de Bienvenida 🌿', activationEmail(nombre, url));
         return 'resent';
@@ -53,16 +59,22 @@ exports.handler = async (event) => {
         token_expiry: null,
         created_at: new Date().toISOString(),
         last_login: null,
+        origen: 'web',
       });
       const url = `${APP_URL}/app/activar.html?token=${token}&email=${encodeURIComponent(email)}`;
       await send(email, 'Accede a tu Kit de Bienvenida 🌿', activationEmail(nombre, url));
       return 'created';
     })(),
+    // Alta paralela en la newsletter: el funnel empieza en Substack, así que
+    // quien entra por el formulario propio también debe recibirla. Si falla,
+    // no pasa nada: el contacto ya está guardado y se recuperará en el próximo CSV.
+    subscribe(email),
   ]);
 
   if (leadResult.status === 'rejected') console.error('[submit-form] lead error:', leadResult.reason?.message);
   if (userResult.status === 'rejected') console.error('[submit-form] user error:', userResult.reason?.message);
   if (userResult.status === 'fulfilled') console.log('[submit-form] result:', userResult.value);
+  console.log('[submit-form] substack:', substackResult.value ? 'suscrita' : 'no suscrita');
 
   return { statusCode: 200, headers: CORS, body: JSON.stringify({ success: true }) };
 };

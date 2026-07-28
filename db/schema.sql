@@ -129,3 +129,14 @@ CREATE TABLE IF NOT EXISTS testimonios (
   orden       INTEGER     NOT NULL DEFAULT 0,
   created_at  TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+
+-- Trazabilidad del funnel. El funnel empieza en Substack, así que cada contacto
+-- guarda de dónde vino. Idempotente: se puede reejecutar sobre una BD existente.
+--   origen: 'web' (formulario propio) | 'substack' (importado del CSV)
+--   estado 'suscriptor': está en la newsletter pero aún no se le ha invitado al Kit.
+--                        No puede iniciar sesión (auth-login exige estado 'activo').
+ALTER TABLE usuarios ADD COLUMN IF NOT EXISTS origen      TEXT NOT NULL DEFAULT 'web';
+ALTER TABLE usuarios ADD COLUMN IF NOT EXISTS substack_at TIMESTAMPTZ;
+ALTER TABLE usuarios ADD COLUMN IF NOT EXISTS invitado_at TIMESTAMPTZ;
+ALTER TABLE leads    ADD COLUMN IF NOT EXISTS origen      TEXT NOT NULL DEFAULT 'web';
+CREATE INDEX IF NOT EXISTS idx_usuarios_origen ON usuarios (origen);

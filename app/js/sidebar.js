@@ -12,6 +12,7 @@
     users: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
     blog: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>`,
     mic: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>`,
+    contacts: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 22V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v18z"/><circle cx="13" cy="10" r="2.5"/><path d="M9.5 17a3.5 3.5 0 0 1 7 0"/><line x1="2" y1="7" x2="6" y2="7"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="2" y1="17" x2="6" y2="17"/></svg>`,
     quote: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>`,
   };
 
@@ -32,6 +33,7 @@
     { href: '/app/admin/emails.html',    icon: 'mail',      label: 'Emails',       match: ['/app/admin/emails.html'] },
     { href: '/app/admin/chat.html',      icon: 'chat',      label: 'Chat IA',      match: ['/app/admin/chat.html'] },
     { section: 'Gestión' },
+    { href: '/app/admin/contactos.html', icon: 'contacts',  label: 'Contactos',    match: ['/app/admin/contactos.html'] },
     { href: '/app/admin/usuarios.html',  icon: 'users',     label: 'Usuarias',     match: ['/app/admin/usuarios.html'] },
   ];
 

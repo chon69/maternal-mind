@@ -16,6 +16,7 @@ exports.handler = async (event) => {
       const safe = users.map(u => ({
         id: u.id, nombre: u.nombre, email: u.email,
         role: u.role, estado: u.estado, created_at: u.created_at, last_login: u.last_login,
+        origen: u.origen, substack_at: u.substack_at, invitado_at: u.invitado_at,
       }));
       return ok(safe);
     }
