@@ -39,6 +39,10 @@ node server.js
 
 App disponible en: **http://localhost:3000**
 
+> Trabaja contra la base de datos de **staging**, no contra la real.
+> Si tarda mucho en arrancar la primera vez, no está colgada: es iCloud
+> sincronizando la carpeta del Escritorio. Dale un par de minutos.
+
 ---
 
 ## Panel de Administración (Chon)
@@ -65,7 +69,8 @@ node setup-admin.js <nueva-contraseña>
 | Sección         | Función                                              |
 |-----------------|------------------------------------------------------|
 | Dashboard       | Estadísticas de usuarias registradas                 |
-| Recursos        | Gestionar prácticas del Kit de Pausa (Sheets)        |
+| Contactos       | Importar suscriptoras de Substack e invitarlas al Kit |
+| Recursos        | Gestionar prácticas del Kit de Pausa                 |
 | Eventos         | Crear y editar talleres, círculos, retiros           |
 | Blog            | Escribir y publicar artículos (editor HTML)          |
 | Podcast         | Añadir episodios con links Spotify / Apple / iVoox   |
@@ -81,18 +86,36 @@ node setup-admin.js <nueva-contraseña>
 
 | Campo       | Valor                                     |
 |-------------|-------------------------------------------|
-| **Registro** | http://localhost:3000/index.html         |
-| **Login**   | http://localhost:3000/app/login.html      |
-| **Panel**   | http://localhost:3000/app/cliente/        |
+| **Registro** | https://www.maternalmind.es/index.html   |
+| **Login**   | https://www.maternalmind.es/app/login.html |
+| **Panel**   | https://www.maternalmind.es/app/cliente/  |
 | **Email**   | El que cada madre use al registrarse      |
 | **Contraseña** | La que cada madre elija al activar su cuenta |
 
 ### Flujo de registro de una madre
 
 1. Rellena el formulario en la landing (index.html)
-2. Recibe email de activación con enlace único (válido 72 h)
+2. Recibe email de activación con enlace único (**no caduca**: el mismo enlace
+   sigue siendo válido siempre, para que nadie se quede fuera por tardar)
 3. Hace clic en el enlace → elige su contraseña
 4. Accede automáticamente a su panel
+
+Al registrarse por el formulario se la suscribe también a la newsletter de
+Substack (requiere `SUBSTACK_PUB_URL`; si falla, el registro se completa igual).
+
+### Flujo desde Substack (el funnel empieza ahí)
+
+Substack no tiene API ni webhooks, así que el puente es su export CSV:
+
+1. En Substack: **Dashboard → Subscribers → Export**
+2. En **Admin → Contactos**, subir el CSV. Se puede subir el mismo archivo
+   tantas veces como haga falta: nadie se duplica.
+3. Las nuevas entran con estado `suscriptor` y **no reciben ningún email**.
+4. Cuando Chon lo decida, las selecciona y les envía la invitación al Kit.
+   Pasan entonces a `pendiente`, igual que un alta por formulario.
+
+> Es un paso manual a propósito: se suscribieron a la newsletter, no a la
+> plataforma.
 
 ### Secciones del panel cliente
 
@@ -117,10 +140,12 @@ node setup-admin.js <nueva-contraseña>
 
 | Variable                 | Para qué sirve                                |
 |--------------------------|-----------------------------------------------|
-| `GOOGLE_CLIENT_ID`       | OAuth Google (Sheets + Gmail)                 |
+| `DATABASE_URL`           | **Base de datos PostgreSQL.** En local apunta a *staging* |
+| `SUBSTACK_PUB_URL`       | `https://maternalmind.substack.com` — alta en la newsletter |
+| `GOOGLE_CLIENT_ID`       | OAuth Google (Gmail + Drive)                  |
 | `GOOGLE_CLIENT_SECRET`   | OAuth Google                                  |
 | `GOOGLE_REFRESH_TOKEN`   | Acceso sin caducidad a Google                 |
-| `GOOGLE_SPREADSHEET_ID`  | ID del Google Sheet (base de datos)           |
+| `GOOGLE_SPREADSHEET_ID`  | Google Sheet original — solo migración histórica |
 | `SENDER_EMAIL`           | Email remitente (chon@maternalmind.es)        |
 | `JWT_SECRET`             | Firma de tokens de sesión                     |
 | `NOTION_API_KEY`         | API Notion (Biblioteca Mami)                  |
@@ -128,21 +153,56 @@ node setup-admin.js <nueva-contraseña>
 | `GROQ_API_KEY_FALLBACK`  | Clave de respaldo para Groq                   |
 | `ADMIN_EMAIL`            | Email que se reconoce como admin              |
 | `APP_URL`                | URL base (http://localhost:3000 en local)     |
+| `GITHUB_TOKEN`/`GITHUB_REPO` | Acceso al repositorio                     |
 | `STRIPE_SECRET_KEY`      | Pagos — opcional (503 si falta)               |
 | `STRIPE_PRICE_ID`        | Precio suscripción Biblioteca Mami — opcional |
 | `STRIPE_WEBHOOK_SECRET`  | Webhook Stripe — opcional                     |
 
+> ⚠️ El `DATABASE_URL` de `.env.local` apunta a **staging**, no a producción.
+> La de producción está en el mismo archivo, comentada. El resto de claves
+> (Stripe, Gmail) **sí son las reales**: al probar en local, un cobro o un
+> email salen de verdad.
+
 ---
 
-## Google Sheet (base de datos)
+## Base de datos (PostgreSQL en Railway)
 
-**ID:** `10ucqdwcLjuNL4K6Fv565nhQMXtPR5oE8QsXhKrdAaXw`
+Cada entorno tiene la suya, independiente: producción y staging **no comparten datos**.
+Las credenciales están en las variables del servicio Postgres de cada entorno en Railway.
 
-| Hoja        | Contenido                                      |
-|-------------|------------------------------------------------|
-| Usuarios    | Cuentas, contraseñas (hash), roles, planes     |
-| Recursos    | Prácticas Kit de Pausa (campo premium TRUE/FALSE) |
-| Eventos     | Talleres, círculos, retiros                    |
-| Articulos   | Blog (título, contenido HTML, categoría)       |
-| Podcast     | Episodios + links plataformas                  |
-| Formularios | Registros del formulario de la landing         |
+| Tabla       | Contenido                                              |
+|-------------|--------------------------------------------------------|
+| usuarios    | Registro de contactos: cuentas, contraseñas (hash), roles, planes, origen |
+| leads       | Registro de cada envío del formulario de la landing     |
+| recursos    | Prácticas del Kit de Pausa (campo premium)             |
+| eventos     | Talleres, círculos, retiros                            |
+| articulos   | Blog (título, contenido HTML, categoría)               |
+| podcast     | Episodios + links plataformas                          |
+| comunidad   | Publicaciones de las madres                            |
+| mensajes    | Mensajes de clientas y sus respuestas                  |
+| testimonios | Testimonios (web + plataforma)                         |
+| plantillas  | Plantillas de email                                    |
+
+### Estados de un contacto (`usuarios.estado`)
+
+| Estado       | Significa                                                  |
+|--------------|------------------------------------------------------------|
+| `suscriptor` | Está en la newsletter, aún no se le ha invitado. No puede entrar |
+| `pendiente`  | Invitada: tiene su email de acceso, aún no ha elegido contraseña |
+| `activo`     | Cuenta activa, puede entrar                                |
+| `inactivo`   | Desactivada a mano desde el admin                          |
+
+Y `usuarios.origen` dice de dónde vino: `web` (formulario propio) o `substack`.
+
+### Aplicar cambios de estructura
+
+```bash
+node db/apply-schema.js .env.staging   # primero staging
+node db/apply-schema.js                # producción (usa .env.local; descomentar antes la URL de producción)
+```
+
+Es idempotente: se puede ejecutar las veces que haga falta.
+
+> El Google Sheet original (`10ucqdwcLjuNL4K6Fv565nhQMXtPR5oE8QsXhKrdAaXw`) ya
+> **no es la base de datos**. Se conserva como red de seguridad histórica de
+> antes de la migración. `db/migrate.js` es el script que trajo aquellos datos.
