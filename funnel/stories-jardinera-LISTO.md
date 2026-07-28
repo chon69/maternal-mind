@@ -1,81 +1,83 @@
-# Stories · «Dejar de ser el clima para convertirse en la jardinera» — LISTO PARA PUBLICAR
+# Stories de difusión · Artículo «Dejar de ser el clima…» — LISTO PARA PUBLICAR
 
-> 5 stories de 1080×1920 que llevan al artículo publicado en Substack.
+> 4 stories de 1080×1920. **Objetivo: que se suscriban a Maternal Mind en Substack.**
+> No son piezas de enseñanza —eso ya lo hacen los carruseles y los reels—: son el
+> anuncio de que hay algo escrito y la invitación a suscribirse para leerlo.
 > Diseño en `stories-jardinera.html` · PNG en `funnel/stories-jardinera/`
-> Mismo sistema visual que los carruseles del Jardín: se leen como continuación, no como algo nuevo.
 
 **Regenerar las imágenes:** `node funnel/screenshot-stories-jardinera.js`
 
 ---
 
-## Cómo se publican
+## El eje
 
-Las cinco seguidas, **el mismo día**, en este orden. Funcionan como una secuencia:
-pregunta → mapa → giro → revelación → enlace. Si las separas, se pierde el hilo.
+El artículo enlaza **dos ideas**, y las stories respetan ese orden:
 
-Mejor momento: el mismo día que envías el artículo por Substack, o el día siguiente
-por la mañana, para recoger a quien no abrió el email.
+1. **Puedes diseñar tu maternidad.** Esta es la promesa, y es lo que engancha:
+   nadie se lo ha dicho antes.
+2. **El jardín es el cómo.** Aparece reducido a una sola frase, no explicado otra vez.
 
-| # | Archivo | Qué hace | Sticker que le pones encima |
-|---|---------|----------|------------------------------|
-| 1 | `story-1.png` | Engancha con la pregunta de cierre del artículo | **Sticker de pregunta** (opcional, ver abajo) |
-| 2 | `story-2.png` | Explica el jardín: pájaros, clima, corriente | — |
-| 3 | `story-3.png` | El giro: no eres ninguna de las tres cosas | — |
-| 4 | `story-4.png` | La revelación: eres la observadora | — |
-| 5 | `story-5.png` | Cierre + enlace al artículo | **Sticker de enlace** ← imprescindible |
+Si solo se cuenta el jardín, la story parece un reel más de los semanales. La idea
+nueva —que ella decide— es la que justifica que haya un artículo que leer.
 
 ---
 
-## Los dos stickers
+## Las cuatro
 
-**En la story 1 — sticker de pregunta.** Texto sugerido:
+| # | Archivo | Qué hace | Sticker |
+|---|---------|----------|---------|
+| 1 | `story-1.png` | **La promesa.** «Nadie te dijo que tu maternidad se puede diseñar» | — |
+| 2 | `story-2.png` | **El puente.** El jardín en una frase: se diseña desde el borde | — |
+| 3 | `story-3.png` | **La ficha del artículo.** Título, foto de Chon, «publicado en Substack» | — |
+| 4 | `story-4.png` | **La suscripción.** Se lee gratis, te llega al correo | **Sticker de enlace** ← imprescindible |
 
-> ¿Qué pájaro revolotea hoy en tu jardín?
+Las cuatro seguidas, el mismo día. Funcionan como una secuencia:
+promesa → cómo → existe → suscríbete.
 
-Es la mejor de las cinco para conversar: la gente responde a las preguntas concretas,
-no a las abstractas. Las respuestas que lleguen sirven de material para el próximo ciclo.
+La story 3 está diseñada a propósito como una **ficha de publicación**, no como una
+lámina de frase: se reconoce de un vistazo que hay algo que leer, no algo que mirar.
 
-**En la story 5 — sticker de enlace.** Apunta a:
+---
+
+## El sticker de enlace (story 4)
+
+Apunta a la **portada de la publicación**, no al artículo suelto:
 
 ```
-https://maternalmind.substack.com/p/dejar-de-ser-el-clima-para-convertirse
+https://maternalmind.substack.com
 ```
 
-El diseño de esa lámina deja un hueco libre debajo del subtítulo, justo para pegarlo ahí.
-Ponle como texto **«Leer el artículo»**, que convierte mejor que «Más info» o el enlace desnudo.
+> Enlazar a la portada y no al artículo es deliberado: la portada tiene el formulario
+> de suscripción arriba del todo. Si el objetivo fuera solo que lo lean, iría al
+> artículo; como el objetivo es que se suscriban, va a la portada.
+
+Texto del sticker: **«Suscribirme»**. Convierte mejor que «Leer» cuando lo que quieres
+es el email.
+
+Si en algún momento prefieres priorizar la lectura sobre la suscripción, el enlace
+directo al artículo es:
+`https://maternalmind.substack.com/p/dejar-de-ser-el-clima-para-convertirse`
 
 ---
 
 ## Detalles de montaje
 
-- **No añadas texto encima de las imágenes.** Ya están compuestas y respetan las zonas
-  que Instagram tapa con su propia interfaz (arriba y abajo).
-- Súbelas **en orden 1 → 5**. Instagram las publica en el orden en que las seleccionas.
-- Si al subirlas Instagram te las recorta, comprueba que estás subiendo el PNG original
-  (2160×3840) y no una captura de pantalla.
-- El recuadro punteado que ves en la vista previa del HTML **no sale en el PNG**: es solo
-  una guía para saber dónde va el sticker del enlace.
+- **No añadas texto encima.** Ya están compuestas y respetan las zonas que Instagram
+  tapa con su interfaz (arriba y abajo).
+- Súbelas **en orden 1 → 4**.
+- El recuadro punteado que ves en la vista previa del HTML **no sale en el PNG**:
+  es solo la guía de dónde va el sticker.
+- La story 4 no promete una frecuencia de envío a propósito, para no comprometerte
+  a un ritmo. Si decides uno fijo (semanal, quincenal), dilo ahí: la gente se
+  suscribe mejor cuando sabe cuánto va a recibir.
 
 ---
 
-## Continuidad con lo ya publicado
+## Qué mirar después
 
-Estas stories añaden **la corriente** (las sensaciones del cuerpo) al jardín, que no
-aparecía en los cuatro carruseles de Instagram. Si alguien pregunta, es coherente:
-el artículo la presenta como el arroyo que atraviesa el jardín.
+**Suscriptoras nuevas en Substack** el día que las publiques. Ese es el único número
+que mide si esto funciona; las visualizaciones no.
 
-Una equivalencia a tener presente por si montas más piezas: en los carruseles la
-**tierra** era el *Modo Ser*; en el artículo la tierra es **la observadora**. Encajan,
-pero si en alguna story usas las dos ideas a la vez, dilo explícitamente
-(«la tierra que sostiene = la que observa») para que no suenen a dos cosas distintas.
-
----
-
-## Después de publicarlas
-
-Mira **guardados y compartidos**, no los «me gusta». Y las respuestas al sticker de
-pregunta: son el mejor termómetro de qué está resonando de verdad.
-
-La story que más gente vea hasta el final marca por dónde seguir. Si es la 4 (la
-observadora), el territorio es la identidad; si es la 2 (el jardín), es el mapa
-lo que la gente necesita.
+Si el salto es pequeño, el punto débil suele ser la story 1: la promesa no engancha
+lo suficiente. Si hay muchas visualizaciones en la 4 pero pocas suscripciones, el
+problema es el sticker (texto o destino), no el contenido.
