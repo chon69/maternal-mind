@@ -1,6 +1,7 @@
 /**
  * db/apply-schema.js — Aplica db/schema.sql sobre la base de datos.
- * Uso: node db/apply-schema.js
+ * Uso: node db/apply-schema.js [archivo-de-entorno]     (por defecto .env.local)
+ *   p. ej.  node db/apply-schema.js .env.staging
  *
  * Idempotente (todo el schema usa IF NOT EXISTS). A diferencia de db/migrate.js,
  * no necesita credenciales de Google: sirve para aplicar cambios de estructura
@@ -10,7 +11,8 @@
 const fs   = require('fs');
 const path = require('path');
 
-const envPath = path.join(__dirname, '..', '.env.local');
+const envFile = process.argv[2] || '.env.local';
+const envPath = path.resolve(process.cwd(), envFile);
 if (fs.existsSync(envPath)) {
   fs.readFileSync(envPath, 'utf8').split('\n').forEach(line => {
     const m = line.match(/^([^=#\s][^=]*)=(.*)$/);
@@ -26,10 +28,10 @@ const pool = new Pool({
 });
 
 async function main() {
-  if (!process.env.DATABASE_URL) { console.error('❌ DATABASE_URL no configurado'); process.exit(1); }
+  if (!process.env.DATABASE_URL) { console.error(`❌ DATABASE_URL no configurado (leído de ${envFile})`); process.exit(1); }
   const sql = fs.readFileSync(path.join(__dirname, 'schema.sql'), 'utf8');
   await pool.query(sql);
-  console.log('✓ Schema aplicado');
+  console.log(`✓ Schema aplicado (entorno: ${envFile})`);
   await pool.end();
 }
 
