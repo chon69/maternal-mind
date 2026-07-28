@@ -9,3 +9,6 @@ node_modules/
 
 # PNG exportados de los carruseles (regenerables desde el HTML; iCloud los reescribe)
 funnel/jardin-img/
+
+# PNG de las stories (regenerables desde el HTML)
+funnel/stories-jardinera/
