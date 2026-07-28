@@ -67,9 +67,8 @@ directo al artículo es:
 - Súbelas **en orden 1 → 4**.
 - El recuadro punteado que ves en la vista previa del HTML **no sale en el PNG**:
   es solo la guía de dónde va el sticker.
-- La story 4 no promete una frecuencia de envío a propósito, para no comprometerte
-  a un ritmo. Si decides uno fijo (semanal, quincenal), dilo ahí: la gente se
-  suscribe mejor cuando sabe cuánto va a recibir.
+- La story 4 anuncia **una carta cada quince días**. Es el compromiso que se lleva
+  quien se suscribe: si el ritmo cambia, hay que cambiar también esa lámina.
 
 ---
 
