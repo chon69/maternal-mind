@@ -9,12 +9,25 @@
 
 | | URL |
 |-|-----|
-| **Landing** | https://maternal-mind.onrender.com |
-| **Login** | https://maternal-mind.onrender.com/app/login.html |
-| **Panel Admin** | https://maternal-mind.onrender.com/app/admin/ |
-| **Panel Clientas** | https://maternal-mind.onrender.com/app/cliente/ |
+| **Landing** | https://www.maternalmind.es |
+| **Login** | https://www.maternalmind.es/app/login.html |
+| **Panel Admin** | https://www.maternalmind.es/app/admin/ |
+| **Panel Clientas** | https://www.maternalmind.es/app/cliente/ |
 
-> Alojado en Render.com — se re-despliega automáticamente con cada `git push`
+> Alojado en Railway — se re-despliega automáticamente al hacer `git push` a la rama `main`.
+> El dominio sin `www` (maternalmind.es) redirige al de arriba.
+
+## URLs de staging (pruebas)
+
+| | URL |
+|-|-----|
+| **Landing** | https://maternal-mind-staging.up.railway.app |
+| **Panel Admin** | https://maternal-mind-staging.up.railway.app/app/admin/ |
+
+> Se re-despliega al hacer `git push` a la rama `staging`.
+> **Norma:** todo cambio se prueba aquí primero; solo tras el OK pasa a producción.
+> Staging tiene su propia base de datos y sus propias usuarias: la contraseña de
+> admin puede no ser la misma que en producción.
 
 ---
 
@@ -32,7 +45,7 @@ App disponible en: **http://localhost:3000**
 
 | Campo       | Valor                          |
 |-------------|--------------------------------|
-| **URL**     | https://maternal-mind.onrender.com/app/admin/ |
+| **URL**     | https://www.maternalmind.es/app/admin/ |
 | **Email**   | chon@maternalmind.es           |
 | **Contraseña** | La que estableciste con `node setup-admin.js` |
 | **Rol**     | admin                          |
