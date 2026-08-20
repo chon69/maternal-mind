@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Stories · Ciclo La Jardinera (4 semanas)</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#b8b8b8; font-family:'DM Sans',sans-serif; padding:40px 20px; display:flex; flex-direction:column; align-items:center; gap:24px; }
+.hint { color:rgba(0,0,0,.35); font-size:12px; letter-spacing:.14em; text-transform:uppercase; text-align:center; line-height:1.8; }
+
+/* El visor se ve reducido en pantalla; la exportación siempre es a 1080×1920 */
+.viewer { position:relative; width:1080px; max-width:100%; transform:scale(.32); transform-origin:top center; margin-bottom:-1300px; }
+.wrap { overflow:hidden; box-shadow:0 24px 80px rgba(0,0,0,.15); }
+.slides { display:flex; transition:transform .52s cubic-bezier(.4,0,.2,1); }
+.slide { width:1080px; height:1920px; flex-shrink:0; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+
+.accent { position:absolute; top:0; left:0; right:0; height:6px; background:linear-gradient(90deg,#4AADA7 0%,#7DCFCA 55%,#F2C14E 100%); z-index:5; }
+.logo { position:absolute; bottom:150px; left:0; right:0; display:flex; align-items:center; justify-content:center; gap:11px; z-index:5; }
+.ld { width:6px; height:6px; border-radius:50%; }
+.lt { font-size:19px; font-weight:500; letter-spacing:.16em; text-transform:uppercase; }
+
+/* Zona segura: Instagram tapa ~250px arriba y ~320px abajo con su interfaz. */
+.body { position:relative; z-index:2; width:100%; padding:300px 110px 320px; }
+
+.cream { background:#F5EFE6; }
+.cream .wash  { position:absolute; top:-200px; right:-220px; width:760px; height:760px; border-radius:50%; background:radial-gradient(circle,rgba(234,217,192,.65) 0%,transparent 68%); }
+.cream .wash2 { position:absolute; bottom:-160px; left:-180px; width:620px; height:620px; border-radius:50%; background:radial-gradient(circle,rgba(200,237,235,.5) 0%,transparent 70%); }
+.turq { background:#4AADA7; }
+.turq .wash  { position:absolute; top:-180px; right:-160px; width:720px; height:720px; border-radius:50%; background:radial-gradient(circle,rgba(255,255,255,.16) 0%,transparent 70%); }
+.turq .wash2 { position:absolute; bottom:-160px; left:-120px; width:600px; height:600px; border-radius:50%; background:radial-gradient(circle,rgba(242,193,78,.2) 0%,transparent 70%); }
+
+.tag   { font-size:21px; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:#C99A3E; margin-bottom:58px; }
+.turq .tag { color:rgba(253,250,245,.9); }
+.h1    { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:104px; line-height:1.06; color:#3A3A3A; letter-spacing:-.02em; }
+.h1 em { font-style:italic; color:#4AADA7; }
+.h1 .gold { font-style:italic; color:#C99A3E; }
+.turq .h1 { color:#FDFAF5; } .turq .h1 em { color:#F5DFA0; } .turq .h1 .gold { color:#F5DFA0; }
+.sub   { margin-top:52px; font-size:31px; font-weight:300; color:#5E5E5E; line-height:1.62; }
+.turq .sub { color:rgba(253,250,245,.94); }
+.text  { font-family:'Cormorant Garamond',serif; font-size:74px; font-weight:300; line-height:1.26; color:#3A3A3A; letter-spacing:-.01em; }
+.text em { font-style:italic; color:#4AADA7; }
+
+/* Ficha del artículo: parece una publicación, no una lámina de enseñanza */
+.ficha { background:#FDFAF5; border-radius:32px; padding:72px 64px; box-shadow:0 30px 90px rgba(58,58,58,.14); }
+.ficha .kicker { font-size:20px; font-weight:500; letter-spacing:.2em; text-transform:uppercase; color:#C99A3E; margin-bottom:40px; }
+.ficha .tit { font-family:'Cormorant Garamond',serif; font-size:72px; font-weight:300; line-height:1.14; color:#3A3A3A; letter-spacing:-.015em; }
+.ficha .tit em { font-style:italic; color:#4AADA7; }
+.ficha .meta { display:flex; align-items:center; gap:24px; margin-top:52px; padding-top:44px; border-top:1.5px solid rgba(201,154,62,.25); }
+.ficha .meta img { width:96px; height:96px; border-radius:50%; object-fit:cover; object-position:center 22%; flex-shrink:0; }
+.ficha .meta .quien { font-size:27px; font-weight:500; color:#3A3A3A; }
+.ficha .meta .donde { font-size:23px; font-weight:300; color:#7A7A7A; margin-top:6px; }
+
+.beneficios { margin-top:16px; }
+.ben { display:flex; align-items:flex-start; gap:26px; margin-bottom:44px; font-size:30px; font-weight:300; line-height:1.5; color:rgba(253,250,245,.94); }
+.ben .b { width:14px; height:14px; border-radius:50%; background:#F5DFA0; margin-top:14px; flex-shrink:0; }
+
+.hueco { margin-top:64px; border:2px dashed rgba(255,255,255,.35); border-radius:24px; padding:48px 40px; text-align:center; font-size:24px; color:rgba(253,250,245,.75); line-height:1.6; }
+
+.nav { position:absolute; top:50%; transform:translateY(-50%); width:64px; height:64px; border-radius:50%; background:rgba(255,255,255,.55); border:1px solid rgba(255,255,255,.65); font-size:26px; color:#3A3A3A; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:10; user-select:none; }
+.nav.p { left:-90px; } .nav.n { right:-90px; }
+.pb { display:flex; gap:9px; justify-content:center; }
+.pd { width:9px; height:9px; border-radius:50%; background:rgba(0,0,0,.15); cursor:pointer; transition:all .3s; }
+.pd.a { background:#4AADA7; width:30px; border-radius:5px; }
+
+/* Añadidos para el ciclo: etiqueta de día y bloque de pregunta */
+.dia { position:absolute; top:250px; left:110px; right:110px; z-index:5; font-size:22px; font-weight:500;
+       letter-spacing:.2em; text-transform:uppercase; color:rgba(58,58,58,.42); }
+.turq .dia { color:rgba(253,250,245,.6); }
+.pregunta { margin-top:56px; font-family:'Cormorant Garamond',serif; font-style:italic;
+            font-size:52px; line-height:1.28; color:#4AADA7; }
+.turq .pregunta { color:#F5DFA0; }
+.hueco.claro { border-color:rgba(58,58,58,.28); color:rgba(58,58,58,.55); }
+</style>
+</head>
+<body>
+<div class="hint">← → para navegar · 12 stories · 1080×1920 · 3 por semana<br>Acompañan a los 4 carruseles: aviso el jueves · interacción entre medias · puente al siguiente</div>
+
+<div class="viewer">
+  <button class="nav p" onclick="prev()">‹</button>
+  <button class="nav n" onclick="next()">›</button>
+  <div class="wrap">
+    <div class="slides" id="sl">
+
+      <div class="slide turq">
+        <div class="accent" style="background:linear-gradient(90deg,rgba(255,255,255,.3),rgba(255,255,255,.14))"></div><div class="wash"></div><div class="wash2"></div>
+        <div class="dia">Jueves 20 · 14:30</div>
+        <div class="body" style="padding-bottom:340px">
+          <div class="tag">Hoy en el perfil</div>
+          <div class="h1">Puedes <em>diseñar</em><br>tu maternidad.</div>
+          <div class="sub">No te toca sobrevivirla.<br>Carrusel nuevo: de observadora a jardinera.</div>
+          <div class="hueco solo-preview">Deja este hueco libre<br>para el sticker: «Ver publicación»</div>
+        </div>
+        <div class="logo"><div class="ld" style="background:rgba(255,255,255,.35)"></div><div class="lt"><span style="color:rgba(255,255,255,.7)">maternal </span><span style="color:rgba(245,223,160,.8)">mind</span></div><div class="ld" style="background:rgba(255,255,255,.35)"></div></div>
+      </div>
+
+      <div class="slide cream">
+        <div class="accent"></div><div class="wash"></div><div class="wash2"></div>
+        <div class="dia">Viernes 21 o sábado 22</div>
+        <div class="body" style="padding-bottom:340px">
+          <div class="tag">Semana 1 · La jardinera</div>
+          <div class="text">Tú eliges qué <em>semillas</em> plantar.</div>
+          <div class="pregunta">¿Cuál plantas tú esta semana?</div>
+          <div class="hueco solo-preview claro">Deja este hueco libre<br>para el sticker: caja de preguntas</div>
+        </div>
+        <div class="logo"><div class="ld" style="background:#EAD9C0"></div><div class="lt"><span style="color:#4AADA7">maternal </span><span style="color:#F2C14E">mind</span></div><div class="ld" style="background:#EAD9C0"></div></div>
+      </div>
+
+      <div class="slide cream">
+        <div class="accent"></div><div class="wash"></div><div class="wash2"></div>
+        <div class="dia">Miércoles 26</div>
+        <div class="body">
+          <div class="tag">Mañana, carrusel nuevo</div>
+          <div class="text">Tu maternidad es el árbol.<br><br>Tú eres la <em>Tierra.</em></div>
+          <div class="sub">Lo que se agita con el viento no es lo que eres.</div>
+        </div>
+        <div class="logo"><div class="ld" style="background:#EAD9C0"></div><div class="lt"><span style="color:#4AADA7">maternal </span><span style="color:#F2C14E">mind</span></div><div class="ld" style="background:#EAD9C0"></div></div>
+      </div>
+
+      <div class="slide turq">
+        <div class="accent" style="background:linear-gradient(90deg,rgba(255,255,255,.3),rgba(255,255,255,.14))"></div><div class="wash"></div><div class="wash2"></div>
+        <div class="dia">Jueves 27 · 14:30</div>
+        <div class="body" style="padding-bottom:340px">
+          <div class="tag">Hoy en el perfil</div>
+          <div class="h1">No eres<br>el árbol.<br>Eres la <em>Tierra.</em></div>
+          <div class="sub">Raíces, tronco y frutos: tu maternidad al completo,<br>en el carrusel de hoy.</div>
+          <div class="hueco solo-preview">Deja este hueco libre<br>para el sticker: «Ver publicación»</div>
+        </div>
+        <div class="logo"><div class="ld" style="background:rgba(255,255,255,.35)"></div><div class="lt"><span style="color:rgba(255,255,255,.7)">maternal </span><span style="color:rgba(245,223,160,.8)">mind</span></div><div class="ld" style="background:rgba(255,255,255,.35)"></div></div>
+      </div>
+
+      <div class="slide cream">
+        <div class="accent"></div><div class="wash"></div><div class="wash2"></div>
+        <div class="dia">Sábado 29 o domingo 30</div>
+        <div class="body" style="padding-bottom:340px">
+          <div class="tag">Semana 2 · El árbol y la Tierra</div>
+          <div class="text">La Tierra no lucha contra el clima. <em>Lo acoge.</em></div>
+          <div class="pregunta">Hoy, ¿dónde estás?</div>
+          <div class="hueco solo-preview claro">Deja este hueco libre<br>para el sticker: encuesta · «En el árbol» / «En la Tierra»</div>
+        </div>
+        <div class="logo"><div class="ld" style="background:#EAD9C0"></div><div class="lt"><span style="color:#4AADA7">maternal </span><span style="color:#F2C14E">mind</span></div><div class="ld" style="background:#EAD9C0"></div></div>
+      </div>
+
+      <div class="slide cream">
+        <div class="accent"></div><div class="wash"></div><div class="wash2"></div>
+        <div class="dia">Miércoles 2 de septiembre</div>
+        <div class="body">
+          <div class="tag">Mañana, carrusel nuevo</div>
+          <div class="text">La madre perfecta no existe.<br><br>Pero su <em>fantasma</em> vive en tu cabeza.</div>
+          <div class="sub">Mañana lo miramos de frente.</div>
+        </div>
+        <div class="logo"><div class="ld" style="background:#EAD9C0"></div><div class="lt"><span style="color:#4AADA7">maternal </span><span style="color:#F2C14E">mind</span></div><div class="ld" style="background:#EAD9C0"></div></div>
+      </div>
+
+      <div class="slide turq">
+        <div class="accent" style="background:linear-gradient(90deg,rgba(255,255,255,.3),rgba(255,255,255,.14))"></div><div class="wash"></div><div class="wash2"></div>
+        <div class="dia">Jueves 3 · 14:30</div>
+        <div class="body" style="padding-bottom:340px">
+          <div class="tag">Hoy en el perfil</div>
+          <div class="h1">Tu hijo no<br>necesita una<br>madre <em>perfecta.</em></div>
+          <div class="sub">Te necesita a ti, entera.<br>Carrusel nuevo.</div>
+          <div class="hueco solo-preview">Deja este hueco libre<br>para el sticker: «Ver publicación»</div>
+        </div>
+        <div class="logo"><div class="ld" style="background:rgba(255,255,255,.35)"></div><div class="lt"><span style="color:rgba(255,255,255,.7)">maternal </span><span style="color:rgba(245,223,160,.8)">mind</span></div><div class="ld" style="background:rgba(255,255,255,.35)"></div></div>
+      </div>
+
+      <div class="slide cream">
+        <div class="accent"></div><div class="wash"></div><div class="wash2"></div>
+        <div class="dia">Sábado 5 o domingo 6</div>
+        <div class="body" style="padding-bottom:340px">
+          <div class="tag">Semana 3 · La madre que ya eres</div>
+          <div class="text">Tu hijo no recordará si lo hiciste perfecto. Recordará si fuiste <em>de verdad.</em></div>
+          <div class="pregunta">¿Qué exigencia sueltas hoy?</div>
+          <div class="hueco solo-preview claro">Deja este hueco libre<br>para el sticker: caja de preguntas</div>
+        </div>
+        <div class="logo"><div class="ld" style="background:#EAD9C0"></div><div class="lt"><span style="color:#4AADA7">maternal </span><span style="color:#F2C14E">mind</span></div><div class="ld" style="background:#EAD9C0"></div></div>
+      </div>
+
+      <div class="slide cream">
+        <div class="accent"></div><div class="wash"></div><div class="wash2"></div>
+        <div class="dia">Miércoles 9 de septiembre</div>
+        <div class="body">
+          <div class="tag">Mañana cerramos el ciclo</div>
+          <div class="text">Ningún método puede decirte <em>quién eres tú.</em></div>
+          <div class="sub">Y esa es la única información<br>que tu hijo necesita de verdad.</div>
+        </div>
+        <div class="logo"><div class="ld" style="background:#EAD9C0"></div><div class="lt"><span style="color:#4AADA7">maternal </span><span style="color:#F2C14E">mind</span></div><div class="ld" style="background:#EAD9C0"></div></div>
+      </div>
+
+      <div class="slide turq">
+        <div class="accent" style="background:linear-gradient(90deg,rgba(255,255,255,.3),rgba(255,255,255,.14))"></div><div class="wash"></div><div class="wash2"></div>
+        <div class="dia">Jueves 10 · 14:30</div>
+        <div class="body" style="padding-bottom:340px">
+          <div class="tag">Hoy · último del ciclo</div>
+          <div class="h1">El primer<br>método<br><em>eres tú.</em></div>
+          <div class="sub">Existen mil formas de criar.<br>Ninguna funciona si no empiezas por ti.</div>
+          <div class="hueco solo-preview">Deja este hueco libre<br>para el sticker: «Ver publicación»</div>
+        </div>
+        <div class="logo"><div class="ld" style="background:rgba(255,255,255,.35)"></div><div class="lt"><span style="color:rgba(255,255,255,.7)">maternal </span><span style="color:rgba(245,223,160,.8)">mind</span></div><div class="ld" style="background:rgba(255,255,255,.35)"></div></div>
+      </div>
+
+      <div class="slide cream">
+        <div class="accent"></div><div class="wash"></div><div class="wash2"></div>
+        <div class="dia">Sábado 12 o domingo 13</div>
+        <div class="body" style="padding-bottom:340px">
+          <div class="tag">Semana 4 · La trampa del afuera</div>
+          <div class="text">Un método te dice qué hacer a las tres de la mañana.<br><br><em>Tú</em> sabes quién eres.</div>
+          <div class="pregunta">¿Cuántos métodos has probado ya?</div>
+          <div class="hueco solo-preview claro">Deja este hueco libre<br>para el sticker: encuesta · «Alguno» / «He perdido la cuenta»</div>
+        </div>
+        <div class="logo"><div class="ld" style="background:#EAD9C0"></div><div class="lt"><span style="color:#4AADA7">maternal </span><span style="color:#F2C14E">mind</span></div><div class="ld" style="background:#EAD9C0"></div></div>
+      </div>
+
+      <div class="slide turq">
+        <div class="accent" style="background:linear-gradient(90deg,rgba(255,255,255,.3),rgba(255,255,255,.14))"></div><div class="wash"></div><div class="wash2"></div>
+        <div class="dia">Domingo 13 o lunes 14</div>
+        <div class="body" style="padding-bottom:340px">
+          <div class="tag">Cuatro semanas · La Jardinera</div>
+          <div class="h1" style="font-size:88px">El jardín se cuida<br><em>desde dentro.</em></div>
+          <div class="beneficios" style="margin-top:56px">
+            <div class="ben"><div class="b"></div>Sigo escribiendo cada quince días</div>
+            <div class="ben"><div class="b"></div>Maternidad consciente, sin consejos ni culpa</div>
+            <div class="ben"><div class="b"></div>Se lee gratis, te llega al correo</div>
+          </div>
+          <div class="hueco solo-preview">Deja este hueco libre<br>para el sticker: enlace a maternalmind.substack.com</div>
+        </div>
+        <div class="logo"><div class="ld" style="background:rgba(255,255,255,.35)"></div><div class="lt"><span style="color:rgba(255,255,255,.7)">maternal </span><span style="color:rgba(245,223,160,.8)">mind</span></div><div class="ld" style="background:rgba(255,255,255,.35)"></div></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="pb" id="pb"><div class="pd a" onclick="go(0)"></div><div class="pd" onclick="go(1)"></div><div class="pd" onclick="go(2)"></div><div class="pd" onclick="go(3)"></div><div class="pd" onclick="go(4)"></div><div class="pd" onclick="go(5)"></div><div class="pd" onclick="go(6)"></div><div class="pd" onclick="go(7)"></div><div class="pd" onclick="go(8)"></div><div class="pd" onclick="go(9)"></div><div class="pd" onclick="go(10)"></div><div class="pd" onclick="go(11)"></div></div>
+
+<script>
+  let i = 0;
+  const total = 12;
+  function go(n) {
+    i = Math.max(0, Math.min(total - 1, n));
+    document.getElementById('sl').style.transform = `translateX(-${i * 1080}px)`;
+    [...document.querySelectorAll('.pd')].forEach((d, k) => d.classList.toggle('a', k === i));
+  }
+  function next() { go(i + 1); }
+  function prev() { go(i - 1); }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') next();
+    if (e.key === 'ArrowLeft')  prev();
+  });
+</script>
+</body>
+</html>
