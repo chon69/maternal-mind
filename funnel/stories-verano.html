@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Stories · Parar de nadar para poder ver (fuera de ciclo)</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#b8b8b8; font-family:'DM Sans',sans-serif; padding:40px 20px; display:flex; flex-direction:column; align-items:center; gap:24px; }
+.hint { color:rgba(0,0,0,.35); font-size:12px; letter-spacing:.14em; text-transform:uppercase; text-align:center; line-height:1.8; }
+
+.viewer { position:relative; width:1080px; max-width:100%; transform:scale(.32); transform-origin:top center; margin-bottom:-1300px; }
+.wrap { overflow:hidden; box-shadow:0 24px 80px rgba(0,0,0,.15); }
+.slides { display:flex; transition:transform .52s cubic-bezier(.4,0,.2,1); }
+.slide { width:1080px; height:1920px; flex-shrink:0; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+
+/* ── Identidad propia: esto NO es el ciclo de la Jardinera ─────────────────
+   El ciclo vive en crema y turquesa plano. Este lote vive bajo el agua:
+   degradado vertical de superficie a fondo, luz que entra desde arriba y
+   una arena cálida para las láminas de respiro. Misma tipografía de marca. */
+
+.mar { background:linear-gradient(180deg,#2A8A90 0%,#136570 34%,#0B3E48 68%,#06222A 100%); }
+.mar .luz  { position:absolute; top:-320px; left:50%; transform:translateX(-50%); width:1400px; height:900px;
+             background:radial-gradient(ellipse at center,rgba(200,237,235,.30) 0%,transparent 66%); }
+.mar .haz  { position:absolute; top:-100px; left:12%; width:220px; height:1500px; transform:rotate(11deg);
+             background:linear-gradient(180deg,rgba(230,248,247,.16),transparent 72%); filter:blur(28px); }
+.mar .haz2 { position:absolute; top:-160px; right:18%; width:150px; height:1400px; transform:rotate(-8deg);
+             background:linear-gradient(180deg,rgba(230,248,247,.12),transparent 66%); filter:blur(26px); }
+.mar .fondo{ position:absolute; bottom:-160px; left:-120px; width:1400px; height:520px;
+             background:radial-gradient(ellipse at center,rgba(3,20,26,.75) 0%,transparent 70%); }
+
+.arena { background:#F0E7D8; }
+.arena .luz  { position:absolute; top:-240px; right:-200px; width:820px; height:820px; border-radius:50%;
+               background:radial-gradient(circle,rgba(240,209,150,.42) 0%,transparent 68%); }
+.arena .fondo{ position:absolute; bottom:-200px; left:-200px; width:760px; height:760px; border-radius:50%;
+               background:radial-gradient(circle,rgba(120,190,195,.30) 0%,transparent 70%); }
+
+/* Franja superior: fina y de agua, no el degradado turquesa-dorado del ciclo */
+.accent { position:absolute; top:0; left:0; right:0; height:4px; z-index:5;
+          background:linear-gradient(90deg,rgba(200,237,235,.15),#7DCFCA 45%,rgba(200,237,235,.15)); }
+
+/* Zona segura: Instagram tapa ~250px arriba y ~320px abajo */
+.body { position:relative; z-index:2; width:100%; padding:320px 110px 320px; text-align:center; }
+.mar .body, .arena .body { text-align:center; }
+
+.serie { position:absolute; top:250px; left:0; right:0; z-index:5; text-align:center;
+         font-size:21px; font-weight:500; letter-spacing:.28em; text-transform:uppercase; color:rgba(230,248,247,.55); }
+.arena .serie { color:rgba(58,58,58,.38); }
+
+.tag { font-size:22px; font-weight:500; letter-spacing:.2em; text-transform:uppercase;
+       color:rgba(200,237,235,.85); margin-bottom:56px; }
+.arena .tag { color:#B98B22; }
+
+.h1 { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:98px; line-height:1.08;
+      color:#F2FAF9; letter-spacing:-.02em; }
+.h1 em { font-style:italic; color:#9FE3DD; }
+.arena .h1 { color:#2C3B3E; } .arena .h1 em { color:#12727A; }
+
+.text { font-family:'Cormorant Garamond',serif; font-size:70px; font-weight:300; line-height:1.3;
+        color:#EAF6F5; letter-spacing:-.01em; }
+.text em { font-style:italic; color:#9FE3DD; }
+.arena .text { color:#2C3B3E; } .arena .text em { color:#12727A; }
+
+.sub { margin-top:52px; font-size:30px; font-weight:300; line-height:1.6; color:rgba(234,246,245,.86); }
+.arena .sub { color:#5E6A6C; }
+
+.firma { margin-top:46px; font-size:26px; font-weight:300; font-style:italic;
+         font-family:'Cormorant Garamond',serif; color:rgba(200,237,235,.75); }
+.arena .firma { color:#8A7A5E; }
+
+/* Ficha del artículo, en clave de agua */
+.ficha { background:rgba(255,255,255,.09); border:1.5px solid rgba(200,237,235,.28); border-radius:34px;
+         padding:74px 60px; text-align:left; backdrop-filter:blur(2px); }
+.ficha .kicker { font-size:20px; font-weight:500; letter-spacing:.2em; text-transform:uppercase;
+                 color:rgba(200,237,235,.8); margin-bottom:40px; }
+.ficha .tit { font-family:'Cormorant Garamond',serif; font-size:76px; font-weight:300; line-height:1.12;
+              color:#F2FAF9; letter-spacing:-.015em; }
+.ficha .tit em { font-style:italic; color:#9FE3DD; }
+.ficha .baj { margin-top:26px; font-size:27px; font-weight:300; color:rgba(234,246,245,.8); line-height:1.5; }
+.ficha .meta { display:flex; align-items:center; gap:24px; margin-top:52px; padding-top:44px;
+               border-top:1.5px solid rgba(200,237,235,.22); }
+.ficha .meta img { width:96px; height:96px; border-radius:50%; object-fit:cover; object-position:center 22%; flex-shrink:0; }
+.ficha .meta .quien { font-size:27px; font-weight:500; color:#F2FAF9; }
+.ficha .meta .donde { font-size:23px; font-weight:300; color:rgba(234,246,245,.7); margin-top:6px; }
+
+.beneficios { margin-top:20px; text-align:left; }
+.ben { display:flex; align-items:flex-start; gap:26px; margin-bottom:42px; font-size:30px;
+       font-weight:300; line-height:1.5; color:rgba(234,246,245,.92); }
+.ben .b { width:13px; height:13px; border-radius:50%; background:#9FE3DD; margin-top:14px; flex-shrink:0; }
+
+.hueco { margin-top:60px; border:2px dashed rgba(200,237,235,.35); border-radius:24px; padding:44px 40px;
+         text-align:center; font-size:24px; color:rgba(234,246,245,.7); line-height:1.6; }
+.arena .hueco { border-color:rgba(58,58,58,.25); color:rgba(58,58,58,.55); }
+
+.logo { position:absolute; bottom:150px; left:0; right:0; display:flex; align-items:center; justify-content:center; gap:11px; z-index:5; }
+.ld { width:6px; height:6px; border-radius:50%; }
+.lt { font-size:19px; font-weight:500; letter-spacing:.16em; text-transform:uppercase; }
+
+.nav { position:absolute; top:50%; transform:translateY(-50%); width:64px; height:64px; border-radius:50%; background:rgba(255,255,255,.55); border:1px solid rgba(255,255,255,.65); font-size:26px; color:#3A3A3A; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:10; user-select:none; }
+.nav.p { left:-90px; } .nav.n { right:-90px; }
+.pb { display:flex; gap:9px; justify-content:center; }
+.pd { width:9px; height:9px; border-radius:50%; background:rgba(0,0,0,.15); cursor:pointer; transition:all .3s; }
+.pd.a { background:#136570; width:30px; border-radius:5px; }
+</style>
+</head>
+<body>
+<div class="hint">← → para navegar · 6 stories · 1080×1920 · fuera del ciclo «La Jardinera»<br>Difusión del artículo de verano: «Parar de nadar para poder ver»</div>
+
+<div class="viewer">
+  <button class="nav p" onclick="prev()">‹</button>
+  <button class="nav n" onclick="next()">›</button>
+  <div class="wrap">
+    <div class="slides" id="sl">
+
+      <!-- 1 · EL GANCHO: la frase que resume el artículo entero -->
+      <div class="slide mar">
+        <div class="accent"></div><div class="luz"></div><div class="haz"></div><div class="haz2"></div><div class="fondo"></div>
+        <div class="serie">Diario de verano</div>
+        <div class="body">
+          <div class="h1">No pude ver<br>la vida hasta<br>que dejé de <em>nadar.</em></div>
+          <div class="sub">Cuatro semanas de vacaciones.<br>Siete cosas pequeñas que lo cambiaron todo.</div>
+        </div>
+        <div class="logo"><div class="ld" style="background:rgba(200,237,235,.4)"></div><div class="lt"><span style="color:rgba(234,246,245,.72)">maternal </span><span style="color:rgba(159,227,221,.85)">mind</span></div><div class="ld" style="background:rgba(200,237,235,.4)"></div></div>
+      </div>
+
+      <!-- 2 · LA ESCENA: el snorkel, contado como sucedió -->
+      <div class="slide mar">
+        <div class="accent"></div><div class="luz"></div><div class="haz"></div><div class="fondo"></div>
+        <div class="serie">Diario de verano</div>
+        <div class="body">
+          <div class="tag">México, con el snorkel puesto</div>
+          <div class="text">Estaba envuelta en peces. Metida hasta el cuello.<br><br>Y entonces <em>paré.</em><br><br>Me quedé quieta, mirando al fondo.</div>
+        </div>
+        <div class="logo"><div class="ld" style="background:rgba(200,237,235,.4)"></div><div class="lt"><span style="color:rgba(234,246,245,.72)">maternal </span><span style="color:rgba(159,227,221,.85)">mind</span></div><div class="ld" style="background:rgba(200,237,235,.4)"></div></div>
+      </div>
+
+      <!-- 3 · RESPIRO EN ARENA: lo que apareció al parar -->
+      <div class="slide arena">
+        <div class="accent" style="background:linear-gradient(90deg,rgba(120,190,195,.2),#7DCFCA 45%,rgba(240,209,150,.35))"></div>
+        <div class="luz"></div><div class="fondo"></div>
+        <div class="serie">Diario de verano</div>
+        <div class="body">
+          <div class="tag">Y apareció la vida</div>
+          <div class="text">Un vecindario entero ahí abajo. Cada uno a lo suyo. Los corales <em>respirando.</em></div>
+          <div class="sub">Estaba todo ahí.<br>Solo que no se ve mientras nadas.</div>
+        </div>
+        <div class="logo"><div class="ld" style="background:rgba(120,190,195,.45)"></div><div class="lt"><span style="color:#12727A">maternal </span><span style="color:#B98B22">mind</span></div><div class="ld" style="background:rgba(120,190,195,.45)"></div></div>
+      </div>
+
+      <!-- 4 · LA OTRA HISTORIA: el padre, 93 años, volviendo a nadar -->
+      <div class="slide arena">
+        <div class="accent" style="background:linear-gradient(90deg,rgba(120,190,195,.2),#7DCFCA 45%,rgba(240,209,150,.35))"></div>
+        <div class="luz"></div><div class="fondo"></div>
+        <div class="serie">Diario de verano</div>
+        <div class="body">
+          <div class="tag">Mi padre, casi 93 años</div>
+          <div class="text">El mar estaba tan en calma que se metió. Y <em>nadó.</em></div>
+          <div class="sub">Llevaba años sin poder.<br>Lo había dado por cerrado.</div>
+          <div class="firma">Damos por perdidas cosas<br>que solo estaban esperando.</div>
+        </div>
+        <div class="logo"><div class="ld" style="background:rgba(120,190,195,.45)"></div><div class="lt"><span style="color:#12727A">maternal </span><span style="color:#B98B22">mind</span></div><div class="ld" style="background:rgba(120,190,195,.45)"></div></div>
+      </div>
+
+      <!-- 5 · LA FICHA: esto es un artículo, y no es del ciclo -->
+      <div class="slide mar">
+        <div class="accent"></div><div class="luz"></div><div class="haz2"></div><div class="fondo"></div>
+        <div class="serie">Diario de verano</div>
+        <div class="body">
+          <div class="ficha">
+            <div class="kicker">Artículo · 8 min de lectura</div>
+            <div class="tit">Parar de nadar<br>para <em>poder ver</em></div>
+            <div class="baj">Pequeñas grandes reflexiones<br>de cuatro semanas de vacaciones.</div>
+            <div class="meta">
+              <img src="foto-chon.jpg" alt="">
+              <div>
+                <div class="quien">Chon · Maternal Mind</div>
+                <div class="donde">Publicado en Substack</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="logo"><div class="ld" style="background:rgba(200,237,235,.4)"></div><div class="lt"><span style="color:rgba(234,246,245,.72)">maternal </span><span style="color:rgba(159,227,221,.85)">mind</span></div><div class="ld" style="background:rgba(200,237,235,.4)"></div></div>
+      </div>
+
+      <!-- 6 · LA PREGUNTA + EL ENLACE -->
+      <div class="slide mar">
+        <div class="accent"></div><div class="luz"></div><div class="haz"></div><div class="fondo"></div>
+        <div class="serie">Diario de verano</div>
+        <div class="body" style="padding-bottom:340px">
+          <div class="h1" style="font-size:82px">¿Hubo este verano<br>algún momento en<br>que <em>pararas</em><br>y, de repente,<br><em>vieras?</em></div>
+          <div class="sub" style="margin-top:44px">Te leo. Y si quieres las siete,<br>el artículo entero está en Substack.</div>
+          <div class="hueco solo-preview">Deja este hueco libre<br>para el sticker: caja de preguntas + enlace</div>
+        </div>
+        <div class="logo"><div class="ld" style="background:rgba(200,237,235,.4)"></div><div class="lt"><span style="color:rgba(234,246,245,.72)">maternal </span><span style="color:rgba(159,227,221,.85)">mind</span></div><div class="ld" style="background:rgba(200,237,235,.4)"></div></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="pb" id="pb">
+  <div class="pd a" onclick="go(0)"></div><div class="pd" onclick="go(1)"></div><div class="pd" onclick="go(2)"></div><div class="pd" onclick="go(3)"></div><div class="pd" onclick="go(4)"></div><div class="pd" onclick="go(5)"></div>
+</div>
+
+<script>
+  let i = 0;
+  const total = 6;
+  function go(n) {
+    i = Math.max(0, Math.min(total - 1, n));
+    document.getElementById('sl').style.transform = `translateX(-${i * 1080}px)`;
+    [...document.querySelectorAll('.pd')].forEach((d, k) => d.classList.toggle('a', k === i));
+  }
+  function next() { go(i + 1); }
+  function prev() { go(i - 1); }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') next();
+    if (e.key === 'ArrowLeft')  prev();
+  });
+</script>
+</body>
+</html>
