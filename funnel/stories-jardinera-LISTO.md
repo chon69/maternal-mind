@@ -4,6 +4,10 @@
 > No son piezas de enseñanza —eso ya lo hacen los carruseles y los reels—: son el
 > anuncio de que hay algo escrito y la invitación a suscribirse para leerlo.
 > Diseño en `stories-jardinera.html` · PNG en `funnel/stories-jardinera/`
+>
+> **Sin fecha a propósito:** ninguna lámina dice «esta semana» ni «artículo nuevo».
+> El artículo se publicó a finales de julio y estas stories siguen sirviendo cuando
+> quieras volver a llevar gente a él, no solo el día que salió.
 
 **Regenerar las imágenes:** `node funnel/screenshot-stories-jardinera.js`
 
