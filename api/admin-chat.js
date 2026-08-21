@@ -1,7 +1,7 @@
 const { requireAdmin, ok, fail, preflight } = require('../lib/auth');
 
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
-const MODEL    = 'llama-3.3-70b-versatile';
+const MODEL    = 'openai/gpt-oss-120b';
 
 const SYSTEM_PROMPT = `Eres la asistente de Chon, creadora de Maternal Mind, una plataforma de mindfulness y bienestar para mamás.
 Ayudas a:
