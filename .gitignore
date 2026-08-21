@@ -12,3 +12,13 @@ funnel/jardin-img/
 
 # PNG de las stories (regenerables desde el HTML)
 funnel/stories-jardinera/
+
+# Material de audio y vídeo (demasiado pesado para git: ~1 GB)
+PODCAST MATERNAL MIND/
+biblioteca MaMi/
+
+# PNG de las stories de verano (regenerables desde el HTML)
+funnel/stories-verano-img/
+
+# ZIP exportados de los carruseles (regenerables)
+funnel/*.zip

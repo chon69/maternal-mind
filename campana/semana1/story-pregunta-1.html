@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Story 1 · ¿Cuántas veces te olvidaste de comer?</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #111;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'DM Sans', sans-serif;
+    gap: 16px;
+  }
+
+  .label {
+    color: rgba(255,255,255,0.35);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  /* Story: 1080x1920 → mostrar a 540x960 para que quepa en pantalla */
+  .story {
+    width: 540px;
+    height: 960px;
+    position: relative;
+    overflow: hidden;
+    background: #0f2e2c;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Degradado de fondo */
+  .bg-grad {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 80% 10%, rgba(125,207,202,0.22) 0%, transparent 55%),
+      radial-gradient(ellipse at 20% 90%, rgba(74,173,167,0.15) 0%, transparent 55%),
+      #0f2e2c;
+  }
+
+  /* Barra superior (stories UI) */
+  .story-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 20px 0;
+    z-index: 10;
+  }
+
+  .story-bar-progress {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 12px;
+  }
+
+  .story-bar-seg {
+    flex: 1;
+    height: 3px;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.25);
+    overflow: hidden;
+  }
+
+  .story-bar-seg.done {
+    background: rgba(255,255,255,0.7);
+  }
+
+  .story-bar-seg.active .fill {
+    height: 100%;
+    width: 60%;
+    background: #fff;
+    border-radius: 2px;
+  }
+
+  .story-bar-account {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #7DCFCA, #F2C14E);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.02em;
+  }
+
+  .account-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 0.02em;
+  }
+
+  .time-ago {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    margin-left: 4px;
+  }
+
+  /* Contenido central */
+  .content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 50px;
+    text-align: center;
+    gap: 0;
+    width: 100%;
+  }
+
+  .eyebrow-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(125,207,202,0.15);
+    border: 1px solid rgba(125,207,202,0.25);
+    border-radius: 40px;
+    padding: 8px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #7DCFCA;
+    margin-bottom: 50px;
+  }
+
+  .question {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 60px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.15;
+    color: #f5f0e8;
+    margin-bottom: 50px;
+    letter-spacing: -0.01em;
+  }
+
+  .question em {
+    color: #7DCFCA;
+  }
+
+  .divider {
+    width: 50px;
+    height: 1px;
+    background: rgba(125,207,202,0.3);
+    margin: 0 auto 40px;
+  }
+
+  .sub-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: rgba(245,240,232,0.5);
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+  }
+
+  /* Decoración: círculo de ondas */
+  .wave-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(125,207,202,0.12);
+    z-index: 1;
+  }
+
+  .wave-ring-1 { width: 420px; height: 420px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+  .wave-ring-2 { width: 340px; height: 340px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+  .wave-ring-3 { width: 260px; height: 260px; top: 50%; left: 50%; transform: translate(-50%, -50%); border-color: rgba(125,207,202,0.18); }
+
+  /* CTA inferior */
+  .cta-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(15,46,44,0.98) 60%, transparent);
+    padding: 60px 40px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    z-index: 10;
+  }
+
+  .swipe-hint {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .swipe-arrow {
+    font-size: 16px;
+    color: rgba(255,255,255,0.35);
+  }
+</style>
+</head>
+<body>
+
+<div class="label">Story 1/3 — Pregunta</div>
+
+<div class="story">
+  <div class="bg-grad"></div>
+
+  <div class="wave-ring wave-ring-1"></div>
+  <div class="wave-ring wave-ring-2"></div>
+  <div class="wave-ring wave-ring-3"></div>
+
+  <!-- Barra superior -->
+  <div class="story-bar">
+    <div class="story-bar-progress">
+      <div class="story-bar-seg done"></div>
+      <div class="story-bar-seg active"><div class="fill"></div></div>
+      <div class="story-bar-seg"></div>
+    </div>
+    <div class="story-bar-account">
+      <div class="avatar">MM</div>
+      <div>
+        <div class="account-name">maternalmind.es</div>
+        <span class="time-ago">ahora</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenido -->
+  <div class="content">
+    <div class="eyebrow-tag">Una pregunta honesta</div>
+    <div class="question">
+      ¿Cuántas veces<br>
+      te has olvidado<br>
+      de comer hoy<br>
+      <em>por estar<br>
+      con el bebé?</em>
+    </div>
+    <div class="divider"></div>
+    <div class="sub-text">No tienes que<br>responder en voz alta.</div>
+  </div>
+
+  <!-- CTA inferior -->
+  <div class="cta-bottom">
+    <div class="swipe-hint">
+      <span class="swipe-arrow">↑</span>
+      ver siguiente
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

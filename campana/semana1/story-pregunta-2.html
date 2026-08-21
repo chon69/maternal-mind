@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Story · ¿Cuándo fue la última vez?</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background:#b8b8b8;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  min-height:100vh; gap:14px;
+  font-family:'DM Sans',sans-serif;
+}
+.lbl { color:rgba(0,0,0,0.3); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; }
+
+.story {
+  width:540px; height:960px;
+  position:relative; overflow:hidden;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  background:#FDFAF5;
+}
+
+/* Fondos de color */
+.bg-tl {
+  position:absolute; top:-100px; left:-80px;
+  width:440px; height:440px; border-radius:50%;
+  background:radial-gradient(circle,#C8EDEB 0%,#EEF9F8 40%,transparent 70%);
+}
+.bg-br {
+  position:absolute; bottom:-80px; right:-80px;
+  width:360px; height:360px; border-radius:50%;
+  background:radial-gradient(circle,rgba(245,223,160,0.45) 0%,transparent 70%);
+}
+
+/* Línea superior */
+.acc {
+  position:absolute; top:0; left:0; right:0; height:4px;
+  background:linear-gradient(90deg,#4AADA7 0%,#7DCFCA 55%,#F2C14E 100%);
+  z-index:5;
+}
+
+/* Barra Instagram simplificada */
+.bar {
+  position:absolute; top:0; left:0; right:0;
+  padding:16px 18px 0; z-index:10;
+}
+.prog { display:flex; gap:3px; margin-bottom:10px; }
+.seg { flex:1; height:2px; border-radius:2px; background:rgba(58,58,58,0.15); }
+.seg.d { background:rgba(74,173,167,0.6); }
+.acct { display:flex; align-items:center; gap:8px; }
+.av {
+  width:30px; height:30px; border-radius:50%;
+  background:linear-gradient(135deg,#7DCFCA,#F2C14E);
+  display:flex; align-items:center; justify-content:center;
+}
+.av-txt { font-family:'DM Sans',sans-serif; font-size:10px; font-weight:500; color:#fff; letter-spacing:0.05em; text-transform:uppercase; line-height:1; }
+.acct-n { font-size:13px; font-weight:500; color:#3A3A3A; }
+
+/* Contenido */
+.body {
+  position:relative; z-index:2;
+  display:flex; flex-direction:column;
+  align-items:center; text-align:center;
+  padding:100px 52px 100px; width:100%;
+}
+
+/* Icono */
+.ico {
+  width:64px; height:64px; border-radius:50%;
+  background:#EEF9F8; border:1.5px solid #C8EDEB;
+  display:flex; align-items:center; justify-content:center;
+  font-size:26px; margin-bottom:44px;
+}
+
+/* Pregunta — el corazón del visual */
+.q {
+  font-family:'Cormorant Garamond',serif;
+  font-size:58px; font-weight:300; font-style:italic;
+  line-height:1.15; color:#3A3A3A;
+  margin-bottom:44px; letter-spacing:-0.01em;
+}
+.q em { color:#F2C14E; }
+
+/* Separador */
+.sep { width:40px; height:2px; margin:0 auto 36px; border-radius:2px; background:linear-gradient(90deg,#7DCFCA,#F2C14E); }
+
+/* Subtexto */
+.sub {
+  font-family:'Cormorant Garamond',serif;
+  font-size:24px; font-weight:300; font-style:italic;
+  color:#5E5E5E; line-height:1.55;
+}
+
+/* CTA inferior */
+.cta {
+  position:absolute; bottom:0; left:0; right:0;
+  padding:52px 44px 38px;
+  background:linear-gradient(to top,rgba(253,250,245,0.98) 62%,transparent);
+  z-index:10;
+  display:flex; flex-direction:column; align-items:center; gap:10px;
+}
+.pill {
+  background:#EEF9F8; border:1.5px solid #C8EDEB;
+  border-radius:50px; padding:13px 30px;
+  font-size:15px; font-weight:400; color:#4AADA7;
+  letter-spacing:0.03em;
+  display:flex; align-items:center; gap:8px;
+}
+.swipe { font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(58,58,58,0.3); display:flex; align-items:center; gap:5px; }
+</style>
+</head>
+<body>
+<div class="lbl">Story — Pregunta</div>
+
+<div class="story">
+  <div class="acc"></div>
+  <div class="bg-tl"></div>
+  <div class="bg-br"></div>
+
+  <div class="bar">
+    <div class="prog">
+      <div class="seg d"></div>
+      <div class="seg d"></div>
+      <div class="seg"></div>
+    </div>
+    <div class="acct">
+      <div class="av"><div class="av-txt">mm</div></div>
+      <div class="acct-n">maternalmind.es</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="ico">🌿</div>
+    <div class="q">
+      ¿Cuándo fue<br>
+      la última vez<br>
+      que te sentiste<br>
+      <em>completamente tú?</em>
+    </div>
+    <div class="sep"></div>
+    <div class="sub">
+      Ese momento<br>
+      todavía existe.<br>
+      Y merece tu atención.
+    </div>
+  </div>
+
+  <div class="cta">
+    <div class="pill">🎁 Kit de Pausa · maternalmind.es</div>
+    <div class="swipe"><span>↑</span> link en bio</div>
+  </div>
+</div>
+</body>
+</html>

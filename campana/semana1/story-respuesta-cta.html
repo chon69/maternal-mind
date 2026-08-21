@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Story · Respuesta + CTA</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background:#b8b8b8;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  min-height:100vh; gap:14px;
+  font-family:'DM Sans',sans-serif;
+}
+.lbl { color:rgba(0,0,0,0.3); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; }
+
+.story {
+  width:540px; height:960px;
+  position:relative; overflow:hidden;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  background:#EEF9F8;
+}
+
+/* Fondos */
+.bg-tr {
+  position:absolute; top:-80px; right:-80px;
+  width:400px; height:400px; border-radius:50%;
+  background:radial-gradient(circle,#C8EDEB 0%,rgba(200,237,235,0.3) 45%,transparent 70%);
+}
+.bg-bl {
+  position:absolute; bottom:-60px; left:-60px;
+  width:320px; height:320px; border-radius:50%;
+  background:radial-gradient(circle,rgba(245,223,160,0.35) 0%,transparent 70%);
+}
+
+/* Acento superior */
+.acc {
+  position:absolute; top:0; left:0; right:0; height:4px;
+  background:linear-gradient(90deg,#4AADA7 0%,#7DCFCA 55%,#F2C14E 100%);
+  z-index:5;
+}
+
+/* Barra Instagram */
+.bar {
+  position:absolute; top:0; left:0; right:0;
+  padding:16px 18px 0; z-index:10;
+}
+.prog { display:flex; gap:3px; margin-bottom:10px; }
+.seg { flex:1; height:2px; border-radius:2px; }
+.seg.d { background:rgba(74,173,167,0.65); }
+.seg.e { background:rgba(58,58,58,0.12); }
+.acct { display:flex; align-items:center; gap:8px; }
+.av {
+  width:30px; height:30px; border-radius:50%;
+  background:linear-gradient(135deg,#7DCFCA,#F2C14E);
+  display:flex; align-items:center; justify-content:center;
+}
+.av-txt { font-family:'DM Sans',sans-serif; font-size:10px; font-weight:500; color:#fff; letter-spacing:0.05em; text-transform:uppercase; }
+.acct-n { font-size:13px; font-weight:500; color:#3A3A3A; }
+
+/* Cuerpo */
+.body {
+  position:relative; z-index:2;
+  display:flex; flex-direction:column;
+  align-items:center; text-align:center;
+  padding:100px 46px 0; width:100%;
+}
+
+/* Mensaje principal */
+.msg {
+  font-family:'Cormorant Garamond',serif;
+  font-size:58px; font-weight:300; font-style:italic;
+  line-height:1.12; color:#3A3A3A;
+  margin-bottom:32px; letter-spacing:-0.01em;
+}
+.msg em { color:#4AADA7; }
+
+.sep { width:40px; height:2px; margin:0 auto 28px; border-radius:2px; background:linear-gradient(90deg,#7DCFCA,#F2C14E); }
+
+.intro { font-size:19px; font-weight:300; color:#5E5E5E; line-height:1.6; margin-bottom:36px; }
+
+/* Tarjeta Kit de Pausa */
+.card {
+  background:#FDFAF5;
+  border-radius:18px;
+  box-shadow:0 8px 32px rgba(125,207,202,0.18), 0 2px 8px rgba(0,0,0,0.04);
+  width:100%; position:relative; overflow:hidden;
+  padding:28px 30px 24px;
+}
+.card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:4px;
+  background:linear-gradient(90deg,#4AADA7 0%,#7DCFCA 55%,#F2C14E 100%);
+}
+
+/* Logo dentro de la tarjeta */
+.card-logo {
+  display:flex; align-items:center; gap:7px; margin-bottom:12px;
+}
+.card-logo-dot { width:4px; height:4px; border-radius:50%; background:#C8EDEB; }
+.card-logo-txt {
+  font-family:'DM Sans',sans-serif; font-size:12px; font-weight:500;
+  letter-spacing:0.16em; text-transform:uppercase;
+}
+.card-logo-txt .m { color:#4AADA7; }
+.card-logo-txt .n { color:#F2C14E; }
+
+.card-label { font-size:11px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:#7DCFCA; margin-bottom:8px; }
+.card-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:30px; font-weight:400; font-style:italic;
+  color:#3A3A3A; margin-bottom:16px; line-height:1.2;
+}
+.items { display:flex; flex-direction:column; gap:7px; margin-bottom:20px; }
+.item {
+  display:flex; align-items:center; gap:9px;
+  font-size:14px; font-weight:300; color:#3A3A3A; text-align:left;
+}
+.item::before { content:''; width:5px; height:5px; border-radius:50%; background:#7DCFCA; flex-shrink:0; }
+
+.btn {
+  display:block; text-align:center;
+  background:linear-gradient(135deg,#4AADA7,#7DCFCA);
+  color:#FDFAF5; font-size:16px; font-weight:500;
+  letter-spacing:0.03em; padding:13px 20px;
+  border-radius:10px;
+}
+
+/* Swipe up */
+.swipe-up {
+  position:absolute; bottom:26px; left:0; right:0;
+  display:flex; flex-direction:column; align-items:center; gap:4px; z-index:10;
+}
+.su-arrow { font-size:18px; color:#4AADA7; animation:b 1.4s infinite; }
+@keyframes b { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+.su-txt { font-size:11px; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:#4AADA7; }
+</style>
+</head>
+<body>
+<div class="lbl">Story — Respuesta + CTA</div>
+
+<div class="story">
+  <div class="acc"></div>
+  <div class="bg-tr"></div>
+  <div class="bg-bl"></div>
+
+  <div class="bar">
+    <div class="prog">
+      <div class="seg d"></div>
+      <div class="seg d"></div>
+      <div class="seg d"></div>
+    </div>
+    <div class="acct">
+      <div class="av"><div class="av-txt">mm</div></div>
+      <div class="acct-n">maternalmind.es</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="msg">
+      No estás sola.<br>
+      Y puedes vivirlo<br>
+      <em>de otra manera.</em>
+    </div>
+    <div class="sep"></div>
+    <div class="intro">Tengo algo para ti.<br>Un regalo de bienvenida.</div>
+
+    <div class="card">
+      <div class="card-logo">
+        <div class="card-logo-dot"></div>
+        <div class="card-logo-txt"><span class="m">maternal </span><span class="n">mind</span></div>
+        <div class="card-logo-dot"></div>
+      </div>
+      <div class="card-label">🎁 Kit de Pausa · Gratis</div>
+      <div class="card-title">5 prácticas de mindfulness<br>para madres reales</div>
+      <div class="items">
+        <div class="item">Mano en el pecho · autocompasión</div>
+        <div class="item">Respirar con tu bebé</div>
+        <div class="item">Volver en 3 minutos</div>
+        <div class="item">Presencia en el contacto</div>
+        <div class="item">Lo pequeño y hermoso</div>
+      </div>
+      <div class="btn">maternalmind.es →</div>
+    </div>
+  </div>
+
+  <div class="swipe-up">
+    <div class="su-arrow">↑</div>
+    <div class="su-txt">link en bio</div>
+  </div>
+</div>
+</body>
+</html>

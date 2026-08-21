@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Reel · Para la madre que da todo</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#b0b0b0; font-family:'DM Sans',sans-serif; padding:40px 20px; display:flex; flex-direction:column; align-items:center; gap:28px; }
+.title { color:rgba(0,0,0,0.35); font-size:12px; letter-spacing:0.18em; text-transform:uppercase; text-align:center; }
+
+.viewer { position:relative; width:540px; }
+.wrap { overflow:hidden; border-radius:18px; box-shadow:0 24px 72px rgba(0,0,0,0.2); }
+.frames { display:flex; transition:transform 0.55s cubic-bezier(0.4,0,0.2,1); }
+
+.frame {
+  width:540px; height:960px;
+  flex-shrink:0; position:relative; overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+}
+
+/* Acento superior */
+.acc {
+  position:absolute; top:0; left:0; right:0; height:4px;
+  background:linear-gradient(90deg,#4AADA7 0%,#7DCFCA 55%,#F2C14E 100%);
+  z-index:10;
+}
+
+/* Logo pie */
+.lgo {
+  position:absolute; bottom:36px; left:0; right:0;
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  z-index:10;
+}
+.ldot { width:4px; height:4px; border-radius:50%; }
+.ltxt {
+  font-family:'DM Sans',sans-serif; font-size:13px; font-weight:500;
+  letter-spacing:0.16em; text-transform:uppercase;
+}
+
+/* ── FRAME 1 — Crema · apertura impactante ── */
+.f1 { background:#FDFAF5; }
+.f1 .bg1 {
+  position:absolute; top:-100px; right:-100px;
+  width:480px; height:480px; border-radius:50%;
+  background:radial-gradient(circle,#C8EDEB 0%,#EEF9F8 40%,transparent 70%);
+}
+.f1 .bg2 {
+  position:absolute; bottom:-60px; left:-60px;
+  width:320px; height:320px; border-radius:50%;
+  background:radial-gradient(circle,rgba(245,223,160,0.35) 0%,transparent 70%);
+}
+.f1 .inner { position:relative; z-index:2; padding:70px 56px; width:100%; }
+.f1 .tag { font-size:12px; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:#7DCFCA; margin-bottom:44px; display:block; }
+.f1 .h { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:84px; line-height:1.05; color:#3A3A3A; letter-spacing:-0.02em; }
+.f1 .h em { font-style:italic; color:#4AADA7; }
+
+/* ── FRAMES 2-4 — Crema, una palabra clave por frame ── */
+.f-mid { background:#FDFAF5; }
+.f-mid .bg {
+  position:absolute; top:-120px; right:-120px;
+  width:500px; height:500px; border-radius:50%;
+}
+.f-mid .inner { position:relative; z-index:2; padding:70px 56px; width:100%; }
+.f-mid .seg { font-size:12px; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:#C8EDEB; margin-bottom:44px; display:block; }
+.f-mid .h { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:78px; line-height:1.1; color:#3A3A3A; letter-spacing:-0.015em; }
+.f-mid .h em { font-style:italic; color:#4AADA7; }
+.f-mid .h .gold { font-style:italic; color:#F2C14E; }
+
+/* ── FRAME 5 — Turquesa claro · pausa + vuelta ── */
+.f5 { background:#EEF9F8; }
+.f5 .bg {
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  width:600px; height:600px; border-radius:50%;
+  background:radial-gradient(circle,rgba(125,207,202,0.25) 0%,transparent 70%);
+}
+.f5 .inner {
+  position:relative; z-index:2;
+  padding:70px 56px; text-align:center;
+  display:flex; flex-direction:column; align-items:center; gap:32px;
+}
+.f5 .bar { width:48px; height:2px; background:linear-gradient(90deg,#7DCFCA,#F2C14E); border-radius:2px; }
+.f5 .h { font-family:'Cormorant Garamond',serif; font-weight:300; font-style:italic; font-size:72px; line-height:1.12; color:#3A3A3A; letter-spacing:-0.01em; }
+.f5 .h em { color:#4AADA7; }
+.f5 .sub { font-size:22px; font-weight:300; color:#5E5E5E; line-height:1.6; }
+
+/* ── FRAME 6 — Crema · CTA ── */
+.f6 { background:#FDFAF5; }
+.f6 .bg1 {
+  position:absolute; top:-100px; right:-100px;
+  width:480px; height:480px; border-radius:50%;
+  background:radial-gradient(circle,rgba(200,237,235,0.55) 0%,transparent 70%);
+}
+.f6 .bg2 {
+  position:absolute; bottom:-80px; left:-60px;
+  width:360px; height:360px; border-radius:50%;
+  background:radial-gradient(circle,rgba(245,223,160,0.25) 0%,transparent 70%);
+}
+.f6 .inner {
+  position:relative; z-index:2; width:100%;
+  padding:60px 48px;
+  display:flex; flex-direction:column;
+  justify-content:space-between; height:100%;
+}
+.f6 .top { display:flex; flex-direction:column; align-items:center; justify-content:center; flex:1; gap:20px; text-align:center; }
+.f6 .brand {
+  font-family:'DM Sans',sans-serif; font-size:18px; font-weight:500;
+  letter-spacing:0.16em; text-transform:uppercase;
+}
+.f6 .brand .m { color:#4AADA7; } .f6 .brand .n { color:#F2C14E; }
+.f6 .tagline {
+  font-family:'Cormorant Garamond',serif; font-size:38px;
+  font-weight:300; font-style:italic; color:#5E5E5E; line-height:1.3;
+}
+.f6 .card {
+  background:#EEF9F8; border-radius:16px;
+  border:1.5px solid #C8EDEB; padding:26px 28px;
+  display:flex; align-items:center; justify-content:space-between;
+  position:relative; overflow:hidden;
+}
+.f6 .card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg,#4AADA7,#7DCFCA,#F2C14E);
+}
+.f6 .card-l { text-align:left; }
+.f6 .card-t { font-size:20px; font-weight:500; color:#3A3A3A; margin-bottom:3px; }
+.f6 .card-s { font-size:14px; font-weight:300; color:#5E5E5E; }
+.f6 .arrow { font-size:24px; color:#F2C14E; }
+
+/* Nav */
+.nav-b {
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:46px; height:46px; border-radius:50%;
+  background:rgba(255,255,255,0.6); border:1px solid rgba(255,255,255,0.8);
+  font-size:20px; color:#3A3A3A; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  z-index:10; box-shadow:0 2px 10px rgba(0,0,0,0.1);
+  user-select:none; transition:background .2s;
+}
+.nav-b:hover { background:rgba(255,255,255,0.9); }
+.nav-b.p { left:-64px; } .nav-b.n { right:-64px; }
+
+.dots { display:flex; gap:6px; justify-content:center; }
+.dot { width:6px; height:6px; border-radius:50%; background:rgba(0,0,0,0.15); cursor:pointer; transition:all .3s; }
+.dot.a { background:#4AADA7; width:20px; border-radius:3px; }
+.lbl { color:rgba(0,0,0,0.3); font-size:12px; letter-spacing:0.08em; text-align:center; }
+
+/* Storyboard */
+.sb { max-width:640px; width:100%; }
+.sb-t { color:rgba(0,0,0,0.3); font-size:11px; letter-spacing:0.18em; text-transform:uppercase; text-align:center; margin-bottom:14px; }
+.sb-row { display:flex; gap:8px; justify-content:center; }
+.sb-th {
+  width:92px; height:163px; border-radius:8px; overflow:hidden;
+  cursor:pointer; border:2px solid transparent; transition:border-color .2s;
+  position:relative; display:flex; align-items:center; justify-content:center;
+}
+.sb-th.a { border-color:#4AADA7; }
+.sb-n {
+  position:absolute; bottom:0; left:0; right:0;
+  background:rgba(0,0,0,0.4); text-align:center;
+  font-size:9px; color:rgba(255,255,255,0.8); padding:3px 0; letter-spacing:0.07em;
+}
+</style>
+</head>
+<body>
+
+<div class="title">Reel "Para la madre que da todo" — 6 frames (← →)</div>
+
+<div class="viewer">
+  <button class="nav-b p" onclick="pF()">‹</button>
+  <button class="nav-b n" onclick="nF()">›</button>
+  <div class="wrap">
+    <div class="frames" id="fr">
+
+      <!-- F1 — Apertura crema -->
+      <div class="frame f1">
+        <div class="acc"></div>
+        <div class="bg1"></div><div class="bg2"></div>
+        <div class="inner">
+          <span class="tag">Maternal Mind</span>
+          <div class="h">Para la<br>madre que<br><em>da todo.</em></div>
+        </div>
+        <div class="lgo">
+          <div class="ldot" style="background:#C8EDEB"></div>
+          <div class="ltxt"><span style="color:#4AADA7">maternal </span><span style="color:#F2C14E">mind</span></div>
+          <div class="ldot" style="background:#C8EDEB"></div>
+        </div>
+      </div>
+
+      <!-- F2 -->
+      <div class="frame f-mid">
+        <div class="acc"></div>
+        <div class="bg" style="background:radial-gradient(circle,rgba(200,237,235,0.5) 0%,transparent 70%)"></div>
+        <div class="inner">
+          <span class="seg" style="color:#7DCFCA">La que se olvida de respirar.</span>
+          <div class="h">
+            La que lleva<br>
+            el mundo entero<br>
+            en los brazos<br>
+            <em>y aún le quedan<br>ganas.</em>
+          </div>
+        </div>
+        <div class="lgo">
+          <div class="ldot" style="background:#C8EDEB"></div>
+          <div class="ltxt"><span style="color:#4AADA7">maternal </span><span style="color:#F2C14E">mind</span></div>
+          <div class="ldot" style="background:#C8EDEB"></div>
+        </div>
+      </div>
+
+      <!-- F3 -->
+      <div class="frame f-mid">
+        <div class="acc"></div>
+        <div class="bg" style="background:radial-gradient(circle,rgba(245,223,160,0.3) 0%,transparent 70%);top:auto;bottom:-120px;right:auto;left:-120px;"></div>
+        <div class="inner">
+          <span class="seg" style="color:#7DCFCA">La que no sabe dónde empieza ella.</span>
+          <div class="h">
+            La que ama<br>
+            con todo<br>
+            y aun así<br>
+            <span class="gold">se echa de menos.</span>
+          </div>
+        </div>
+        <div class="lgo">
+          <div class="ldot" style="background:#C8EDEB"></div>
+          <div class="ltxt"><span style="color:#4AADA7">maternal </span><span style="color:#F2C14E">mind</span></div>
+          <div class="ldot" style="background:#C8EDEB"></div>
+        </div>
+      </div>
+
+      <!-- F4 -->
+      <div class="frame f-mid">
+        <div class="acc"></div>
+        <div class="bg" style="background:radial-gradient(circle,rgba(200,237,235,0.45) 0%,transparent 70%)"></div>
+        <div class="inner">
+          <span class="seg" style="color:#7DCFCA">La que hace pausas a escondidas.</span>
+          <div class="h">
+            La que sabe<br>
+            que hay algo más,<br>
+            pero no sabe<br>
+            <em>cómo encontrarlo.</em>
+          </div>
+        </div>
+        <div class="lgo">
+          <div class="ldot" style="background:#C8EDEB"></div>
+          <div class="ltxt"><span style="color:#4AADA7">maternal </span><span style="color:#F2C14E">mind</span></div>
+          <div class="ldot" style="background:#C8EDEB"></div>
+        </div>
+      </div>
+
+      <!-- F5 — Pausa turquesa claro -->
+      <div class="frame f5">
+        <div class="acc"></div>
+        <div class="bg"></div>
+        <div class="inner">
+          <div class="bar"></div>
+          <div class="h">Esta<br><em>es para ti.</em></div>
+          <div class="sub">Y hay una puerta<br>esperándote.</div>
+          <div class="bar"></div>
+        </div>
+        <div class="lgo">
+          <div class="ldot" style="background:rgba(74,173,167,0.4)"></div>
+          <div class="ltxt"><span style="color:#4AADA7">maternal </span><span style="color:#F2C14E">mind</span></div>
+          <div class="ldot" style="background:rgba(74,173,167,0.4)"></div>
+        </div>
+      </div>
+
+      <!-- F6 — CTA crema -->
+      <div class="frame f6">
+        <div class="acc"></div>
+        <div class="bg1"></div><div class="bg2"></div>
+        <div class="inner">
+          <div class="top">
+            <div class="brand"><span class="m">maternal </span><span class="n">mind</span></div>
+            <div class="tagline">Un espacio de calma<br>para tu maternidad.</div>
+          </div>
+          <div class="card">
+            <div class="card-l">
+              <div class="card-t">Kit de Pausa 🎁</div>
+              <div class="card-s">5 prácticas · Gratis · maternalmind.es</div>
+            </div>
+            <div class="arrow">→</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="dots" id="dots">
+  <div class="dot a" onclick="goF(0)"></div><div class="dot" onclick="goF(1)"></div>
+  <div class="dot" onclick="goF(2)"></div><div class="dot" onclick="goF(3)"></div>
+  <div class="dot" onclick="goF(4)"></div><div class="dot" onclick="goF(5)"></div>
+</div>
+<div class="lbl" id="lbl">Frame 1 de 6</div>
+
+<div class="sb">
+  <div class="sb-t">Storyboard completo</div>
+  <div class="sb-row">
+    <div class="sb-th a" id="t0" onclick="goF(0)" style="background:#FDFAF5">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:#4AADA7;text-align:center;padding:8px;">Para la<br>madre<br>que da<br>todo.</span>
+      <div class="sb-n">APERTURA</div>
+    </div>
+    <div class="sb-th" id="t1" onclick="goF(1)" style="background:#FDFAF5">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:#3A3A3A;text-align:center;padding:8px;">...aún le<br>quedan<br>ganas.</span>
+      <div class="sb-n">02</div>
+    </div>
+    <div class="sb-th" id="t2" onclick="goF(2)" style="background:#FDFAF5">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:#F2C14E;text-align:center;padding:8px;">se echa<br>de menos.</span>
+      <div class="sb-n">03</div>
+    </div>
+    <div class="sb-th" id="t3" onclick="goF(3)" style="background:#FDFAF5">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:#4AADA7;text-align:center;padding:8px;">cómo<br>encon-<br>trarlo.</span>
+      <div class="sb-n">04</div>
+    </div>
+    <div class="sb-th" id="t4" onclick="goF(4)" style="background:#EEF9F8">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:#4AADA7;text-align:center;padding:8px;">Esta<br>es para<br>ti.</span>
+      <div class="sb-n">PAUSA</div>
+    </div>
+    <div class="sb-th" id="t5" onclick="goF(5)" style="background:#FDFAF5">
+      <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#4AADA7;text-align:center;padding:8px;">Kit de<br>Pausa<br>🎁</span>
+      <div class="sb-n">CTA</div>
+    </div>
+  </div>
+</div>
+
+<script>
+let c=0,T=6;
+const lbls=['Frame 1 — Apertura: "Para la madre que da todo"','Frame 2 — "...aún le quedan ganas"','Frame 3 — "se echa de menos"','Frame 4 — "cómo encontrarlo"','Frame 5 — Pausa: "Esta es para ti"','Frame 6 — CTA y Kit de Pausa'];
+function upd(){
+  document.getElementById('fr').style.transform=`translateX(-${c*540}px)`;
+  document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('a',i===c));
+  document.querySelectorAll('.sb-th').forEach((t,i)=>t.classList.toggle('a',i===c));
+  document.getElementById('lbl').textContent=lbls[c];
+}
+function nF(){if(c<T-1){c++;upd();}}
+function pF(){if(c>0){c--;upd();}}
+function goF(i){c=i;upd();}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')nF();if(e.key==='ArrowLeft')pF();});
+</script>
+</body>
+</html>

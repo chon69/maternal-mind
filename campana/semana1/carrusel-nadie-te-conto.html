@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Carrusel · Lo que nadie te contó</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#b8b8b8; font-family:'DM Sans',sans-serif; padding:40px 20px; display:flex; flex-direction:column; align-items:center; gap:24px; }
+.hint { color:rgba(0,0,0,0.35); font-size:12px; letter-spacing:0.14em; text-transform:uppercase; }
+
+.viewer { position:relative; width:1080px; max-width:100%; }
+.wrap { overflow:hidden; box-shadow:0 24px 80px rgba(0,0,0,0.15); }
+.slides { display:flex; transition:transform 0.52s cubic-bezier(0.4,0,0.2,1); }
+
+.slide {
+  width:1080px; height:1080px;
+  flex-shrink:0; position:relative; overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+}
+
+/* Línea de acento superior — todas las slides */
+.accent {
+  position:absolute; top:0; left:0; right:0; height:5px;
+  background:linear-gradient(90deg,#4AADA7 0%,#7DCFCA 55%,#F2C14E 100%);
+  z-index:5;
+}
+
+/* Logo pie */
+.logo {
+  position:absolute; bottom:50px; left:0; right:0;
+  display:flex; align-items:center; justify-content:center; gap:9px;
+  z-index:5;
+}
+.ld { width:5px; height:5px; border-radius:50%; }
+.lt {
+  font-family:'DM Sans',sans-serif; font-size:15px; font-weight:500;
+  letter-spacing:0.16em; text-transform:uppercase;
+}
+
+/* ════ SLIDE 1 — Portada crema ════ */
+.s1 { background:#FDFAF5; }
+.s1 .wash {
+  position:absolute; top:-160px; right:-160px;
+  width:640px; height:640px; border-radius:50%;
+  background:radial-gradient(circle,#C8EDEB 0%,#EEF9F8 40%,transparent 70%);
+}
+.s1 .wash2 {
+  position:absolute; bottom:-100px; left:-80px;
+  width:400px; height:400px; border-radius:50%;
+  background:radial-gradient(circle,rgba(245,223,160,0.4) 0%,transparent 70%);
+}
+.s1 .body { position:relative; z-index:2; text-align:center; padding:100px; }
+.s1 .tag { font-size:14px; font-weight:500; letter-spacing:0.22em; text-transform:uppercase; color:#7DCFCA; margin-bottom:52px; }
+.s1 .h1 {
+  font-family:'Cormorant Garamond',serif; font-weight:300;
+  font-size:106px; line-height:1.0; color:#3A3A3A; letter-spacing:-0.02em;
+}
+.s1 .h1 em { font-style:italic; color:#4AADA7; }
+.s1 .sub { margin-top:40px; font-size:22px; font-weight:300; color:#5E5E5E; letter-spacing:0.04em; }
+.s1 .ld { background:#C8EDEB; }
+.s1 .lt .m { color:#4AADA7; } .s1 .lt .n { color:#F2C14E; }
+
+/* ════ SLIDES 2–5 — Crema con acento ════ */
+/* Cada una tiene fondo crema y UNA palabra en color */
+.s-cream { background:#FDFAF5; }
+.s-cream .wash {
+  position:absolute; top:-200px; right:-200px;
+  width:700px; height:700px; border-radius:50%;
+  background:radial-gradient(circle,rgba(200,237,235,0.55) 0%,transparent 68%);
+}
+.s-cream .num {
+  position:absolute; top:72px; right:80px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:200px; font-weight:300; font-style:italic;
+  color:rgba(125,207,202,0.08); line-height:1; z-index:1;
+  user-select:none;
+}
+.s-cream .body {
+  position:relative; z-index:2;
+  padding:80px 110px; text-align:left; width:100%;
+}
+.s-cream .label {
+  font-size:13px; font-weight:500; letter-spacing:0.2em;
+  text-transform:uppercase; color:#C8EDEB; margin-bottom:52px;
+  /* C8EDEB on FDFAF5 — subtle but readable */
+  color:#7DCFCA;
+}
+.s-cream .text {
+  font-family:'Cormorant Garamond',serif;
+  font-size:72px; font-weight:300; line-height:1.18;
+  color:#3A3A3A; letter-spacing:-0.01em;
+}
+.s-cream .text em { font-style:italic; color:#4AADA7; }
+.s-cream .text .gold { font-style:italic; color:#F2C14E; }
+.s-cream .text .strong-t { font-style:normal; font-weight:400; color:#4AADA7; }
+.s-cream .ld { background:#C8EDEB; }
+.s-cream .lt .m { color:#4AADA7; } .s-cream .lt .n { color:#F2C14E; }
+
+/* ════ SLIDE 6 — CTA ════ */
+.s6 { background:#4AADA7; }
+.s6 .wash {
+  position:absolute; top:-150px; right:-120px;
+  width:600px; height:600px; border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,0.15) 0%,transparent 70%);
+}
+.s6 .wash2 {
+  position:absolute; bottom:-120px; left:-80px;
+  width:480px; height:480px; border-radius:50%;
+  background:radial-gradient(circle,rgba(242,193,78,0.18) 0%,transparent 70%);
+}
+.s6 .body {
+  position:relative; z-index:2;
+  text-align:center; padding:80px 100px;
+  display:flex; flex-direction:column; align-items:center;
+}
+.s6 .gift { font-size:72px; margin-bottom:40px; line-height:1; }
+.s6 .h1 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:76px; font-weight:300; font-style:italic;
+  color:#FDFAF5; line-height:1.12; margin-bottom:52px;
+}
+.s6 .feats { display:flex; flex-direction:column; gap:18px; margin-bottom:56px; width:100%; }
+.s6 .feat { font-size:28px; font-weight:300; color:rgba(253,250,245,0.9); }
+.s6 .feat strong { color:#FEF7E0; font-weight:500; }
+.s6 .pill {
+  background:rgba(255,255,255,0.18); border:1.5px solid rgba(255,255,255,0.3);
+  border-radius:60px; padding:22px 64px;
+  font-size:28px; font-weight:400; color:#FDFAF5; letter-spacing:0.06em;
+}
+.s6 .ld { background:rgba(255,255,255,0.4); }
+.s6 .lt .m { color:rgba(255,255,255,0.6); } .s6 .lt .n { color:rgba(245,223,160,0.7); }
+
+/* Nav */
+.nav {
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:54px; height:54px; border-radius:50%;
+  background:rgba(255,255,255,0.5); border:1px solid rgba(255,255,255,0.6);
+  font-size:22px; color:#3A3A3A; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  z-index:10; transition:background .2s; user-select:none;
+  box-shadow:0 4px 16px rgba(0,0,0,0.1);
+}
+.nav:hover { background:rgba(255,255,255,0.75); }
+.nav.p { left:-74px; } .nav.n { right:-74px; }
+
+.pb { display:flex; gap:8px; justify-content:center; }
+.pd { width:8px; height:8px; border-radius:50%; background:rgba(0,0,0,0.15); cursor:pointer; transition:all .3s; }
+.pd.a { background:#4AADA7; width:28px; border-radius:4px; }
+.cnt { color:rgba(0,0,0,0.3); font-size:12px; letter-spacing:0.08em; margin-top:10px; text-align:center; }
+</style>
+</head>
+<body>
+<div class="hint">← → para navegar · 6 slides</div>
+
+<div class="viewer">
+  <button class="nav p" onclick="prev()">‹</button>
+  <button class="nav n" onclick="next()">›</button>
+  <div class="wrap">
+    <div class="slides" id="sl">
+
+      <!-- SLIDE 1 — Portada -->
+      <div class="slide s1">
+        <div class="accent"></div>
+        <div class="wash"></div><div class="wash2"></div>
+        <div class="body">
+          <div class="tag">Maternal Mind · Reflexiones</div>
+          <div class="h1">Lo que<br>nadie te<br><em>contó.</em></div>
+          <div class="sub">Sobre la maternidad real.</div>
+        </div>
+        <div class="logo">
+          <div class="ld" style="background:#C8EDEB"></div>
+          <div class="lt"><span class="m">maternal </span><span class="n">mind</span></div>
+          <div class="ld" style="background:#C8EDEB"></div>
+        </div>
+      </div>
+
+      <!-- SLIDE 2 -->
+      <div class="slide s-cream">
+        <div class="accent"></div>
+        <div class="wash"></div>
+        <div class="num">01</div>
+        <div class="body">
+          <div class="label">Lo que nadie te contó</div>
+          <div class="text">
+            Que el amor más grande<br>
+            y el cansancio más profundo<br>
+            pueden vivir juntos,<br>
+            en el <em>mismo cuerpo.</em>
+          </div>
+        </div>
+        <div class="logo">
+          <div class="ld" style="background:#C8EDEB"></div>
+          <div class="lt"><span class="m">maternal </span><span class="n">mind</span></div>
+          <div class="ld" style="background:#C8EDEB"></div>
+        </div>
+      </div>
+
+      <!-- SLIDE 3 -->
+      <div class="slide s-cream">
+        <div class="accent"></div>
+        <div class="wash" style="background:radial-gradient(circle,rgba(242,193,78,0.18) 0%,transparent 68%);top:auto;bottom:-180px;left:-180px;right:auto;"></div>
+        <div class="num">02</div>
+        <div class="body">
+          <div class="label">Lo que nadie te contó</div>
+          <div class="text">
+            Que necesitar un momento<br>
+            para ti no te hace<br>
+            menos madre.<br>
+            Te hace más <em>humana.</em>
+          </div>
+        </div>
+        <div class="logo">
+          <div class="ld" style="background:#C8EDEB"></div>
+          <div class="lt"><span class="m">maternal </span><span class="n">mind</span></div>
+          <div class="ld" style="background:#C8EDEB"></div>
+        </div>
+      </div>
+
+      <!-- SLIDE 4 -->
+      <div class="slide s-cream">
+        <div class="accent"></div>
+        <div class="wash"></div>
+        <div class="num">03</div>
+        <div class="body">
+          <div class="label">Lo que nadie te contó</div>
+          <div class="text">
+            Que lo que sientes<br>
+            — <span class="gold">todo</span> —<br>
+            tiene sentido.<br>
+            <span style="font-size:56px;color:#5E5E5E;font-style:italic;">Y merece ser escuchado.</span>
+          </div>
+        </div>
+        <div class="logo">
+          <div class="ld" style="background:#C8EDEB"></div>
+          <div class="lt"><span class="m">maternal </span><span class="n">mind</span></div>
+          <div class="ld" style="background:#C8EDEB"></div>
+        </div>
+      </div>
+
+      <!-- SLIDE 5 -->
+      <div class="slide s-cream">
+        <div class="accent"></div>
+        <div class="wash" style="background:radial-gradient(circle,rgba(200,237,235,0.45) 0%,transparent 68%);top:auto;bottom:-180px;right:auto;left:-180px;"></div>
+        <div class="num">04</div>
+        <div class="body">
+          <div class="label">Lo que nadie te contó</div>
+          <div class="text">
+            Que hay <em>otra forma</em><br>
+            de vivir la maternidad.<br>
+            <span style="font-size:56px;color:#5E5E5E;font-style:italic;font-family:'Cormorant Garamond',serif;">Presente. Contigo misma.<br>Sin perderte.</span>
+          </div>
+        </div>
+        <div class="logo">
+          <div class="ld" style="background:#C8EDEB"></div>
+          <div class="lt"><span class="m">maternal </span><span class="n">mind</span></div>
+          <div class="ld" style="background:#C8EDEB"></div>
+        </div>
+      </div>
+
+      <!-- SLIDE 6 — CTA -->
+      <div class="slide s6">
+        <div class="accent" style="background:linear-gradient(90deg,rgba(255,255,255,0.3) 0%,rgba(255,255,255,0.15) 100%)"></div>
+        <div class="wash"></div><div class="wash2"></div>
+        <div class="body">
+          <div class="gift">🎁</div>
+          <div class="h1">Por eso existe<br>el Kit de Pausa.</div>
+          <div class="feats">
+            <div class="feat"><strong>5 prácticas</strong> de mindfulness en audio</div>
+            <div class="feat">Para los <strong>momentos reales</strong> de la maternidad</div>
+            <div class="feat"><strong>100% gratis.</strong> Sin compromisos.</div>
+          </div>
+          <div class="pill">maternalmind.es</div>
+        </div>
+        <div class="logo">
+          <div class="ld" style="background:rgba(255,255,255,0.35)"></div>
+          <div class="lt"><span style="color:rgba(255,255,255,0.65);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;">maternal </span><span style="color:rgba(245,223,160,0.75);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;">mind</span></div>
+          <div class="ld" style="background:rgba(255,255,255,0.35)"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="pb" id="pb">
+  <div class="pd a" onclick="go(0)"></div><div class="pd" onclick="go(1)"></div>
+  <div class="pd" onclick="go(2)"></div><div class="pd" onclick="go(3)"></div>
+  <div class="pd" onclick="go(4)"></div><div class="pd" onclick="go(5)"></div>
+</div>
+<div class="cnt" id="cnt">1 / 6</div>
+
+<script>
+let c=0,T=6;
+function upd(){
+  document.getElementById('sl').style.transform=`translateX(-${c*1080}px)`;
+  document.querySelectorAll('.pd').forEach((d,i)=>d.classList.toggle('a',i===c));
+  document.getElementById('cnt').textContent=`${c+1} / ${T}`;
+}
+function next(){if(c<T-1){c++;upd();}}
+function prev(){if(c>0){c--;upd();}}
+function go(i){c=i;upd();}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev();});
+</script>
+</body>
+</html>
