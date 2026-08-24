@@ -33,7 +33,7 @@ nueva —que ella decide— es la que justifica que haya un artículo que leer.
 | 1 | `story-1.png` | **La promesa.** «Nadie te dijo que tu maternidad se puede diseñar» | — |
 | 2 | `story-2.png` | **El puente.** El jardín en una frase: se diseña desde el borde | — |
 | 3 | `story-3.png` | **La ficha del artículo.** Título, foto de Chon, «publicado en Substack» | — |
-| 4 | `story-4.png` | **La suscripción.** Se lee gratis, te llega al correo | **Sticker de enlace** ← imprescindible |
+| 4 | `story-4.png` | **La suscripción.** Qué recibe, y que hay alguien que contesta | **Sticker de enlace** ← imprescindible |
 
 Las cuatro seguidas, el mismo día. Funcionan como una secuencia:
 promesa → cómo → existe → suscríbete.
@@ -71,8 +71,12 @@ directo al artículo es:
 - Súbelas **en orden 1 → 4**.
 - El recuadro punteado que ves en la vista previa del HTML **no sale en el PNG**:
   es solo la guía de dónde va el sticker.
-- La story 4 anuncia **una carta cada quince días**. Es el compromiso que se lleva
-  quien se suscribe: si el ritmo cambia, hay que cambiar también esa lámina.
+- La story 4 anuncia **una carta cada quince días** y que **respondes tú** a quien te
+  escriba. Son los dos compromisos que se lleva quien se suscribe: si el ritmo cambia,
+  o si dejas de poder contestar, hay que cambiar también esa lámina.
+- La lámina **no menciona el precio**. Es deliberado: encabezar con «gratis» convierte
+  en argumento lo que menos importa y rebaja lo que se ofrece. Las tres líneas dicen
+  qué recibe, de qué va y que hay alguien al otro lado.
 
 ---
 
