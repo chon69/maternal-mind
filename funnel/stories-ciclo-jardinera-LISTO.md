@@ -72,8 +72,11 @@ Las preguntas siguen la misma regla: se pregunta por lo que elige, no por lo que
   tapa con su interfaz (arriba y abajo).
 - El recuadro punteado de la vista previa del HTML **no sale en el PNG**: es la guía
   de dónde va el sticker.
-- Las fechas impresas arriba en cada lámina son tu recordatorio de cuándo publicarla;
-  se ven en la story, así que si cambias el calendario hay que regenerarlas.
+- **Las láminas ya no llevan fecha impresa.** El calendario vive solo en esta ficha,
+  para que un cambio de planes no obligue a regenerar imágenes ni deje una story
+  anunciando un día que ya pasó. Lo único temporal que dicen es relativo —«hoy en el
+  perfil», «el carrusel de mañana»— y eso se cumple solo si publicas la lámina el día
+  que le toca en la tabla.
 - Las de aviso se publican **después** de que salga el carrusel, no antes: el sticker
   de publicación necesita que el post ya exista.
 
