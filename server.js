@@ -57,6 +57,10 @@ app.post('/api/stripe-webhook', express.raw({ type: 'application/json' }), async
 app.use(express.json({ limit: '50mb' }));
 app.use(express.static(path.join(__dirname)));
 
+// URL corta e imprimible para la página del retiro: el QR de los carteles apunta
+// aquí, así el destino se puede cambiar sin reimprimir nada.
+app.get('/retiro', (_req, res) => res.sendFile(path.join(__dirname, 'retiro.html')));
+
 // Adapts Express req/res to the Lambda-style handler contract used by api/ functions
 function wrapHandler(handler) {
   return async (req, res) => {

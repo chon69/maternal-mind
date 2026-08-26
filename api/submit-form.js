@@ -23,10 +23,12 @@ exports.handler = async (event) => {
 
   const nombre = (body.nombre || '').trim();
   const email  = (body.email  || '').trim().toLowerCase();
+  // De dónde llega el alta: la home no lo manda ('web'), la página del retiro sí.
+  const origen = (body.origen || 'web').trim().slice(0, 40);
   if (!nombre || !email) return { statusCode: 400, headers: CORS, body: JSON.stringify({ error: 'Faltan datos' }) };
 
   const [leadResult, userResult, substackResult] = await Promise.allSettled([
-    append('Leads', { nombre, email, created_at: new Date().toISOString(), origen: 'web' }),
+    append('Leads', { nombre, email, created_at: new Date().toISOString(), origen }),
     (async () => {
       const existing = await findBy('Usuarios', 'email', email);
       if (existing && existing.estado === 'activo') return 'already_active';
@@ -59,7 +61,7 @@ exports.handler = async (event) => {
         token_expiry: null,
         created_at: new Date().toISOString(),
         last_login: null,
-        origen: 'web',
+        origen,
       });
       const url = `${APP_URL}/app/activar.html?token=${token}&email=${encodeURIComponent(email)}`;
       await send(email, 'Accede a tu Kit de Bienvenida 🌿', activationEmail(nombre, url));

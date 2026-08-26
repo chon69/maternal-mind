@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Volver a ti · Retiro para madres en Barajas | Maternal Mind</title>
+<meta name="description" content="Cuatro horas de sábado para madres. Sábado 26 de septiembre, de 10:00 a 14:00, en Barajas. Grupo de 16.">
+<meta property="og:title" content="Cuatro horas para volver a ti">
+<meta property="og:description" content="Un retiro urbano para madres. Sábado 26 de septiembre, de 10:00 a 14:00, en Barajas.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --turq:       #7DCFCA;
+    --turq-dark:  #5BBFB9;
+    --turq-deep:  #4AADA7;
+    --turq-light: #C8EDEB;
+    --turq-vlight:#EEF9F8;
+    --gold:       #F2C14E;
+    --gold-dark:  #B8820A;
+    --gold-light: #FEF7E0;
+    --amber:      #FDF3DC;
+    --ink:        #3A3A3A;
+    --ink-soft:   #5E5E5E;
+    --white:      #FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'DM Sans',sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:680px;margin:0 auto;padding:0 1.3rem}
+  section{padding:2.6rem 0}
+
+  h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:400;line-height:1.15}
+  h1{font-size:clamp(2.2rem,8.4vw,3.2rem);letter-spacing:-.01em;text-wrap:balance}
+  h2{font-size:clamp(1.6rem,5.5vw,2rem);margin-bottom:1rem}
+  h3{font-size:1.25rem}
+  em{font-style:italic;color:var(--turq-deep)}
+
+  .eyebrow{
+    font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--turq-deep);font-weight:500;
+  }
+
+  /* Cabecera */
+  .topbar{
+    border-bottom:1px solid var(--turq-vlight);
+    padding:.9rem 0;
+  }
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between}
+  .logo{font-size:.95rem;color:var(--turq-deep);letter-spacing:.02em}
+  .topbar a{font-size:.8rem;color:var(--turq-dark);text-decoration:none}
+
+  /* Hero */
+  .hero{
+    background:linear-gradient(180deg,var(--turq-vlight) 0%,var(--white) 100%);
+    padding:2.8rem 0 2.4rem;
+  }
+  .hero .bajada{margin-top:.9rem;color:var(--ink-soft);font-size:1.05rem}
+  .datos{
+    margin-top:1.6rem;padding:1.1rem 1.2rem;
+    background:var(--white);border:1px solid var(--turq-light);border-radius:10px;
+  }
+  .datos .dia{font-family:'Cormorant Garamond',serif;font-size:1.65rem;line-height:1.2}
+  .datos .hora{color:var(--turq-deep);font-weight:700;margin-top:.15rem}
+  .datos .sitio{color:var(--ink-soft);font-size:.92rem;margin-top:.35rem}
+  .datos .plazas{
+    display:inline-block;margin-top:.7rem;font-size:.78rem;font-weight:700;
+    color:var(--gold-dark);background:var(--gold-light);
+    padding:.25rem .6rem;border-radius:20px;
+  }
+
+  /* Botones */
+  .acciones{display:flex;flex-direction:column;gap:.7rem;margin-top:1.4rem}
+  .btn{
+    display:block;text-align:center;text-decoration:none;
+    padding:.95rem 1.2rem;border-radius:30px;font-size:1rem;font-weight:500;
+    border:1.5px solid transparent;cursor:pointer;transition:opacity .2s;
+    font-family:'DM Sans',sans-serif;
+  }
+  .btn:hover{opacity:.88}
+  .btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+  .btn-primary{background:var(--turq-deep);color:var(--white)}
+  .btn-ghost{background:var(--white);color:var(--turq-deep);border-color:var(--turq-light)}
+
+  /* Contenido */
+  .hook{font-size:1.08rem;margin-bottom:1.1rem}
+  .hook b{font-weight:700}
+  ul.lista{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+  ul.lista li{position:relative;padding-left:1.4rem}
+  ul.lista li::before{
+    content:"";position:absolute;left:0;top:.62em;
+    width:7px;height:7px;border-radius:50%;background:var(--turq);
+  }
+  ul.lista b{color:var(--turq-deep);font-weight:700}
+  .cierre{
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;
+    line-height:1.35;margin-top:1.2rem;color:var(--ink);
+  }
+  p + p{margin-top:.9rem}
+
+  .bloque{background:var(--turq-vlight);border-radius:12px;padding:1.4rem 1.3rem}
+  .bloque + .bloque{margin-top:1rem}
+
+  /* Ciclo */
+  .ciclo{list-style:none;display:flex;flex-direction:column;gap:0}
+  .ciclo li{
+    display:grid;grid-template-columns:5.2rem 1fr;gap:.3rem .9rem;
+    padding:.75rem 0;border-bottom:1px solid var(--turq-vlight);
+    font-size:.97rem;align-items:baseline;
+  }
+  .ciclo li:last-child{border-bottom:none}
+  .ciclo .fecha{color:var(--turq-deep);font-weight:700;font-variant-numeric:tabular-nums}
+  .ciclo b{font-weight:700}
+  .ciclo span.sub{display:block;color:var(--ink-soft);font-size:.88rem}
+
+  /* Precios */
+  .precios{display:grid;gap:.8rem;grid-template-columns:1fr}
+  @media(min-width:560px){.precios{grid-template-columns:1fr 1fr}}
+  .precio{
+    border:1px solid var(--turq-light);border-radius:12px;padding:1.1rem 1.2rem;
+    display:flex;flex-direction:column;gap:.3rem;
+  }
+  .precio.destacado{border-color:var(--turq-deep);background:var(--turq-vlight)}
+  .precio .cifra{font-family:'Cormorant Garamond',serif;font-size:2.1rem;line-height:1}
+  .precio .que{font-size:.88rem;color:var(--ink-soft)}
+  .precio .titulo{font-weight:700;font-size:.95rem}
+
+  /* Formulario */
+  .form-card{
+    background:var(--amber);border-radius:12px;padding:1.5rem 1.3rem;
+  }
+  .form-card h3{margin-bottom:.4rem}
+  .form-card p.sub{font-size:.93rem;color:var(--ink-soft);margin-bottom:1.1rem}
+  .signup input{
+    width:100%;padding:.85rem 1rem;border:1.5px solid #EADFC0;border-radius:8px;
+    font-family:'DM Sans',sans-serif;font-size:1rem;background:var(--white);color:var(--ink);
+    margin-bottom:.7rem;
+  }
+  .signup input:focus{outline:none;border-color:var(--turq)}
+  .signup input::placeholder{color:#B9A98A}
+  .privacidad{display:flex;align-items:flex-start;gap:.5rem;margin-bottom:.9rem}
+  .privacidad input{width:auto;margin:.25rem 0 0;accent-color:var(--turq);flex-shrink:0}
+  .privacidad label{font-size:.78rem;color:var(--ink-soft);line-height:1.5;cursor:pointer}
+  .privacidad a{color:var(--gold-dark)}
+  .slow-msg{margin-top:.7rem;font-size:.8rem;color:var(--ink-soft);text-align:center}
+  .form-ok{text-align:center;padding:.5rem 0}
+  .form-ok .icono{font-size:1.8rem}
+  .form-ok .titulo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;margin:.3rem 0}
+  .form-ok .msg{font-size:.93rem;color:var(--ink-soft)}
+  .form-error{color:#C1462F;font-size:.85rem;text-align:center;margin-top:.7rem}
+
+  /* Quién */
+  .quien{display:flex;gap:1.1rem;align-items:flex-start}
+  .quien img{width:88px;height:88px;border-radius:50%;object-fit:cover;flex-shrink:0}
+  .quien .nombre{font-family:'Cormorant Garamond',serif;font-size:1.45rem}
+  .quien p{font-size:.95rem;color:var(--ink-soft);margin-top:.3rem}
+
+  footer{
+    border-top:1px solid var(--turq-vlight);padding:1.8rem 0 2.6rem;
+    font-size:.82rem;color:var(--ink-soft);text-align:center;
+  }
+  footer a{color:var(--turq-deep)}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="logo">Maternal Mind</span>
+    <a href="/">Ir al inicio</a>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Retiro 1 · Volver a ti</p>
+    <h1>Cuatro horas para <em>volver a ti</em></h1>
+    <p class="bajada">Una mañana de sábado, para madres. Sin experiencia previa y sin necesidad de estar pasándolo mal.</p>
+
+    <div class="datos">
+      <p class="dia">Sábado 26 de septiembre</p>
+      <p class="hora">De 10:00 a 14:00</p>
+      <p class="sitio">Adyanta · P.º del Zurrón 43, Barajas (Madrid)</p>
+      <span class="plazas">Grupo de 16 · plazas limitadas</span>
+    </div>
+
+    <div class="acciones">
+      <a class="btn btn-primary" href="#reservar">Quiero mi plaza</a>
+      <a class="btn btn-ghost" href="#meditaciones">Aún no me decido: llévate las meditaciones</a>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <p class="hook"><b>Llevas años en modo hacer</b>: resolver, anticipar, llegar a otro sitio. Esta mañana es para practicar el otro modo: ser y estar.</p>
+    <ul class="lista">
+      <li><b>Aterrizar</b> en el cuerpo y en el momento en el que estás.</li>
+      <li><b>Respirar</b>: no un ejercicio, un refugio al que volver.</li>
+      <li><b>Mirar sin arreglar</b> lo que piensas y lo que sientes.</li>
+      <li><b>Escuchar y ser escuchada</b>, sin consejos y sin prisa.</li>
+      <li><b>Escuchar tu intuición</b>, que sigue estando ahí.</li>
+    </ul>
+    <p class="cierre">Reconocer, desde la vivencia, las actitudes que sostienen la práctica —y ponemos nombre a lo que ya sabías.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="bloque">
+      <h3>Cómo es una mañana</h3>
+      <p>Movimiento suave para llegar al cuerpo. Respiración. Una meditación. Un rato de escritura y una escucha en pareja —escuchar también es práctica—. Nada que haya que hacer bien. No hace falta experiencia, ni ropa especial, ni haber meditado nunca.</p>
+    </div>
+    <div class="bloque">
+      <h3>Entre una mañana y la siguiente</h3>
+      <p>Algo pequeño cada pocos días: una práctica de tres minutos, una pregunta, una idea corta. Veinte propuestas breves cada mes, pensadas para que lo que se abre el sábado no se apague el martes.</p>
+    </div>
+    <div class="bloque">
+      <h3>Para quién</h3>
+      <p>Para ti, tengan tus hijos tres años o veinte. No hace falta que estés mal, ni que quieras arreglar nada. Esto no va de reparar: va de volver.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>El ciclo completo</h2>
+    <p style="color:var(--ink-soft);font-size:.95rem;margin-bottom:1rem">Cuatro sábados, uno al mes, de 10:00 a 14:00. Puedes venir solo a esta mañana o hacer el ciclo entero.</p>
+    <ul class="ciclo">
+      <li><span class="fecha">26 sep</span><span><b>Volver a ti</b><span class="sub">La respiración como refugio y una primera escucha de tu propia sabiduría.</span></span></li>
+      <li><span class="fecha">24 oct</span><span><b>Abrazar lo difícil</b><span class="sub">Abrir espacio también para lo que duele, sin añadirle sufrimiento de más.</span></span></li>
+      <li><span class="fecha">14 nov</span><span><b>Tratarte con ternura</b><span class="sub">La misma que ofreces a quien quieres, dirigida a ti.</span></span></li>
+      <li><span class="fecha">12 dic</span><span><b>Cultivar lo esencial</b><span class="sub">Valores, gratitud y saboreo, justo antes del mes más excesivo del año.</span></span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="reservar" style="padding-top:0">
+  <div class="wrap">
+    <h2>Plazas y precio</h2>
+    <div class="precios">
+      <div class="precio destacado">
+        <p class="titulo">El ciclo de cuatro</p>
+        <p class="cifra">249 €</p>
+        <p class="que">Las cuatro mañanas y el acompañamiento de los cuatro meses: 80 propuestas breves entre una y otra. Se puede pagar en dos veces.</p>
+      </div>
+      <div class="precio">
+        <p class="titulo">Una mañana suelta</p>
+        <p class="cifra">70 €</p>
+        <p class="que">Esta mañana del 26 de septiembre. Si después quieres seguir, se te descuenta de la plaza del ciclo.</p>
+      </div>
+    </div>
+
+    <div class="acciones">
+      <a class="btn btn-primary" id="cta-whatsapp" href="#">Escríbeme y reservo tu plaza</a>
+    </div>
+    <p style="text-align:center;font-size:.85rem;color:var(--ink-soft);margin-top:.7rem">
+      Te contesto yo, y sin compromiso: puedes preguntarme cualquier duda antes de decidir.
+    </p>
+  </div>
+</section>
+
+<section id="meditaciones" style="padding-top:0">
+  <div class="wrap">
+    <div class="form-card">
+      <h3>¿Aún no lo tienes claro?</h3>
+      <p class="sub">Llévate las meditaciones. Son tuyas, sin condiciones y sin que tengas que venir a nada: déjame tu nombre y tu correo y te las envío. Si el 26 no es tu momento, seguirás sabiendo cuándo hay más.</p>
+
+      <form id="form-retiro" class="signup" novalidate>
+        <input type="text" name="nombre" placeholder="Tu nombre" required autocomplete="given-name">
+        <input type="email" name="email" placeholder="tu@email.com" required autocomplete="email">
+        <div class="privacidad">
+          <input type="checkbox" id="privacidad-retiro" required>
+          <label for="privacidad-retiro">He leído y acepto la <a href="/legal.html#privacidad" target="_blank" rel="noopener">política de privacidad</a></label>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%">
+          <span class="btn-text">Quiero las meditaciones</span>
+          <span class="btn-loading" hidden>Enviando…</span>
+        </button>
+        <p class="slow-msg" hidden>Un momento… el servidor está arrancando, puede tardar hasta un minuto.</p>
+        <p class="form-error" hidden></p>
+      </form>
+
+      <div class="form-ok" hidden>
+        <div class="icono">🌿</div>
+        <p class="titulo">¡Listo!</p>
+        <p class="msg">Revisa tu correo — te he escrito ahí.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="quien">
+      <img src="/chon.png" alt="Chon Jorquera">
+      <div>
+        <p class="nombre">Chon Jorquera</p>
+        <p>Pediatra durante treinta años, instructora de mindfulness y madre de tres —de 25, 23 y 16—. Guío círculos de maternidad en Barajas. Yo también crucé la maternidad en piloto automático, y aprendí tarde que hay otra manera de estar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Maternal Mind · <a href="/legal.html">Aviso legal y privacidad</a></p>
+  </div>
+</footer>
+
+<script>
+  // Número de WhatsApp de Chon, en formato internacional sin signos: 34XXXXXXXXX.
+  // Mientras esté sin rellenar, los botones escriben a su email en lugar de romperse.
+  const WHATSAPP = '';
+  const MENSAJE  = 'Hola Chon, he visto el retiro del 26 de septiembre y quiero información.';
+
+  (function enlazarBotones() {
+    const href = WHATSAPP
+      ? 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(MENSAJE)
+      : 'mailto:chon@maternalmind.es?subject=' + encodeURIComponent('Retiro del 26 de septiembre')
+        + '&body=' + encodeURIComponent(MENSAJE);
+    const a = document.getElementById('cta-whatsapp');
+    a.href = href;
+    if (WHATSAPP) a.target = '_blank';
+  })();
+
+  (function formulario() {
+    const form = document.getElementById('form-retiro');
+    const ok   = form.parentElement.querySelector('.form-ok');
+    const err  = form.querySelector('.form-error');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      err.hidden = true;
+
+      const nombre  = (form.querySelector('[name="nombre"]').value || '').trim();
+      const email   = (form.querySelector('[name="email"]').value  || '').trim();
+      const privacy = form.querySelector('input[type="checkbox"]');
+      if (!nombre || !email) return;
+      if (!privacy.checked) {
+        privacy.style.outline = '2px solid #C1462F';
+        setTimeout(() => { privacy.style.outline = ''; }, 3000);
+        return;
+      }
+
+      const btn        = form.querySelector('button[type="submit"]');
+      const btnText    = btn.querySelector('.btn-text');
+      const btnLoading = btn.querySelector('.btn-loading');
+      const slowMsg    = form.querySelector('.slow-msg');
+
+      btnText.hidden = true;
+      btnLoading.hidden = false;
+      btn.disabled = true;
+      const slowTimer = setTimeout(() => { slowMsg.hidden = false; }, 4000);
+
+      try {
+        const res = await fetch('/api/submit-form', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify({ nombre, email, origen: 'retiro' }),
+        });
+        clearTimeout(slowTimer);
+        if (!res.ok) throw new Error('Error ' + res.status);
+        form.hidden = true;
+        ok.hidden   = false;
+      } catch (e) {
+        clearTimeout(slowTimer);
+        slowMsg.hidden = true;
+        err.textContent = 'No se ha podido enviar. Inténtalo otra vez o escríbeme a chon@maternalmind.es';
+        err.hidden = false;
+        btnText.hidden = false;
+        btnLoading.hidden = true;
+        btn.disabled = false;
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
