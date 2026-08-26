@@ -61,6 +61,10 @@ app.use(express.static(path.join(__dirname)));
 // aquí, así el destino se puede cambiar sin reimprimir nada.
 app.get('/retiro', (_req, res) => res.sendFile(path.join(__dirname, 'retiro.html')));
 
+// El Kit de Pausa, accesible sin cuenta ni contraseña: es el enlace que va en el
+// correo de bienvenida. Nada que caducar, nada que fallar.
+app.get('/kit', (_req, res) => res.sendFile(path.join(__dirname, 'kit.html')));
+
 // Adapts Express req/res to the Lambda-style handler contract used by api/ functions
 function wrapHandler(handler) {
   return async (req, res) => {

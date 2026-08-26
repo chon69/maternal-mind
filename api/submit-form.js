@@ -47,7 +47,7 @@ exports.handler = async (event) => {
         // el que escribe ella en el formulario manda.
         await updateById('Usuarios', existing.id, { nombre, estado: 'pendiente' });
         const url = `${APP_URL}/app/activar.html?token=${token}&email=${encodeURIComponent(email)}`;
-        await send(email, 'Accede a tu Kit de Bienvenida 🌿', activationEmail(nombre, url));
+        await send(email, 'Tu Kit de Pausa 🌿', activationEmail(nombre, url));
         return 'resent';
       }
       const token = crypto.randomUUID();
@@ -64,7 +64,7 @@ exports.handler = async (event) => {
         origen,
       });
       const url = `${APP_URL}/app/activar.html?token=${token}&email=${encodeURIComponent(email)}`;
-      await send(email, 'Accede a tu Kit de Bienvenida 🌿', activationEmail(nombre, url));
+      await send(email, 'Tu Kit de Pausa 🌿', activationEmail(nombre, url));
       return 'created';
     })(),
     // Alta paralela en la newsletter: el funnel empieza en Substack, así que

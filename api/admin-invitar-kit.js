@@ -46,7 +46,7 @@ exports.handler = async (event) => {
         await pool.query('UPDATE usuarios SET token_activacion = $1, token_expiry = NULL WHERE id = $2', [token, u.id]);
       }
       const url = `${APP_URL}/app/activar.html?token=${token}&email=${encodeURIComponent(u.email)}`;
-      await send(u.email, 'Accede a tu Kit de Bienvenida 🌿', activationEmail(u.nombre, url));
+      await send(u.email, 'Tu Kit de Pausa 🌿', activationEmail(u.nombre, url));
       await pool.query(`UPDATE usuarios SET estado = 'pendiente', invitado_at = NOW() WHERE id = $1`, [u.id]);
       resumen.enviadas++;
       detalle.push({ email: u.email, resultado: 'invitación enviada' });
