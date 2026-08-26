@@ -193,7 +193,7 @@
 
     <div class="acciones">
       <a class="btn btn-primary" href="#reservar">Quiero mi plaza</a>
-      <a class="btn btn-ghost" href="#meditaciones">Aún no me decido: llévate las meditaciones</a>
+      <a class="btn btn-ghost" href="#avisos">Este sábado no puedo: avísame de los próximos</a>
     </div>
   </div>
 </div>
@@ -267,11 +267,11 @@
   </div>
 </section>
 
-<section id="meditaciones" style="padding-top:0">
+<section id="avisos" style="padding-top:0">
   <div class="wrap">
     <div class="form-card">
-      <h3>¿Aún no lo tienes claro?</h3>
-      <p class="sub">Llévate las meditaciones. Son tuyas, sin condiciones y sin que tengas que venir a nada: déjame tu nombre y tu correo y te las envío. Si el 26 no es tu momento, seguirás sabiendo cuándo hay más.</p>
+      <h3>¿Este sábado no puedes?</h3>
+      <p class="sub">No pasa nada: hay tres mañanas más este otoño y habrá otro ciclo después. Déjame tu nombre y tu correo y te aviso cuando abra fechas —sin agobiar, y puedes salirte cuando quieras—.</p>
 
       <form id="form-retiro" class="signup" novalidate>
         <input type="text" name="nombre" placeholder="Tu nombre" required autocomplete="given-name">
@@ -281,7 +281,7 @@
           <label for="privacidad-retiro">He leído y acepto la <a href="/legal.html#privacidad" target="_blank" rel="noopener">política de privacidad</a></label>
         </div>
         <button type="submit" class="btn btn-primary" style="width:100%">
-          <span class="btn-text">Quiero las meditaciones</span>
+          <span class="btn-text">Avísame de las próximas fechas</span>
           <span class="btn-loading" hidden>Enviando…</span>
         </button>
         <p class="slow-msg" hidden>Un momento… el servidor está arrancando, puede tardar hasta un minuto.</p>
@@ -291,7 +291,7 @@
       <div class="form-ok" hidden>
         <div class="icono">🌿</div>
         <p class="titulo">¡Listo!</p>
-        <p class="msg">Revisa tu correo — te he escrito ahí.</p>
+        <p class="msg">Te aviso en cuanto abra fechas. Y mira tu correo: te he mandado algo.</p>
       </div>
     </div>
   </div>
@@ -318,7 +318,7 @@
 <script>
   // Número de WhatsApp de Chon, en formato internacional sin signos: 34XXXXXXXXX.
   // Mientras esté sin rellenar, los botones escriben a su email en lugar de romperse.
-  const WHATSAPP = '';
+  const WHATSAPP = '34610757461';
   const MENSAJE  = 'Hola Chon, he visto el retiro del 26 de septiembre y quiero información.';
 
   (function enlazarBotones() {
