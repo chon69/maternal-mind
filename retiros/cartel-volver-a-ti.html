@@ -97,7 +97,9 @@
 
   @media print{
     @page{size:A4;margin:0}
-    body{background:#fff;padding:0;gap:0;display:block}
+    /* sin esto el cartel desborda por una fracción de mm y salta a una 2ª hoja */
+    html,body{height:297mm;overflow:hidden}
+    body{background:#fff;margin:0;padding:0;gap:0;display:block}
     .aviso{display:none}
     .cartel{
       width:210mm;height:297mm;aspect-ratio:auto;box-shadow:none;
