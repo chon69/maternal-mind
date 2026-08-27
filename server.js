@@ -59,7 +59,7 @@ app.use(express.static(path.join(__dirname)));
 
 // URL corta e imprimible para la página del retiro: el QR de los carteles apunta
 // aquí, así el destino se puede cambiar sin reimprimir nada.
-app.get('/retiro', (_req, res) => res.sendFile(path.join(__dirname, 'retiro.html')));
+app.get('/retiro', (_req, res) => res.sendFile(path.join(__dirname, 'retiros', 'retiro.html')));
 
 // El Kit de Pausa, accesible sin cuenta ni contraseña: es el enlace que va en el
 // correo de bienvenida. Nada que caducar, nada que fallar.
