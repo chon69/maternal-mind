@@ -52,7 +52,7 @@ Se explica solo, porque llegará a gente que no conoce a Chon.
 Sábado 26 de septiembre, de 10:00 a 14:00
 Adyanta · P.º del Zurrón 43, Barajas (Madrid)
 
-Cuatro horas para parar. Sin necesidad de experiencia previa ni de estar pasándolo mal.
+Cuatro horas para parar, con prácticas basadas en mindfulness. Sin necesidad de experiencia previa ni de estar pasándolo mal.
 
 Lo guía Chon Jorquera: pediatra durante treinta años, instructora de mindfulness y madre de tres.
 
@@ -63,8 +63,5 @@ Toda la información y reservas 👉 maternalmind.es/retiro
 «Pediatra durante treinta años» va ahí a propósito: cuando esto llegue a una madre
 que no conoce a Chon de nada, esa línea es la que evita que lo descarte.
 
-**Pendiente de decidir:** si añadir «con prácticas basadas en mindfulness» también
-aquí, para que «retiro» no le suene a fin de semana en un monasterio a quien no
-la conoce. Sería cambiar la línea por:
-
-> Cuatro horas para parar, con prácticas basadas en mindfulness. Sin necesidad de experiencia previa ni de estar pasándolo mal.
+La mención al mindfulness está aquí para que «retiro» no le suene a fin de semana
+en un monasterio a quien no conoce a Chon.
