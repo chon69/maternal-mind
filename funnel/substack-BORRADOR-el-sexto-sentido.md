@@ -103,7 +103,7 @@ Porque el miedo también habla, también se siente en el cuerpo, y disfrazado de
 
 La buena noticia es que se pueden distinguir bastante bien si sabes dónde mirar. Y no se diferencian por lo que dicen, sino por **cómo te dejan**.
 
-El miedo te cierra el cuerpo. Te contrae. Te habla de catástrofes, y siempre en futuro.
+El miedo te cierra el cuerpo. Te contrae. Te habla de catástrofes, y siempre en futuro. Y te deja agotada.
 
 Y aquí conviene no olvidar una cosa: el miedo está intentando protegerte de algún peligro. Esa es su función, y es buena. El problema no es que aparezca. El problema es que nos quedamos atrapadas en él.
 
