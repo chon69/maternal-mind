@@ -140,9 +140,9 @@ Un cuaderno, el móvil, da igual. Anota la corazonada **el día que la tienes**,
 
 ### Escuchar tu intuición no es ir a ciegas
 
-Y ahora, como pediatra, tengo que decirte esto con claridad.
+Y ahora, como pediatra, tengo que decirte algo.
 
-Confiar en tu intuición no significa despreciar la información, ni saltarte al pediatra, ni decidir por corazonada lo que se decide con criterio. La intuición no sustituye a una vacuna, ni a una prueba, ni a una consulta.
+Confiar en tu intuición no significa despreciar la información.
 
 Lo que hace la intuición es otra cosa, y es justo lo que te falta cuando estás perdida entre veinte consejos contradictorios: te dice **cuál de todos ellos es para ti**.
 
@@ -207,6 +207,6 @@ Un abrazo enorme de Luz y Amor ✨💖
 ## ⚠️ Dos cosas que Chon debe validar antes de publicar
 
 1. **El recuerdo de consulta.** He escrito «he visto funcionar ese sexto sentido cientos de veces» y he puesto en boca de esas madres la frase *«No sé qué tiene, pero algo no va bien»*. Es plausible con tus treinta años de pediatría, pero **es tuyo, no mío**: cámbialo por un recuerdo real concreto o suavízalo. Ganaría mucho con un caso de verdad, aunque sea en dos líneas.
-2. **El límite clínico.** La sección «Escuchar tu intuición no es ir a ciegas» está puesta a propósito: sin ella, un artículo sobre confiar en la intuición firmado por una pediatra puede leerse como permiso para saltarse el criterio médico. Si la quitas o la suavizas, sé consciente de lo que estás soltando.
+2. **El límite clínico, ya suavizado.** La sección «Escuchar tu intuición no es ir a ciegas» decía explícitamente que la intuición no sustituye a una vacuna, una prueba ni una consulta. Chon lo ha retirado y ahora solo queda «no significa despreciar la información». Decisión tomada y anotada aquí para que conste.
 3. **«Tu intuición no se equivoca».** Esa frase estaba en el artículo original y **la he quitado a propósito**. Firmada por una pediatra es una frase que puede hacer daño: la intuición se equivoca a veces, y una madre que se aferre a ella contra un criterio clínico lo va a pasar mal. Chon confirma que se queda fuera, y también retira la sustituta («la brújula, no el mapa»): el límite lo sostiene ahora, sola, la sección «Escuchar tu intuición no es ir a ciegas».
 4. **El ejercicio del círculo de apoyo** (el tercero del artículo original) ya no aparece como ejercicio: se ha convertido en el cierre con el retiro, que hace ese mismo trabajo sin repetirse.
