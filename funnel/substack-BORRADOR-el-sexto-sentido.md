@@ -110,7 +110,6 @@ La buena noticia es que se distingue bastante bien de la intuición si sabes dó
 | Te acelera o te bloquea. A veces las dos cosas seguidas | Llega, se dice una vez y no insiste |
 | Te cierra el cuerpo: pecho apretado, hombros arriba, mandíbula tensa | Te abre el cuerpo: los hombros bajan, algo se asienta |
 | Habla en catástrofes, y siempre en futuro | Habla en presente y en concreto |
-| Da vueltas: vuelve una y otra vez sin resolverse | Sostiene: sabe esperar a mañana |
 | Te deja agotada | Te deja en paz, aunque la decisión sea dura |
 
 *[destacado]* **El miedo te saca del sitio: o te empuja, o te deja clavada. La intuición te asienta.**
