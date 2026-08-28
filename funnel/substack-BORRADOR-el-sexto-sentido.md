@@ -37,7 +37,7 @@ Después vino el verano y te conté cómo, con el snorkel puesto y rodeada de pe
 
 Pero en las dos historias falta la pregunta siguiente. La que de verdad importa:
 
-*[destacado]* **Te sientas al borde. Paras de nadar. Y entonces, ¿quién habla cuando por fin te callas?**
+*[destacado]* **Te sientas al borde. Paras de nadar y observas. Y entonces, ¿quién habla cuando por fin el ruido disminuye?**
 
 Habla ella. Y hoy quiero ponerle nombre.
 
