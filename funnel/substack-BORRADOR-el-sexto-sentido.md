@@ -140,7 +140,7 @@ Un cuaderno, el móvil, da igual. Anota la corazonada **el día que la tienes**,
 
 ### Escuchar tu intuición no es ir a ciegas
 
-Y ahora, como pediatra, tengo que decirte algo.
+Y ahora, casi más como pediatra, tengo que decirte algo.
 
 Confiar en tu intuición no significa despreciar la información.
 
