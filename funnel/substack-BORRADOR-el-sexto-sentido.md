@@ -101,16 +101,7 @@ Este es el reto de verdad, y donde más nos equivocamos.
 
 Porque el miedo también habla, también se siente en el cuerpo, y disfrazado de intuición nos ha hecho tomar muchas decisiones.
 
-Y no siempre hace lo mismo. Unas veces te acelera y te empuja a resolver ya. Otras te deja clavada, sin poder decidir nada. Parecen lo contrario la una de la otra, pero son el mismo miedo: las dos te sacan del cuerpo.
-
-La buena noticia es que se distingue bastante bien de la intuición si sabes dónde mirar. Y no se diferencian por lo que dicen, sino por **cómo te dejan**:
-
-| El miedo | La intuición |
-|---|---|
-| Te acelera o te bloquea. A veces las dos cosas seguidas | Llega, se dice una vez y no insiste |
-| Te cierra el cuerpo: pecho apretado, hombros arriba, mandíbula tensa | Te abre el cuerpo: los hombros bajan, algo se asienta |
-| Habla en catástrofes, y siempre en futuro | Habla en presente y en concreto |
-| Te deja agotada | Te deja en paz, aunque la decisión sea dura |
+La buena noticia es que se pueden distinguir bastante bien si sabes dónde mirar. Y no se diferencian por lo que dicen, sino por **cómo te dejan**.
 
 *[destacado]* **El miedo te saca del sitio: o te empuja, o te deja clavada. La intuición te asienta.**
 
@@ -192,9 +183,7 @@ Un abrazo enorme de Luz y Amor ✨💖
 - "El viaje no es hacia fuera, a buscar. Es hacia dentro, a recordar."
 - "Recordar, en latín, significa volver a pasar por el corazón."
 
-**La comparativa miedo / intuición** funciona sola como carrusel de 2 láminas o como lámina única. Es lo más guardable del artículo.
-
-> Ojo: Quill (el editor del panel) **no soporta tablas**. En el HTML va como dos listas enfrentadas, que se ve igual de bien y no se rompe al editar.
+**El carrusel del 17 de septiembre** («Miedo o intuición») sigue en pie, pero ya no sale copiado del artículo: la comparativa se retiró del texto por decisión de Chon, así que los pares hay que escribirlos para el carrusel.
 
 **Continuidad con el ciclo del Jardín (para no contradecirnos):**
 
