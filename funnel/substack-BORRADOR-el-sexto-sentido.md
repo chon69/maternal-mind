@@ -21,7 +21,7 @@ Hay una frase que me surgió hace tiempo y que me sigue resonando por dentro:
 
 Fíjate en que no dice aprender. Dice **recordar**.
 
-Y esa diferencia lo cambia todo, porque llevamos meses hablando de diseñar tu maternidad y quizá te hayas quedado con la idea de que diseñar es añadir. Más lectura, más herramientas, más método.
+Y esa diferencia, para mí, lo cambia todo, porque llevamos semanas hablando de diseñar tu maternidad y quizá sigas pensando que diseñar es añadir. Más lectura, más herramientas, más método.
 
 No. Diseñar tu maternidad es sobre todo quitar ruido hasta que vuelves a oírte.
 
@@ -43,15 +43,15 @@ Habla ella. Y hoy quiero ponerle nombre.
 
 ### El sexto sentido no es magia
 
-A esa voz la llamamos intuición, y arrastra mala fama. Suena a esotérico, a algo que unas tienen y otras no, a excusa para hacer lo que a una le da la gana.
+A esa voz la llamamos intuición, y quizá arrastra algo de mala fama. Puede sonar a esotérico, a algo que unas tienen y otras no.
 
 Y no es eso.
 
 La intuición es la lectura rápida que hace tu cuerpo de una cantidad enorme de información que tu cabeza todavía no ha ordenado. Ha visto el gesto, el tono, la respiración, el color de la cara, y ha sumado antes de que tú puedas explicar la suma.
 
-Por eso las madres tenéis un sexto sentido. No porque seáis brujas. Porque nadie ha mirado a ese niño tantas horas como tú.
+Por eso las madres tenemos un sexto sentido. No porque seamos brujas. Porque nadie ha mirado a ese niño tantas horas como tú.
 
-Yo he pasado treinta años pasando consulta como pediatra, y ese sexto sentido lo he visto funcionar cientos de veces. La madre que se sienta y dice: «No sé decirte qué le pasa. Está comiendo, no tiene fiebre. Pero algo no va bien.»
+Yo he pasado treinta años pasando consulta como pediatra, y ese sexto sentido lo he visto funcionar cientos de veces, en vosotras y en mí misma. La madre que se sienta y dice: «No sé decirte qué le pasa. Está comiendo, no tiene fiebre. Pero algo no va bien.»
 
 *[destacado]* **"No sé qué tiene. Pero algo no va bien." Esa frase, dicha por una madre, hay que escucharla.**
 
@@ -63,11 +63,11 @@ Lo que sale de fábrica con la maternidad no es un manual. Es una antena.
 
 Y esa antena no habla en palabras. Habla en cuerpo.
 
-El nudo en el estómago. El escalofrío. Ese calorcito en el pecho cuando algo encaja. El pecho que se cierra cuando algo no encaja, aunque sobre el papel todo esté bien.
+El nudo en el estómago. El escalofrío. Ese calorcito en el pecho cuando algo encaja. Y la inquietud que no se marcha, aunque sobre el papel todo esté bien.
 
 Nada de eso es casualidad. Es tu intuición manifestándose en el único idioma que tiene antes de encontrar las palabras.
 
-Aquí tengo que hacer un matiz, porque llevo meses diciéndote que tú no eres la corriente.
+Aquí tengo que hacer un matiz, porque llevo semanas diciéndote que tú no eres la corriente.
 
 Y lo sigo sosteniendo. Pero hay una diferencia enorme entre **ahogarte** en la corriente y **leerla**.
 
@@ -79,7 +79,7 @@ Ese medio segundo de diferencia es todo el diseño.
 
 ### La respiración es la puerta
 
-Ahora bien, la intuición susurra. Y el Modo Hacer grita.
+Ahora bien, la intuición susurra. Y el Modo Hacer, en muchas ocasiones, grita.
 
 El Modo Hacer es la azada: resolver, anticipar, controlar, dejar todo listo antes de poder parar. Es necesario y es amor en acción —sin él una casa no funciona—, pero tiene un problema: ocupa toda la banda sonora. Cuando vas en modo azada no oyes nada que no sea la lista de tareas.
 
@@ -99,21 +99,23 @@ Respirar para volver. Volver para habitarte. Habitarte para escucharte.
 
 Este es el reto de verdad, y donde más nos equivocamos.
 
-Porque el miedo también habla, también es rápido y también se siente en el cuerpo. Y disfrazado de intuición nos ha hecho tomar muchas decisiones.
+Porque el miedo también habla, también se siente en el cuerpo, y disfrazado de intuición nos ha hecho tomar muchas decisiones.
 
-La buena noticia es que se distinguen bastante bien si sabes dónde mirar. Y no se distinguen por lo que dicen, sino por **cómo te dejan**:
+Y no siempre hace lo mismo. Unas veces te acelera y te empuja a resolver ya. Otras te deja clavada, dándole vueltas y sin poder decidir nada. Parecen lo contrario la una de la otra, pero son el mismo miedo: las dos te sacan del cuerpo.
+
+La buena noticia es que se distingue bastante bien de la intuición si sabes dónde mirar. Y no se diferencian por lo que dicen, sino por **cómo te dejan**:
 
 | El miedo | La intuición |
 |---|---|
-| Grita, agita, mete prisa | Susurra, y puede esperar |
-| Te cierra: pecho apretado, hombros arriba, mandíbula tensa | Te abre: los hombros bajan, algo se asienta |
-| Acelera: hay que hacer algo **ya** | Sostiene: sabe esperar a mañana |
-| Habla en catástrofes y en futuro | Habla en presente y en concreto |
+| Te acelera o te bloquea. A veces las dos cosas seguidas | Llega, se dice una vez y no insiste |
+| Te cierra el cuerpo: pecho apretado, hombros arriba, mandíbula tensa | Te abre el cuerpo: los hombros bajan, algo se asienta |
+| Habla en catástrofes, y siempre en futuro | Habla en presente y en concreto |
+| Da vueltas: vuelve una y otra vez sin resolverse | Sostiene: sabe esperar a mañana |
 | Te deja agotada | Te deja en paz, aunque la decisión sea dura |
 
-*[destacado]* **El miedo te empuja. La intuición te asienta. Si te está metiendo prisa, casi nunca es tu intuición.**
+*[destacado]* **El miedo te saca del sitio: o te empuja, o te deja clavada. La intuición te asienta.**
 
-Fíjate en que el miedo es, en el fondo, el Modo Hacer asustado: control, urgencia, arreglarlo antes de haberlo mirado.
+Fíjate en que el miedo es, en el fondo, el Modo Hacer asustado: querer controlar algo que todavía no has mirado. Y cuando no puede controlarlo, se bloquea.
 
 Y cuando dudes, hazte la pregunta:
 
@@ -133,13 +135,13 @@ Porque entonces la maternidad deja de ser un examen con temario y se convierte e
 
 ### Tres prácticas para volver a escucharte
 
-Nada de esto se entrena leyendo. Te dejo tres cosas pequeñas y reales.
+Nada de esto se entrena leyendo. Te dejo aquí tres cosas pequeñas y reales por las que puedes empezar a practicar.
 
 **1. Tres respiraciones antes de responder.**
 No antes de meditar: antes de **responder**. En mitad de la rabieta, del «no me lo pongo», del portazo. Inspiras, y al soltar el aire dejas caer los hombros. Tres veces. No lo haces para calmarte —a lo mejor no te calmas—, lo haces para meter un espacio entre lo que pasa y lo que haces. En ese hueco es donde cabes tú.
 
 **2. Pregúntale al cuerpo, no a la cabeza.**
-Cuando tengas una decisión delante, párate y recórrete por dentro dos segundos: mandíbula, hombros, pecho, estómago. Y pregunta: *¿qué necesito ahora mismo?* Deja que la respuesta aparezca sin juzgarla y sin corregirla. La primera que llega suele ser la buena; la segunda ya es la que tú crees que deberías dar.
+Cuando tengas una decisión delante, párate y recórrete por dentro unos segundos: mandíbula, hombros, pecho, estómago. Y pregunta: *¿qué necesito ahora mismo?* Deja que la respuesta aparezca sin juzgarla y sin corregirla. La primera que llega suele ser la buena; la segunda ya es la que tú crees que deberías dar.
 
 **3. Apunta tus corazonadas.**
 Un cuaderno, el móvil, da igual. Anota la corazonada **el día que la tienes**, no el día que se cumple. Con las semanas verás patrones, y verás cuántas veces acertaste. Esto importa más de lo que parece: la confianza en la intuición no se predica, se demuestra con historial. Escribiéndolas te estás construyendo la prueba.
@@ -149,8 +151,6 @@ Un cuaderno, el móvil, da igual. Anota la corazonada **el día que la tienes**,
 Y ahora, como pediatra, tengo que decirte esto con claridad.
 
 Confiar en tu intuición no significa despreciar la información, ni saltarte al pediatra, ni decidir por corazonada lo que se decide con criterio. La intuición no sustituye a una vacuna, ni a una prueba, ni a una consulta.
-
-*[destacado]* **Tu intuición es la brújula, no el mapa. Te dice hacia dónde mirar; no te dibuja el camino.**
 
 Lo que hace la intuición es otra cosa, y es justo lo que te falta cuando estás perdida entre veinte consejos contradictorios: te dice **cuál de todos ellos es para ti**.
 
@@ -186,11 +186,9 @@ Un abrazo enorme de Luz y Amor ✨💖
 
 **Frases-ancla (stories / láminas):**
 - "Para ser la mejor madre del mundo solo necesitas recordar lo que ya sabes."
-- "El miedo te empuja. La intuición te asienta."
-- "Si te está metiendo prisa, casi nunca es tu intuición."
+- "El miedo te saca del sitio: o te empuja, o te deja clavada. La intuición te asienta."
 - "No eres la corriente. Pero puedes aprender a leerla."
 - "La respiración no es una técnica de relajación. Es la puerta de entrada al Modo Ser."
-- "Tu intuición es la brújula, no el mapa."
 - "Lo que sale de fábrica con la maternidad no es un manual. Es una antena."
 - "El viaje no es hacia fuera, a buscar. Es hacia dentro, a recordar."
 - "Recordar, en latín, significa volver a pasar por el corazón."
@@ -220,5 +218,5 @@ Un abrazo enorme de Luz y Amor ✨💖
 
 1. **El recuerdo de consulta.** He escrito «he visto funcionar ese sexto sentido cientos de veces» y he puesto en boca de esas madres la frase *«No sé qué tiene, pero algo no va bien»*. Es plausible con tus treinta años de pediatría, pero **es tuyo, no mío**: cámbialo por un recuerdo real concreto o suavízalo. Ganaría mucho con un caso de verdad, aunque sea en dos líneas.
 2. **El límite clínico.** La sección «Escuchar tu intuición no es ir a ciegas» está puesta a propósito: sin ella, un artículo sobre confiar en la intuición firmado por una pediatra puede leerse como permiso para saltarse el criterio médico. Si la quitas o la suavizas, sé consciente de lo que estás soltando.
-3. **«Tu intuición no se equivoca».** Esa frase estaba en el artículo original y **la he quitado a propósito**. Firmada por una pediatra es una frase que puede hacer daño: la intuición se equivoca a veces, y una madre que se aferre a ella contra un criterio clínico lo va a pasar mal. La he sustituido por «la brújula, no el mapa», que dice lo mismo en lo esencial y no promete infalibilidad. Si la quieres recuperar, hablémoslo antes.
+3. **«Tu intuición no se equivoca».** Esa frase estaba en el artículo original y **la he quitado a propósito**. Firmada por una pediatra es una frase que puede hacer daño: la intuición se equivoca a veces, y una madre que se aferre a ella contra un criterio clínico lo va a pasar mal. Chon confirma que se queda fuera, y también retira la sustituta («la brújula, no el mapa»): el límite lo sostiene ahora, sola, la sección «Escuchar tu intuición no es ir a ciegas».
 4. **El ejercicio del círculo de apoyo** (el tercero del artículo original) ya no aparece como ejercicio: se ha convertido en el cierre con el retiro, que hace ese mismo trabajo sin repetirse.
