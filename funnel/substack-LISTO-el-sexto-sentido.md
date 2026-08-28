@@ -1,6 +1,7 @@
-# BORRADOR · Substack — "El sexto sentido de las madres"
+# LISTO PARA PUBLICAR · Substack — "El sexto sentido de las madres"
 
-**Estado:** borrador, pendiente de revisión de Chon
+**Estado:** texto cerrado y validado por Chon (28-ago-2026). Programado para el **martes 1 de septiembre**.
+**Para pegar en Substack:** `funnel/sexto-sentido-CUERPO-substack.html` (cuerpo limpio, sin título ni subtítulo).
 **Publicación:** Maternal Mind · septiembre 2026
 **Base:** reescritura de *Reconectando: el poder de la intuición* (blog antiguo de Ser Mamá, guardado oculto en la plataforma como material de trabajo).
 **Continuidad:** cierra el arco Jardín → *Dejar de ser el clima* (sentarse al borde) → *Parar de nadar* (pararse) → **este** (qué se escucha cuando paras).
