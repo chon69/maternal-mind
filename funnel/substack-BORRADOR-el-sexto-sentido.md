@@ -7,6 +7,8 @@
 **Función:** guiño final al retiro *Volver a ti* del 26 de septiembre.
 
 
+**Portada:** `funnel/portadas/sexto-sentido-portada.jpeg` — 1376×768. Marco doble turquesa + madera clara sobre pared crema, con una madre de espaldas mirando el horizonte en un campo al atardecer. Sin texto: el titular lo pone Substack.
+
 **Después de publicar en Substack:** dar de alta el artículo en la plataforma con `url_substack` apuntando al post. La plataforma lleva el enlace, no el texto.
 
 ---
