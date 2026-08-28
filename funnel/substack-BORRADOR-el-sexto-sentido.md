@@ -103,9 +103,15 @@ Porque el miedo también habla, también se siente en el cuerpo, y disfrazado de
 
 La buena noticia es que se pueden distinguir bastante bien si sabes dónde mirar. Y no se diferencian por lo que dicen, sino por **cómo te dejan**.
 
-*[destacado]* **El miedo te saca del sitio: o te empuja, o te deja clavada. La intuición te asienta.**
+El miedo te cierra el cuerpo. Te contrae. Te habla de catástrofes, y siempre en futuro.
 
-Fíjate en que el miedo es, en el fondo, el Modo Hacer asustado: querer controlar algo que todavía no has mirado. Y cuando no puede controlarlo, se bloquea.
+Y aquí conviene no olvidar una cosa: el miedo está intentando protegerte de algún peligro. Esa es su función, y es buena. El problema no es que aparezca. El problema es que nos quedamos atrapadas en él.
+
+La intuición es otra cosa. Es más un susurro, en un momento concreto, que te deja una sensación de paz, aunque la decisión que hayas tenido que tomar sea difícil.
+
+*[destacado]* **El miedo te contrae. La intuición te asienta.**
+
+Fíjate en que el miedo, cuando nos quedamos dentro, se vuelve Modo Hacer: querer controlar algo que todavía no has mirado.
 
 Y cuando dudes, hazte la pregunta:
 
@@ -176,7 +182,8 @@ Un abrazo enorme de Luz y Amor ✨💖
 
 **Frases-ancla (stories / láminas):**
 - "Para ser la mejor madre del mundo solo necesitas recordar lo que ya sabes."
-- "El miedo te saca del sitio: o te empuja, o te deja clavada. La intuición te asienta."
+- "El miedo te contrae. La intuición te asienta."
+- "El miedo está intentando protegerte. El problema no es que aparezca: es que nos quedamos atrapadas en él."
 - "No eres la corriente. Pero puedes aprender a leerla."
 - "La respiración no es una técnica de relajación. Es la puerta de entrada al Modo Ser."
 - "Lo que sale de fábrica con la maternidad no es un manual. Es una antena."
