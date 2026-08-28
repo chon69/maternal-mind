@@ -109,10 +109,6 @@ Y aquí conviene no olvidar una cosa: el miedo está intentando protegerte de al
 
 La intuición es otra cosa. Es más un susurro, en un momento concreto, que te deja una sensación de paz, aunque la decisión que hayas tenido que tomar sea difícil.
 
-*[destacado]* **El miedo te contrae. La intuición te asienta.**
-
-Fíjate en que el miedo, cuando nos quedamos dentro, se vuelve Modo Hacer: querer controlar algo que todavía no has mirado.
-
 Y cuando dudes, hazte la pregunta:
 
 **¿Esta decisión nace de un lugar de amor y confianza, o de un lugar de miedo y presión?**
@@ -182,7 +178,6 @@ Un abrazo enorme de Luz y Amor ✨💖
 
 **Frases-ancla (stories / láminas):**
 - "Para ser la mejor madre del mundo solo necesitas recordar lo que ya sabes."
-- "El miedo te contrae. La intuición te asienta."
 - "El miedo está intentando protegerte. El problema no es que aparezca: es que nos quedamos atrapadas en él."
 - "No eres la corriente. Pero puedes aprender a leerla."
 - "La respiración no es una técnica de relajación. Es la puerta de entrada al Modo Ser."
