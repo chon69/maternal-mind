@@ -146,7 +146,7 @@ Confiar en tu intuición no significa despreciar la información.
 
 Lo que hace la intuición es otra cosa, y es justo lo que te falta cuando estás perdida entre veinte consejos contradictorios: te dice **cuál de todos ellos es para ti**.
 
-Porque información hay de sobra. Lo que escasea es una madre lo bastante quieta como para saber qué hacer con ella.
+Porque información hay de sobra. Lo que escasea es la calma para escucharnos.
 
 ### Un sitio donde practicar esto
 
