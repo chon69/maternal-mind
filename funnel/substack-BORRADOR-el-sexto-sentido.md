@@ -101,7 +101,7 @@ Este es el reto de verdad, y donde más nos equivocamos.
 
 Porque el miedo también habla, también se siente en el cuerpo, y disfrazado de intuición nos ha hecho tomar muchas decisiones.
 
-Y no siempre hace lo mismo. Unas veces te acelera y te empuja a resolver ya. Otras te deja clavada, dándole vueltas y sin poder decidir nada. Parecen lo contrario la una de la otra, pero son el mismo miedo: las dos te sacan del cuerpo.
+Y no siempre hace lo mismo. Unas veces te acelera y te empuja a resolver ya. Otras te deja clavada, sin poder decidir nada. Parecen lo contrario la una de la otra, pero son el mismo miedo: las dos te sacan del cuerpo.
 
 La buena noticia es que se distingue bastante bien de la intuición si sabes dónde mirar. Y no se diferencian por lo que dicen, sino por **cómo te dejan**:
 
