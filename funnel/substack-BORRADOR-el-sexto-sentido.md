@@ -1,23 +1,13 @@
-# BORRADOR · Blog Maternal Mind — "El sexto sentido de las madres"
+# BORRADOR · Substack — "El sexto sentido de las madres"
 
-**Estado:** borrador cargado en STAGING como inactivo. Pendiente de revisión de Chon.
-**Destino:** blog de la plataforma (tabla `articulos`), no Substack.
-**Base:** reescritura de *Reconectando: el poder de la intuición* (blog de Ser Mamá, ya en la base de datos).
-**Continuidad:** sigue la línea de «diseñar tu maternidad» — *Diseña una maternidad de la que sentirte orgullosa* (blog antiguo) y el ciclo del Jardín (Substack).
+**Estado:** borrador, pendiente de revisión de Chon
+**Publicación:** Maternal Mind · septiembre 2026
+**Base:** reescritura de *Reconectando: el poder de la intuición* (blog antiguo de Ser Mamá, guardado oculto en la plataforma como material de trabajo).
+**Continuidad:** cierra el arco Jardín → *Dejar de ser el clima* (sentarse al borde) → *Parar de nadar* (pararse) → **este** (qué se escucha cuando paras).
 **Función:** guiño final al retiro *Volver a ti* del 26 de septiembre.
 
-### Campos para el panel de admin
 
-| Campo | Valor |
-|---|---|
-| `titulo` | El sexto sentido de las madres |
-| `slug` | el-sexto-sentido-de-las-madres |
-| `categoria` | ser mamá |
-| `descripcion` | Tu cuerpo sabe antes que tu cabeza. Cómo distinguir la intuición del miedo, por qué la respiración es la puerta, y qué significa recordar lo que ya sabes. |
-| `imagen_url` | *(pendiente)* |
-| `contenido_html` | ver `blog/articulo-sexto-sentido.html` |
-
-> Los `*[destacado]*` de abajo son las frases que van en negrita suelta dentro del artículo. En el HTML ya están aplicadas.
+**Después de publicar en Substack:** dar de alta el artículo en la plataforma con `url_substack` apuntando al post. La plataforma lleva el enlace, no el texto.
 
 ---
 

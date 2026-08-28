@@ -1,6 +1,6 @@
-# BORRADOR · Substack — "Parar de nadar para poder ver"
+# PUBLICADO · Substack — "Parar de nadar para poder ver"
 
-**Estado:** borrador, pendiente de revisión de Chon
+**Estado:** publicado en agosto de 2026
 **Publicación:** Maternal Mind · agosto 2026
 **Continuidad:** retoma "sentarse al borde del jardín" del artículo *Dejar de ser el clima para convertirse en la jardinera*, esta vez desde una experiencia real (el snorkel) en lugar de la metáfora.
 
