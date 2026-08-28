@@ -127,7 +127,7 @@ Porque entonces la maternidad deja de ser un examen con temario y se convierte e
 
 ### Tres prácticas para volver a escucharte
 
-Nada de esto se entrena leyendo. Te dejo aquí tres cosas pequeñas y reales por las que puedes empezar a practicar.
+Nada de esto se entrena leyendo. Te dejo aquí tres pequeñas prácticas por las que puedes empezar a volver a ti.
 
 **1. Tres respiraciones antes de responder.**
 No antes de meditar: antes de **responder**. En mitad de la rabieta, del «no me lo pongo», del portazo. Inspiras, y al soltar el aire dejas caer los hombros. Tres veces. No lo haces para calmarte —a lo mejor no te calmas—, lo haces para meter un espacio entre lo que pasa y lo que haces. En ese hueco es donde cabes tú.
