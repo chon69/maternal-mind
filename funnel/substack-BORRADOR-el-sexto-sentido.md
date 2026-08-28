@@ -152,7 +152,7 @@ Porque información hay de sobra. Lo que escasea es la calma para escucharnos.
 
 Todo lo que te he contado —volver al cuerpo, usar la respiración como ancla, salir del Modo Hacer, escuchar lo que ya sabes— se puede leer en diez minutos. Habitarlo es otra cosa, y es difícil hacerlo sola en el hueco entre la cena y el baño.
 
-Por eso el sábado **26 de septiembre** hago un retiro de cuatro horas para madres, en Barajas. Se llama **Volver a ti**, y su hilo es literalmente este artículo:
+Por eso el sábado **26 de septiembre** hago un retiro de cuatro horas para madres, en Madrid, en el barrio de Barajas. Se llama **Volver a ti**, y su hilo es literalmente este artículo:
 
 *[destacado]* **Respirar para volver. Volver para habitarte. Habitarte para escucharte. Escucharte para conectar con tu sabiduría interna.**
 
