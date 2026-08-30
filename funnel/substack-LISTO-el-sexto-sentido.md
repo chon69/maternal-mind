@@ -1,6 +1,6 @@
 # LISTO PARA PUBLICAR · Substack — "Tu sexto sentido"
 
-**Estado:** texto definitivo de Chon (30-ago-2026). Programado para el **martes 1 de septiembre**.
+**Estado:** PROGRAMADO. Texto definitivo de Chon (30-ago-2026), cargado en Substack y programado para el **martes 1 de septiembre de 2026 a las 15:00**, con envío por correo a suscriptores.
 **Título:** Tu sexto sentido
 **Subtítulo:** Diseñar tu maternidad también es aprender a escuchar lo que tu cuerpo te dice
 **Para pegar en Substack:** `funnel/sexto-sentido-CUERPO-substack.html` (cuerpo limpio, sin título ni subtítulo).
