@@ -27,8 +27,8 @@ Para tenerlas en el móvil, mándatelas por WhatsApp a ti misma o por AirDrop.
 
 ## 1 · Story del martes, a las 15:00 (la que más lee)
 
-Imagen: **`2-story-martes-9x16.jpg`**. Ya lleva el texto puesto («Hoy escribo sobre eso que te pasa
-y no sabes explicar con palabras») y el hueco de abajo libre. No hace falta escribir nada encima.
+Imagen: **`2-story-martes-9x16.jpg`**. Ya lleva el texto puesto («Hoy escribo sobre eso que sabes en
+el cuerpo antes que en la cabeza») y el hueco de abajo libre. No hace falta escribir nada encima.
 
 **Sticker:** enlace, con la etiqueta **«Leer el artículo»**, apuntando al enlace limpio.
 El sticker de enlace es lo único que lleva tráfico el mismo día. El enlace en bio no hace eso.
@@ -41,13 +41,15 @@ Imagen: **`1-feed-4x5.jpg`**.
 
 Pie:
 
-Hay una frase que oigo mucho en la consulta: «no sé decirte qué le pasa; está comiendo, no tiene fiebre, pero algo no va bien».
+Lo que sale de fábrica con la maternidad no es un manual. Es una antena, parabólica diría yo.
 
-Nunca la descarto.
+Y no tiene nada de magia. La intuición es la lectura rápida que hace tu cuerpo de un montón de información que tu cabeza todavía no ha ordenado: ha visto el gesto, el tono, cómo respira, el color de la cara, y ha sumado antes de que tú te enteres de que estabas sumando.
 
-Treinta años de pediatra me han enseñado que esa madre no trae ningún dato. Trae algo mucho mejor: cientos de días mirando a ese niño y una alarma que se le enciende en el cuerpo antes que en la cabeza.
+Por eso las madres tenemos un sexto sentido. No porque seamos brujas —o sí—, sino porque nadie ha mirado a ese niño tantas horas como tú, y no solo con los dos ojos que llevamos en la cara.
 
-Hoy he publicado un artículo sobre eso. Sobre por qué las madres tenemos un sexto sentido, por qué habla en el cuerpo antes que en palabras, y qué tiene que ver la respiración con volver a oírlo. Al final te dejo tres prácticas pequeñas para empezar.
+El problema es que la intuición susurra, y el modo hacer suele estar gritando. Con la azada en la mano no oyes nada que no sea la lista de tareas.
+
+Hoy publico un artículo sobre eso: por qué esa antena habla en el cuerpo antes que en palabras, y qué tiene que ver la respiración con volver a oírla. Al final te dejo tres prácticas pequeñas.
 
 Lo tienes en el enlace de la bio.
 
@@ -99,7 +101,10 @@ Hoy escribo sobre el sexto sentido de las madres 👇
 | 15:15 | Instagram | Publicación de feed con `1-feed-4x5.jpg` |
 | 15:30 | Substack Notes | La nota |
 | Por la tarde | WhatsApp | Los mensajes, de uno en uno, no en difusión |
-| Miércoles mañana | Instagram | Segunda story con la frase de la consulta |
+| Miércoles mañana | Instagram | Segunda story `3-story-miercoles-9x16.jpg` |
+
+**La escena de la consulta sale una sola vez.** Está en la nota de Substack y en la story del
+miércoles, no en el pie del feed: si se repite tres veces el mismo día, la tercera ya no se lee.
 
 **El retiro no se menciona aquí.** Ya está dentro del artículo, al final. Si además lo anuncias en
 el mismo story, el mensaje se convierte en promoción y la lectura cae.
