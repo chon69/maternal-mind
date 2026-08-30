@@ -5,24 +5,30 @@
 (el que da Substack al compartir lleva `?r=841fmx&utm_campaign=...`; para publicar usa el limpio,
 es más corto y no arrastra parámetros de sesión).
 
-**Imagen:** la tarjeta que genera Substack al compartir (marco turquesa + madera, madre de espaldas
-en el campo). Sirve tal cual: es 4:5, formato de feed, y ya lleva el título y el dominio.
+**Subtítulo:** ya corregido en Substack. Ahora pone «Diseñar tu maternidad también es aprender a
+escuchar lo que tu cuerpo te dice», que es el acordado.
 
-> ⚠️ **Antes de que salga:** el subtítulo de la tarjeta dice «Diseñar tu maternidad también es
-> **aprende** a escuchar tu cuerpo». Falta la erre y no es el subtítulo acordado. En Substack debe
-> poner: **«Diseñar tu maternidad también es aprender a escuchar lo que tu cuerpo te dice»**.
-> Al corregirlo, la tarjeta se regenera sola.
+## Las imágenes, ya montadas
+
+Están en `funnel/rrss/sexto-sentido/`, listas para subir tal cual desde el móvil. No hay que
+recortar nada ni descargar la tarjeta de Substack: la que genera Substack es apaisada (16:9) y en
+el feed se vería pequeña, así que la portada va remontada al formato de cada sitio.
+
+| Archivo | Formato | Dónde |
+|---|---|---|
+| `1-feed-4x5.jpg` | 1080 × 1350 (4:5) | Publicación de feed |
+| `2-story-martes-9x16.jpg` | 1080 × 1920 (9:16) | Story del martes |
+| `3-story-miercoles-9x16.jpg` | 1080 × 1920 (9:16) | Story del miércoles |
+
+Las dos stories llevan la mitad de abajo vacía a propósito: ahí va el sticker de enlace.
+Para tenerlas en el móvil, mándatelas por WhatsApp a ti misma o por AirDrop.
 
 ---
 
 ## 1 · Story del martes, a las 15:00 (la que más lee)
 
-Imagen: la tarjeta de Substack sobre fondo liso, dejando hueco abajo para el sticker.
-
-Texto encima:
-
-> Hoy escribo sobre eso que te pasa
-> y no sabes explicar con palabras.
+Imagen: **`2-story-martes-9x16.jpg`**. Ya lleva el texto puesto («Hoy escribo sobre eso que te pasa
+y no sabes explicar con palabras») y el hueco de abajo libre. No hace falta escribir nada encima.
 
 **Sticker:** enlace, con la etiqueta **«Leer el artículo»**, apuntando al enlace limpio.
 El sticker de enlace es lo único que lleva tráfico el mismo día. El enlace en bio no hace eso.
@@ -31,7 +37,7 @@ El sticker de enlace es lo único que lleva tráfico el mismo día. El enlace en
 
 ## 2 · Publicación de feed del martes, justo después
 
-Imagen: la misma tarjeta de Substack.
+Imagen: **`1-feed-4x5.jpg`**.
 
 Pie:
 
@@ -51,13 +57,8 @@ Y cuéntame: ¿recuerdas alguna vez en que tu cuerpo supo algo antes que tu cabe
 
 ## 3 · Story del miércoles por la mañana (segunda pasada)
 
-Para quien no abrió Instagram el martes por la tarde. Cambia la imagen: una lámina de texto sobre
-crema, sin foto, con la frase en Cormorant.
-
-Texto:
-
-> «No sé qué tiene. Pero algo no va bien.»
-> Esa frase, dicha por una madre, hay que escucharla.
+Para quien no abrió Instagram el martes por la tarde. Cambia la imagen: **`3-story-miercoles-9x16.jpg`**,
+una lámina de texto sobre crema, sin foto, con la frase en Cormorant. También lleva el texto puesto.
 
 **Sticker:** enlace, «Leer el artículo».
 
@@ -94,8 +95,8 @@ Hoy escribo sobre el sexto sentido de las madres 👇
 | Hora | Dónde | Qué |
 |---|---|---|
 | 15:00 | Substack | Se publica solo y sale el correo a suscriptores |
-| 15:05 | Instagram | Story con sticker de enlace |
-| 15:15 | Instagram | Publicación de feed con la tarjeta |
+| 15:05 | Instagram | Story `2-story-martes-9x16.jpg` + sticker de enlace |
+| 15:15 | Instagram | Publicación de feed con `1-feed-4x5.jpg` |
 | 15:30 | Substack Notes | La nota |
 | Por la tarde | WhatsApp | Los mensajes, de uno en uno, no en difusión |
 | Miércoles mañana | Instagram | Segunda story con la frase de la consulta |
