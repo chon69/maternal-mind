@@ -151,7 +151,29 @@ app.post('/api/test-email', async (req, res) => {
   }
 });
 
+// Las columnas del funnel viven en db/schema.sql, que se ejecuta a mano. En
+// producción nunca llegaron a aplicarse: cada alta fallaba al insertar 'origen'
+// y la madre se quedaba sin registrar sin que nadie se enterara. Se comprueban
+// al arrancar — son ADD COLUMN IF NOT EXISTS, no tocan ningún dato existente.
+async function asegurarColumnas() {
+  const { pool } = require('./lib/db');
+  const sentencias = [
+    `ALTER TABLE usuarios ADD COLUMN IF NOT EXISTS origen      TEXT NOT NULL DEFAULT 'web'`,
+    `ALTER TABLE usuarios ADD COLUMN IF NOT EXISTS substack_at TIMESTAMPTZ`,
+    `ALTER TABLE usuarios ADD COLUMN IF NOT EXISTS invitado_at TIMESTAMPTZ`,
+    `ALTER TABLE leads    ADD COLUMN IF NOT EXISTS origen      TEXT NOT NULL DEFAULT 'web'`,
+    `CREATE INDEX IF NOT EXISTS idx_usuarios_origen ON usuarios (origen)`,
+  ];
+  for (const sql of sentencias) {
+    try { await pool.query(sql); }
+    catch (err) { console.error('[schema]', err.message); }
+  }
+  console.log('[schema] columnas del funnel comprobadas');
+}
+
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Maternal Mind → http://localhost:${PORT}`);
+asegurarColumnas().finally(() => {
+  app.listen(PORT, () => {
+    console.log(`Maternal Mind → http://localhost:${PORT}`);
+  });
 });

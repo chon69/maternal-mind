@@ -13,6 +13,14 @@ const CORS = {
   'Content-Type': 'application/json',
 };
 
+// El correo no debe tumbar el alta: si Gmail falla, la madre ya está guardada y
+// se le puede reenviar desde el panel. Lo que sí tiene que fallar hacia fuera es
+// no poder guardarla, para que la página se lo diga en vez de fingir que ha ido bien.
+async function enviar(email, asunto, html) {
+  try { await send(email, asunto, html); }
+  catch (err) { console.error('[submit-form] email no enviado a', email + ':', err.message); }
+}
+
 exports.handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') return { statusCode: 204, headers: CORS, body: '' };
   if (event.httpMethod !== 'POST')    return { statusCode: 405, headers: CORS, body: JSON.stringify({ error: 'Method not allowed' }) };
@@ -38,7 +46,7 @@ exports.handler = async (event) => {
         // Ya tiene cuenta y contraseña: mandarle otra vez el email de activación
         // la confundiría. Se le manda el Kit a secas, que es a lo que ha venido.
         await updateById('Usuarios', existing.id, { nombre, ...reOrigen });
-        await send(email, 'Tu Kit de Pausa 🌿', kitEmail(nombre, `${APP_URL}/kit`));
+        await enviar(email, 'Tu Kit de Pausa 🌿', kitEmail(nombre, `${APP_URL}/kit`));
         return 'already_active';
       }
       if (existing) {
@@ -56,7 +64,7 @@ exports.handler = async (event) => {
         // el que escribe ella en el formulario manda.
         await updateById('Usuarios', existing.id, { nombre, estado: 'pendiente', ...reOrigen });
         const url = `${APP_URL}/app/activar.html?token=${token}&email=${encodeURIComponent(email)}`;
-        await send(email, 'Tu Kit de Pausa 🌿', activationEmail(nombre, url));
+        await enviar(email, 'Tu Kit de Pausa 🌿', activationEmail(nombre, url));
         return 'resent';
       }
       const token = crypto.randomUUID();
@@ -73,7 +81,7 @@ exports.handler = async (event) => {
         origen,
       });
       const url = `${APP_URL}/app/activar.html?token=${token}&email=${encodeURIComponent(email)}`;
-      await send(email, 'Tu Kit de Pausa 🌿', activationEmail(nombre, url));
+      await enviar(email, 'Tu Kit de Pausa 🌿', activationEmail(nombre, url));
       return 'created';
     })(),
     // Alta paralela en la newsletter: el funnel empieza en Substack, así que
@@ -86,6 +94,10 @@ exports.handler = async (event) => {
   if (userResult.status === 'rejected') console.error('[submit-form] user error:', userResult.reason?.message);
   if (userResult.status === 'fulfilled') console.log('[submit-form] result:', userResult.value);
   console.log('[submit-form] substack:', substackResult.value ? 'suscrita' : 'no suscrita');
+
+  if (userResult.status === 'rejected') {
+    return { statusCode: 500, headers: CORS, body: JSON.stringify({ error: 'No se ha podido guardar el alta' }) };
+  }
 
   return { statusCode: 200, headers: CORS, body: JSON.stringify({ success: true }) };
 };
