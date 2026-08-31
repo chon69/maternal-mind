@@ -132,6 +132,12 @@ for (const fn of fns) {
 
 // Endpoint de diagnóstico de email (solo admin)
 app.post('/api/test-email', async (req, res) => {
+  // Sin esta comprobación, cualquiera que diera con la ruta podía hacer que la
+  // cuenta de Gmail de Chon mandara correos a quien quisiera.
+  const { requireAdmin } = require('./lib/auth');
+  try { requireAdmin(req); }
+  catch (e) { return res.status(e.status || 403).json({ error: e.message }); }
+
   const { to } = req.body || {};
   if (!to) return res.status(400).json({ error: 'Falta campo to' });
   try {
