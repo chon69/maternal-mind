@@ -271,6 +271,34 @@
       Te contesto yo, y sin compromiso: puedes preguntarme cualquier duda antes de decidir.
       La plaza se reserva por Bizum cuando lo tengas claro.
     </p>
+
+    <!-- Aparece al pulsar el botón de arriba, con WhatsApp ya abierto en otra pestaña.
+         Sin esto no queda registro de quien escribe: WhatsApp no devuelve nada a la web. -->
+    <div class="form-card" id="card-whatsapp" hidden style="margin-top:1.4rem">
+      <h3>Ya se ha abierto WhatsApp 🌿</h3>
+      <p class="sub">Escríbeme por ahí y te contesto yo, personalmente. Y déjame aquí tu nombre y tu correo: los necesito para guardarte la plaza y para escribirte después lo del pago y los detalles de la mañana. De paso te mando ahora mismo el <strong>Kit de Pausa</strong>.</p>
+
+      <form id="form-whatsapp" class="signup" novalidate>
+        <input type="text" name="nombre" placeholder="Tu nombre" required autocomplete="given-name">
+        <input type="email" name="email" placeholder="tu@email.com" required autocomplete="email">
+        <div class="privacidad">
+          <input type="checkbox" id="privacidad-whatsapp" required>
+          <label for="privacidad-whatsapp">He leído y acepto la <a href="/legal.html#privacidad" target="_blank" rel="noopener">política de privacidad</a></label>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%">
+          <span class="btn-text">Guarda mis datos y mándame el Kit</span>
+          <span class="btn-loading" hidden>Enviando…</span>
+        </button>
+        <p class="slow-msg" hidden>Un momento… el servidor está arrancando, puede tardar hasta un minuto.</p>
+        <p class="form-error" hidden></p>
+      </form>
+
+      <div class="form-ok" hidden>
+        <div class="icono">🌿</div>
+        <p class="titulo">Ya te tengo</p>
+        <p class="msg">Te contesto por WhatsApp en cuanto lo vea. Y mira tu correo: te he mandado el Kit de Pausa.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -336,12 +364,22 @@
     const a = document.getElementById('cta-whatsapp');
     a.href = href;
     if (WHATSAPP) a.target = '_blank';
+
+    // WhatsApp se abre en otra pestaña; al volver a esta, la madre se encuentra
+    // el formulario. Es el único momento en que podemos pedirle el correo.
+    a.addEventListener('click', () => {
+      const card = document.getElementById('card-whatsapp');
+      if (!card.hidden) return;
+      card.hidden = false;
+      setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'center' }), 500);
+    });
   })();
 
-  (function formulario() {
-    const form = document.getElementById('form-retiro');
-    const ok   = form.parentElement.querySelector('.form-ok');
-    const err  = form.querySelector('.form-error');
+  // Los dos formularios de la página son iguales por dentro: cambia el origen
+  // con el que se guarda el alta ('retiro-whatsapp' = quiere plaza, 'retiro' = avísame).
+  function conectarFormulario(form, origen) {
+    const ok  = form.parentElement.querySelector('.form-ok');
+    const err = form.querySelector('.form-error');
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -371,12 +409,15 @@
         const res = await fetch('/api/submit-form', {
           method:  'POST',
           headers: { 'Content-Type': 'application/json' },
-          body:    JSON.stringify({ nombre, email, origen: 'retiro' }),
+          body:    JSON.stringify({ nombre, email, origen }),
         });
         clearTimeout(slowTimer);
         if (!res.ok) throw new Error('Error ' + res.status);
         form.hidden = true;
         ok.hidden   = false;
+        // Si ya ha dejado sus datos aquí, la tarjeta de «avísame de próximas
+        // fechas» de abajo sobra: le estaría pidiendo lo mismo otra vez.
+        if (origen === 'retiro-whatsapp') document.getElementById('avisos').hidden = true;
       } catch (e) {
         clearTimeout(slowTimer);
         slowMsg.hidden = true;
@@ -387,7 +428,10 @@
         btn.disabled = false;
       }
     });
-  })();
+  }
+
+  conectarFormulario(document.getElementById('form-whatsapp'), 'retiro-whatsapp');
+  conectarFormulario(document.getElementById('form-retiro'),   'retiro');
 </script>
 
 </body>

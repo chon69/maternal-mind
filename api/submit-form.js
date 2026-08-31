@@ -1,5 +1,5 @@
 const { append, findBy, updateById } = require('../lib/db');
-const { send, activationEmail } = require('../lib/email');
+const { send, activationEmail, kitEmail } = require('../lib/email');
 const { subscribe } = require('../lib/substack');
 const crypto = require('crypto');
 
@@ -31,7 +31,16 @@ exports.handler = async (event) => {
     append('Leads', { nombre, email, created_at: new Date().toISOString(), origen }),
     (async () => {
       const existing = await findBy('Usuarios', 'email', email);
-      if (existing && existing.estado === 'activo') return 'already_active';
+      // El origen guardado es aquel por el que llegó la primera vez. Solo lo pisamos
+      // si ahora viene del retiro: es lo que Chon necesita ver de un vistazo.
+      const reOrigen = origen.startsWith('retiro') ? { origen } : {};
+      if (existing && existing.estado === 'activo') {
+        // Ya tiene cuenta y contraseña: mandarle otra vez el email de activación
+        // la confundiría. Se le manda el Kit a secas, que es a lo que ha venido.
+        await updateById('Usuarios', existing.id, { nombre, ...reOrigen });
+        await send(email, 'Tu Kit de Pausa 🌿', kitEmail(nombre, `${APP_URL}/kit`));
+        return 'already_active';
+      }
       if (existing) {
         // Cualquier contacto que aún no ha activado su cuenta: puede estar
         // 'pendiente' (ya se le invitó) o 'suscriptor' (llegó importado de Substack).
@@ -45,7 +54,7 @@ exports.handler = async (event) => {
         }
         // El nombre importado de Substack es una suposición a partir del email:
         // el que escribe ella en el formulario manda.
-        await updateById('Usuarios', existing.id, { nombre, estado: 'pendiente' });
+        await updateById('Usuarios', existing.id, { nombre, estado: 'pendiente', ...reOrigen });
         const url = `${APP_URL}/app/activar.html?token=${token}&email=${encodeURIComponent(email)}`;
         await send(email, 'Tu Kit de Pausa 🌿', activationEmail(nombre, url));
         return 'resent';

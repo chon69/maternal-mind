@@ -55,6 +55,7 @@
   .badge.inactivo{background:#FEE2E2;color:#991B1B}.badge.suscriptor{background:var(--turq-vlight);color:var(--turq-deep)}
   .badge.substack{background:#FFEDD5;color:#9A3412}.badge.web{background:var(--gold-light);color:#B8820A}
   .badge.retiro{background:var(--turq-light);color:#1F6F6A}
+  .badge.retiro-whatsapp{background:#D9F2E4;color:#146C43}
   .loading{padding:2.5rem;text-align:center;color:var(--ink-soft)}
   .spinner{width:28px;height:28px;border:2.5px solid var(--turq-light);border-top-color:var(--turq);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto .75rem}@keyframes spin{to{transform:rotate(360deg)}}
   .result{margin-top:1rem;padding:.9rem 1.1rem;border-radius:10px;font-size:.83rem;line-height:1.7;background:var(--turq-vlight);color:var(--ink-soft);display:none}
@@ -106,7 +107,8 @@
           <option value="">Todos los orígenes</option>
           <option value="substack">Substack</option>
           <option value="web">Formulario web</option>
-          <option value="retiro">Retiro</option>
+          <option value="retiro-whatsapp">Retiro · quieren plaza</option>
+          <option value="retiro">Retiro · avisadme de fechas</option>
         </select>
         <select class="filter-sel" id="filter-estado" onchange="render()">
           <option value="suscriptor">Suscriptoras sin invitar</option>
@@ -156,7 +158,10 @@
   }
 
   // Orígenes con etiqueta propia; cualquier otro se muestra como «web».
-  const ORIGENES = ['substack', 'retiro'];
+  const ORIGENES = ['substack', 'retiro', 'retiro-whatsapp'];
+  // 'retiro-whatsapp' es largo para una etiqueta: en la tabla se ve como «whatsapp».
+  const ETIQUETA = { 'retiro-whatsapp': 'whatsapp' };
+  const origenDe = c => ORIGENES.includes(c.origen) ? c.origen : 'web';
 
   function renderStats() {
     const n = {
@@ -164,6 +169,7 @@
       substack:  contactos.filter(c => c.origen === 'substack').length,
       web:       contactos.filter(c => (c.origen || 'web') === 'web').length,
       retiro:    contactos.filter(c => c.origen === 'retiro').length,
+      whatsapp:  contactos.filter(c => c.origen === 'retiro-whatsapp').length,
       sinInvitar:contactos.filter(c => c.estado === 'suscriptor').length,
       activas:   contactos.filter(c => c.estado === 'activo').length,
     };
@@ -171,7 +177,8 @@
       <div class="stat"><div class="n">${n.total}</div><div class="l">Contactos totales</div></div>
       <div class="stat"><div class="n">${n.substack}</div><div class="l">Desde Substack</div></div>
       <div class="stat"><div class="n">${n.web}</div><div class="l">Desde el formulario</div></div>
-      <div class="stat"><div class="n">${n.retiro}</div><div class="l">Desde el retiro</div></div>
+      <div class="stat"><div class="n">${n.whatsapp}</div><div class="l">Quieren plaza (WhatsApp)</div></div>
+      <div class="stat"><div class="n">${n.retiro}</div><div class="l">Retiro · avisadme</div></div>
       <div class="stat"><div class="n">${n.sinInvitar}</div><div class="l">Sin invitar al Kit</div></div>
       <div class="stat"><div class="n">${n.activas}</div><div class="l">Con cuenta activa</div></div>`;
   }
@@ -196,7 +203,7 @@
             `<input type="checkbox" ${seleccion.has(c.id) ? 'checked' : ''} onchange="marcar('${c.id}', this.checked)">`}</td>
           <td><strong>${c.nombre || '—'}</strong></td>
           <td style="color:var(--ink-soft)">${c.email}</td>
-          <td><span class="badge ${ORIGENES.includes(c.origen) ? c.origen : 'web'}">${ORIGENES.includes(c.origen) ? c.origen : 'web'}</span></td>
+          <td><span class="badge ${origenDe(c)}">${ETIQUETA[origenDe(c)] || origenDe(c)}</span></td>
           <td><span class="badge ${c.estado}">${c.estado}</span></td>
           <td style="font-size:.75rem;color:var(--ink-soft)">${fecha(c.created_at)}</td>
           <td style="font-size:.75rem;color:var(--ink-soft)">${fecha(c.invitado_at)}</td>
