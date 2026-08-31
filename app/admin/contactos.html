@@ -107,7 +107,7 @@
           <option value="">Todos los orígenes</option>
           <option value="substack">Substack</option>
           <option value="web">Formulario web</option>
-          <option value="retiro-whatsapp">Retiro · quieren plaza</option>
+          <option value="retiro-whatsapp">WA retiro (quieren plaza)</option>
           <option value="retiro">Retiro · avisadme de fechas</option>
         </select>
         <select class="filter-sel" id="filter-estado" onchange="render()">
@@ -159,8 +159,8 @@
 
   // Orígenes con etiqueta propia; cualquier otro se muestra como «web».
   const ORIGENES = ['substack', 'retiro', 'retiro-whatsapp'];
-  // 'retiro-whatsapp' es largo para una etiqueta: en la tabla se ve como «whatsapp».
-  const ETIQUETA = { 'retiro-whatsapp': 'whatsapp' };
+  // 'retiro-whatsapp' es largo para una etiqueta: en la tabla se ve como «WA retiro».
+  const ETIQUETA = { 'retiro-whatsapp': 'WA retiro' };
   const origenDe = c => ORIGENES.includes(c.origen) ? c.origen : 'web';
 
   function renderStats() {
@@ -177,7 +177,7 @@
       <div class="stat"><div class="n">${n.total}</div><div class="l">Contactos totales</div></div>
       <div class="stat"><div class="n">${n.substack}</div><div class="l">Desde Substack</div></div>
       <div class="stat"><div class="n">${n.web}</div><div class="l">Desde el formulario</div></div>
-      <div class="stat"><div class="n">${n.whatsapp}</div><div class="l">Quieren plaza (WhatsApp)</div></div>
+      <div class="stat"><div class="n">${n.whatsapp}</div><div class="l">WA retiro (quieren plaza)</div></div>
       <div class="stat"><div class="n">${n.retiro}</div><div class="l">Retiro · avisadme</div></div>
       <div class="stat"><div class="n">${n.sinInvitar}</div><div class="l">Sin invitar al Kit</div></div>
       <div class="stat"><div class="n">${n.activas}</div><div class="l">Con cuenta activa</div></div>`;

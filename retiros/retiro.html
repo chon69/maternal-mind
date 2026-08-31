@@ -161,38 +161,6 @@
   .form-ok .msg{font-size:.93rem;color:var(--ink-soft)}
   .form-error{color:#C1462F;font-size:.85rem;text-align:center;margin-top:.7rem}
 
-  /* Reservar: dos pasos numerados. El paso 2 se ve desde el principio (apagado)
-     para que, al volver de WhatsApp, la madre reconozca dónde está. */
-  .reserva{
-    margin-top:1.5rem;border:1.5px solid var(--turq-deep);border-radius:14px;
-    background:var(--turq-vlight);padding:1.4rem 1.2rem;
-  }
-  .reserva .eyebrow{display:block;margin-bottom:.2rem}
-  .reserva h3{margin-bottom:1.2rem}
-  .paso{display:flex;gap:.85rem;align-items:flex-start}
-  .paso + .paso{margin-top:1.3rem;padding-top:1.3rem;border-top:1px solid var(--turq-light)}
-  .paso .num{
-    flex-shrink:0;width:26px;height:26px;border-radius:50%;margin-top:.12rem;
-    background:var(--turq-deep);color:var(--white);font-size:.85rem;font-weight:700;
-    display:flex;align-items:center;justify-content:center;
-  }
-  .paso.espera .num{background:var(--turq-light);color:var(--turq-deep)}
-  .paso.espera .paso-titulo{color:var(--ink-soft)}
-  .paso-cuerpo{flex:1;min-width:0}
-  .paso-titulo{font-weight:700;font-size:1rem;margin-bottom:.25rem}
-  .paso-sub{font-size:.9rem;color:var(--ink-soft);margin-bottom:.9rem}
-  .paso .signup input{background:var(--white);border-color:var(--turq-light)}
-  .paso .signup input::placeholder{color:#9DBEBC}
-  .paso .privacidad a{color:var(--turq-deep)}
-  .paso .form-ok{text-align:left;padding:0}
-
-  /* Aviso de que la tarjeta de abajo NO reserva plaza */
-  .no-reserva{
-    display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.08em;
-    text-transform:uppercase;color:var(--gold-dark);background:var(--gold-light);
-    padding:.28rem .7rem;border-radius:20px;margin-bottom:.7rem;
-  }
-
   /* Quién */
   .quien{display:flex;gap:1.1rem;align-items:flex-start}
   .quien img{width:88px;height:88px;border-radius:50%;object-fit:cover;flex-shrink:0}
@@ -296,64 +264,21 @@
       </div>
     </div>
 
-    <div class="reserva">
-      <span class="eyebrow">Quiero venir el 26 de septiembre</span>
-      <h3>Reservar tu plaza</h3>
-
-      <div class="paso">
-        <span class="num">1</span>
-        <div class="paso-cuerpo">
-          <p class="paso-titulo">Escríbeme por WhatsApp</p>
-          <p class="paso-sub">Se abre WhatsApp con el mensaje ya puesto. Te contesto yo, y sin compromiso: puedes preguntarme cualquier duda antes de decidir. La plaza se reserva por Bizum cuando lo tengas claro.</p>
-          <a class="btn btn-primary" id="cta-whatsapp" href="#">Escríbeme y reservo tu plaza</a>
-        </div>
-      </div>
-
-      <!-- El paso 2 se ve apagado desde que carga la página: así la madre sabe que,
-           después de escribir, tiene que volver aquí. WhatsApp no devuelve nada a la
-           web, y sin este formulario no queda ningún registro de quien ha escrito. -->
-      <div class="paso espera" id="paso-2">
-        <span class="num">2</span>
-        <div class="paso-cuerpo">
-          <p class="paso-titulo">Vuelve aquí y déjame tus datos</p>
-          <p class="paso-sub" id="paso-2-espera">Después de escribirme, vuelve a esta página: aquí te pido tu nombre y tu correo para guardarte la plaza.</p>
-
-          <div id="card-whatsapp" hidden>
-            <p class="paso-sub" id="intro-whatsapp">Escríbeme por ahí y te contesto yo, personalmente. Y déjame aquí tu nombre y tu correo: los necesito para guardarte la plaza y mantenerte informada de todos los detalles. Aprovecho para enviarte un pequeño obsequio que te llegará a tu correo.</p>
-
-      <form id="form-whatsapp" class="signup" novalidate>
-        <input type="text" name="nombre" placeholder="Tu nombre" required autocomplete="given-name">
-        <input type="email" name="email" placeholder="tu@email.com" required autocomplete="email">
-        <div class="privacidad">
-          <input type="checkbox" id="privacidad-whatsapp" required>
-          <label for="privacidad-whatsapp">He leído y acepto la <a href="/legal.html#privacidad" target="_blank" rel="noopener">política de privacidad</a></label>
-        </div>
-        <button type="submit" class="btn btn-primary" style="width:100%">
-          <span class="btn-text">Guardar mis datos</span>
-          <span class="btn-loading" hidden>Enviando…</span>
-        </button>
-        <p class="slow-msg" hidden>Un momento… el servidor está arrancando, puede tardar hasta un minuto.</p>
-        <p class="form-error" hidden></p>
-      </form>
-
-      <div class="form-ok" hidden>
-        <div class="icono">🌿</div>
-        <p class="titulo">Ya te tengo</p>
-        <p class="msg">Te contesto por WhatsApp en cuanto lo vea. Y mira tu correo, que te he mandado una cosita.</p>
-      </div>
-          </div>
-        </div>
-      </div>
+    <div class="acciones">
+      <a class="btn btn-primary" id="cta-whatsapp" href="#">Escríbeme y reservo tu plaza</a>
     </div>
+    <p style="text-align:center;font-size:.85rem;color:var(--ink-soft);margin-top:.7rem">
+      Te contesto yo, y sin compromiso: puedes preguntarme cualquier duda antes de decidir.
+      La plaza se reserva por Bizum cuando lo tengas claro.
+    </p>
   </div>
 </section>
 
 <section id="avisos" style="padding-top:0">
   <div class="wrap">
     <div class="form-card">
-      <span class="no-reserva">Esto no reserva plaza</span>
-      <h3>¿No puedes el 26 de septiembre?</h3>
-      <p class="sub">No pasa nada: hay tres mañanas más este otoño y habrá otro ciclo después. Déjame tu nombre y tu correo y te aviso cuando abra fechas —sin agobiar, y puedes salirte cuando quieras—. Si lo que quieres es venir el 26, tu sitio es el recuadro turquesa de arriba.</p>
+      <h3>¿Este sábado no puedes?</h3>
+      <p class="sub">No pasa nada: hay tres mañanas más este otoño y habrá otro ciclo después. Déjame tu nombre y tu correo y te aviso cuando abra fechas —sin agobiar, y puedes salirte cuando quieras—.</p>
 
       <form id="form-retiro" class="signup" novalidate>
         <input type="text" name="nombre" placeholder="Tu nombre" required autocomplete="given-name">
@@ -362,7 +287,7 @@
           <input type="checkbox" id="privacidad-retiro" required>
           <label for="privacidad-retiro">He leído y acepto la <a href="/legal.html#privacidad" target="_blank" rel="noopener">política de privacidad</a></label>
         </div>
-        <button type="submit" class="btn btn-ghost" style="width:100%">
+        <button type="submit" class="btn btn-primary" style="width:100%">
           <span class="btn-text">Avísame de las próximas fechas</span>
           <span class="btn-loading" hidden>Enviando…</span>
         </button>
@@ -411,26 +336,12 @@
     const a = document.getElementById('cta-whatsapp');
     a.href = href;
     if (WHATSAPP) a.target = '_blank';
-
-    // WhatsApp se abre fuera de la web; al volver, el paso 2 ya está encendido
-    // con el formulario dentro. Es el único momento en que podemos pedirle el correo.
-    a.addEventListener('click', () => {
-      const card = document.getElementById('card-whatsapp');
-      if (!card.hidden) return;
-      document.getElementById('paso-2-espera').hidden = true;
-      document.getElementById('paso-2').classList.remove('espera');
-      card.hidden = false;
-      setTimeout(() => {
-        document.getElementById('paso-2').scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }, 500);
-    });
   })();
 
-  // Los dos formularios de la página son iguales por dentro: cambia el origen
-  // con el que se guarda el alta ('retiro-whatsapp' = quiere plaza, 'retiro' = avísame).
-  function conectarFormulario(form, origen) {
-    const ok  = form.parentElement.querySelector('.form-ok');
-    const err = form.querySelector('.form-error');
+  (function formulario() {
+    const form = document.getElementById('form-retiro');
+    const ok   = form.parentElement.querySelector('.form-ok');
+    const err  = form.querySelector('.form-error');
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -460,18 +371,12 @@
         const res = await fetch('/api/submit-form', {
           method:  'POST',
           headers: { 'Content-Type': 'application/json' },
-          body:    JSON.stringify({ nombre, email, origen }),
+          body:    JSON.stringify({ nombre, email, origen: 'retiro' }),
         });
         clearTimeout(slowTimer);
         if (!res.ok) throw new Error('Error ' + res.status);
         form.hidden = true;
         ok.hidden   = false;
-        if (origen === 'retiro-whatsapp') {
-          document.getElementById('intro-whatsapp').hidden = true;
-          // Si ya ha dejado sus datos aquí, la tarjeta de «avísame de próximas
-          // fechas» de abajo sobra: le estaría pidiendo lo mismo otra vez.
-          document.getElementById('avisos').hidden = true;
-        }
       } catch (e) {
         clearTimeout(slowTimer);
         slowMsg.hidden = true;
@@ -482,10 +387,7 @@
         btn.disabled = false;
       }
     });
-  }
-
-  conectarFormulario(document.getElementById('form-whatsapp'), 'retiro-whatsapp');
-  conectarFormulario(document.getElementById('form-retiro'),   'retiro');
+  })();
 </script>
 
 </body>

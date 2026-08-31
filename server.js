@@ -61,6 +61,10 @@ app.use(express.static(path.join(__dirname)));
 // aquí, así el destino se puede cambiar sin reimprimir nada.
 app.get('/retiro', (_req, res) => res.sendFile(path.join(__dirname, 'retiros', 'retiro.html')));
 
+// Formulario suelto para pegar en WhatsApp: quien ya ha hablado con Chon deja
+// aquí sus datos y queda en el panel como «WA retiro».
+app.get('/reserva', (_req, res) => res.sendFile(path.join(__dirname, 'retiros', 'reserva.html')));
+
 // El Kit de Pausa, accesible sin cuenta ni contraseña: es el enlace que va en el
 // correo de bienvenida. Nada que caducar, nada que fallar.
 app.get('/kit', (_req, res) => res.sendFile(path.join(__dirname, 'kit.html')));
