@@ -129,7 +129,7 @@
 
     <div class="form-ok" hidden>
       <div class="icono">🌿</div>
-      <p class="titulo">Ya te tengo</p>
+      <p class="titulo">Ya tengo tu plaza reservada</p>
       <p class="msg">Tu plaza queda apuntada. Te escribo por WhatsApp con los detalles, y mira tu correo: te he mandado una cosita.</p>
     </div>
   </div>
@@ -180,6 +180,8 @@
         });
         clearTimeout(slowTimer);
         if (!res.ok) throw new Error('Error ' + res.status);
+        // El párrafo de «los necesito para…» ya no pinta nada una vez enviado.
+        form.parentElement.querySelector('p.sub').hidden = true;
         form.hidden = true;
         ok.hidden   = false;
       } catch (e) {
