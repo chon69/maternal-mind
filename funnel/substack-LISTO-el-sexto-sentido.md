@@ -117,7 +117,7 @@ Por eso el sábado 26 de septiembre hago un retiro de cuatro horas para madres, 
 
 Cuatro horas de movimiento suave, respiración, meditación y escritura, con prácticas basadas en mindfulness. Se habla menos y se está más. No hace falta experiencia previa ni estar pasándolo mal, solo tener ganas de parar y escuchar-te.
 
-Toda la información está aquí: **maternalmind.es/retiro**
+Toda la información está aquí: **www.maternalmind.es/retiro**
 
 Y si no puedes venir, quédate con lo de arriba. Tres respiraciones antes de responder ya es empezar.
 

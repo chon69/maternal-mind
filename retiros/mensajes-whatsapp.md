@@ -4,7 +4,7 @@ Dos mensajes que hacen trabajos distintos. El primero se manda **uno a uno**;
 el segundo se explica solo y está pensado para que lo reenvíen.
 
 Imagen para adjuntar: `retiros/img/retiro-whatsapp.png` (cuadrada, 1080×1080).
-La página `maternalmind.es/retiro` ya muestra tarjeta con imagen al pegar el enlace.
+La página `www.maternalmind.es/retiro` ya muestra tarjeta con imagen al pegar el enlace.
 
 ---
 
@@ -23,7 +23,7 @@ Una mañana para parar y volver a ti. Nada más, y nada menos.
 
 Me acordé de ti y quería que lo supieras tú antes que nadie. Somos 16 como máximo.
 
-Aquí está todo: maternalmind.es/retiro
+Aquí está todo: www.maternalmind.es/retiro
 
 Y si esa fecha no te viene bien, dímelo igual y te aviso de la siguiente.
 ```
@@ -57,7 +57,7 @@ Cuatro horas para parar y volver a ti desde la mirada del mindfulness. Sin neces
 Lo guía Chon Jorquera: pediatra durante treinta años, instructora de mindfulness y madre de tres.
 
 Plazas limitadas a 16.
-Toda la información y reservas 👉 maternalmind.es/retiro
+Toda la información y reservas 👉 www.maternalmind.es/retiro
 ```
 
 «Pediatra durante treinta años» va ahí a propósito: cuando esto llegue a una madre
