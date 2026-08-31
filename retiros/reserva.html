@@ -19,12 +19,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
+    --turq:       #7DCFCA;
+    --turq-dark:  #5BBFB9;
     --turq-deep:  #4AADA7;
     --turq-light: #C8EDEB;
     --turq-vlight:#EEF9F8;
     --gold:       #F2C14E;
     --gold-dark:  #B8820A;
     --gold-light: #FEF7E0;
+    --amber:      #FDF3DC;
     --ink:        #3A3A3A;
     --ink-soft:   #5E5E5E;
     --white:      #FFFFFF;
@@ -36,8 +39,10 @@
     min-height:100vh;-webkit-font-smoothing:antialiased;
   }
   .wrap{max-width:480px;margin:0 auto;padding:2.4rem 1.3rem 3rem}
-  .logo{font-size:.95rem;color:var(--turq-deep);letter-spacing:.02em;text-align:center;display:block;margin-bottom:2rem}
-  .logo b{color:var(--gold-dark);font-weight:700}
+  .logo{display:flex;align-items:center;justify-content:center;gap:.6rem;margin-bottom:2.2rem}
+  .logo svg{flex-shrink:0}
+  .logo-text{font-size:1.05rem;color:var(--turq-deep);letter-spacing:.01em}
+  .logo-text span{color:var(--gold);font-weight:500}
 
   h1{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:2rem;line-height:1.15;margin-bottom:.6rem}
   .bajada{color:var(--ink-soft);font-size:1rem;margin-bottom:1.5rem}
@@ -87,7 +92,13 @@
 <body>
 
 <div class="wrap">
-  <span class="logo">maternal <b>mind</b></span>
+  <div class="logo">
+    <svg width="44" height="24" viewBox="0 0 52 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <ellipse cx="17" cy="14" rx="13" ry="13" stroke="var(--turq)" stroke-width="3" fill="none"/>
+      <ellipse cx="35" cy="14" rx="13" ry="13" stroke="var(--gold)" stroke-width="3" fill="none"/>
+    </svg>
+    <div class="logo-text">maternal <span>mind</span></div>
+  </div>
 
   <h1>Te guardo la plaza</h1>
   <p class="bajada">Ya hemos hablado por WhatsApp. Déjame aquí tu nombre y tu correo y tu sitio queda apuntado.</p>
