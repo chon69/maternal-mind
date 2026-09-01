@@ -15,7 +15,9 @@
 | **Panel Clientas** | https://www.maternalmind.es/app/cliente/ |
 
 > Alojado en Railway — se re-despliega automáticamente al hacer `git push` a la rama `main`.
-> El dominio sin `www` (maternalmind.es) redirige al de arriba.
+> El dominio sin `www` (maternalmind.es) redirige al de arriba **solo en la raíz**: el
+> reenvío de GoDaddy no conserva la ruta, así que maternalmind.es/retiro da 404.
+> Reparte siempre las direcciones con `www`.
 
 ## URLs de staging (pruebas)
 
