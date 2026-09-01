@@ -21,7 +21,7 @@ No es un círculo. En el círculo sobre todo hablamos y nos escuchamos. En el re
 
 Una mañana para parar y volver a ti. Nada más, y nada menos.
 
-Me acordé de ti y quería que lo supieras tú antes que nadie. Somos 16 como máximo.
+Me acordé de ti y quería que lo supieras tú antes que nadie. Somos pocas.
 
 Aquí está todo: www.maternalmind.es/retiro
 
@@ -56,7 +56,7 @@ Cuatro horas para parar y volver a ti desde la mirada del mindfulness. Sin neces
 
 Lo guía Chon Jorquera: pediatra durante treinta años, instructora de mindfulness y madre de tres.
 
-Plazas limitadas a 16.
+Plazas limitadas.
 Toda la información y reservas 👉 www.maternalmind.es/retiro
 ```
 
