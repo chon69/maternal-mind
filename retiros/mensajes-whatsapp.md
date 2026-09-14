@@ -56,13 +56,13 @@ Cuatro horas para parar y volver a ti desde la mirada del mindfulness. Sin neces
 
 Una mañana solo para ti, tengan tus hijos la edad que tengan.
 
-Lo guía Chon Jorquera: pediatra durante treinta años, instructora de mindfulness y madre de tres.
+Lo guía Chon Jorquera: pediatra desde hace treinta años, instructora de mindfulness y madre de tres.
 
 Grupo pequeño, en confianza.
 Toda la información y reservas 👉 www.maternalmind.es/retiro
 ```
 
-«Pediatra durante treinta años» va ahí a propósito: cuando esto llegue a una madre
+«Pediatra desde hace treinta años» va ahí a propósito: cuando esto llegue a una madre
 que no conoce a Chon de nada, esa línea es la que evita que lo descarte.
 
 «Mindfulness» sale dos veces a propósito: primero dice qué se hace y luego quién
