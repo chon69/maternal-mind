@@ -54,7 +54,7 @@ Adyanta · P.º del Zurrón 43, Barajas (Madrid)
 
 Cuatro horas para parar y volver a ti desde la mirada del mindfulness. Sin necesidad de experiencia previa ni de estar pasándolo mal.
 
-Para madres con hijos de cualquier edad: tres meses, tres años o veinte.
+Una mañana solo para ti, madre de hijos pequeños o ya mayores.
 
 Lo guía Chon Jorquera: pediatra durante treinta años, instructora de mindfulness y madre de tres.
 

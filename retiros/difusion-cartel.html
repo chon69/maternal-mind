@@ -156,6 +156,7 @@ label.fila input:checked::after{
   transform:rotate(42deg)
 }
 label.fila input:focus-visible{outline:2px solid var(--dorado);outline-offset:2px}
+.nombre,.dato,.pista{display:block}
 .nombre{font-weight:500;font-size:15.5px;line-height:1.35}
 .dato{
   font-family:"DM Mono",ui-monospace,monospace;font-size:12.5px;
@@ -220,17 +221,17 @@ footer{
 
 <header>
   <p class="eyebrow">Retiro «Volver a ti» · sábado 26 de septiembre</p>
-  <h1>Dónde dejar<br><em>el cartel</em></h1>
-  <p class="entradilla">Barajas y Valdebebas, puerta a puerta y pantalla a pantalla. Ordenado por lo que más plazas da primero, no por categorías. Ve marcando.</p>
+  <h1>Doce días,<br><em>seis madres</em></h1>
+  <p class="entradilla">Barajas y Valdebebas, puerta a puerta y pantalla a pantalla. Arriba, tachado, lo que ya está hecho. Debajo, lo que queda, ordenado por lo que más madres puede traer en estos doce días. El retiro es solo para madres, con hijos pequeños o ya mayores: por eso suben los colegios y los institutos, y las escuelas infantiles bajan al final.</p>
 
   <dl class="reloj">
-    <div><dt>Faltan</dt><dd>24 días</dd></div>
-    <div><dt>Aforo</dt><dd>16 plazas</dd></div>
-    <div><dt>Fecha útil límite</dt><dd class="urge">viernes 12 sep</dd></div>
+    <div><dt>Faltan</dt><dd>12 días</dd></div>
+    <div><dt>Para hacerlo</dt><dd class="urge">6 madres</dd></div>
+    <div><dt>Han dicho sí</dt><dd>1</dd></div>
     <div><dt>Sede</dt><dd>P.º del Zurrón 43</dd></div>
   </dl>
 
-  <p class="nota"><strong>Antes de salir:</strong> lleva el cartel impreso en A4 (varias copias), el mensaje reenviable ya escrito en el móvil y el enlace <em>www.maternalmind.es/retiro</em> a mano. Y llama antes de plantarte en un sitio: estos teléfonos y direcciones salen de una búsqueda del 2 de septiembre y alguno estará desactualizado.</p>
+  <p class="nota"><strong>La imagen es nueva:</strong> ahora dice «Solo para ti, madre de hijos pequeños o ya mayores», porque varias madres entendieron que era para niños pequeños o para ir con ellos. Usa esa en todo lo que queda, y reenvíasela a quien tiene la vieja. Los mensajes ya escritos están en <em>retiros/mensajes-difusion-2.md</em>. El enlace, siempre con www: <em>www.maternalmind.es/retiro</em>. Los teléfonos salen de una búsqueda del 2 de septiembre: llama antes de ir.</p>
 </header>
 
 <div class="progreso">
@@ -240,58 +241,40 @@ footer{
 </div>
 
 <section>
-  <p class="cuando">Del 2 al 7 de septiembre</p>
-  <h2>Las personas, antes que los sitios</h2>
-  <p class="porque">De aquí van a salir la mayoría de las 16 plazas. Un cartel en una cartelera convence a poca gente; una mujer que te conoce y le dice a otra «ve» convence a casi cualquiera. Esto primero, y sin prisa.</p>
+  <p class="cuando">Hecho hasta el 14 de septiembre</p>
+  <h2>Lo que ya has movido</h2>
+  <p class="porque">Una madre viene seguro y tres quieren venir pero este mes no les llega. El interés existe: lo que queda es llegar a más gente como ellas.</p>
   <ul class="lista">
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Las madres de los círculos<span class="clave">Lo primero</span></span><span class="pista">Uno a uno, con su nombre, el mensaje personal que ya tienes escrito. No reenviar la versión pública a estas.</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Tus vecinas con hijas e hijos en edad escolar<span class="clave">Lo primero</span></span><span class="pista">Pídeles el favor concreto, no «compártelo»: que lo peguen en el grupo de WhatsApp de la clase de su hijo. Ahí hay treinta madres que no te conocen de nada.</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">El grupo de WhatsApp de tu comunidad o tu escalera</span><span class="pista">Con la imagen delante y el texto debajo, como el reenviable.</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Tus excompañeras de pediatría<span class="clave">Lo primero</span></span><span class="pista">Treinta años de consulta son la red más grande que tienes. Enfermeras, pediatras, matronas: muchas son ahora madres de 35 a 45, y las que no, atienden a las que sí.</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Madres que pasaron por tu consulta y siguen en contacto</span><span class="pista">Sus bebés tienen ahora diez o quince años. Ellas son exactamente la mujer del retiro.</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Las madres del instituto de tu hijo pequeño</span><span class="pista">El grupo de las madres de su clase. Son de tu edad o algo menos y llevan diez años sin pararse.</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Las madres de los amigos de tus hijos mayores</span><span class="pista">Los de 25 y 23 no son el público, pero sus madres sí, y llevas años viéndolas.</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Hermanas, cuñadas, primas, amigas de siempre</span><span class="pista">Aunque no vengan, cada una tiene su propio grupo de madres.</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Tu peluquera, tu fisio, tu dentista, la del herbolario</span><span class="pista">Hablan con veinte mujeres al día y les gusta tener algo que contar. Deja dos carteles: uno para el escaparate y otro para ellas.</span></span></label></li>
+    <li><label class="fila"><input type="checkbox" checked><span class="cont"><span class="nombre">Las madres de los círculos</span><span class="pista">Una viene. Tres quieren, pero no pueden pagarlo este mes: las opciones están en «Para decidir», al final de mensajes-difusion-2.md.</span></span></label></li>
+    <li><label class="fila"><input type="checkbox" checked><span class="cont"><span class="nombre">Compañeros del centro de salud</span></span></label></li>
+    <li><label class="fila"><input type="checkbox" checked><span class="cont"><span class="nombre">Vecinas con hijos en colegios</span></span></label></li>
+    <li><label class="fila"><input type="checkbox" checked><span class="cont"><span class="nombre">Un par de madres de la consulta</span></span></label></li>
+    <li><label class="fila"><input type="checkbox" checked><span class="cont"><span class="nombre">Adyanta</span></span></label></li>
+    <li><label class="fila"><input type="checkbox" checked><span class="cont"><span class="nombre">La parafarmacia junto al centro de salud</span></span></label></li>
+    <li><label class="fila"><input type="checkbox" checked><span class="cont"><span class="nombre">Dos centros de fisioterapia</span></span></label></li>
   </ul>
 </section>
-
 <section>
-  <p class="cuando">El mismo día que tengas el cartel impreso</p>
-  <h2>Adyanta, la casa</h2>
-  <p class="porque">Es la sede y tiene alumnas de yoga en la misma sala donde vas a hacer el retiro. Público exacto, coste cero y ninguna razón para decirte que no.</p>
+  <p class="cuando">Hoy y mañana · 14 y 15 sep</p>
+  <h2>Reenviar la imagen nueva</h2>
+  <p class="porque">Ya te conocen y ya han dicho que sí a pasarlo: es lo más barato que queda. La aclaración de las edades te da un motivo natural para volver a escribir sin que suene a insistir. Mensaje A.</p>
   <ul class="lista">
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Adyanta Studio<span class="clave">Máximo rendimiento</span></span><span class="dato">P.º del Zurrón 43 · abierto de 10:00 a 21:30</span><span class="pista">Pide tres cosas, no una: cartel en la cartelera de la entrada, mención en su Instagram, y que lo manden a su lista de alumnas si tienen una.</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Compañeros del centro de salud<span class="clave">Lo primero</span></span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Tus vecinas<span class="clave">Lo primero</span></span><span class="pista">Y el favor concreto: que lo peguen en el grupo de WhatsApp de la clase de su hijo, con el texto del mensaje B.</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Las madres de la consulta</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Adyanta</span><span class="pista">Con la imagen nueva, pide lo que falte de estas tres cosas: cartel en la entrada, publicación en su Instagram y envío a su lista de alumnas.</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">La parafarmacia y las dos fisios</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">La madre de los círculos que ya viene</span><span class="pista">Pregúntale si tiene una amiga que quiera venir con ella. Dos que se conocen se animan antes que una sola.</span></span></label></li>
   </ul>
 </section>
-
 <section>
-  <p class="cuando">Semana del 8 al 12 de septiembre</p>
-  <h2>Escuelas infantiles, a la vuelta del cole</h2>
-  <p class="porque">La puerta de una escuela infantil a las nueve de la mañana es el sitio del distrito con más madres agotadas por metro cuadrado. La primera semana de curso todo el mundo está pendiente del tablón. Habla con la directora y pide dos cosas: el tablón y la circular a las familias.</p>
+  <p class="cuando">Del 15 al 17 sep</p>
+  <h2>Colegios e institutos: el AMPA y los grupos de clase</h2>
+  <p class="porque">Las madres de niños de primaria y de adolescentes son las que menos cosas tienen pensadas para ellas, y ahora el retiro les habla claro. El correo al AMPA tarda días en moverse, así que va primero. Busca su dirección en la web del centro y escribe ahí, no a secretaría. Mensaje B.</p>
   <ul class="lista">
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">EI Municipal El Bateo</span><span class="dato">C/ Pinos de Osuna 3 · 917 414 436</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">EI Municipal La Chulapona</span><span class="dato">C/ Bahía de Pollensa 3 · 913 122 028</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">EI Municipal La Colina</span><span class="dato">C/ Ntra. Sra. de Araceli 2 · 678 350 330</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">EI Las Gaviotas</span><span class="dato">Barajas · concertada</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Nemomarlin Barajas</span><span class="dato">Barajas · privada</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Little Frogs</span><span class="dato">Barajas · privada</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Los Cucos</span><span class="dato">Barajas · privada</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Balloons</span><span class="dato">Barajas · privada</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Kinder My Garden</span><span class="dato">Barajas · privada</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Andal Alameda</span><span class="dato">Alameda de Osuna · privada</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">El Jardín de Larín</span><span class="dato">Playa de Aro · privada</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">EI Bichejos Valdebebas</span><span class="dato">C/ José Antonio Corrales 15 · 915 277 521</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">EI Valdebebitos</span><span class="dato">C/ César Cort Botí 16</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">EI Eduqa Valdebebas</span><span class="dato">Valdebebas</span></span></label></li>
-  </ul>
-</section>
-
-<section>
-  <p class="cuando">Semana del 8 al 12 de septiembre</p>
-  <h2>Colegios e institutos, por el AMPA</h2>
-  <p class="porque">La dirección de un colegio público no cuelga cosas de fuera y te va a mandar a la Junta de Distrito. El AMPA sí lo pasa por su grupo, y ese grupo tiene cientos de madres. Busca el correo del AMPA en la web del centro y escribe a esa dirección, no a secretaría.</p>
-  <ul class="lista">
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">El grupo de clase del instituto de tu hijo pequeño<span class="clave">Lo primero</span></span><span class="pista">Son madres de tu edad o algo menos. Pégalo tú misma, o pídeselo a una madre de la clase.</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">AMPA IES Barajas<span class="clave">Instituto</span></span><span class="dato">Barajas · público</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">AMPA IES Alameda de Osuna<span class="clave">Instituto</span></span><span class="dato">Barajas · público</span></span></label></li>
     <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">AMPA CEIP Calderón de la Barca</span><span class="dato">Barajas · público</span></span></label></li>
     <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">AMPA CEIP Ciudad de Guadalajara</span><span class="dato">Barajas · público</span></span></label></li>
     <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">AMPA CEIP Ciudad de Zaragoza</span><span class="dato">Barajas · público</span></span></label></li>
@@ -300,104 +283,119 @@ footer{
     <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">AMPA Colegio Gaudem</span><span class="dato">Barajas · concertado</span></span></label></li>
     <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">AMPA Colegio San Pedro Apóstol</span><span class="dato">Barajas · concertado</span></span></label></li>
     <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">AMPA Colegio Alameda de Osuna</span><span class="dato">Alameda International School · privado</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">AMPA IES Alameda de Osuna</span><span class="dato">Barajas · público</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">AMPA IES Barajas</span><span class="dato">Barajas · público</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Los colegios de Valdebebas</span><span class="dato">confirmar nombres exactos</span><span class="pista">Valdebebas es distrito de Hortaleza, no Barajas, pero está pared con pared con la sala y es barrio joven lleno de familias con niños pequeños. Merece la pena tratarlo como zona propia.</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Los colegios de Valdebebas</span><span class="dato">confirmar nombres exactos</span><span class="pista">Es distrito de Hortaleza, pero está pegado a la sala y lleno de familias.</span></span></label></li>
   </ul>
 </section>
-
 <section>
-  <p class="cuando">Mientras estés por el Zurrón</p>
-  <h2>Cuerpo y movimiento</h2>
-  <p class="porque">Aquí no hay que explicar nada: sus clientas ya pagan por cuidarse el cuerpo y ya entienden qué es una práctica. Es el público más caliente que hay fuera de tus círculos.</p>
+  <p class="cuando">Del 15 al 18 sep</p>
+  <h2>Las personas que faltan</h2>
+  <p class="porque">Una mujer que te conoce y le dice a otra «ve» convence más que cualquier cartel. Estas todavía no lo tienen.</p>
   <ul class="lista">
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Pilates Barajas<span class="clave">A cuarenta metros</span></span><span class="dato">P.º del Zurrón 1 · 640 051 910 · L-J 8:00-22:00</span><span class="pista">Misma calle que Adyanta. Lo llevan Elisenda y Paloma, veinte años en el cuerpo y el movimiento: te van a entender a la primera.</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Las madres de los amigos de tus hijos mayores</span><span class="pista">Llevas años viéndolas y sus hijos ya son mayores: ahora el retiro dice claro que también es para ellas.</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Excompañeras de pediatría fuera de tu centro de salud</span><span class="pista">Enfermeras, pediatras y matronas de otros centros donde has trabajado.</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Hermanas, cuñadas, primas, amigas de siempre</span><span class="pista">Aunque no vengan, cada una tiene su propio grupo de madres.</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">El grupo de WhatsApp de tu comunidad o tu escalera</span><span class="pista">La imagen delante y el texto del reenviable debajo.</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Tu peluquera, tu dentista, la del herbolario</span><span class="pista">Hablan con veinte mujeres al día. Dos carteles: uno para el escaparate y otro para ellas.</span></span></label></li>
+  </ul>
+</section>
+<section>
+  <p class="cuando">Del 16 al 19 sep · por el Zurrón</p>
+  <h2>Cuerpo y movimiento</h2>
+  <p class="porque">Sus clientas ya pagan por cuidarse y entienden qué es una práctica, tengan los hijos que tengan. Es el público más cercano que hay fuera de tus círculos.</p>
+  <ul class="lista">
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Pilates Barajas<span class="clave">A cuarenta metros</span></span><span class="dato">P.º del Zurrón 1 · 640 051 910 · L-J 8:00-22:00</span><span class="pista">En la misma calle que Adyanta.</span></span></label></li>
     <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">FeelYoga</span><span class="dato">Barajas</span></span></label></li>
     <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Espacio Balandro 40</span><span class="dato">Alameda de Osuna</span></span></label></li>
     <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Luci's Fithouse Valdebebas</span><span class="dato">Valdebebas · pilates máquina en grupo</span></span></label></li>
     <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Infinit Fitness Valdebebas</span><span class="dato">Valdebebas · gimnasio 24 h</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Centro Deportivo Municipal Barajas</span><span class="dato">metro Barajas / Alameda de Osuna · tablón de anuncios</span><span class="pista">Es municipal: el tablón está para esto y no cuesta dinero.</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Centro Deportivo Municipal Barajas</span><span class="dato">tablón de anuncios</span><span class="pista">Y los clubes donde juegan los hijos el sábado por la mañana: las madres están ahí, esperando en la banda.</span></span></label></li>
   </ul>
 </section>
-
 <section>
-  <p class="cuando">La misma semana, con bata mental puesta</p>
-  <h2>Salud: fisio, suelo pélvico, matronas</h2>
-  <p class="porque">Tu ventaja aquí no es el cartel: son treinta años de pediatra. A una matrona o a una fisio de suelo pélvico le hablas de tú a tú, y lo que recomienda una matrona no lo recomienda ningún cartel.</p>
-  <ul class="lista">
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">La matrona del Centro de Salud de Barajas<span class="clave">Habla con ella</span></span><span class="dato">pregunta por la matrona, no dejes el cartel en el mostrador</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">La matrona del nuevo Centro de Salud de Valdebebas</span><span class="dato">tiene consulta de matrona y sala de preparación al parto</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Quirónsalud Valdebebas</span><span class="dato">cursos de preparación al parto</span><span class="pista">Las mujeres que hacen preparación al parto hoy son las que dentro de un año necesitan exactamente esto.</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Fisioeme Valdebebas</span><span class="dato">suelo pélvico</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Bahía Madrid</span><span class="dato">Barajas · 624 667 838 · suelo pélvico y fisioterapia</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Centro de Rehabilitación Sanitas Valdebebas</span><span class="dato">C/ Gustavo Pérez Puig 60 · 910 490 195</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Ohana Psicología</span><span class="dato">C/ Alcañiz 8, Barajas · psicología perinatal</span><span class="pista">Trabajan lactancia, vínculo y acompañamiento en la crianza. Sus pacientes son madres que ya han decidido cuidarse.</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Las farmacias de Barajas y Valdebebas</span><span class="dato">escaparate y mostrador</span><span class="pista">El escaparate de la farmacia lo lee el barrio entero. Empieza por la tuya, donde te conocen.</span></span></label></li>
-  </ul>
-</section>
-
-<section>
-  <p class="cuando">Cuando quieras · todo gratis</p>
-  <h2>Lo público del distrito</h2>
-  <p class="porque">Carteleras municipales y asociaciones vecinales: no cobran, tienen agenda propia y les gusta anunciar cosas de vecinos del barrio. El Espacio de Igualdad es el que más sentido tiene de todos: existe literalmente para actividades con mujeres del distrito.</p>
-  <ul class="lista">
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Espacio de Igualdad Ana Orantes<span class="clave">El más afín</span></span><span class="dato">C/ Playa de San Juan 6 · 915 256 681</span><span class="pista">Programan talleres de empoderamiento y actividades grupales para mujeres de Barajas. Preséntate y pregunta también si les interesa que hagas algo con ellas más adelante.</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Centro Sociocultural Villa de Barajas</span><span class="dato">C/ Botica · L-V 8:30-22:00</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Centro Cultural Alfonso Ussía</span><span class="dato">Valdebebas · 51 cursos, mucha gente entrando y saliendo</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Bibliotecas públicas de Barajas</span><span class="dato">tablón de anuncios</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Asociación Vecinal de Barajas</span><span class="dato">asociacionvecinaldebarajas.org</span><span class="pista">Ya programan yoga, club de lectura y talleres. Público hecho y acostumbrado a apuntarse a cosas.</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Asociación de Vecinos de Valdebebas</span><span class="dato">avvaldebebas.es</span><span class="pista">Publican cada mes la agenda de actividades del barrio. Pídeles que lo metan en la de septiembre.</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Junta Municipal del Distrito de Barajas</span><span class="dato">agenda del distrito</span></span></label></li>
-  </ul>
-</section>
-
-<section>
-  <p class="cuando">De paso, sin desviarte</p>
+  <p class="cuando">Del 16 al 20 sep · de paso</p>
   <h2>El comercio donde para una madre</h2>
-  <p class="porque">No hace falta patearse todo: los sitios donde una mujer se sienta cinco minutos o espera un turno. Dos carteles en cada uno, uno para el cristal y otro para quien atiende.</p>
+  <p class="porque">Lo que tenías pendiente. No hace falta patearse todo: basta con los sitios donde una mujer espera un turno o se sienta cinco minutos. Dos carteles en cada uno, uno para el cristal y otro para quien atiende. Guion C.</p>
   <ul class="lista">
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Cafeterías donde se puede aparcar un carrito</span><span class="dato">Barajas pueblo, Alameda de Osuna, Valdebebas</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Peluquerías y centros de estética</span><span class="dato">clientas sentadas cuarenta minutos mirando la pared</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Tiendas de puericultura y ropa infantil</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Peluquerías y centros de estética</span><span class="dato">clientas sentadas cuarenta minutos</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Cafeterías de barrio</span><span class="dato">Barajas pueblo, Alameda de Osuna, Valdebebas</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Papelerías y librerías cerca de colegios e institutos</span><span class="pista">Por ahí pasan las madres de escolares toda la semana.</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Academias, extraescolares y escuelas de música</span><span class="pista">Mientras el hijo está en clase, la madre espera fuera. Y el sábado por la mañana ya lo tiene resuelto.</span></span></label></li>
     <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Herbolarios y dietéticas</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Ludotecas y academias de extraescolares</span><span class="pista">Los sábados por la mañana ya son de dejar al niño en algún sitio. Ahí la madre ya tiene resuelto el problema de con quién dejarlo.</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Comercio local del Centro Comercial Valdebebas</span><span class="dato">centrocomercialvaldebebas.com</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Comercio local del Centro Comercial Valdebebas</span></span></label></li>
     <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Panaderías y fruterías de barrio</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Tiendas de puericultura y ropa infantil</span><span class="pista">Al final: aquí casi todas son madres de bebés.</span></span></label></li>
   </ul>
 </section>
-
 <section>
   <p class="cuando">Hoy mismo, desde el sofá</p>
   <h2>Las pantallas del barrio</h2>
-  <p class="porque">Valdebebas se organiza en Facebook y en la web de su asociación mucho más que el resto de Madrid. Es gratis y llega a miles de vecinos en una tarde.</p>
+  <p class="porque">Es gratis y llega a miles de vecinos en una tarde. Valdebebas se organiza mucho por Facebook.</p>
   <ul class="lista">
     <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Grupo «Vecinos de Valdebebas»</span><span class="dato">Facebook · ~2.700 seguidores</span></span></label></li>
     <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Grupo «Living in Valdebebas»</span><span class="dato">Facebook · ~3.900 seguidores</span></span></label></li>
     <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Página «Valdebebas»</span><span class="dato">Facebook · ~7.000 seguidores</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Agenda mensual de la AV de Valdebebas</span><span class="dato">avvaldebebas.es · escribirles para septiembre</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Instagram de Adyanta</span><span class="pista">Pídeles que lo suban ellos, no que compartan lo tuyo: en su feed llega a sus alumnas.</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Agenda de la AV de Valdebebas</span><span class="dato">avvaldebebas.es</span><span class="pista">Septiembre ya va avanzado: pídeles que lo saquen en redes, no solo en la agenda del mes.</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Instagram de Adyanta</span><span class="pista">Que lo suban ellos: en su feed llega a sus alumnas.</span></span></label></li>
     <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Tu Substack: una nota corta con el enlace</span><span class="dato">www.maternalmind.es/retiro</span></span></label></li>
-    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Tu Instagram: cartel en el feed y en stories</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Tu Instagram: la imagen nueva en el feed y en stories</span></span></label></li>
+  </ul>
+</section>
+<section>
+  <p class="cuando">Si queda tiempo · gratis</p>
+  <h2>Lo público del distrito</h2>
+  <p class="porque">No cobran y tienen agenda propia, pero tardan en moverse. Con doce días, solo lo que puedas dejar en persona.</p>
+  <ul class="lista">
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Espacio de Igualdad Ana Orantes<span class="clave">El más afín</span></span><span class="dato">C/ Playa de San Juan 6 · 915 256 681</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Centro Sociocultural Villa de Barajas</span><span class="dato">C/ Botica · L-V 8:30-22:00</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Centro Cultural Alfonso Ussía</span><span class="dato">Valdebebas</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Bibliotecas públicas de Barajas</span><span class="dato">tablón de anuncios</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Asociación Vecinal de Barajas</span><span class="dato">asociacionvecinaldebarajas.org</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Junta Municipal del Distrito de Barajas</span><span class="dato">agenda del distrito</span></span></label></li>
+  </ul>
+</section>
+<section>
+  <p class="cuando">Si queda tiempo</p>
+  <h2>Salud: lo que falta</h2>
+  <p class="porque">El centro de salud, la parafarmacia y dos fisios ya lo tienen. Esto es lo que queda, y muchas de sus pacientes son madres de bebés o embarazadas.</p>
+  <ul class="lista">
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">La matrona del Centro de Salud de Barajas</span><span class="pista">Solo si no estaba entre los compañeros a los que ya se lo mandaste.</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">La matrona del Centro de Salud de Valdebebas</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Ohana Psicología</span><span class="dato">C/ Alcañiz 8, Barajas · perinatal</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Farmacias de Barajas y Valdebebas</span><span class="dato">escaparate y mostrador</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Bahía Madrid · Fisioeme · Sanitas Valdebebas</span><span class="dato">fisioterapia y suelo pélvico</span><span class="pista">Solo las que no eran de las dos fisios que ya tienen el cartel.</span></span></label></li>
+  </ul>
+</section>
+<section>
+  <p class="cuando">Al final, y solo si te apetece</p>
+  <h2>Escuelas infantiles</h2>
+  <p class="porque">Opcionales. En otros proyectos no te han funcionado, y sus madres son solo de niños pequeños, que es justo la idea que queremos quitar. Si pasas por delante, deja el cartel. Si no, no pasa nada.</p>
+  <ul class="lista">
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">EI Municipal El Bateo</span><span class="dato">C/ Pinos de Osuna 3 · 917 414 436</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">EI Municipal La Chulapona</span><span class="dato">C/ Bahía de Pollensa 3 · 913 122 028</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">EI Municipal La Colina</span><span class="dato">C/ Ntra. Sra. de Araceli 2 · 678 350 330</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">EI Las Gaviotas · Nemomarlin · Little Frogs · Los Cucos · Balloons · Kinder My Garden</span><span class="dato">Barajas</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">Andal Alameda · El Jardín de Larín</span><span class="dato">Alameda de Osuna</span></span></label></li>
+    <li><label class="fila"><input type="checkbox"><span class="cont"><span class="nombre">EI Bichejos · EI Valdebebitos · EI Eduqa</span><span class="dato">Valdebebas</span></span></label></li>
   </ul>
 </section>
 
 <div class="cierre">
   <h2>Cómo pedirlo cuando entres</h2>
-  <p>Lo que no funciona es dejar el cartel en el mostrador y marcharse: acaba en un cajón esa misma tarde. Habla con quien manda —la directora, la dueña, la matrona— y pide algo concreto que puedan hacer en treinta segundos.</p>
-  <p class="guion">«Soy Chon, vivo aquí en el barrio. Fui pediatra treinta años y ahora acompaño a madres. El 26 hago un retiro de cuatro horas para madres aquí al lado, en Adyanta. ¿Te importa si dejo el cartel? Y si te encaja, ¿podrías pasarlo a vuestras madres?»</p>
-  <p>«Pediatra treinta años» es la frase que hace que no te descarten. Dila siempre, aunque te dé pudor: para quien no te conoce, es lo único que separa esto de cualquier otra cosa que le hayan traído esta semana.</p>
-  <p>Y pide dos carteles de sitio: uno para el cristal y otro para la persona. El segundo es el que acaba en un grupo de WhatsApp.</p>
+  <p>Dejar el cartel en el mostrador y marcharse no sirve: esa misma tarde acaba en un cajón. Habla con quien manda —la dueña, la directora, la matrona— y pídele algo concreto que pueda hacer en treinta segundos.</p>
+  <p class="guion">«Hola, soy Chon, vivo aquí en el barrio y soy pediatra desde hace treinta años. El sábado 26 hago una mañana solo para madres aquí al lado, en Adyanta, tengan sus hijos la edad que tengan. ¿Te importa si dejo el cartel? Y si ves a alguna clienta a la que le pueda venir bien, ¿se lo comentarías?»</p>
+  <p>«Pediatra desde hace treinta años» es la frase que hace que no te descarten. Dila siempre, aunque te dé pudor. Y «tengan sus hijos la edad que tengan» dilo en voz alta: el cartel se mira de pasada.</p>
+  <p>Deja dos carteles: uno para el cristal y otro para la persona. El segundo es el que acaba en un grupo de WhatsApp.</p>
 </div>
 
 <footer>
-  Datos de contacto recogidos el 2 de septiembre de 2026 de fuentes públicas (Ayuntamiento de Madrid, webs de los centros, directorios). Confirma teléfono y horario antes de ir. Lo que marques se guarda solo en este navegador.
+  Actualizado el 14 de septiembre de 2026. Datos de contacto recogidos el 2 de septiembre de fuentes públicas: confirma teléfono y horario antes de ir. Lo que marques se guarda solo en este navegador.
 </footer>
 
 </div>
 
 <script>
 (function(){
-  var CLAVE = "reparto-barajas-26sep";
+  var CLAVE = "reparto-barajas-26sep-v2";
   var cajas = Array.prototype.slice.call(document.querySelectorAll("label.fila input"));
   var cuenta = document.getElementById("cuenta");
   var relleno = document.getElementById("relleno");
@@ -420,7 +418,7 @@ footer{
 
   var guardado = leer();
   cajas.forEach(function(c, i){
-    if (guardado[i]) c.checked = true;
+    if (guardado.length) c.checked = !!guardado[i];
     c.addEventListener("change", function(){ guardar(); pintar(); });
   });
 
