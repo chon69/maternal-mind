@@ -107,26 +107,50 @@ a una clienta. Dos carteles: uno para el cristal y otro para ella.
 
 ---
 
-## Para decidir — las tres madres que quieren venir y no pueden este mes
+## Las madres que quieren venir y no pueden este mes
 
-**Solo para Chon. No va en ninguna pieza pública.** Las tres quieren venir y lo que las
-frena es la fecha de cobro, no el retiro. Con ellas y la que ya viene serían 4, así
-que faltarían 2 para el mínimo de 6. Ofrezcas lo que ofrezcas, que sea lo mismo para
-las tres.
+**Solo para Chon. No va en ninguna pieza pública.** Decidido por Chon el 14-sep: a
+cada una lo suyo, porque la situación de cada una es distinta.
 
-1. **Reservar ahora y pagar en octubre.** La plaza se guarda con su palabra y se paga
-   la mañana suelta (70 €) por Bizum los primeros días de octubre, cuando ya han
-   cobrado. Es lo más sencillo. El riesgo es que alguna no pague, pero son madres de
-   tus círculos.
-2. **La mañana suelta en dos pagos.** 35 € ahora y 35 € a primeros de octubre. Deja un
-   compromiso hoy y pesa menos en septiembre. Son dos Bizum que controlar.
-3. **Precio de madre del círculo.** Por ejemplo, 50 € la mañana suelta para quien ya
-   viene a tus círculos. Resuelve el dinero de verdad, pero crea un precedente para
-   los tres retiros siguientes y, si se sabe, rebaja la sensación de valor para el
-   resto.
+Mensajes personales, uno a uno. Lo que va entre corchetes lo rellena Chon.
 
-Si eliges la 1 o la 2, una forma de decírselo sin que suene a rebaja:
+### 1 · Beca: la aportación que pueda
 
 ```
-Me quedé pensando en lo que me dijiste 🌿 Si lo que te frena es que cae a final de mes, puedes reservar tu plaza ahora y pagármela en octubre. Me encantaría que estuvieras.
+Hola [nombre] 🌿 Me quedé pensando en lo que me dijiste del retiro.
+
+Me gustaría mucho que vinieras, y no quiero que el dinero sea lo que lo impida. Si te parece, ven y aporta lo que puedas, cuando puedas, sin compromiso.
+
+Esto queda entre tú y yo. ¿Te guardo la plaza?
 ```
+
+«Entre tú y yo» va a propósito: en un grupo de seis que se conoce de los círculos,
+es lo que le permite venir sin sentirse la de la beca.
+
+### 2 · La profesora de yoga: participa y paga menos
+
+```
+Hola [nombre] 🌿 Le he estado dando vueltas a lo del retiro y se me ha ocurrido algo.
+
+Tú sabes mucho de cuerpo y de movimiento. ¿Te apetecería guiar [el movimiento suave del cierre, unos diez minutos]? El resto de la mañana vienes como una más, y la plaza te queda en [X €].
+
+Si no te encaja, dímelo con total libertad y lo pensamos de otra manera.
+```
+
+Mejor el movimiento del **cierre** que el de llegada: así ella vive la mañana entera
+como participante antes de guiar, y el de llegada sigue siendo tuyo, que es donde se
+nombran las primeras actitudes. Pásale antes el guion de ese momento para que lo
+adapte a su estilo sin cambiar el tono. Al grupo basta con decirle «[nombre] nos
+guía el movimiento»; lo del precio no tiene por qué saberse.
+
+### 3 · Plazos
+
+```
+Hola [nombre] 🌿 Me quedé pensando en lo que me dijiste.
+
+Si lo que te frena es que cae a final de mes, puedes pagarla en dos veces: [35 €] ahora para reservar y [35 €] el [1 de octubre]. Así no te pesa todo en septiembre.
+
+Me encantaría que estuvieras.
+```
+
+Pon fecha concreta al segundo pago: «en octubre» a secas se olvida.
