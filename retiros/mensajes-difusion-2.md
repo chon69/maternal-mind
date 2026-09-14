@@ -3,8 +3,8 @@
 Escritos el 14-sep-2026, a 12 días del retiro. Llevan todos la aclaración que faltaba:
 **es solo para madres, sin los niños, y da igual la edad de sus hijos.**
 
-Imagen para adjuntar: `retiros/img/retiro-whatsapp.png`, la nueva, que dice «Solo para
-ti, madre de hijos pequeños o ya mayores». Enlace, siempre con www.
+Imagen para adjuntar: `retiros/img/retiro-whatsapp.png`, la nueva, que dice «Una mañana solo
+para ti, tengan tus hijos la edad que tengan». Enlace, siempre con www.
 
 ---
 
@@ -69,7 +69,7 @@ en el grupo del instituto de tu hijo.
 ```
 🌿 Por si a alguna le apetece: el sábado 26 de septiembre, de 10 a 14 h, hay un retiro en Adyanta (P.º del Zurrón 43, Barajas).
 
-Una mañana solo para ti, madre de hijos pequeños o ya mayores. Para parar y volver a ti con prácticas de mindfulness, sin necesidad de experiencia.
+Una mañana solo para ti, tengan tus hijos la edad que tengan. Para parar y volver a ti con prácticas de mindfulness, sin necesidad de experiencia.
 
 Lo guía Chon Jorquera, pediatra y madre de tres. Grupo pequeño.
 

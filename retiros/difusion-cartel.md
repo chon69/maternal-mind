@@ -13,7 +13,7 @@ Datos de contacto recogidos el 2-sep-2026 de fuentes públicas: **confirmar ante
 Ha dicho que sí **1**, y 3 madres de los círculos quieren venir pero no pueden pagarlo
 este mes (ver «Para decidir» en `mensajes-difusion-2.md`).
 
-**Imagen nueva:** dice «Solo para ti, madre de hijos pequeños o ya mayores». Usarla en
+**Imagen nueva:** dice «Una mañana solo para ti, tengan tus hijos la edad que tengan». Usarla en
 todo lo que queda. Los mensajes A, B y C están en `mensajes-difusion-2.md`. El enlace
 siempre con www.
 
