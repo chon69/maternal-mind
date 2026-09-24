@@ -117,21 +117,47 @@
      <img class="logo-sede" src="img/adyanta.png" alt="Adyanta Studio"> */
   .adyanta{display:flex;align-items:center;gap:1.8cqw}
   .adyanta img{
-    width:7.6cqw;height:7.6cqw;flex:0 0 auto;display:block;border-radius:1.4cqw;
+    width:5.4cqw;height:5.4cqw;flex:0 0 auto;display:block;border-radius:1cqw;
   }
   .adyanta .texto{display:flex;flex-direction:column;gap:.3cqw}
   .adyanta .nom{
-    font-family:"Cormorant Garamond",Georgia,serif;font-size:4.1cqw;line-height:1;
+    font-family:"Cormorant Garamond",Georgia,serif;font-size:3.1cqw;line-height:1;
     letter-spacing:.06em;color:var(--tinta);
   }
   .adyanta .sub{
-    font-size:1.9cqw;letter-spacing:.13em;text-transform:uppercase;color:var(--suave);
+    font-size:1.55cqw;letter-spacing:.13em;text-transform:uppercase;color:var(--suave);
   }
   .logo-sede{height:7cqw;width:auto;display:block}
   .serie{
     font-size:2.5cqw;color:var(--suave);letter-spacing:.02em;
     font-variant-numeric:tabular-nums;text-align:right;
   }
+
+  /* Diente de león en línea fina, en el hueco de arriba a la derecha.
+     El SVG cubre todo el cartel (794x1123, la proporción del A4) para colocarlo
+     en coordenadas del propio cartel. */
+  .cartel{position:relative;overflow:hidden}
+  .cartel > *:not(.grabado){position:relative;z-index:1}
+  .grabado{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+  .grabado .tallo{fill:none;stroke:#4AADA7;stroke-width:1.6;stroke-linecap:round}
+  .grabado .hoja{fill:none;stroke:#4AADA7;stroke-width:1.2;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+  .grabado .hoja.relleno{fill:#DCEDEA}
+  .grabado .nervio{fill:none;stroke:#4AADA7;stroke-width:.7;vector-effect:non-scaling-stroke}
+  .grabado .vilano{fill:none;stroke:#4AADA7;stroke-width:.9;stroke-linecap:round;vector-effect:non-scaling-stroke}
+  .grabado .vilano.fino{stroke-width:.7;opacity:.85}
+  .grabado .centro{fill:#DCEDEA;stroke:#4AADA7;stroke-width:1;vector-effect:non-scaling-stroke}
+
+  /* La foto de Chon va en el pie, junto a su nombre; el QR pasa a la derecha. */
+  .retrato{position:relative;width:17cqw;flex:0 0 auto;margin:0 0 0 1.1cqw}
+  .retrato::before{
+    content:"";position:absolute;inset:-1.1cqw;border:1.5px solid #4AADA7;border-radius:50%;
+  }
+  .retrato img{display:block;width:100%;aspect-ratio:1;object-fit:cover;border-radius:50%}
+  .pie .qrbox{order:3;margin-left:auto}
+  .pie .quien .cred{max-width:38ch}
+
+  /* Para quién es, antes del título. */
+  .ceja{font-size:2.6cqw;letter-spacing:.2em;text-transform:uppercase;color:var(--turquesa);font-weight:700;margin-bottom:1.4cqw}
 
   @media print{
     @page{size:A4;margin:0}
@@ -154,6 +180,167 @@
 </div>
 
 <div class="cartel">
+<svg class="grabado" viewBox="0 0 794 1123" aria-hidden="true">
+  <path class="tallo" d="M600,498 C608,420 600,310 628,210"/>
+  <g transform="translate(601,470) rotate(-135) scale(0.95)"><path class="hoja relleno" d="M0,0 C18,-16 58,-18 84,0 C58,16 18,14 0,0Z"/><path class="nervio" d="M4,0 C30,-2 56,-2 80,0"/></g>
+  <g transform="translate(603,440) rotate(-45) scale(0.75)"><path class="hoja" d="M0,0 C18,-16 58,-18 84,0 C58,16 18,14 0,0Z"/><path class="nervio" d="M4,0 C30,-2 56,-2 80,0"/></g>
+  <path class="vilano" d="M627.8,190.0 L626.7,130.0"/>
+  <path class="vilano fino" d="M626.7,130.0 l-4.1,-6.9"/>
+  <path class="vilano fino" d="M626.7,130.0 l-1.8,-7.8"/>
+  <path class="vilano fino" d="M626.7,130.0 l1.5,-7.9"/>
+  <path class="vilano fino" d="M626.7,130.0 l3.9,-7.0"/>
+  <path class="vilano" d="M630.0,190.2 L642.0,131.1"/>
+  <path class="vilano fino" d="M642.0,131.1 l-2.5,-7.6"/>
+  <path class="vilano fino" d="M642.0,131.1 l-0.1,-8.0"/>
+  <path class="vilano fino" d="M642.0,131.1 l3.2,-7.3"/>
+  <path class="vilano fino" d="M642.0,131.1 l5.3,-6.0"/>
+  <path class="vilano" d="M632.1,190.9 L656.2,138.2"/>
+  <path class="vilano fino" d="M656.2,138.2 l-0.8,-8.0"/>
+  <path class="vilano fino" d="M656.2,138.2 l1.7,-7.8"/>
+  <path class="vilano fino" d="M656.2,138.2 l4.8,-6.4"/>
+  <path class="vilano fino" d="M656.2,138.2 l6.5,-4.6"/>
+  <path class="vilano" d="M633.6,191.7 L667.9,140.9"/>
+  <path class="vilano fino" d="M667.9,140.9 l0.6,-8.0"/>
+  <path class="vilano fino" d="M667.9,140.9 l3.0,-7.4"/>
+  <path class="vilano fino" d="M667.9,140.9 l5.8,-5.6"/>
+  <path class="vilano fino" d="M667.9,140.9 l7.2,-3.5"/>
+  <path class="vilano" d="M635.3,193.2 L678.3,153.2"/>
+  <path class="vilano fino" d="M678.3,153.2 l2.3,-7.6"/>
+  <path class="vilano fino" d="M678.3,153.2 l4.6,-6.6"/>
+  <path class="vilano fino" d="M678.3,153.2 l6.9,-4.1"/>
+  <path class="vilano fino" d="M678.3,153.2 l7.8,-1.8"/>
+  <path class="vilano" d="M636.8,195.3 L689.5,167.3"/>
+  <path class="vilano fino" d="M689.5,167.3 l4.2,-6.8"/>
+  <path class="vilano fino" d="M689.5,167.3 l6.1,-5.1"/>
+  <path class="vilano fino" d="M689.5,167.3 l7.7,-2.2"/>
+  <path class="vilano fino" d="M689.5,167.3 l8.0,0.3"/>
+  <path class="vilano" d="M637.6,197.1 L694.8,180.0"/>
+  <path class="vilano fino" d="M694.8,180.0 l5.5,-5.8"/>
+  <path class="vilano fino" d="M694.8,180.0 l7.0,-3.8"/>
+  <path class="vilano fino" d="M694.8,180.0 l8.0,-0.6"/>
+  <path class="vilano fino" d="M694.8,180.0 l7.8,1.8"/>
+  <path class="vilano" d="M638.0,199.1 L696.0,193.5"/>
+  <path class="vilano fino" d="M696.0,193.5 l6.5,-4.6"/>
+  <path class="vilano fino" d="M696.0,193.5 l7.6,-2.4"/>
+  <path class="vilano fino" d="M696.0,193.5 l7.9,0.9"/>
+  <path class="vilano fino" d="M696.0,193.5 l7.3,3.3"/>
+  <path class="vilano" d="M637.9,201.1 L699.0,208.1"/>
+  <path class="vilano fino" d="M699.0,208.1 l7.3,-3.2"/>
+  <path class="vilano fino" d="M699.0,208.1 l8.0,-0.8"/>
+  <path class="vilano fino" d="M699.0,208.1 l7.6,2.5"/>
+  <path class="vilano fino" d="M699.0,208.1 l6.4,4.8"/>
+  <path class="vilano" d="M637.5,203.1 L695.4,222.0"/>
+  <path class="vilano fino" d="M695.4,222.0 l7.8,-1.7"/>
+  <path class="vilano fino" d="M695.4,222.0 l8.0,0.8"/>
+  <path class="vilano fino" d="M695.4,222.0 l6.9,4.0"/>
+  <path class="vilano fino" d="M695.4,222.0 l5.3,6.0"/>
+  <path class="vilano" d="M636.6,205.1 L686.4,234.7"/>
+  <path class="vilano fino" d="M686.4,234.7 l8.0,0.1"/>
+  <path class="vilano fino" d="M686.4,234.7 l7.6,2.6"/>
+  <path class="vilano fino" d="M686.4,234.7 l5.9,5.4"/>
+  <path class="vilano fino" d="M686.4,234.7 l3.9,7.0"/>
+  <path class="vilano" d="M635.3,206.8 L679.3,247.9"/>
+  <path class="vilano fino" d="M679.3,247.9 l7.8,1.8"/>
+  <path class="vilano fino" d="M679.3,247.9 l6.9,4.1"/>
+  <path class="vilano fino" d="M679.3,247.9 l4.6,6.6"/>
+  <path class="vilano fino" d="M679.3,247.9 l2.3,7.7"/>
+  <path class="vilano" d="M634.0,208.0 L668.6,254.3"/>
+  <path class="vilano fino" d="M668.6,254.3 l7.4,3.2"/>
+  <path class="vilano fino" d="M668.6,254.3 l6.0,5.3"/>
+  <path class="vilano fino" d="M668.6,254.3 l3.4,7.3"/>
+  <path class="vilano fino" d="M668.6,254.3 l0.9,7.9"/>
+  <path class="vilano" d="M631.8,209.2 L654.7,264.4"/>
+  <path class="vilano fino" d="M654.7,264.4 l6.4,4.9"/>
+  <path class="vilano fino" d="M654.7,264.4 l4.5,6.6"/>
+  <path class="vilano fino" d="M654.7,264.4 l1.5,7.9"/>
+  <path class="vilano fino" d="M654.7,264.4 l-1.0,7.9"/>
+  <path class="vilano" d="M629.9,209.8 L641.8,270.1"/>
+  <path class="vilano fino" d="M641.8,270.1 l5.3,6.0"/>
+  <path class="vilano fino" d="M641.8,270.1 l3.1,7.4"/>
+  <path class="vilano fino" d="M641.8,270.1 l-0.1,8.0"/>
+  <path class="vilano fino" d="M641.8,270.1 l-2.6,7.6"/>
+  <path class="vilano" d="M627.9,210.0 L626.9,271.7"/>
+  <path class="vilano fino" d="M626.9,271.7 l3.9,7.0"/>
+  <path class="vilano fino" d="M626.9,271.7 l1.5,7.8"/>
+  <path class="vilano fino" d="M626.9,271.7 l-1.8,7.8"/>
+  <path class="vilano fino" d="M626.9,271.7 l-4.1,6.9"/>
+  <path class="vilano" d="M626.0,209.8 L613.7,269.7"/>
+  <path class="vilano fino" d="M613.7,269.7 l2.5,7.6"/>
+  <path class="vilano fino" d="M613.7,269.7 l0.1,8.0"/>
+  <path class="vilano fino" d="M613.7,269.7 l-3.2,7.3"/>
+  <path class="vilano fino" d="M613.7,269.7 l-5.3,6.0"/>
+  <path class="vilano" d="M624.0,209.2 L599.1,265.6"/>
+  <path class="vilano fino" d="M599.1,265.6 l0.9,8.0"/>
+  <path class="vilano fino" d="M599.1,265.6 l-1.6,7.8"/>
+  <path class="vilano fino" d="M599.1,265.6 l-4.7,6.5"/>
+  <path class="vilano fino" d="M599.1,265.6 l-6.5,4.7"/>
+  <path class="vilano" d="M621.9,207.9 L586.5,254.0"/>
+  <path class="vilano fino" d="M586.5,254.0 l-1.0,7.9"/>
+  <path class="vilano fino" d="M586.5,254.0 l-3.4,7.2"/>
+  <path class="vilano fino" d="M586.5,254.0 l-6.1,5.2"/>
+  <path class="vilano fino" d="M586.5,254.0 l-7.4,3.1"/>
+  <path class="vilano" d="M620.7,206.9 L578.2,247.2"/>
+  <path class="vilano fino" d="M578.2,247.2 l-2.3,7.7"/>
+  <path class="vilano fino" d="M578.2,247.2 l-4.5,6.6"/>
+  <path class="vilano fino" d="M578.2,247.2 l-6.8,4.2"/>
+  <path class="vilano fino" d="M578.2,247.2 l-7.8,1.9"/>
+  <path class="vilano" d="M619.2,204.7 L566.7,232.8"/>
+  <path class="vilano fino" d="M566.7,232.8 l-4.2,6.8"/>
+  <path class="vilano fino" d="M566.7,232.8 l-6.1,5.2"/>
+  <path class="vilano fino" d="M566.7,232.8 l-7.7,2.2"/>
+  <path class="vilano fino" d="M566.7,232.8 l-8.0,-0.3"/>
+  <path class="vilano" d="M618.5,203.0 L562.2,220.7"/>
+  <path class="vilano fino" d="M562.2,220.7 l-5.4,5.9"/>
+  <path class="vilano fino" d="M562.2,220.7 l-7.0,3.9"/>
+  <path class="vilano fino" d="M562.2,220.7 l-8.0,0.8"/>
+  <path class="vilano fino" d="M562.2,220.7 l-7.8,-1.7"/>
+  <path class="vilano" d="M618.1,201.0 L559.0,207.2"/>
+  <path class="vilano fino" d="M559.0,207.2 l-6.5,4.7"/>
+  <path class="vilano fino" d="M559.0,207.2 l-7.6,2.5"/>
+  <path class="vilano fino" d="M559.0,207.2 l-8.0,-0.8"/>
+  <path class="vilano fino" d="M559.0,207.2 l-7.3,-3.3"/>
+  <path class="vilano" d="M618.0,199.1 L558.1,193.4"/>
+  <path class="vilano fino" d="M558.1,193.4 l-7.3,3.3"/>
+  <path class="vilano fino" d="M558.1,193.4 l-7.9,0.9"/>
+  <path class="vilano fino" d="M558.1,193.4 l-7.6,-2.4"/>
+  <path class="vilano fino" d="M558.1,193.4 l-6.5,-4.6"/>
+  <path class="vilano" d="M618.5,196.9 L560.0,177.5"/>
+  <path class="vilano fino" d="M560.0,177.5 l-7.8,1.6"/>
+  <path class="vilano fino" d="M560.0,177.5 l-8.0,-0.9"/>
+  <path class="vilano fino" d="M560.0,177.5 l-6.9,-4.0"/>
+  <path class="vilano fino" d="M560.0,177.5 l-5.3,-6.0"/>
+  <path class="vilano" d="M619.4,194.9 L566.4,163.4"/>
+  <path class="vilano fino" d="M566.4,163.4 l-8.0,-0.1"/>
+  <path class="vilano fino" d="M566.4,163.4 l-7.6,-2.6"/>
+  <path class="vilano fino" d="M566.4,163.4 l-5.9,-5.4"/>
+  <path class="vilano fino" d="M566.4,163.4 l-3.9,-7.0"/>
+  <path class="vilano" d="M620.7,193.1 L575.7,150.5"/>
+  <path class="vilano fino" d="M575.7,150.5 l-7.8,-1.9"/>
+  <path class="vilano fino" d="M575.7,150.5 l-6.8,-4.2"/>
+  <path class="vilano fino" d="M575.7,150.5 l-4.5,-6.6"/>
+  <path class="vilano fino" d="M575.7,150.5 l-2.3,-7.7"/>
+  <path class="vilano" d="M622.2,191.8 L588.5,144.2"/>
+  <path class="vilano fino" d="M588.5,144.2 l-7.3,-3.3"/>
+  <path class="vilano fino" d="M588.5,144.2 l-5.9,-5.4"/>
+  <path class="vilano fino" d="M588.5,144.2 l-3.2,-7.3"/>
+  <path class="vilano fino" d="M588.5,144.2 l-0.7,-8.0"/>
+  <path class="vilano" d="M624.2,190.8 L600.4,133.6"/>
+  <path class="vilano fino" d="M600.4,133.6 l-6.4,-4.9"/>
+  <path class="vilano fino" d="M600.4,133.6 l-4.5,-6.6"/>
+  <path class="vilano fino" d="M600.4,133.6 l-1.5,-7.9"/>
+  <path class="vilano fino" d="M600.4,133.6 l1.0,-7.9"/>
+  <path class="vilano" d="M626.2,190.2 L615.4,131.0"/>
+  <path class="vilano fino" d="M615.4,131.0 l-5.2,-6.1"/>
+  <path class="vilano fino" d="M615.4,131.0 l-3.0,-7.4"/>
+  <path class="vilano fino" d="M615.4,131.0 l0.2,-8.0"/>
+  <path class="vilano fino" d="M615.4,131.0 l2.7,-7.5"/>
+  <circle class="centro" cx="628" cy="200" r="10"/>
+  <g transform="translate(712,118) rotate(40) scale(1)"><path class="vilano" d="M0,0 L0,-22"/><path class="vilano fino" d="M0,-22 l-6.9,-5.8"/><path class="vilano fino" d="M0,-22 l-3.8,-8.2"/><path class="vilano fino" d="M0,-22 l0.0,-9.0"/><path class="vilano fino" d="M0,-22 l3.8,-8.2"/><path class="vilano fino" d="M0,-22 l6.9,-5.8"/><ellipse class="centro" cx="0" cy="3" rx="1.8" ry="3.5"/></g>
+  <g transform="translate(738,92) rotate(24) scale(0.9)"><path class="vilano" d="M0,0 L0,-22"/><path class="vilano fino" d="M0,-22 l-6.9,-5.8"/><path class="vilano fino" d="M0,-22 l-3.8,-8.2"/><path class="vilano fino" d="M0,-22 l0.0,-9.0"/><path class="vilano fino" d="M0,-22 l3.8,-8.2"/><path class="vilano fino" d="M0,-22 l6.9,-5.8"/><ellipse class="centro" cx="0" cy="3" rx="1.8" ry="3.5"/></g>
+  <g transform="translate(700,82) rotate(52) scale(0.85)"><path class="vilano" d="M0,0 L0,-22"/><path class="vilano fino" d="M0,-22 l-6.9,-5.8"/><path class="vilano fino" d="M0,-22 l-3.8,-8.2"/><path class="vilano fino" d="M0,-22 l0.0,-9.0"/><path class="vilano fino" d="M0,-22 l3.8,-8.2"/><path class="vilano fino" d="M0,-22 l6.9,-5.8"/><ellipse class="centro" cx="0" cy="3" rx="1.8" ry="3.5"/></g>
+  <g transform="translate(752,138) rotate(16) scale(0.8)"><path class="vilano" d="M0,0 L0,-22"/><path class="vilano fino" d="M0,-22 l-6.9,-5.8"/><path class="vilano fino" d="M0,-22 l-3.8,-8.2"/><path class="vilano fino" d="M0,-22 l0.0,-9.0"/><path class="vilano fino" d="M0,-22 l3.8,-8.2"/><path class="vilano fino" d="M0,-22 l6.9,-5.8"/><ellipse class="centro" cx="0" cy="3" rx="1.8" ry="3.5"/></g>
+  <g transform="translate(752,66) rotate(32) scale(0.7)"><path class="vilano" d="M0,0 L0,-22"/><path class="vilano fino" d="M0,-22 l-6.9,-5.8"/><path class="vilano fino" d="M0,-22 l-3.8,-8.2"/><path class="vilano fino" d="M0,-22 l0.0,-9.0"/><path class="vilano fino" d="M0,-22 l3.8,-8.2"/><path class="vilano fino" d="M0,-22 l6.9,-5.8"/><ellipse class="centro" cx="0" cy="3" rx="1.8" ry="3.5"/></g>
+</svg>
   <div class="marca">
     <svg class="aros" viewBox="0 0 93 58" role="img" aria-label="Maternal Mind">
       <circle cx="28.4" cy="29" r="26" fill="none" stroke="#2F8C86" stroke-width="2.8"/>
@@ -163,13 +350,14 @@
   </div>
   <div class="filete"></div>
 
+  <p class="ceja">Retiro para madres</p>
   <h1>Cuatro horas<br>para <em>volver a ti</em></h1>
-  <p class="bajada">Una mañana de domingo solo para ti,<br>tengan tus hijos la edad que tengan.<br>Sin necesidad de experiencia previa<br>o de estar pasándolo mal.</p>
+  <p class="bajada">Una mañana de domingo solo para ti,<br>tengan tus hijos la edad que tengan.<br>Sin necesidad de experiencia previa.</p>
 
   <div class="fecha">
     <p class="dia">Domingo 25 de octubre</p>
     <p class="hora">De 10:00 a 14:00</p>
-    <p class="sitio">Adyanta · P.º del Zurrón 43, Barajas</p>
+    <p class="sitio">P.º del Zurrón 43, Barajas</p>
   </div>
 
   <div class="que">
@@ -189,9 +377,10 @@
       <svg viewBox="0 0 37 37" class="qr" role="img" aria-label="Código QR a www.maternalmind.es/retiro"><path class="qrline" stroke="#22302d" d="M2 2.5h7m1 0h1m4 0h1m2 0h4m2 0h3m1 0h7m-33 1h1m5 0h1m2 0h2m1 0h3m1 0h1m2 0h1m1 0h3m2 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m2 0h1m1 0h5m2 0h1m1 0h1m1 0h3m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h2m1 0h1m1 0h1m2 0h2m1 0h2m1 0h1m1 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m2 0h4m2 0h1m2 0h3m1 0h2m2 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m2 0h1m3 0h2m2 0h1m1 0h1m1 0h4m1 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-24 1h3m1 0h4m1 0h2m1 0h1m1 0h1m-22 1h1m1 0h3m1 0h1m5 0h1m4 0h1m1 0h5m3 0h1m2 0h1m-31 1h4m2 0h10m1 0h1m1 0h1m2 0h1m1 0h1m3 0h1m1 0h1m-32 1h2m3 0h3m3 0h3m1 0h1m1 0h1m2 0h2m1 0h2m2 0h1m2 0h2m-32 1h2m1 0h2m2 0h1m1 0h2m6 0h1m2 0h1m2 0h3m5 0h1m-33 1h1m5 0h1m3 0h2m1 0h1m3 0h2m1 0h2m1 0h1m1 0h2m4 0h2m-32 1h2m1 0h2m1 0h2m1 0h1m1 0h2m1 0h1m1 0h3m4 0h3m2 0h1m1 0h2m-32 1h1m4 0h1m1 0h2m1 0h1m2 0h3m4 0h1m3 0h1m3 0h1m1 0h2m-33 1h1m2 0h1m1 0h1m2 0h1m1 0h1m1 0h1m2 0h1m1 0h1m2 0h4m3 0h1m1 0h1m1 0h2m-33 1h1m1 0h1m1 0h3m1 0h1m3 0h4m1 0h2m1 0h3m2 0h2m5 0h1m-33 1h1m4 0h1m1 0h1m1 0h1m2 0h2m3 0h1m3 0h1m3 0h2m2 0h2m1 0h1m-32 1h1m1 0h1m1 0h2m1 0h1m1 0h2m1 0h1m1 0h1m3 0h1m5 0h2m1 0h1m1 0h3m-32 1h1m1 0h1m3 0h1m1 0h1m1 0h1m3 0h1m1 0h1m1 0h1m1 0h2m5 0h1m-29 1h3m3 0h2m2 0h1m1 0h2m1 0h2m1 0h2m1 0h1m2 0h3m2 0h1m1 0h2m-29 1h1m2 0h1m2 0h2m1 0h1m2 0h1m1 0h3m1 0h1m1 0h1m1 0h2m3 0h2m-33 1h1m2 0h2m1 0h1m1 0h2m1 0h4m1 0h1m3 0h2m2 0h1m1 0h2m1 0h1m1 0h2m-32 1h2m4 0h1m1 0h1m1 0h1m2 0h1m1 0h2m1 0h1m1 0h1m1 0h3m5 0h2m-33 1h1m1 0h3m1 0h2m1 0h4m2 0h1m1 0h5m2 0h6m2 0h1m-25 1h2m1 0h3m1 0h4m1 0h1m2 0h2m3 0h2m2 0h1m-33 1h7m2 0h2m1 0h1m1 0h1m1 0h2m2 0h2m1 0h2m1 0h1m1 0h5m-33 1h1m5 0h1m1 0h1m1 0h1m2 0h2m1 0h7m1 0h1m3 0h1m3 0h1m-33 1h1m1 0h3m1 0h1m1 0h2m1 0h1m3 0h1m1 0h2m3 0h1m1 0h5m2 0h1m-32 1h1m1 0h3m1 0h1m3 0h4m1 0h1m1 0h3m1 0h1m6 0h1m1 0h3m-33 1h1m1 0h3m1 0h1m1 0h2m1 0h2m1 0h1m2 0h1m2 0h2m3 0h1m1 0h3m2 0h1m-33 1h1m5 0h1m4 0h1m2 0h1m1 0h2m2 0h2m1 0h2m1 0h2m3 0h1m-32 1h7m2 0h2m2 0h1m1 0h2m1 0h4m1 0h7m1 0h2"/></svg>
       <span>Info y plazas</span>
     </div>
+    <figure class="retrato"><img src="img/chon-retrato.jpg" alt="Chon Jorquera"></figure>
     <div class="quien">
       <p class="nombre">Chon Jorquera</p>
-      <p class="cred">Pediatra desde hace treinta años, instructora de mindfulness y madre de tres.</p>
+      <p class="cred">Pediatra desde hace treinta años,<br>instructora de mindfulness<br>y madre de tres.</p>
       <p class="plazas">Grupo pequeño, en confianza</p>
     </div>
   </div>
