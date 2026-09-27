@@ -2,7 +2,7 @@
 
 Escritos el 24-sep-2026, a un mes del retiro. El del 26 de septiembre se suspendió sin
 inscritas y el ciclo se corrió un mes: **domingo 25 de octubre**, de 10:00 a 14:00, en
-Adyanta. Sustituyen a `mensajes-difusion-2.md`.
+Adyanta. Sustituyen a los del 26 de septiembre, que siguen en el historial de git.
 
 Lo que llevan todos:
 - **Domingo**, no sábado. Se nombra el día siempre, porque hasta ahora todo decía sábado.
