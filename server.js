@@ -55,7 +55,23 @@ app.post('/api/stripe-webhook', express.raw({ type: 'application/json' }), async
 });
 
 app.use(express.json({ limit: '50mb' }));
-app.use(express.static(path.join(__dirname)));
+// Solo se sirve lo que ven las madres: las páginas, el panel (/app), las imágenes
+// y audios que usan y los carteles. El resto de la carpeta (guiones, borradores,
+// notas del proyecto, código del servidor) no sale a la web aunque viva aquí.
+const PUBLICOS = new Set([
+  '/', '/index.html', '/legal.html', '/kit.html', '/gracias.html',
+  '/og-image.jpg', '/IMG_8846.jpeg', '/chon.png',
+  '/mano-en-el-pecho.mp3', '/presencia-contacto.mp3', '/volver-3-minutos.mp3',
+  '/retiros/cartel-volver-a-ti.pdf', '/retiros/cartel-volver-a-ti-sangrado.pdf',
+  '/retiros/cartel-volver-a-ti-logos.pdf', '/retiros/cartel-volver-a-ti-logos-sangrado.pdf',
+]);
+const estaticos = express.static(path.join(__dirname));
+app.use((req, res, next) => {
+  const p = req.path;
+  const publico = PUBLICOS.has(p) || p === '/app' || p.startsWith('/app/')
+    || /^\/retiros\/img\/[\w-]+\.(jpe?g|png)$/.test(p);
+  return publico ? estaticos(req, res, next) : next();
+});
 
 // URL corta e imprimible para la página del retiro: el QR de los carteles apunta
 // aquí, así el destino se puede cambiar sin reimprimir nada.
