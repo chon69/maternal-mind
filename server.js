@@ -65,13 +65,14 @@ const PUBLICOS = new Set([
   '/retiros/cartel-volver-a-ti.pdf', '/retiros/cartel-volver-a-ti-sangrado.pdf',
   '/retiros/cartel-volver-a-ti-logos.pdf', '/retiros/cartel-volver-a-ti-logos-sangrado.pdf',
 ]);
-const estaticos = express.static(path.join(__dirname));
-app.use((req, res, next) => {
-  const p = req.path;
-  const publico = PUBLICOS.has(p) || p === '/app' || p.startsWith('/app/')
-    || /^\/retiros\/img\/[\w-]+\.(jpe?g|png)$/.test(p);
-  return publico ? estaticos(req, res, next) : next();
-});
+// Cada carpeta pública lleva su propio express.static con la raíz en ella: así
+// una ruta con «..» no puede salir de /app ni de /retiros/img hacia el resto.
+const raiz    = express.static(path.join(__dirname));
+const imgRet  = express.static(path.join(__dirname, 'retiros', 'img'));
+app.use('/app', express.static(path.join(__dirname, 'app')));
+app.use('/retiros/img', (req, res, next) =>
+  /^\/[\w-]+\.(jpe?g|png)$/.test(req.path) ? imgRet(req, res, next) : next());
+app.use((req, res, next) => (PUBLICOS.has(req.path) ? raiz(req, res, next) : next()));
 
 // URL corta e imprimible para la página del retiro: el QR de los carteles apunta
 // aquí, así el destino se puede cambiar sin reimprimir nada.
