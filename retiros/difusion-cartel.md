@@ -1,4 +1,4 @@
-# Reparto del cartel — Retiro «Volver a ti» · domingo 25 oct
+# Reparto del cartel — Retiro «Una pausa para volver a ti» · domingo 25 oct
 
 Tres formas del mismo listado:
 

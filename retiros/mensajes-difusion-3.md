@@ -1,4 +1,4 @@
-# Mensajes de difusión, tercera vuelta — Retiro «Volver a ti» · 25 oct
+# Mensajes de difusión, tercera vuelta — Retiro «Una pausa para volver a ti» · 25 oct
 
 Escritos el 24-sep-2026, a un mes del retiro. El del 26 de septiembre se suspendió sin
 inscritas y el ciclo se corrió un mes: **domingo 25 de octubre**, de 10:00 a 14:00, en

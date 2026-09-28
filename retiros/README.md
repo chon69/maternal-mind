@@ -10,7 +10,7 @@ retiros y nada más.
 
 | | Retiro | Tema | Frase semilla |
 |---|---|---|---|
-| 1 | **Volver a ti** | Respiración, modo ser, sabiduría interna e intuición | *Respirar para volver, volver para habitarte, habitarte para escucharte, escucharte para conectar con tu sabiduría interna.* |
+| 1 | **Una pausa para volver a ti** | Respiración, modo ser, sabiduría interna e intuición | *Respirar para volver, volver para habitarte, habitarte para escucharte, escucharte para conectar con tu sabiduría interna.* |
 | 2 | **Abrazar lo difícil** | Dolor, miedo, sufrimiento añadido y aceptación | *Puedo abrir espacio también para lo difícil.* |
 | 3 | **Tratarte con ternura** | Autocompasión y bondad amorosa | *Puedo tratarme con la misma ternura que ofrezco a quien amo.* |
 | 4 | **Cultivar lo esencial** | Valores, gratitud y saboreo | *Lo importante crece cuando lo cuidamos con presencia.* |

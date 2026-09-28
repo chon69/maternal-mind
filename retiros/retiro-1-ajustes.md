@@ -1,4 +1,4 @@
-# Retiro 1 · Volver a ti — Ajustes para el 26 de septiembre
+# Retiro 1 · Una pausa para volver a ti — Ajustes para el 26 de septiembre
 
 Propuestas sobre `retiro-1-volver-a-ti.md`. **El guion no está tocado**: aquí va
 cada cambio con el texto listo para pegar, y Chon decide cuáles entran.

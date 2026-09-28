@@ -1,4 +1,4 @@
-# Retiro 1 · Volver a ti — Los mensajes entre retiros
+# Retiro 1 · Una pausa para volver a ti — Los mensajes entre retiros
 
 Veinte propuestas breves entre el retiro 1 (sábado 26-sep) y el retiro 2,
 «Abrazar lo difícil» (domingo 25-oct).

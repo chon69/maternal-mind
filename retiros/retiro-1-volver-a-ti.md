@@ -1,4 +1,4 @@
-# Maternal Mind · Retiro 1 · Volver a ti
+# Maternal Mind · Retiro 1 · Una pausa para volver a ti
 
 **Versión para madres · ciclo de cuatro retiros urbanos**
 
@@ -612,7 +612,7 @@ Tarjeta A6 de doble cara (título + frase semilla / sugerencias para casa + QR a
 
 **Cara principal**
 
-Maternal Mind · Volver a ti
+Maternal Mind · Una pausa para volver a ti
 Respiración, modo ser, sabiduría interna e intuición
 *Respirar para volver, volver para habitarte, habitarte para escucharte, escucharte para conectar con tu sabiduría interna.*
 
