@@ -51,6 +51,10 @@
   /* Adyanta solo en la versión «con-adyanta». */
   .sede{display:none;flex-direction:column}
   body.con-adyanta .sede{display:flex}
+  /* Con Adyanta el cierre es una fila propia, como el pie de logos de los carteles:
+     la sala a la izquierda y la web a la derecha, sobre la misma línea de base. */
+  body.con-adyanta .cierre{border-top:1.5px solid #DCCFB2;align-items:center}
+  body.con-adyanta .sede{order:-1}
   .rotulo{letter-spacing:.16em;text-transform:uppercase;color:#5E6B67;font-weight:700}
   .adyanta{display:flex;align-items:center}
   .adyanta img{display:block;flex:0 0 auto}
@@ -87,8 +91,10 @@
   .cred{font-size:25px}
   .grupo{font-size:24px;margin-top:4px}
   .cierre{margin-top:32px}
+  body.con-adyanta .cierre{margin-top:28px;padding-top:24px}
+  body.con-adyanta .enlace{font-size:30px}
   .enlace{font-size:33px}
-  .sede{gap:10px;align-items:flex-end}
+  .sede{gap:10px}
   .rotulo{font-size:15px}
   .adyanta{gap:14px}
   .adyanta img{width:52px;height:52px;border-radius:9px}
@@ -96,6 +102,7 @@
   .adyanta .nom{font-size:28px}
   .adyanta .sub{font-size:12px}
   .grabado{right:70px;top:612px;width:190px}
+  body.con-adyanta .grabado{top:585px}
 </style>
 <body class="">
 <svg class="grabado" viewBox="530 30 250 480" aria-hidden="true">
