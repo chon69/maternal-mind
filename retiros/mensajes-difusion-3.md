@@ -185,13 +185,18 @@ Si conoces a una madre a la que le haga falta esta mañana, mándasela 🌿
 #maternalmind #mindfulness #madres #maternidad #retiro #barajas #madrid #autocuidado
 ```
 
+Hay una segunda versión con el logo de Adyanta, `retiro-instagram-adyanta.jpg`: es la
+que se le pasa a Adyanta para que la publique, y la que conviene usar si la vas a
+compartir con quien ya conoce la sala.
+
 **Antes de publicar:** pon www.maternalmind.es/retiro en el enlace de la bio. En el pie
 de Instagram los enlaces no se pueden pulsar.
 
 **Story.** Imagen: `retiros/img/retiro-story.jpg` (1080x1920). Al subirla, añade la
 pegatina **Enlace** con www.maternalmind.es/retiro y colócala en el hueco de abajo, bajo
 la dirección web. Arriba y abajo quedan unos 250 px libres para que Instagram no tape
-nada. La misma imagen sirve para el **estado de WhatsApp**.
+nada. La misma imagen sirve para el **estado de WhatsApp**. También tiene su versión
+con Adyanta: `retiro-story-adyanta.jpg`.
 
 **Segunda story, al día siguiente** (sobre la misma imagen o sobre fondo crema, con la
 encuesta de Instagram):
