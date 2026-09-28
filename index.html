@@ -904,16 +904,18 @@ src="https://www.facebook.com/tr?id=1468723284535693&ev=PageView&noscript=1"
 
 <!-- ══ RETIRO PRESENCIAL ══ -->
 <style>
-  .section-retiro{background:var(--turq-vlight);border-top:1px solid var(--turq-light);border-bottom:1px solid var(--turq-light)}
+  /* El retiro se separa de la biblioteca con el crema y los aros de sus carteles. */
+  .section-retiro{background:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400' fill='none' stroke-width='2.5'><circle cx='300' cy='130' r='120' stroke='%232F8C86'/><circle cx='240' cy='235' r='85' stroke='%23E0AC2B'/><circle cx='190' cy='325' r='40' stroke='%232F8C86'/><circle cx='290' cy='335' r='28' stroke='%23E0AC2B'/></svg>") right -40px center/auto 125% no-repeat,#FAF2E1;border-top:1px solid #EFDFB8;border-bottom:1px solid #EFDFB8}
   .retiro-box{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
   .retiro-txt{flex:1 1 320px}
-  .retiro-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--turq-deep);font-weight:500}
-  .retiro-txt h2{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.9rem;line-height:1.2;color:var(--ink);margin:.6rem 0 .5rem}
+  .retiro-label{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dark);font-weight:700}
+  .retiro-txt h2{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:2.5rem;line-height:1.1;color:var(--ink);margin:.6rem 0 .6rem}
   .retiro-txt h2 em{font-style:italic;color:var(--turq-deep)}
   .retiro-txt p{font-size:.95rem;font-weight:300;line-height:1.7;color:var(--ink-soft);margin:0}
   .retiro-cta{flex:0 0 auto}
   .retiro-cta .btn-primary{display:inline-block;text-decoration:none}
-  @media(max-width:640px){.retiro-cta{width:100%}.retiro-cta .btn-primary{width:100%;text-align:center}}
+  @media(max-width:640px){.retiro-cta{width:100%}.retiro-cta .btn-primary{width:100%;text-align:center}
+    .section-retiro{background:#FAF2E1}.retiro-txt h2{font-size:2.1rem}}
 </style>
 <section class="section-retiro">
   <div class="section-inner">
