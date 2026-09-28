@@ -158,3 +158,47 @@ Me encantaría que estuvieras.
 ```
 
 Pon fecha concreta al segundo pago: «en noviembre» a secas se olvida.
+
+---
+
+## D · Instagram
+
+**Publicación del feed.** Imagen: `retiros/img/retiro-instagram.jpg` (1080x1350, el
+formato vertical del feed). Texto del pie:
+
+```
+¿Cuándo fue la última vez que hiciste algo solo por ti, sin que nadie te necesitara?
+
+El domingo 25 de octubre, de 10 a 14 h, abro en Barajas una mañana solo para madres. Tengan tus hijos tres meses, tres años o veinte: los niños se quedan en casa y tú vienes sola.
+
+Movimiento suave, respiración, una meditación y un rato de escritura, en un grupo pequeño. No hace falta haber meditado nunca.
+
+La llamo «Una pausa para volver a ti», porque eso es lo que es. Cuatro horas para parar, respirar y escucharte, y volver a casa con algo sencillo que puedas seguir practicando.
+
+La guío yo: pediatra desde hace treinta años, instructora de mindfulness y madre de tres.
+
+📍 Adyanta · P.º del Zurrón 43, Barajas (Madrid)
+🔗 Toda la información y las plazas, en el enlace de la bio: www.maternalmind.es/retiro
+
+Si conoces a una madre a la que le haga falta esta mañana, mándasela 🌿
+
+#maternalmind #mindfulness #madres #maternidad #retiro #barajas #madrid #autocuidado
+```
+
+**Antes de publicar:** pon www.maternalmind.es/retiro en el enlace de la bio. En el pie
+de Instagram los enlaces no se pueden pulsar.
+
+**Story.** Imagen: `retiros/img/retiro-story.jpg` (1080x1920). Al subirla, añade la
+pegatina **Enlace** con www.maternalmind.es/retiro y colócala en el hueco de abajo, bajo
+la dirección web. Arriba y abajo quedan unos 250 px libres para que Instagram no tape
+nada. La misma imagen sirve para el **estado de WhatsApp**.
+
+**Segunda story, al día siguiente** (sobre la misma imagen o sobre fondo crema, con la
+encuesta de Instagram):
+
+```
+¿Cuándo fue la última vez que hiciste algo solo por ti?
+```
+
+Encuesta con dos respuestas: «Esta semana» / «Ni me acuerdo». Quien vote «Ni me acuerdo»
+es la madre a la que puedes escribirle por privado.
