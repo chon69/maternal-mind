@@ -67,7 +67,8 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 # Datos Proyecto 
 - Proyecto Railway producción: https://railway.com/project/519ac3d8-bbca-4504-b3be-b59dfbb3e4e6/service/97a2400c-a255-454f-8e09-407ad6c4ae31?environmentId=c821d7ce-db8e-4904-914f-09da8d83af93
 - Proyecto Railway staging: https://railway.com/project/519ac3d8-bbca-4504-b3be-b59dfbb3e4e6/service/97a2400c-a255-454f-8e09-407ad6c4ae31?environmentId=e115940b-83cf-40c6-ba5e-e74c3e935c73
-- Github: https://github.com/chon69/maternal-mind-app
+- Github: https://github.com/chon69/maternal-mind
 
 # Golden Rule
 - Always develop and apply your changes in staging, and once validated, you can deploy them to production enviroment and commit to github.
+
