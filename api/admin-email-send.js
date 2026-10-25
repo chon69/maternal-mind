@@ -39,12 +39,13 @@ exports.handler = async (event) => {
           targets = [{ email: destinatarios, nombre: '' }];
         }
         if (!targets.length) return fail('No hay destinatarios válidos');
-        const results = await Promise.allSettled(
-          targets.map(t => {
-            const html = cuerpo_html.replace(/{{nombre}}/gi, t.nombre || 'Mamá');
-            return send(t.email, asunto, wrapEmail(html));
-          })
-        );
+        // De uno en uno: en paralelo Gmail rechaza parte de los envíos cuando son muchos.
+        const results = [];
+        for (const t of targets) {
+          const html = cuerpo_html.replace(/{{nombre}}/gi, t.nombre || 'Mamá');
+          try { await send(t.email, asunto, wrapEmail(html)); results.push({ status: 'fulfilled' }); }
+          catch (reason) { results.push({ status: 'rejected', reason }); }
+        }
         const sent   = results.filter(r => r.status === 'fulfilled').length;
         const failed = results.filter(r => r.status === 'rejected').length;
         const fallidos = results
