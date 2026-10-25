@@ -47,7 +47,11 @@ exports.handler = async (event) => {
         );
         const sent   = results.filter(r => r.status === 'fulfilled').length;
         const failed = results.filter(r => r.status === 'rejected').length;
-        return ok({ sent, failed });
+        const fallidos = results
+          .map((r, i) => r.status === 'rejected' ? { email: targets[i].email, motivo: r.reason?.message || String(r.reason) } : null)
+          .filter(Boolean);
+        if (fallidos.length) console.error('Emails fallidos:', JSON.stringify(fallidos));
+        return ok({ sent, failed, fallidos });
       }
       // create template
       const { nombre, asunto, cuerpo_html, tipo } = body;

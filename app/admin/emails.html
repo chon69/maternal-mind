@@ -272,6 +272,16 @@
       if (!res.ok) throw new Error(data.error);
       msgEl.className='result-msg ok';
       msgEl.textContent = `✓ Enviados: ${data.sent}${data.failed ? ` · Fallidos: ${data.failed}` : ''}`;
+      if (data.fallidos?.length) {
+        const lista = document.createElement('ul');
+        lista.style.cssText = 'margin:.5rem 0 0;padding-left:1.2rem;font-size:.82rem';
+        data.fallidos.forEach(f => {
+          const li = document.createElement('li');
+          li.textContent = `${f.email} — ${f.motivo}`;
+          lista.appendChild(li);
+        });
+        msgEl.appendChild(lista);
+      }
       msgEl.hidden=false;
     } catch(e) { msgEl.className='result-msg err'; msgEl.textContent=e.message; msgEl.hidden=false; }
     finally { btn.disabled=false; btn.textContent='Enviar →'; }
