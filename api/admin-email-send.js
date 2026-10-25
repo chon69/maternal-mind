@@ -1,6 +1,6 @@
 const crypto = require('crypto');
 const { requireAdmin, ok, fail, preflight } = require('../lib/auth');
-const { getAll, append, updateById, deleteById } = require('../lib/db');
+const { getAll, append, updateById, deleteById, pool } = require('../lib/db');
 const { send, wrapEmail } = require('../lib/email');
 
 exports.handler = async (event) => {
@@ -10,6 +10,12 @@ exports.handler = async (event) => {
   catch (e) { return fail(e.message, e.status || 403); }
 
   try {
+    // GET ?historial=1 → últimos envíos
+    if (event.httpMethod === 'GET' && event.queryStringParameters?.historial) {
+      const { rows } = await pool.query('SELECT * FROM envios ORDER BY created_at DESC LIMIT 100');
+      return ok(rows);
+    }
+
     // GET → list templates
     if (event.httpMethod === 'GET') {
       const rows = await getAll('Plantillas');
@@ -52,6 +58,14 @@ exports.handler = async (event) => {
           .map((r, i) => r.status === 'rejected' ? { email: targets[i].email, motivo: r.reason?.message || String(r.reason) } : null)
           .filter(Boolean);
         if (fallidos.length) console.error('Emails fallidos:', JSON.stringify(fallidos));
+        // Si no se puede guardar el historial, el envío ya está hecho: no se da por fallido.
+        try {
+          await pool.query(
+            `INSERT INTO envios (asunto, destinatarios, enviados, fallidos, fallidos_detalle, cuerpo_html)
+             VALUES ($1, $2, $3, $4, $5, $6)`,
+            [asunto, destinatarios, sent, failed, JSON.stringify(fallidos), cuerpo_html]
+          );
+        } catch (err) { console.error('[envios]', err.message); }
         return ok({ sent, failed, fallidos });
       }
       // create template

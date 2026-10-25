@@ -180,6 +180,16 @@ async function asegurarColumnas() {
     `ALTER TABLE usuarios ADD COLUMN IF NOT EXISTS invitado_at TIMESTAMPTZ`,
     `ALTER TABLE leads    ADD COLUMN IF NOT EXISTS origen      TEXT NOT NULL DEFAULT 'web'`,
     `CREATE INDEX IF NOT EXISTS idx_usuarios_origen ON usuarios (origen)`,
+    `CREATE TABLE IF NOT EXISTS envios (
+       id               UUID        PRIMARY KEY DEFAULT gen_random_uuid(),
+       asunto           TEXT        NOT NULL DEFAULT '',
+       destinatarios    TEXT        NOT NULL DEFAULT '',
+       enviados         INTEGER     NOT NULL DEFAULT 0,
+       fallidos         INTEGER     NOT NULL DEFAULT 0,
+       fallidos_detalle JSONB       NOT NULL DEFAULT '[]',
+       cuerpo_html      TEXT        NOT NULL DEFAULT '',
+       created_at       TIMESTAMPTZ NOT NULL DEFAULT NOW()
+     )`,
   ];
   for (const sql of sentencias) {
     try { await pool.query(sql); }

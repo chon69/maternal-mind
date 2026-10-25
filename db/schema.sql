@@ -140,3 +140,16 @@ ALTER TABLE usuarios ADD COLUMN IF NOT EXISTS substack_at TIMESTAMPTZ;
 ALTER TABLE usuarios ADD COLUMN IF NOT EXISTS invitado_at TIMESTAMPTZ;
 ALTER TABLE leads    ADD COLUMN IF NOT EXISTS origen      TEXT NOT NULL DEFAULT 'web';
 CREATE INDEX IF NOT EXISTS idx_usuarios_origen ON usuarios (origen);
+
+-- Historial de envíos del panel de emails: un registro por cada «Enviar».
+-- server.js también lo crea al arrancar, por si este fichero no se ha aplicado.
+CREATE TABLE IF NOT EXISTS envios (
+  id               UUID        PRIMARY KEY DEFAULT gen_random_uuid(),
+  asunto           TEXT        NOT NULL DEFAULT '',
+  destinatarios    TEXT        NOT NULL DEFAULT '',
+  enviados         INTEGER     NOT NULL DEFAULT 0,
+  fallidos         INTEGER     NOT NULL DEFAULT 0,
+  fallidos_detalle JSONB       NOT NULL DEFAULT '[]',
+  cuerpo_html      TEXT        NOT NULL DEFAULT '',
+  created_at       TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);

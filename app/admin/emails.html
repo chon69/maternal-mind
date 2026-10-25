@@ -62,6 +62,13 @@
   .result-msg{padding:.65rem 1rem;border-radius:8px;font-size:.84rem;margin-top:.75rem}
   .result-msg.ok{background:#DCFCE7;color:#166534}
   .result-msg.err{background:#FEE2E2;color:#991B1B}
+  .hist{width:100%;border-collapse:collapse;font-size:.82rem}
+  .hist th{text-align:left;font-weight:500;color:var(--ink-soft);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;padding:.4rem .6rem;border-bottom:1px solid rgba(125,207,202,.2)}
+  .hist td{padding:.6rem;border-bottom:1px solid rgba(125,207,202,.12);vertical-align:top}
+  .hist tbody tr{cursor:pointer}
+  .hist tbody tr:hover{background:var(--turq-vlight)}
+  .hist .num{text-align:right;font-variant-numeric:tabular-nums}
+  .hist .mal{color:var(--red);font-weight:500}
   .loading{text-align:center;padding:1.5rem;color:var(--ink-soft)}.spinner{width:24px;height:24px;border:2px solid var(--turq-light);border-top-color:var(--turq);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto .5rem}@keyframes spin{to{transform:rotate(360deg)}}
   .toast{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--ink);color:#fff;padding:.75rem 1.25rem;border-radius:10px;font-size:.85rem;z-index:999;opacity:0;transition:opacity .3s;pointer-events:none}.toast.show{opacity:1}
   @media(max-width:900px){.main{grid-template-columns:1fr}}
@@ -113,7 +120,31 @@
       <button class="send-btn" id="send-btn" onclick="sendEmail()">Enviar →</button>
     </div>
   </div>
+
+  <!-- HISTORIAL -->
+  <div class="panel col-full">
+    <div class="panel-header"><h2>Historial de envíos</h2></div>
+    <div class="panel-body" id="hist-list">
+      <div class="loading"><div class="spinner"></div></div>
+    </div>
+  </div>
 </main>
+
+<!-- ENVÍO MODAL -->
+<div class="modal-overlay" id="envio-modal" onclick="if(event.target===this)closeEnvio()">
+  <div class="modal">
+    <div class="modal-header"><h2 id="envio-titulo">Envío</h2><button class="modal-close" onclick="closeEnvio()">✕</button></div>
+    <div class="modal-body">
+      <p id="envio-datos" style="font-size:.82rem;color:var(--ink-soft);margin:0 0 .75rem"></p>
+      <div id="envio-fallidos"></div>
+      <label>Correo tal como salió</label>
+      <iframe id="envio-cuerpo" sandbox="" style="width:100%;height:340px;border:1px solid rgba(125,207,202,.3);border-radius:8px;background:#fff"></iframe>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeEnvio()">Cerrar</button>
+    </div>
+  </div>
+</div>
 
 <!-- TEMPLATE MODAL -->
 <div class="modal-overlay" id="tmpl-modal" onclick="if(event.target===this)closeTmpl()">
@@ -282,6 +313,7 @@
         });
         msgEl.appendChild(lista);
       }
+      loadHistorial();
       msgEl.hidden=false;
     } catch(e) { msgEl.className='result-msg err'; msgEl.textContent=e.message; msgEl.hidden=false; }
     finally { btn.disabled=false; btn.textContent='Enviar →'; }
@@ -292,9 +324,57 @@
     templates = await res.json();
     renderTemplates();
   }
+  const GRUPOS = {
+    all: 'Todas las clientas activas', pendientes: 'Clientas pendientes',
+    todas: 'Todas (activas + pendientes)', biblioteca: 'Plan Biblioteca MaMi',
+  };
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const cuando = iso => new Date(iso).toLocaleString('es-ES', { day:'numeric', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
+  let envios = [];
+
+  async function loadHistorial() {
+    const el = document.getElementById('hist-list');
+    try {
+      const res = await MM.api('/api/admin-email-send?historial=1');
+      envios = await res.json();
+      if (!res.ok) throw new Error(envios.error);
+    } catch(e) {
+      el.innerHTML = `<p style="font-size:.85rem;color:var(--red)">No se pudo cargar el historial: ${esc(e.message)}</p>`;
+      return;
+    }
+    if (!envios.length) {
+      el.innerHTML = '<p style="font-size:.85rem;color:var(--ink-soft)">Aún no hay envíos registrados. Cada correo que envíes desde aquí quedará apuntado.</p>';
+      return;
+    }
+    el.innerHTML = `<table class="hist">
+      <thead><tr><th>Fecha</th><th>Asunto</th><th>A quién</th><th class="num">Enviados</th><th class="num">Fallidos</th></tr></thead>
+      <tbody>${envios.map((e, i) => `<tr onclick="openEnvio(${i})">
+        <td style="white-space:nowrap">${cuando(e.created_at)}</td>
+        <td>${esc(e.asunto)}</td>
+        <td>${esc(GRUPOS[e.destinatarios] || e.destinatarios)}</td>
+        <td class="num">${e.enviados}</td>
+        <td class="num ${e.fallidos > 0 ? 'mal' : ''}">${e.fallidos}</td>
+      </tr>`).join('')}</tbody></table>`;
+  }
+
+  function openEnvio(i) {
+    const e = envios[i];
+    document.getElementById('envio-titulo').textContent = e.asunto;
+    document.getElementById('envio-datos').textContent =
+      `${cuando(e.created_at)} · ${GRUPOS[e.destinatarios] || e.destinatarios} · ${e.enviados} enviados · ${e.fallidos} fallidos`;
+    const f = e.fallidos_detalle || [];
+    document.getElementById('envio-fallidos').innerHTML = f.length
+      ? `<label>No les llegó</label><ul style="margin:0 0 1rem;padding-left:1.2rem;font-size:.82rem">${f.map(x => `<li>${esc(x.email)} — ${esc(x.motivo)}</li>`).join('')}</ul>`
+      : '';
+    document.getElementById('envio-cuerpo').srcdoc = e.cuerpo_html;
+    document.getElementById('envio-modal').classList.add('open');
+  }
+  function closeEnvio() { document.getElementById('envio-modal').classList.remove('open'); }
+
   loadTemplates();
   loadUsers();
-  document.addEventListener('keydown', e => { if(e.key==='Escape') closeTmpl(); });
+  loadHistorial();
+  document.addEventListener('keydown', e => { if(e.key==='Escape') { closeTmpl(); closeEnvio(); } });
 </script>
 </body>
 </html>
