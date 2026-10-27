@@ -56,7 +56,8 @@ por eso se nombra en el mensaje personal.
 
 Escrito el 27-oct-2026, cuando el retiro pasó al **sábado 14 de noviembre**. Sustituye al
 correo del 25 de octubre, que queda debajo como historia. Direcciones en
-`retiros/ampas-barajas-valdebebas.md`; imagen para adjuntar: `retiros/img/retiro-whatsapp.png`.
+`retiros/ampas-barajas-valdebebas.md`; para adjuntar: `retiros/img/retiro-whatsapp.png` y el bono
+`retiros/img/bono-ampa.png`.
 
 **Correo al AMPA:**
 
@@ -73,7 +74,7 @@ Es para madres con hijos de cualquier edad, ya sean de infantil o de la ESO. Los
 
 Las familias que lleguen a través del AMPA tienen un bono regalo de descuento: una mañana de retiro les sale a 65 € (en lugar de 70 €) y el ciclo completo de cuatro mañanas a 225 € (en lugar de 249 €). Solo tienen que decir «bono AMPA» y el nombre del colegio cuando me escriban para reservar.
 
-Os adjunto la imagen. Si os parece bien, ¿podríais pasarla por el grupo o la lista de familias junto con el bono? Os lo agradecería mucho si pudiera salir esta semana, porque cierro el grupo el lunes 9 de noviembre.
+Os adjunto la imagen del retiro y el bono. Si os parece bien, ¿podríais pasar los dos por el grupo o la lista de familias? Os lo agradecería mucho si pudiera salir esta semana, porque cierro el grupo el lunes 9 de noviembre.
 
 Toda la información está en www.maternalmind.es/retiro
 
@@ -97,8 +98,8 @@ www.maternalmind.es/retiro
 
 **El bono AMPA** sirve para saber quién llega por esta vía: la madre lo dice al escribir
 para reservar (WhatsApp o correo), con el nombre del colegio. La web no lo recoge. Si el
-AMPA reenvía solo la imagen, el bono no llega a las familias; por eso el correo pide
-pasarlo «junto con el bono».
+AMPA reenvía solo la imagen, el bono no llega a las familias; por eso va también como
+imagen propia (`bono-ampa.png`) y el correo pide pasar las dos.
 
 ---
 
