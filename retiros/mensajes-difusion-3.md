@@ -11,7 +11,7 @@ Lo que llevan todos:
 - La aclaración de la segunda vuelta: **solo para madres, sin los niños, y da igual la
   edad de sus hijos.**
 
-Imagen para adjuntar: `retiros/img/retiro-whatsapp.png`, que ya dice sábado 14 de
+Imagen para adjuntar: `retiros/img/retiro.png`, que ya dice sábado 14 de
 noviembre. Enlace, siempre con www.
 
 ---
@@ -56,7 +56,7 @@ por eso se nombra en el mensaje personal.
 
 Escrito el 27-oct-2026, cuando el retiro pasó al **sábado 14 de noviembre**. Sustituye al
 correo del 25 de octubre, que queda debajo como historia. Direcciones en
-`retiros/ampas-barajas-valdebebas.md`; para adjuntar: `retiros/img/retiro-whatsapp.png` y el bono
+`retiros/ampas-barajas-valdebebas.md`; para adjuntar: `retiros/img/retiro.png` y el bono
 `retiros/img/bono-ampa.png`.
 
 **Correo al AMPA:**

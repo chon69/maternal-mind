@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* Genera el PNG de una pieza cuadrada para redes a partir de su HTML.
 
-   Uso: node _png.js img/retiro-whatsapp.html   → img/retiro-whatsapp.png (1080x1080)
+   Uso: node _png.js img/retiro.html → img/retiro.png (1080x1080)
         node _png.js img/retiro-og.html 1200x630 → img/retiro-og.jpg (1200x630) */
 const puppeteer = require('puppeteer');
 const path = require('path');
