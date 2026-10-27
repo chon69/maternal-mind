@@ -101,6 +101,34 @@ para reservar (WhatsApp o correo), con el nombre del colegio. La web no lo recog
 AMPA reenvía solo la imagen, el bono no llega a las familias; por eso va también como
 imagen propia (`bono-ampa.png`) y el correo pide pasar las dos.
 
+**Correo a la secretaría de los colegios sin correo del AMPA** (Colegio Alameda de Osuna:
+colegio@colegio-alameda.com; Colegio de Jesús: tras llamar al 917 477 022 y pedir un
+correo; San Pedro Apóstol: secretaria@sanpedroapostol.es solo si rebota el del AMPA).
+Mismos adjuntos:
+
+```
+Asunto: Para el AMPA: una mañana para madres el sábado 14 de noviembre
+
+Buenos días:
+
+Soy Chon Jorquera, pediatra, instructora de mindfulness y madre de tres. Os escribo porque no he encontrado un correo de contacto del AMPA del colegio y me gustaría hacerles llegar esta información. ¿Podríais reenviarles este correo, por favor?
+
+Es una mañana que he preparado para las madres: el sábado 14 de noviembre, de 10:00 a 14:00, en Adyanta (P.º del Zurrón 43, Barajas).
+
+Es una mañana con movimiento suave, meditación, un rato de escritura consciente y mucha escucha y presencia, en un grupo reducido y sin necesidad de experiencia previa en prácticas de meditación.
+
+Es para madres con hijos de cualquier edad, ya sean de infantil o de la ESO. Los niños en esta ocasión no vienen: es un rato solo para ellas.
+
+Las familias que lleguen a través del AMPA tienen un bono regalo de descuento: una mañana de retiro les sale a 65 € (en lugar de 70 €) y el ciclo completo de cuatro mañanas a 225 € (en lugar de 249 €). Solo tienen que decir «bono AMPA» y el nombre del colegio cuando me escriban para reservar.
+
+Adjunto la imagen del retiro y el bono, por si el AMPA quiere pasar los dos por el grupo o la lista de familias. Lo agradecería mucho si pudiera salir esta semana, porque cierro el grupo el lunes 9 de noviembre.
+
+Toda la información está en www.maternalmind.es/retiro
+
+Muchas gracias por vuestra ayuda y por vuestro interés en esta iniciativa. Un saludo cordial,
+Chon Jorquera
+```
+
 ---
 
 ## B (anterior, 25 oct) · AMPA y grupos de clase
