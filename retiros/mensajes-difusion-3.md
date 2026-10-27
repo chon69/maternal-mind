@@ -1,27 +1,28 @@
-# Mensajes de difusión, tercera vuelta — Retiro «Una pausa para volver a ti» · 25 oct
+# Mensajes de difusión, tercera vuelta — Retiro «Una pausa para volver a ti» · 14 nov
 
-Escritos el 24-sep-2026, a un mes del retiro. El del 26 de septiembre se suspendió sin
-inscritas y el ciclo se corrió un mes: **domingo 25 de octubre**, de 10:00 a 14:00, en
-Adyanta. Sustituyen a los del 26 de septiembre, que siguen en el historial de git.
+Escritos el 24-sep-2026 para el domingo 25 de octubre y puestos al día el 27-oct-2026:
+el del 26 de septiembre se suspendió sin inscritas, el del 25 de octubre tampoco se hizo,
+y el retiro 1 es ahora el **sábado 14 de noviembre**, de 10:00 a 14:00, en Adyanta. Las
+versiones anteriores siguen en el historial de git.
 
 Lo que llevan todos:
-- **Domingo**, no sábado. Se nombra el día siempre, porque hasta ahora todo decía sábado.
+- **Sábado**, no domingo. Se nombra el día siempre, porque la convocatoria del 25 decía domingo.
 - **Grupo reducido**, sin número de plazas.
 - La aclaración de la segunda vuelta: **solo para madres, sin los niños, y da igual la
   edad de sus hijos.**
 
-Imagen para adjuntar: `retiros/img/retiro-whatsapp.png`, que ya dice domingo 25 de
-octubre. Enlace, siempre con www.
+Imagen para adjuntar: `retiros/img/retiro-whatsapp.png`, que ya dice sábado 14 de
+noviembre. Enlace, siempre con www.
 
 ---
 
-## A · A quien ya sabía lo del 26
+## A · A quien ya sabía lo del 25
 
 Para las madres de los círculos, los compañeros del centro de salud, las vecinas, la
 parafarmacia, las fisios y Adyanta. **Primero la imagen nueva y debajo el texto.**
 
 ```
-¡Hola! 🌿 Te cuento: el retiro de septiembre no salió y lo he pasado al domingo 25 de octubre, de 10 a 14 h, en Adyanta.
+¡Hola! 🌿 Te cuento: el retiro de octubre tampoco salió y lo he pasado al sábado 14 de noviembre, de 10 a 14 h, en Adyanta.
 
 Sigue siendo una mañana solo para madres, tengan sus hijos tres meses, tres años o veinte. Los niños se quedan en casa.
 
@@ -36,22 +37,72 @@ www.maternalmind.es/retiro
 Os paso la imagen con la fecha nueva. ¿Podríais subirla a vuestro Instagram y mandarla a vuestras alumnas? Muchas son justo las madres para las que está pensada.
 ```
 
-**Para la madre de los círculos que dijo que le apetecía pero no pudo el 26:**
+**Para la madre de los círculos que dijo que le apetecía pero no pudo el 25:**
 
 ```
-Hola [nombre] 🌿 Me acordé de ti: el retiro al final va a ser el domingo 25 de octubre, de 10 a 14 h. Un domingo, por si eso te lo pone más fácil.
+Hola [nombre] 🌿 Me acordé de ti: el retiro al final va a ser el sábado 14 de noviembre, de 10 a 14 h. Un sábado, por si eso te lo pone más fácil.
 
 ¿Te guardo sitio? Y si tienes alguna amiga a la que le apetezca venir contigo, mejor aún: dos que se conocen se animan antes.
 ```
 
-**Por qué está montado así:** «no salió» y a otra cosa. Sin explicaciones ni disculpas,
+**Por qué está montado así:** «tampoco salió» y a otra cosa. Sin explicaciones ni disculpas,
 que la suspensión no es noticia para nadie y alargarse en ella la convierte en una. Lo
-que sí es noticia es el domingo: a muchas les cambia quién se queda con los niños, y
+que sí es noticia es el sábado: a muchas les cambia quién se queda con los niños, y
 por eso se nombra en el mensaje personal.
 
 ---
 
-## B · AMPA y grupos de clase
+## B · AMPA y grupos de clase — sábado 14 de noviembre (vigente)
+
+Escrito el 27-oct-2026, cuando el retiro pasó al **sábado 14 de noviembre**. Sustituye al
+correo del 25 de octubre, que queda debajo como historia. Direcciones en
+`retiros/ampas-barajas-valdebebas.md`; imagen para adjuntar: `retiros/img/retiro-whatsapp.png`.
+
+**Correo al AMPA:**
+
+```
+Asunto: Nueva fecha: una mañana para madres el sábado 14 de noviembre
+
+Hola de nuevo:
+
+Soy Chon Jorquera, pediatra, instructora de mindfulness y madre de tres, y os escribo porque hay nueva fecha para la mañana que he preparado para las madres: el sábado 14 de noviembre, de 10:00 a 14:00, en Adyanta (P.º del Zurrón 43, Barajas).
+
+Es una mañana con movimiento suave, meditación, un rato de escritura consciente y mucha escucha y presencia, en un grupo reducido y sin necesidad de experiencia previa en prácticas de meditación.
+
+Es para madres con hijos de cualquier edad, ya sean de infantil o de la ESO. Los niños en esta ocasión no vienen: es un rato solo para ellas.
+
+Las familias que lleguen a través del AMPA tienen un bono regalo de descuento: una mañana de retiro les sale a 65 € (en lugar de 70 €) y el ciclo completo de cuatro mañanas a 225 € (en lugar de 249 €). Solo tienen que decir «bono AMPA» y el nombre del colegio cuando me escriban para reservar.
+
+Os adjunto la imagen. Si os parece bien, ¿podríais pasarla por el grupo o la lista de familias junto con el bono? Os lo agradecería mucho si pudiera salir esta semana, porque cierro el grupo el lunes 9 de noviembre.
+
+Toda la información está en www.maternalmind.es/retiro
+
+Muchas gracias por vuestro interés en esta iniciativa. Un abrazo,
+Chon
+```
+
+**Texto para el grupo de clase:**
+
+```
+🌿 Por si a alguna le apetece: el sábado 14 de noviembre, de 10 a 14 h, hay un retiro en Adyanta (P.º del Zurrón 43, Barajas).
+
+Una mañana solo para ti, tengan tus hijos la edad que tengan. Para parar y volver a ti con prácticas de mindfulness, sin necesidad de experiencia previa en meditación.
+
+Lo guía Chon Jorquera, pediatra y madre de tres. Grupo reducido.
+
+🎁 Por venir del AMPA tienes un bono regalo: una mañana de retiro a 65 € y el ciclo completo a 225 €. Di «bono AMPA» y el nombre del colegio al reservar.
+
+www.maternalmind.es/retiro
+```
+
+**El bono AMPA** sirve para saber quién llega por esta vía: la madre lo dice al escribir
+para reservar (WhatsApp o correo), con el nombre del colegio. La web no lo recoge. Si el
+AMPA reenvía solo la imagen, el bono no llega a las familias; por eso el correo pide
+pasarlo «junto con el bono».
+
+---
+
+## B (anterior, 25 oct) · AMPA y grupos de clase
 
 **Correo al AMPA** (a su dirección, no a secretaría):
 
@@ -104,11 +155,11 @@ AMPA lo mueva; conviene mandarlo esta semana o la que viene, no a quince días.
 Dicho en voz alta, en treinta segundos, a quien atiende:
 
 > «Hola, soy Chon, vivo aquí en el barrio y soy pediatra desde hace treinta años. El
-> domingo 25 de octubre hago una mañana solo para madres aquí al lado, en Adyanta,
+> sábado 14 de noviembre hago una mañana solo para madres aquí al lado, en Adyanta,
 > tengan sus hijos la edad que tengan. ¿Te importa si dejo el cartel? Y si ves a
 > alguna clienta a la que le pueda venir bien, ¿se lo comentarías?»
 
-**Donde ya dejaste el cartel del 26:** cámbialo por el nuevo en persona, no lo mandes
+**Donde ya dejaste el cartel del 25:** cámbialo por el nuevo en persona, no lo mandes
 por mensaje. Basta con «te traigo el nuevo, que ha cambiado la fecha». Es una segunda
 visita con motivo, y un cartel con fecha pasada en el cristal dice que aquello ya fue.
 
@@ -123,7 +174,7 @@ corchetes lo rellena Chon.
 ### 1 · Beca: la aportación que pueda
 
 ```
-Hola [nombre] 🌿 Al final el retiro va a ser el domingo 25 de octubre, y me acordé de lo que me dijiste.
+Hola [nombre] 🌿 Al final el retiro va a ser el sábado 14 de noviembre, y me acordé de lo que me dijiste.
 
 Me gustaría mucho que vinieras, y no quiero que el dinero sea lo que lo impida. Si te parece, ven y aporta lo que puedas, cuando puedas, sin compromiso.
 
@@ -136,7 +187,7 @@ lo que le permite venir sin sentirse la de la beca.
 ### 2 · La profesora de yoga: participa y paga menos
 
 ```
-Hola [nombre] 🌿 El retiro pasa al domingo 25 de octubre, y le he estado dando vueltas a algo.
+Hola [nombre] 🌿 El retiro pasa al sábado 14 de noviembre, y le he estado dando vueltas a algo.
 
 Tú sabes mucho de cuerpo y de movimiento. ¿Te apetecería guiar [el movimiento suave del cierre, unos diez minutos]? El resto de la mañana vienes como una más, y la plaza te queda en [X €].
 
@@ -150,14 +201,14 @@ con decirle «[nombre] nos guía el movimiento»; lo del precio no tiene por qu�
 ### 3 · Plazos
 
 ```
-Hola [nombre] 🌿 El retiro al final es el domingo 25 de octubre.
+Hola [nombre] 🌿 El retiro al final es el sábado 14 de noviembre.
 
-Si lo que te frena es el dinero de golpe, puedes pagarla en dos veces: [35 €] ahora para reservar y [35 €] el [1 de noviembre]. Así no te pesa todo en octubre.
+Si lo que te frena es el dinero de golpe, puedes pagarla en dos veces: [35 €] ahora para reservar y [35 €] el [1 de diciembre]. Así no te pesa todo en noviembre.
 
 Me encantaría que estuvieras.
 ```
 
-Pon fecha concreta al segundo pago: «en noviembre» a secas se olvida.
+Pon fecha concreta al segundo pago: «en diciembre» a secas se olvida.
 
 ---
 
@@ -169,7 +220,7 @@ formato vertical del feed). Texto del pie:
 ```
 ¿Cuándo fue la última vez que hiciste algo solo por ti, sin que nadie te necesitara?
 
-El domingo 25 de octubre, de 10 a 14 h, abro en Barajas una mañana solo para madres. Tengan tus hijos tres meses, tres años o veinte: los niños se quedan en casa y tú vienes sola.
+El sábado 14 de noviembre, de 10 a 14 h, abro en Barajas una mañana solo para madres. Tengan tus hijos tres meses, tres años o veinte: los niños se quedan en casa y tú vienes sola.
 
 Movimiento suave, respiración, una meditación y un rato de escritura, en un grupo pequeño. No hace falta haber meditado nunca.
 
