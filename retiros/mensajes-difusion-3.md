@@ -101,8 +101,7 @@ para reservar (WhatsApp o correo), con el nombre del colegio. La web no lo recog
 AMPA reenvía solo la imagen, el bono no llega a las familias; por eso va también como
 imagen propia (`bono-ampa.png`) y el correo pide pasar las dos.
 
-**Correo a la secretaría de los colegios sin correo del AMPA** (Colegio Alameda de Osuna:
-colegio@colegio-alameda.com; Colegio de Jesús: tras llamar al 917 477 022 y pedir un
+**Correo a la secretaría de los colegios sin correo del AMPA** (Colegio de Jesús: tras llamar al 917 477 022 y pedir un
 correo; San Pedro Apóstol: secretaria@sanpedroapostol.es solo si rebota el del AMPA).
 Mismos adjuntos:
 
