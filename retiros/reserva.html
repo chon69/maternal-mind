@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guardar tu plaza · Retiro del 14 de noviembre | Maternal Mind</title>
-<meta name="description" content="Déjame tu nombre y tu correo para guardarte la plaza del retiro del sábado 14 de noviembre.">
+<title>Los retiros y los círculos vuelven en 2027 | Maternal Mind</title>
+<meta name="description" content="Los retiros y los círculos presenciales de Maternal Mind vuelven en 2027.">
 <meta name="robots" content="noindex">
-<meta property="og:title" content="Guardar tu plaza — retiro del 14 de noviembre">
-<meta property="og:description" content="Un formulario de treinta segundos para que te guarde la plaza y pueda escribirte los detalles.">
+<meta property="og:title" content="Los retiros y los círculos vuelven en 2027">
+<meta property="og:description" content="Los retiros y los círculos presenciales de Maternal Mind vuelven en 2027.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.maternalmind.es/reserva">
 <meta property="og:image" content="https://www.maternalmind.es/retiros/img/retiro-og.jpg">
@@ -100,102 +100,19 @@
     <div class="logo-text">maternal <span>mind</span></div>
   </div>
 
-  <h1>Te guardo la plaza</h1>
-  <p class="bajada">Ya hemos hablado por WhatsApp. Déjame aquí tu nombre y tu correo y tu sitio queda apuntado.</p>
-
-  <div class="cita">
-    <p class="dia">Sábado 14 de noviembre</p>
-    <p class="hora">De 10:00 a 14:00</p>
-    <p class="sitio">Sala Adyanta, Barajas (Madrid) · Grupo reducido</p>
-  </div>
+  <h1>Los retiros y los círculos vuelven en 2027</h1>
+  <p class="bajada">Los retiros y los círculos presenciales quedan en pausa hasta el año que viene. El retiro del sábado 14 de noviembre no se celebrará.</p>
 
   <div class="card">
-    <p class="sub">Los necesito para guardarte la plaza y mantenerte informada de todos los detalles. Aprovecho para enviarte un pequeño obsequio que te llegará a este correo.</p>
-
-    <form id="form-reserva" novalidate>
-      <input type="text" name="nombre" placeholder="Tu nombre" required autocomplete="given-name">
-      <input type="email" name="email" placeholder="tu@email.com" required autocomplete="email">
-      <div class="privacidad">
-        <input type="checkbox" id="privacidad-reserva" required>
-        <label for="privacidad-reserva">He leído y acepto la <a href="/legal.html#privacidad" target="_blank" rel="noopener">política de privacidad</a></label>
-      </div>
-      <button type="submit">
-        <span class="btn-text">Guardar mis datos</span>
-        <span class="btn-loading" hidden>Enviando…</span>
-      </button>
-      <p class="slow-msg" hidden>Un momento… el servidor está arrancando, puede tardar hasta un minuto.</p>
-      <p class="form-error" hidden></p>
-    </form>
-
-    <div class="form-ok" hidden>
-      <div class="icono">🌿</div>
-      <p class="titulo">Ya tengo tu plaza reservada</p>
-      <p class="msg">Mira tu correo: te he mandado una cosita.</p>
-    </div>
+    <p class="sub">Si te habías apuntado o tienes cualquier duda, escríbeme a <a href="mailto:chon@maternalmind.es" style="color:var(--turq-deep)">chon@maternalmind.es</a>. Gracias por la confianza: nos volvemos a encontrar en 2027.</p>
   </div>
 
   <footer>
-    <p><a href="/retiro">Ver toda la información del retiro</a></p>
+    <p><a href="/retiro#avisos">Avísame cuando haya nuevas fechas</a></p>
     <p style="margin-top:.4rem">Maternal Mind · <a href="/legal.html">Aviso legal y privacidad</a></p>
   </footer>
 </div>
 
-<script>
-  (function () {
-    const form = document.getElementById('form-reserva');
-    const ok   = form.parentElement.querySelector('.form-ok');
-    const err  = form.querySelector('.form-error');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      err.hidden = true;
-
-      const nombre  = (form.querySelector('[name="nombre"]').value || '').trim();
-      const email   = (form.querySelector('[name="email"]').value  || '').trim();
-      const privacy = form.querySelector('input[type="checkbox"]');
-      if (!nombre || !email) return;
-      if (!privacy.checked) {
-        privacy.style.outline = '2px solid #C1462F';
-        setTimeout(() => { privacy.style.outline = ''; }, 3000);
-        return;
-      }
-
-      const btn        = form.querySelector('button[type="submit"]');
-      const btnText    = btn.querySelector('.btn-text');
-      const btnLoading = btn.querySelector('.btn-loading');
-      const slowMsg    = form.querySelector('.slow-msg');
-
-      btnText.hidden = true;
-      btnLoading.hidden = false;
-      btn.disabled = true;
-      const slowTimer = setTimeout(() => { slowMsg.hidden = false; }, 4000);
-
-      try {
-        // 'retiro-whatsapp' es lo que separa a estas madres en el panel: han
-        // hablado ya por WhatsApp y quieren plaza, no solo que se les avise.
-        const res = await fetch('/api/submit-form', {
-          method:  'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body:    JSON.stringify({ nombre, email, origen: 'retiro-whatsapp' }),
-        });
-        clearTimeout(slowTimer);
-        if (!res.ok) throw new Error('Error ' + res.status);
-        // El párrafo de «los necesito para…» ya no pinta nada una vez enviado.
-        form.parentElement.querySelector('p.sub').hidden = true;
-        form.hidden = true;
-        ok.hidden   = false;
-      } catch (e) {
-        clearTimeout(slowTimer);
-        slowMsg.hidden = true;
-        err.textContent = 'No se ha podido enviar. Inténtalo otra vez o escríbeme a chon@maternalmind.es';
-        err.hidden = false;
-        btnText.hidden = false;
-        btnLoading.hidden = true;
-        btn.disabled = false;
-      }
-    });
-  })();
-</script>
 
 </body>
 </html>
